@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vườn Bonsai Tuấn Trang — Tác Phẩm Nghệ Thuật Đà Lạt</title>
+  <meta name="description" content="Vườn Bonsai Tuấn Trang — Hơn 15 năm gây dựng, nghệ nhân được công nhận, giải Vàng toàn quốc. Bộ sưu tập bonsai nghệ thuật tại Đà Lạt, Lâm Đồng.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --primary:#2C3A2E;--secondary:#8B7355;--accent:#C4A882;--bg:#F8F5F0;--surface:#fff;--text:#1A1A1A;--muted:#9B9B9B; }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+    h1,h2,h3,h4{font-family:'Playfair Display',serif;letter-spacing:-0.03em;}
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:50;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px;}
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:30;transition:background .4s,box-shadow .4s;}
+    #navbar.scrolled{background:rgba(44,58,46,.97);backdrop-filter:blur(12px);box-shadow:0 2px 32px rgba(44,58,46,.18);}
+    .product-card{background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 2px 20px rgba(44,58,46,.06);transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s;}
+    .product-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(44,58,46,.15),0 4px 16px rgba(44,58,46,.08);}
+    .product-card:hover .card-img{transform:scale(1.05);}
+    .product-card:hover .card-overlay{opacity:1;}
+    .card-img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.34,1.56,.64,1);}
+    .card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,58,46,.85) 0%,transparent 55%);display:flex;align-items:flex-end;padding:16px;opacity:0;transition:opacity .4s;}
+    .btn-gold{background:var(--accent);color:var(--primary);font-size:14px;font-weight:600;padding:14px 32px;border-radius:2px;text-decoration:none;letter-spacing:.05em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:all .3s cubic-bezier(.34,1.56,.64,1);}
+    .btn-gold:hover{background:var(--bg);transform:translateY(-2px);}
+    .btn-ghost{border:1.5px solid rgba(248,245,240,.5);color:var(--bg);font-size:14px;font-weight:500;padding:14px 32px;border-radius:2px;text-decoration:none;letter-spacing:.05em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:all .3s;}
+    .btn-ghost:hover{background:rgba(248,245,240,.1);border-color:var(--bg);transform:translateY(-2px);}
+    .pill{border:1.5px solid rgba(139,115,85,.3);background:transparent;color:var(--text);font-size:13px;padding:7px 18px;border-radius:100px;white-space:nowrap;cursor:pointer;font-family:'Inter',sans-serif;transition:all .25s cubic-bezier(.34,1.56,.64,1);}
+    .pill:hover{border-color:var(--secondary);transform:translateY(-1px);}
+    .pill.active{background:var(--primary);color:var(--bg);border-color:var(--primary);}
+    .badge{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:2px;position:absolute;top:12px;left:12px;}
+    .badge-f{background:var(--accent);color:var(--primary);}
+    .badge-n{background:var(--primary);color:var(--accent);}
+    .badge-s{background:var(--muted);color:#fff;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+    .fu{opacity:0;animation:fadeUp .8s cubic-bezier(.34,1.56,.64,1) forwards;}
+    .fu1{animation-delay:.1s}.fu2{animation-delay:.25s}.fu3{animation-delay:.4s}.fu4{animation-delay:.55s}
+    ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
+    .nav-link{color:rgba(248,245,240,.82);font-size:14px;letter-spacing:.03em;text-decoration:none;transition:color .2s;}
+    .nav-link:hover{color:var(--accent);}
+    .price{color:var(--accent);font-family:'Playfair Display',serif;font-size:18px;font-weight:600;}
+    .section-label{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--secondary);font-weight:500;}
+    @media(max-width:768px){.hm{display:none!important}}
+    @media(min-width:769px){.sm{display:none!important}#hero-img{display:block!important}}
+
+    /* ── MOBILE RESPONSIVE ── */
+    @media(max-width:640px){
+      /* Nav */
+      #navbar > div{padding:0 20px!important;}
+      /* Hero */
+      section[aria-label*="Giới thiệu"] > div{padding:90px 20px 60px!important;}
+      #hero-stats{gap:20px!important;flex-wrap:wrap!important;}
+      #hero-stats > div > div:first-child{font-size:26px!important;}
+      /* Section padding */
+      section[aria-label*="Bộ sưu tập"] > div{padding:0 16px!important;}
+      section[aria-label*="Bộ sưu tập"]{padding:40px 0 56px!important;}
+      #product-grid{grid-template-columns:1fr!important;gap:20px!important;}
+      /* Filter bar */
+      #bo-suu-tap > div{padding:0 16px!important;}
+      /* Video */
+      section[aria-label*="Video"]{padding:56px 20px!important;}
+      /* About */
+      section[aria-label*="Câu chuyện"] > div{padding:0 20px!important;}
+      section[aria-label*="Câu chuyện"]{padding:56px 0!important;}
+      #about-inner{gap:36px!important;}
+      #about-badge{display:none!important;}
+      #about-inner > div:last-child img{height:280px!important;}
+      #about-inner > div:last-child > div:last-child{display:none!important;}
+      #about-stats{gap:10px!important;}
+      #about-stats > div{padding:14px 16px!important;}
+      /* CTA */
+      section[aria-label*="Liên hệ mua"]{padding:60px 20px!important;}
+      /* Footer */
+      footer > div > div:first-child{padding:40px 20px 24px!important;}
+      footer > div{padding:0!important;}
+      footer > div > div:nth-child(2){display:grid;grid-template-columns:1fr 1fr;padding:0 20px!important;}
+      footer > div > div:last-child{padding:20px!important;}
+      /* Floating Zalo */
+      a[aria-label*="Liên hệ Zalo"]{bottom:18px!important;right:18px!important;width:50px!important;height:50px!important;}
+    }
+    @media(max-width:480px){
+      #hero-stats{gap:14px!important;}
+      #about-stats > div{padding:12px 14px!important;}
+      #about-stats > div > div:first-child{font-size:22px!important;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:72px;">
+      <a href="/" style="text-decoration:none;line-height:1.1;">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#F8F5F0;letter-spacing:-0.02em;">Tuấn Trang</div>
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C4A882;font-weight:500;">BONSAI</div>
+      </a>
+      <div class="hm" style="display:flex;align-items:center;gap:32px;">
+        <a href="#bo-suu-tap" class="nav-link">Bộ Sưu Tập</a>
+        <a href="#gioi-thieu" class="nav-link">Về Chúng Tôi</a>
+        <a href="#lien-he" class="nav-link">Liên Hệ</a>
+      </div>
+      <div class="hm" style="display:flex;align-items:center;gap:16px;">
+        <a href="tel:0785925998" style="color:#C4A882;font-size:14px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:6px;">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.46 1.17 2 2 0 012 1h3a2 2 0 012 1.72 12.05 12.05 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.05 12.05 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          0785 925 998
+        </a>
+        <a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:9px 18px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Zalo</a>
+      </div>
+      <button class="sm" onclick="toggleMenu()" style="background:none;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;" aria-label="Menu">
+        <span style="width:24px;height:2px;background:#F8F5F0;display:block;"></span>
+        <span style="width:24px;height:2px;background:#F8F5F0;display:block;"></span>
+        <span style="width:16px;height:2px;background:#C4A882;display:block;"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" style="display:none;background:rgba(44,58,46,.98);backdrop-filter:blur(12px);border-top:1px solid rgba(196,168,130,.15);">
+    <div style="padding:24px 32px;display:flex;flex-direction:column;gap:20px;">
+      <a href="#bo-suu-tap" onclick="toggleMenu()" style="color:#F8F5F0;font-family:'Playfair Display',serif;font-size:20px;text-decoration:none;">Bộ Sưu Tập</a>
+      <a href="#gioi-thieu" onclick="toggleMenu()" style="color:#F8F5F0;font-family:'Playfair Display',serif;font-size:20px;text-decoration:none;">Về Chúng Tôi</a>
+      <a href="#lien-he" onclick="toggleMenu()" style="color:#F8F5F0;font-family:'Playfair Display',serif;font-size:20px;text-decoration:none;">Liên Hệ</a>
+      <a href="tel:0785925998" style="color:#C4A882;font-size:16px;font-weight:600;text-decoration:none;padding-top:16px;border-top:1px solid rgba(196,168,130,.15);">📞 0785 925 998</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section aria-label="Giới thiệu Trang Lê Bonsai" style="min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 15% 50%,#2C3A2E 0%,transparent 70%),radial-gradient(ellipse 60% 80% at 85% 20%,rgba(44,58,46,.75) 0%,transparent 60%),radial-gradient(ellipse 100% 100% at 50% 110%,rgba(139,115,85,.25) 0%,transparent 50%),#18221A;">
+  <div style="position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(196,168,130,.4) 60px,rgba(196,168,130,.4) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(196,168,130,.2) 60px,rgba(196,168,130,.2) 61px);pointer-events:none;"></div>
+  <div style="position:absolute;right:-8%;top:50%;transform:translateY(-50%);width:560px;height:560px;border-radius:50%;border:1px solid rgba(196,168,130,.1);pointer-events:none;"></div>
+  <div style="position:absolute;right:-2%;top:50%;transform:translateY(-50%);width:360px;height:360px;border-radius:50%;border:1px solid rgba(196,168,130,.07);pointer-events:none;"></div>
+  <div id="hero-img" style="display:none;position:absolute;right:0;top:0;bottom:0;width:42%;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,#18221A 0%,transparent 40%);z-index:1;"></div>
+    <img src="https://placehold.co/700x900/2C3A2E/C4A882?text=🌿" alt="Tác phẩm bonsai nghệ thuật Trang Lê Đà Lạt" style="width:100%;height:100%;object-fit:cover;opacity:.35;mix-blend-mode:luminosity;">
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:100px 32px 80px;position:relative;z-index:2;">
+    <div style="max-width:560px;">
+      <div class="fu fu1" style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+        <div style="width:40px;height:1px;background:#C4A882;opacity:.6;"></div>
+        <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#C4A882;font-weight:500;">Đà Lạt · Lâm Đồng · Est. 2010</span>
+      </div>
+      <h1 class="fu fu2" style="font-size:clamp(40px,6vw,68px);font-weight:700;color:#F8F5F0;line-height:1.1;margin-bottom:20px;">
+        Đưa Tạo Tác<br><em style="color:#C4A882;font-style:italic;font-weight:400;">Từ Nghệ Nhân</em><br>Đến Với Bạn
+      </h1>
+      <p class="fu fu3" style="color:rgba(248,245,240,.65);font-size:16px;line-height:1.8;max-width:440px;margin-bottom:40px;">Mỗi tác phẩm bonsai là một di sản sống — được chăm sóc tỉ mỉ bởi bàn tay nghệ nhân tại cao nguyên Lâm Đồng, nơi sương mù và rừng thông tạo nên linh hồn cho từng thân cây.</p>
+      <div class="fu fu4" style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:56px;">
+        <a href="#bo-suu-tap" class="btn-gold">Khám Phá Bộ Sưu Tập <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="https://zalo.me/0785925998" target="_blank" class="btn-ghost">Tư Vấn Qua Zalo</a>
+      </div>
+      <div id="hero-stats" class="fu fu4" style="display:flex;gap:40px;padding-top:32px;border-top:1px solid rgba(196,168,130,.12);">
+        <div><div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#C4A882;line-height:1;">2010</div><div style="font-size:12px;color:rgba(248,245,240,.4);margin-top:4px;letter-spacing:.06em;">Thành lập</div></div>
+        <div><div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#C4A882;line-height:1;">100+</div><div style="font-size:12px;color:rgba(248,245,240,.4);margin-top:4px;letter-spacing:.06em;">Tác phẩm</div></div>
+        <div><div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#C4A882;line-height:1;">Nghệ Nhân</div><div style="font-size:12px;color:rgba(248,245,240,.4);margin-top:4px;letter-spacing:.06em;">Được công nhận</div></div>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeUp 1s 1s both;">
+    <span style="font-size:11px;letter-spacing:.15em;color:rgba(248,245,240,.35);text-transform:uppercase;">Cuộn xuống</span>
+    <div style="width:1px;height:40px;background:linear-gradient(to bottom,rgba(196,168,130,.6),transparent);animation:pulse 2s infinite;"></div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div id="bo-suu-tap" style="position:sticky;top:72px;z-index:20;background:rgba(248,245,240,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(139,115,85,.12);">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 0;overflow-x:auto;scrollbar-width:none;">
+      <span style="font-size:12px;color:#9B9B9B;font-weight:500;white-space:nowrap;letter-spacing:.06em;flex-shrink:0;">LỌC:</span>
+      <button class="pill active" onclick="setFilter(this,'all')">Tất cả</button>
+      <button class="pill" onclick="setFilter(this,'do-quyen')">Đỗ Quyên</button>
+      <button class="pill" onclick="setFilter(this,'tung')">Tùng</button>
+      <div style="width:1px;height:20px;background:rgba(139,115,85,.2);flex-shrink:0;margin:0 4px;"></div>
+      <select onchange="sortCards(this.value)" style="border:1.5px solid rgba(139,115,85,.25);background:transparent;color:#1A1A1A;font-size:13px;padding:7px 32px 7px 16px;border-radius:100px;cursor:pointer;font-family:'Inter',sans-serif;outline:none;appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%228B7355%22 stroke-width=%222%22><path d=%22M6 9l6 6 6-6%22/></svg>');background-repeat:no-repeat;background-position:right 12px center;flex-shrink:0;">
+        <option value="newest">Mới nhất</option>
+        <option value="price-asc">Giá: Thấp → Cao</option>
+        <option value="price-desc">Giá: Cao → Thấp</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT GRID -->
+<section aria-label="Bộ sưu tập bonsai Trang Lê" style="padding:56px 0 80px;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
+    <div style="margin-bottom:36px;">
+      <p class="section-label" style="margin-bottom:8px;">Bộ Sưu Tập</p>
+      <h2 style="font-size:clamp(28px,4vw,40px);font-weight:700;color:#2C3A2E;line-height:1.2;">Tác Phẩm Bonsai Đà Lạt</h2>
+    </div>
+    <div id="product-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:28px;">
+
+      <!-- Đỗ Quyên Đỏ Pháp — ĐÃ BÁN -->
+      <article class="product-card" data-type="do-quyen" data-price="45000000" style="opacity:.72;">
+        <div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;">
+          <img class="card-img" src="ảnh chụp màn hình/đỗ quyên.jpg" alt="Bonsai đỗ quyên đỏ Pháp hoa nở rực rỡ quanh năm tại Trang Lê Bonsai Đà Lạt" style="filter:grayscale(20%);">
+          <span class="badge badge-s">Đã Sở Hữu</span>
+        </div>
+        <div style="padding:22px;">
+          <h3 style="font-size:20px;font-weight:600;color:#2C3A2E;margin-bottom:5px;">Đỗ Quyên Đỏ Pháp</h3>
+          <p style="font-size:13px;color:#9B9B9B;margin-bottom:10px;">Bonsai Hoa · Hoa Nở Quanh Năm</p>
+          <p style="font-size:14px;color:#8B7355;line-height:1.65;margin-bottom:18px;">Đỗ quyên đỏ Pháp màu sắc rực rỡ, hoa nở quanh năm, trang trí sân vườn ban công sang trọng.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="color:#9B9B9B;font-size:16px;text-decoration:line-through;font-family:'Playfair Display',serif;">45.000.000đ</span>
+            <span style="font-size:13px;color:#9B9B9B;font-style:italic;">Đã sở hữu</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Đỗ Quyên Sakura — CÒN -->
+      <article class="product-card" data-type="do-quyen" data-price="4000000">
+        <div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;">
+          <img class="card-img" src="ảnh chụp màn hình/doquyenanh.webp" alt="Bonsai đỗ quyên Sakura dáng thác đổ hoa hồng phấn Trang Lê Bonsai">
+          <div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:13px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.05em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Hỏi Sở Hữu Ngay</a></div>
+          <span class="badge badge-n">Còn</span>
+        </div>
+        <div style="padding:22px;">
+          <h3 style="font-size:20px;font-weight:600;color:#2C3A2E;margin-bottom:5px;">Đỗ Quyên Sakura</h3>
+          <p style="font-size:13px;color:#9B9B9B;margin-bottom:10px;">Đỗ Quyên · Hoa Nở Quanh Năm</p>
+          <p style="font-size:14px;color:#8B7355;line-height:1.65;margin-bottom:18px;">Đỗ quyên Sakura dáng thác đổ uyển chuyển, hoa hồng phấn tinh tế, mang ý nghĩa phong thủy may mắn trường thọ.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="price">4.000.000đ</span>
+            <a href="https://zalo.me/0785925998" target="_blank" style="font-size:13px;color:#8B7355;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:4px;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='#8B7355'">Hỏi mua <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Duyên Tùng Dáng Huyền — CÒN -->
+      <article class="product-card" data-type="tung" data-price="35000000">
+        <div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;">
+          <img class="card-img" src="ảnh chụp màn hình/tungha.webp" alt="Bonsai tùng cổ thụ dáng huyền cao 104cm Trang Lê Bonsai Đà Lạt">
+          <div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:13px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.05em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Hỏi Sở Hữu Ngay</a></div>
+          <span class="badge badge-f">Nổi Bật</span>
+        </div>
+        <div style="padding:22px;">
+          <h3 style="font-size:20px;font-weight:600;color:#2C3A2E;margin-bottom:5px;">Duyên Tùng — Dáng Huyền</h3>
+          <p style="font-size:13px;color:#9B9B9B;margin-bottom:10px;">Cao 104cm · Ngang 130cm · Hoành 34cm</p>
+          <p style="font-size:14px;color:#8B7355;line-height:1.65;margin-bottom:18px;">Tùng cổ thụ dáng huyền uốn lượn tự nhiên, thân thô ráp cổ kính, tán xanh mướt quanh năm.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="price">35.000.000đ</span>
+            <a href="https://zalo.me/0785925998" target="_blank" style="font-size:13px;color:#8B7355;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:4px;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='#8B7355'">Hỏi mua <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Duyên Tùng Dáng Lắc Chân Dài — CÒN -->
+      <article class="product-card" data-type="tung" data-price="37000000">
+        <div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;">
+          <img class="card-img" src="ảnh chụp màn hình/duyentungtl.webp" alt="Bonsai tùng dáng lắc chân dài cao 180cm khí thế uy nghi Trang Lê Bonsai">
+          <div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:13px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.05em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Hỏi Sở Hữu Ngay</a></div>
+          <span class="badge badge-f">Nổi Bật</span>
+        </div>
+        <div style="padding:22px;">
+          <h3 style="font-size:20px;font-weight:600;color:#2C3A2E;margin-bottom:5px;">Duyên Tùng — Dáng Lắc Chân Dài</h3>
+          <p style="font-size:13px;color:#9B9B9B;margin-bottom:10px;">Cao 180cm · Ngang 120cm · Hoành 36cm</p>
+          <p style="font-size:14px;color:#8B7355;line-height:1.65;margin-bottom:18px;">Tùng dáng lắc chân dài vươn cao uy nghi, thân thẳng khí thế, phù hợp sân vườn rộng.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="price">37.000.000đ</span>
+            <a href="https://zalo.me/0785925998" target="_blank" style="font-size:13px;color:#8B7355;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:4px;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='#8B7355'">Hỏi mua <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section aria-label="Video bonsai Trang Lê" style="padding:72px 32px;background:#1a2218;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:36px;">
+      <p class="section-label" style="color:#C4A882;margin-bottom:10px;">Kênh YouTube</p>
+      <h2 style="font-size:clamp(26px,4vw,38px);font-weight:700;color:#F8F5F0;line-height:1.2;">Cảm Nhận Từng Tác Phẩm<br><em style="color:#C4A882;font-weight:400;">Qua Góc Nhìn Thực Tế</em></h2>
+    </div>
+    <div style="position:relative;width:100%;padding-bottom:56.25%;border-radius:6px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.4);">
+      <iframe
+        src="https://www.youtube.com/embed/TkkuCsLvXqA"
+        title="Video bonsai Trang Lê Bonsai Đà Lạt"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;">
+      </iframe>
+    </div>
+    <div style="text-align:center;margin-top:24px;">
+      <a href="https://www.youtube.com/@bonsaiTrangle" target="_blank" style="color:rgba(248,245,240,0.5);font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:color .2s;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='rgba(248,245,240,0.5)'">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+        Xem thêm video trên kênh YouTube
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section aria-label="Câu chuyện Vườn Bonsai Tuấn Trang" id="gioi-thieu" style="padding:80px 0;background:#fff;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
+    <div id="about-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+      <div>
+        <p class="section-label" style="margin-bottom:12px;">Hành Trình Diệp Mộc</p>
+        <h2 style="font-size:clamp(28px,4vw,40px);font-weight:700;color:#2C3A2E;line-height:1.2;margin-bottom:24px;">Từ Đôi Bàn Tay<br><em style="font-weight:400;color:#8B7355;">Nghệ Nhân Tuấn — Trang</em></h2>
+        <p style="color:#8B7355;font-size:15px;line-height:1.85;margin-bottom:14px;">Năm 2010, anh Tuấn và chị Trang bắt đầu hành trình từ một khoảng sân nhỏ với vài gốc phôi thô mộc. Anh Tuấn định hình khung xương, chị Trang thổi hồn vào từng chi tiết — tỉ mỉ bấm tỉa từng chiếc lá, chăm từng chế độ dinh dưỡng.</p>
+        <p style="color:#8B7355;font-size:15px;line-height:1.85;margin-bottom:14px;">Từ 2016, vườn chuyển mình: kết hợp triết lý bonsai cổ điển với hơi thở hiện đại, những tác phẩm đầu tiên "xuống phố" tham gia triển lãm địa phương, chinh phục giới sinh vật cảnh bằng sự cân bằng tuyệt đối giữa tĩnh và động.</p>
+        <p style="color:#8B7355;font-size:15px;line-height:1.85;margin-bottom:28px;">Hơn một thập kỷ kiên trì, tên <strong style="color:#2C3A2E;">Tuấn – Trang Bonsai</strong> đã trở thành dấu ấn đậm nét trong làng sinh vật cảnh Việt Nam: giải Vàng & Bạc toàn quốc, danh hiệu <em>Nghệ nhân</em> được cộng đồng công nhận, hàng trăm tác phẩm lớn nhỏ trở thành điểm giao lưu của người yêu cái đẹp cả nước.</p>
+        <div id="about-stats" style="display:flex;gap:16px;flex-wrap:wrap;">
+          <div style="padding:18px 22px;background:#F8F5F0;border-radius:4px;text-align:center;border-left:3px solid #C4A882;">
+            <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#2C3A2E;">2010</div>
+            <div style="font-size:11px;color:#9B9B9B;margin-top:4px;letter-spacing:.06em;">Thành lập</div>
+          </div>
+          <div style="padding:18px 22px;background:#F8F5F0;border-radius:4px;text-align:center;border-left:3px solid #C4A882;">
+            <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#2C3A2E;">100+</div>
+            <div style="font-size:11px;color:#9B9B9B;margin-top:4px;letter-spacing:.06em;">Tác phẩm</div>
+          </div>
+          <div style="padding:18px 22px;background:#F8F5F0;border-radius:4px;text-align:center;border-left:3px solid #C4A882;">
+            <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#2C3A2E;">Nghệ Nhân</div>
+            <div style="font-size:11px;color:#9B9B9B;margin-top:4px;letter-spacing:.06em;">Giải Vàng Toàn Quốc</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;">
+        <img src="https://placehold.co/600x500/2C3A2E/C4A882?text=Vườn+Tuấn+Trang" alt="Vườn bonsai Tuấn Trang tại Xuân Trường Đà Lạt sương sớm" style="width:100%;height:420px;object-fit:cover;border-radius:4px;">
+        <div style="position:absolute;bottom:-16px;right:-16px;width:100px;height:100px;border:2px solid #C4A882;border-radius:4px;opacity:.35;z-index:-1;"></div>
+        <div id="about-badge" style="position:absolute;top:20px;left:-16px;background:#2C3A2E;color:#C4A882;padding:14px 18px;border-radius:4px;font-family:'Playfair Display',serif;font-size:13px;font-weight:600;box-shadow:0 8px 32px rgba(44,58,46,.25);">
+          <div style="font-size:22px;font-weight:700;line-height:1;">15+</div>
+          <div style="font-size:10px;letter-spacing:.1em;margin-top:2px;">NĂM KINH NGHIỆM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section aria-label="Liên hệ mua bonsai Trang Lê" style="padding:80px 32px;background:radial-gradient(ellipse 80% 100% at 15% 50%,#2C3A2E,#18221A);position:relative;overflow:hidden;">
+  <div style="position:absolute;right:-5%;top:50%;transform:translateY(-50%);width:400px;height:400px;border-radius:50%;border:1px solid rgba(196,168,130,.08);pointer-events:none;"></div>
+  <div style="max-width:1280px;margin:0 auto;text-align:center;position:relative;z-index:1;">
+    <p style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C4A882;margin-bottom:16px;font-weight:500;">Sẵn Sàng Kết Nối</p>
+    <h2 style="font-size:clamp(30px,5vw,52px);font-weight:700;color:#F8F5F0;letter-spacing:-.03em;line-height:1.2;margin-bottom:16px;">Tìm Tác Phẩm<br><em style="color:#C4A882;font-weight:400;">Dành Cho Bạn</em></h2>
+    <p style="color:rgba(248,245,240,.55);font-size:16px;max-width:440px;margin:0 auto 40px;line-height:1.7;">Liên hệ ngay để được tư vấn miễn phí. Phản hồi trong vòng 30 phút.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="tel:0785925998" class="btn-gold"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.46 1.17 2 2 0 012 1h3a2 2 0 012 1.72 12.05 12.05 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.05 12.05 0 002.81.7A2 2 0 0122 16.92z"/></svg>0785 925 998</a>
+      <a href="https://zalo.me/0785925998" target="_blank" class="btn-ghost">Nhắn Zalo</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer aria-label="Footer Trang Lê Bonsai" id="lien-he" style="background:#131a14;padding:64px 32px 32px;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px;margin-bottom:48px;">
+      <div>
+        <div style="margin-bottom:16px;"><div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#F8F5F0;letter-spacing:-.02em;">Tuấn Trang</div><div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C4A882;font-weight:500;margin-top:2px;">BONSAI</div></div>
+        <p style="color:rgba(248,245,240,.45);font-size:14px;line-height:1.7;max-width:200px;">Đưa tạo tác từ nghệ nhân đến với bạn. Xuân Trường, Đà Lạt.</p>
+      </div>
+      <div>
+        <h4 style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C4A882;margin-bottom:16px;font-weight:500;">Bộ Sưu Tập</h4>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="#" style="color:rgba(248,245,240,.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='rgba(248,245,240,.5)'">Sanh Cổ Thụ</a>
+          <a href="#" style="color:rgba(248,245,240,.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='rgba(248,245,240,.5)'">Tùng La Hán</a>
+          <a href="#" style="color:rgba(248,245,240,.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='rgba(248,245,240,.5)'">Linh Sam</a>
+          <a href="#" style="color:rgba(248,245,240,.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='rgba(248,245,240,.5)'">Tất Cả Tác Phẩm</a>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C4A882;margin-bottom:16px;font-weight:500;">Theo Dõi</h4>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="https://www.facebook.com/profile.php?id=100066337516436" target="_blank" style="color:rgba(248,245,240,.5);font-size:14px;text-decoration:none;display:flex;align-items:center;gap:10px;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='rgba(248,245,240,.5)'"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>Facebook</a>
+          <a href="https://www.youtube.com/@bonsaiTrangle" target="_blank" style="color:rgba(248,245,240,.5);font-size:14px;text-decoration:none;display:flex;align-items:center;gap:10px;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='rgba(248,245,240,.5)'"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>YouTube</a>
+          <a href="https://www.tiktok.com/@mymenpham_1985" target="_blank" style="color:rgba(248,245,240,.5);font-size:14px;text-decoration:none;display:flex;align-items:center;gap:10px;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='rgba(248,245,240,.5)'"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 106.33 6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg>TikTok</a>
+          <a href="https://zalo.me/0785925998" target="_blank" style="color:rgba(248,245,240,.5);font-size:14px;text-decoration:none;display:flex;align-items:center;gap:10px;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='rgba(248,245,240,.5)'"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Zalo</a>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C4A882;margin-bottom:16px;font-weight:500;">Liên Hệ</h4>
+        <div style="display:flex;flex-direction:column;gap:12px;color:rgba(248,245,240,.5);font-size:14px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Xuân Trường, Đà Lạt, Lâm Đồng</div>
+          <div style="display:flex;gap:10px;align-items:center;"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.46 1.17 2 2 0 012 1h3a2 2 0 012 1.72 12.05 12.05 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.05 12.05 0 002.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:0785925998" style="color:rgba(248,245,240,.5);text-decoration:none;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='rgba(248,245,240,.5)'">0785 925 998</a></div>
+          <div style="display:flex;gap:10px;align-items:center;"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Thứ 2 – Chủ nhật · Cả ngày</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(248,245,240,.07);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <p style="color:rgba(248,245,240,.25);font-size:13px;">© 2025 Vườn Bonsai Tuấn Trang · Đà Lạt, Lâm Đồng</p>
+      <p style="color:rgba(248,245,240,.25);font-size:13px;">Thiết kế bởi <span style="color:#C4A882;">TrongLeTour360</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING ZALO BUTTON -->
+<a href="https://zalo.me/0785925998" target="_blank" aria-label="Liên hệ Zalo Vườn Bonsai Tuấn Trang"
+   style="position:fixed;bottom:28px;right:28px;z-index:999;width:56px;height:56px;border-radius:50%;background:#C4A882;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(44,58,46,.28),0 0 0 0 rgba(196,168,130,.5);text-decoration:none;animation:zalo-pulse 2.2s infinite;"
+   onmouseover="this.style.transform='scale(1.1)';this.style.background='#2C3A2E';"
+   onmouseout="this.style.transform='scale(1)';this.style.background='#C4A882';"
+   ontouchstart="this.style.transform='scale(1.1)';">
+  <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 4C11.163 4 4 10.716 4 19C4 23.09 5.74 26.81 8.56 29.5L7 36L13.8 33.8C15.76 34.57 17.83 35 20 35C28.837 35 36 28.284 36 20C36 11.716 28.837 4 20 4Z" fill="#2C3A2E"/>
+    <path d="M13 16h5.5M13 20h4M13 24h5.5" stroke="#C4A882" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M22 16l5 4-5 4" stroke="#C4A882" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <style>
+    @keyframes zalo-pulse{0%{box-shadow:0 4px 24px rgba(44,58,46,.28),0 0 0 0 rgba(196,168,130,.45)}70%{box-shadow:0 4px 24px rgba(44,58,46,.28),0 0 0 14px rgba(196,168,130,0)}100%{box-shadow:0 4px 24px rgba(44,58,46,.28),0 0 0 0 rgba(196,168,130,0)}}
+  </style>
+</a>
+
+<script>
+  const nav=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+  let open=false;
+  function toggleMenu(){open=!open;document.getElementById('mobile-menu').style.display=open?'block':'none';}
+  function setFilter(btn,type){
+    document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#product-grid article').forEach(c=>{
+      const show=type==='all'||c.dataset.type===type;
+      c.style.display=show?'block':'none';
+      if(show)c.style.animation='fadeUp .35s cubic-bezier(.34,1.56,.64,1) forwards';
+    });
+  }
+  function sortCards(by){
+    const g=document.getElementById('product-grid');
+    [...g.querySelectorAll('article')].sort((a,b)=>{
+      const pa=parseInt(a.dataset.price)||0,pb=parseInt(b.dataset.price)||0;
+      return by==='price-asc'?pa-pb:by==='price-desc'?pb-pa:0;
+    }).forEach(c=>g.appendChild(c));
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+  }));
+  function checkAbout(){const g=document.getElementById('about-inner');if(g)g.style.gridTemplateColumns=innerWidth<768?'1fr':'1fr 1fr';}
+  window.addEventListener('resize',checkAbout);checkAbout();
+</script>
+</body>
+</html>
