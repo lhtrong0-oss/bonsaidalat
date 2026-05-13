@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Tên Vườn] Bonsai — Bộ Sưu Tập · MẪU B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--p:#2C3A2E;--s:#8B7355;--a:#C4A882;--bg:#F8F5F0;--w:#fff;--t:#1A1A1A;--m:#9B9B9B;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.7;}
+h1,h2,h3{font-family:'Playfair Display',serif;letter-spacing:-0.03em;}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(44,58,46,.97);backdrop-filter:blur(12px);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#fff;}
+.nav-logo span{font-weight:400;font-style:italic;color:var(--a);font-size:.76rem;display:block;letter-spacing:.06em;}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:.82rem;letter-spacing:.04em;transition:color .2s;}
+.nav-links a:hover{color:var(--a);}
+.nav-links a:focus-visible{outline:1px solid var(--a);outline-offset:4px;}
+.btn{background:var(--a);color:var(--p);padding:9px 22px;font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn:hover{opacity:.88;transform:translateY(-2px);}
+.btn:active{transform:translateY(0);}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+
+.hero{min-height:88vh;position:relative;display:flex;align-items:flex-end;padding-top:72px;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(44,58,46,.92) 0%,rgba(44,58,46,.4) 50%,rgba(44,58,46,.15) 100%);}
+.hero-c{position:relative;z-index:2;padding:60px 48px 72px;max-width:720px;}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--a);margin-bottom:20px;}
+.tag::before{content:'';width:24px;height:1px;background:var(--a);}
+h1{font-size:clamp(2.4rem,5vw,4rem);font-weight:700;color:#fff;line-height:1.08;margin-bottom:20px;}
+h1 em{color:var(--a);font-style:italic;}
+.hero-sub{color:rgba(255,255,255,.68);font-size:1rem;max-width:480px;margin-bottom:36px;line-height:1.75;}
+.btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-o{background:transparent;border:1.5px solid rgba(255,255,255,.5);color:#fff;padding:9px 22px;font-size:.78rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn-o:hover{border-color:#fff;background:rgba(255,255,255,.1);}
+.btn-o:focus-visible{outline:2px solid var(--a);outline-offset:3px;}
+
+.stats{background:var(--p);display:grid;grid-template-columns:repeat(4,1fr);}
+.stat{padding:28px 32px;border-right:1px solid rgba(255,255,255,.07);text-align:center;}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--a);line-height:1;margin-bottom:6px;}
+.stat-l{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42);}
+
+/* Collection */
+.section{padding:80px 48px;}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;}
+.stag{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--a);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.stag::before{content:'';width:20px;height:1px;background:var(--a);}
+h2{font-size:2rem;color:var(--p);line-height:1.2;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.card{background:var(--w);overflow:hidden;box-shadow:0 2px 16px rgba(44,58,46,.06),0 8px 32px rgba(44,58,46,.07);cursor:pointer;}
+.card-img{position:relative;overflow:hidden;aspect-ratio:3/4;}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.34,1.56,.64,1);}
+.card:hover .card-img img{transform:scale(1.06);}
+.card-overlay{position:absolute;inset:0;background:rgba(44,58,46,.0);display:flex;align-items:center;justify-content:center;transition:background .3s;}
+.card:hover .card-overlay{background:rgba(44,58,46,.35);}
+.card-overlay span{opacity:0;color:#fff;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;transition:opacity .3s;}
+.card:hover .card-overlay span{opacity:1;}
+.card-badge{position:absolute;top:12px;left:12px;background:var(--a);color:var(--p);font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;}
+.card-info{padding:20px 22px;}
+.card-name{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--p);margin-bottom:6px;}
+.card-meta{display:flex;justify-content:space-between;align-items:center;}
+.card-detail{font-size:.75rem;color:var(--m);}
+.card-price{font-size:.82rem;font-weight:600;color:var(--s);letter-spacing:.02em;}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1fr;min-height:500px;}
+.about-img{overflow:hidden;position:relative;}
+.about-img img{width:100%;height:100%;object-fit:cover;}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,58,46,.6),transparent);}
+.about-c{padding:80px 64px;background:var(--p);display:flex;flex-direction:column;justify-content:center;}
+.about-c .stag::before{background:var(--a);}
+.about-c h2{color:#fff;}
+.about-c .txt{color:rgba(255,255,255,.65);line-height:1.95;font-size:.94rem;}
+.about-c .stag{color:var(--a);}
+
+/* Pricing */
+.pricing{padding:80px 48px;background:var(--bg);}
+.pricing-head{text-align:center;margin-bottom:56px;}
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px;margin:0 auto;}
+.price-card{background:var(--w);padding:40px 36px;box-shadow:0 2px 16px rgba(44,58,46,.06),0 8px 32px rgba(44,58,46,.08);position:relative;overflow:hidden;}
+.price-card.featured{background:var(--p);}
+.price-card.featured::before{content:'PHỔ BIẾN';position:absolute;top:16px;right:-24px;background:var(--a);color:var(--p);font-size:.62rem;font-weight:700;letter-spacing:.1em;padding:5px 36px;transform:rotate(45deg);}
+.price-tier{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--m);margin-bottom:12px;}
+.price-card.featured .price-tier{color:rgba(255,255,255,.5);}
+.price-card h3{font-size:1.5rem;color:var(--p);margin-bottom:8px;}
+.price-card.featured h3{color:#fff;}
+.price-amount{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--a);margin-bottom:24px;line-height:1;}
+.price-list{list-style:none;margin-bottom:32px;}
+.price-list li{font-size:.85rem;color:#555;padding:8px 0;border-bottom:1px solid rgba(44,58,46,.06);display:flex;align-items:center;gap:10px;}
+.price-card.featured .price-list li{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.08);}
+.price-list li::before{content:'✓';color:var(--a);font-weight:700;flex-shrink:0;}
+.btn-price{width:100%;padding:14px;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:1.5px solid var(--p);background:transparent;color:var(--p);text-decoration:none;display:block;text-align:center;}
+.btn-price:hover{background:var(--p);color:#fff;}
+.price-card.featured .btn-price{border-color:var(--a);background:var(--a);color:var(--p);}
+.price-card.featured .btn-price:hover{opacity:.88;}
+.btn-price:focus-visible{outline:2px solid var(--a);outline-offset:3px;}
+
+/* Contact Form */
+.contact{padding:80px 48px;}
+.contact-inner{max-width:680px;margin:0 auto;}
+.contact-head{text-align:center;margin-bottom:48px;}
+.contact-head h2{font-size:2.2rem;color:var(--p);margin-bottom:12px;}
+.contact-head p{color:var(--s);font-size:.95rem;}
+.form{display:grid;gap:16px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.field label{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--s);margin-bottom:8px;font-weight:500;}
+.field input,.field select,.field textarea{width:100%;padding:12px 16px;border:1.5px solid rgba(44,58,46,.15);background:var(--w);font-family:'Inter',sans-serif;font-size:.9rem;color:var(--t);outline:none;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--p);}
+.field textarea{resize:vertical;min-height:120px;}
+.btn-submit{background:var(--p);color:#fff;padding:15px 40px;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;width:100%;}
+.btn-submit:hover{opacity:.85;}
+.btn-submit:focus-visible{outline:2px solid var(--a);outline-offset:3px;}
+
+footer{background:var(--p);padding:40px 48px;}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.08);}
+.fb{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;}
+.fb span{font-size:.76rem;font-style:italic;color:rgba(255,255,255,.45);font-family:'Inter',sans-serif;display:block;letter-spacing:.05em;}
+.foot-links{display:flex;gap:24px;}
+.foot-links a{color:rgba(255,255,255,.45);font-size:.8rem;text-decoration:none;}
+.foot-links a:hover{color:var(--a);}
+.foot-links a:focus-visible{outline:1px solid var(--a);outline-offset:3px;}
+.foot-bot{padding-top:24px;font-size:.72rem;color:rgba(255,255,255,.28);}
+
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-c>*{animation:fu .6s ease both;}
+.hero-c>*:nth-child(2){animation-delay:.1s}
+.hero-c>*:nth-child(3){animation-delay:.2s}
+.hero-c>*:nth-child(4){animation-delay:.3s}
+.hero-c>*:nth-child(5){animation-delay:.4s}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr);}
+  .stats{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:640px){
+  nav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .grid{grid-template-columns:1fr;}
+  .section{padding:60px 20px;}
+  .pricing{padding:60px 20px;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .contact{padding:60px 20px;}
+  .form-row{grid-template-columns:1fr;}
+  .about{grid-template-columns:1fr;}
+  .about-img{min-height:220px;}
+  .about-c{padding:40px 20px;}
+  .foot-top{flex-direction:column;gap:20px;}
+  footer{padding:32px 20px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<div style="background:var(--s);color:#fff;text-align:center;padding:8px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:200;">
+  MẪU B — CÓ BỘ SƯU TẬP + GIÁ · GÓI 8–15 TRIỆU · Thay nội dung [trong ngoặc]
+</div>
+
+<nav>
+  <div class="nav-logo">[Tên Vườn]<span>Bonsai · [Tỉnh/Thành]</span></div>
+  <div class="nav-links">
+    <a href="#collection">Bộ Sưu Tập</a>
+    <a href="#about">Về Chúng Tôi</a>
+    <a href="#pricing">Bảng Giá</a>
+    <a href="#contact">Liên Hệ</a>
+  </div>
+  <a href="#contact" class="btn">Tư Vấn Ngay</a>
+</nav>
+
+<section class="hero" aria-label="Trang chủ vườn bonsai">
+  <div class="hero-bg">
+    <img src="https://placehold.co/1920x1080/2C3A2E/C4A882?text=Vườn+Bonsai" alt="Toàn cảnh vườn bonsai">
+  </div>
+  <div class="hero-c">
+    <div class="tag">[Tỉnh/Thành] · Est. [Năm]</div>
+    <h1>Bộ Sưu Tập<br><em>Bonsai Nghệ Thuật</em></h1>
+    <p class="hero-sub">Hàng trăm tác phẩm được chọn lọc kỹ lưỡng — từ cây thế độc bản đến tác phẩm giải thưởng quốc gia.</p>
+    <div class="btns">
+      <a href="#collection" class="btn">Xem Bộ Sưu Tập</a>
+      <a href="#contact" class="btn-o">Tư Vấn Qua Zalo</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats" aria-label="Thống kê vườn">
+  <div class="stat"><div class="stat-n">[X]+</div><div class="stat-l">Năm Nghề</div></div>
+  <div class="stat"><div class="stat-n">[X]+</div><div class="stat-l">Tác Phẩm</div></div>
+  <div class="stat"><div class="stat-n">[X]+</div><div class="stat-l">Khách Hàng</div></div>
+  <div class="stat"><div class="stat-n">[X]</div><div class="stat-l">Giải Thưởng</div></div>
+</section>
+
+<section class="section" id="collection" aria-label="Bộ sưu tập bonsai">
+  <div class="section-head">
+    <div>
+      <div class="stag">Bộ Sưu Tập</div>
+      <h2>Tác Phẩm Tiêu Biểu</h2>
+    </div>
+    <a href="#contact" class="btn" style="font-size:.76rem">Xem Tất Cả →</a>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-img">
+        <img src="https://placehold.co/400x520/2C3A2E/C4A882?text=Tác+Phẩm+1" alt="Bonsai tác phẩm 1">
+        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
+        <div class="card-badge">Độc Bản</div>
+      </div>
+      <div class="card-info">
+        <div class="card-name">[Tên cây / Dòng cây]</div>
+        <div class="card-meta">
+          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
+          <span class="card-price">Liên hệ</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img">
+        <img src="https://placehold.co/400x520/3D4F3F/D4B896?text=Tác+Phẩm+2" alt="Bonsai tác phẩm 2">
+        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
+      </div>
+      <div class="card-info">
+        <div class="card-name">[Tên cây / Dòng cây]</div>
+        <div class="card-meta">
+          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
+          <span class="card-price">[X.X] triệu</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img">
+        <img src="https://placehold.co/400x520/8B7355/F8F5F0?text=Tác+Phẩm+3" alt="Bonsai tác phẩm 3">
+        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
+        <div class="card-badge">Mới</div>
+      </div>
+      <div class="card-info">
+        <div class="card-name">[Tên cây / Dòng cây]</div>
+        <div class="card-meta">
+          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
+          <span class="card-price">[X.X] triệu</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img">
+        <img src="https://placehold.co/400x520/4A5C4C/C4A882?text=Tác+Phẩm+4" alt="Bonsai tác phẩm 4">
+        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
+      </div>
+      <div class="card-info">
+        <div class="card-name">[Tên cây / Dòng cây]</div>
+        <div class="card-meta">
+          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
+          <span class="card-price">[X.X] triệu</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img">
+        <img src="https://placehold.co/400x520/2C3A2E/D4B896?text=Tác+Phẩm+5" alt="Bonsai tác phẩm 5">
+        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
+      </div>
+      <div class="card-info">
+        <div class="card-name">[Tên cây / Dòng cây]</div>
+        <div class="card-meta">
+          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
+          <span class="card-price">[X.X] triệu</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img">
+        <img src="https://placehold.co/400x520/6B5B47/F8F5F0?text=Tác+Phẩm+6" alt="Bonsai tác phẩm 6">
+        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
+        <div class="card-badge">Giải Vàng</div>
+      </div>
+      <div class="card-info">
+        <div class="card-name">[Tên cây / Dòng cây]</div>
+        <div class="card-meta">
+          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
+          <span class="card-price">Liên hệ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about" aria-label="Câu chuyện vườn bonsai">
+  <div class="about-img">
+    <img src="https://placehold.co/800x600/8B7355/F8F5F0?text=Nghệ+Nhân" alt="Nghệ nhân bonsai tại vườn">
+  </div>
+  <div class="about-c">
+    <div class="stag">Câu Chuyện</div>
+    <h2>Hơn [X] năm<br>sống cùng bonsai</h2>
+    <p class="txt">[Câu chuyện chân thật của chủ vườn — bắt đầu từ đâu, tại sao yêu bonsai, điều gì tạo nên sự khác biệt.]</p>
+    <br>
+    <p class="txt">[Câu thứ hai — về triết lý làm nghề, cam kết với khách hàng, điều khiến họ tự hào nhất.]</p>
+    <br>
+    <a href="#contact" class="btn" style="margin-top:8px;align-self:flex-start">Gặp Gỡ Chúng Tôi</a>
+  </div>
+</section>
+
+<section class="pricing" id="pricing" aria-label="Bảng giá bonsai">
+  <div class="pricing-head">
+    <div class="stag" style="justify-content:center">Bảng Giá</div>
+    <h2 style="font-size:2.2rem;color:var(--p)">Xứng Đáng Với Giá Trị</h2>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-tier">Cây Thường</div>
+      <h3>Bộ Sưu Tập Cơ Bản</h3>
+      <div class="price-amount">Từ [X] triệu</div>
+      <ul class="price-list">
+        <li>[Tuổi cây] năm tuổi trở lên</li>
+        <li>[Dòng cây phổ biến]</li>
+        <li>Chậu đi kèm</li>
+        <li>Hướng dẫn chăm sóc</li>
+        <li>Giao hàng toàn quốc</li>
+      </ul>
+      <a href="#contact" class="btn-price">Tư Vấn Ngay</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-tier">Tác Phẩm Nghệ Thuật</div>
+      <h3 style="color:#fff">Bộ Sưu Tập Cao Cấp</h3>
+      <div class="price-amount">Từ [XX] triệu</div>
+      <ul class="price-list">
+        <li>Cây độc bản / giải thưởng</li>
+        <li>[Dòng cây quý hiếm]</li>
+        <li>Chậu thủ công cao cấp</li>
+        <li>Chứng nhận nguồn gốc</li>
+        <li>Tư vấn định kỳ 1 năm</li>
+      </ul>
+      <a href="#contact" class="btn-price">Sở Hữu Ngay</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-label="Liên hệ đặt cây">
+  <div class="contact-inner">
+    <div class="contact-head">
+      <div class="stag" style="justify-content:center">Liên Hệ</div>
+      <h2>Đặt Cây — Tư Vấn Miễn Phí</h2>
+      <p>Điền thông tin bên dưới, chúng tôi sẽ liên hệ trong 30 phút</p>
+    </div>
+    <form class="form" onsubmit="return false;">
+      <div class="form-row">
+        <div class="field"><label>Họ và Tên</label><input type="text" placeholder="Nguyễn Văn A"></div>
+        <div class="field"><label>Số Điện Thoại</label><input type="tel" placeholder="0900 000 000"></div>
+      </div>
+      <div class="field">
+        <label>Bạn Quan Tâm Đến</label>
+        <select>
+          <option>Cây trang trí nhà / văn phòng</option>
+          <option>Cây làm quà tặng</option>
+          <option>Cây đầu tư / sưu tầm</option>
+          <option>Tư vấn chung</option>
+        </select>
+      </div>
+      <div class="field"><label>Ghi Chú Thêm</label><textarea placeholder="Ngân sách dự kiến, yêu cầu đặc biệt..."></textarea></div>
+      <button type="submit" class="btn-submit">Gửi Yêu Cầu Tư Vấn</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="fb">[Tên Vườn] Bonsai<span>[Tỉnh/Thành Phố] · [Số điện thoại]</span></div>
+    <div class="foot-links">
+      <a href="#collection">Bộ Sưu Tập</a>
+      <a href="#about">Về Chúng Tôi</a>
+      <a href="#pricing">Bảng Giá</a>
+      <a href="#contact">Liên Hệ</a>
+    </div>
+  </div>
+  <div class="foot-bot">© 2026 [Tên Vườn] Bonsai · [Tỉnh/Thành Phố]. Mọi quyền được bảo lưu.</div>
+</footer>
+
+</body>
+</html>

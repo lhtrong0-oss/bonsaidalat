@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Tên Vườn] Bonsai — Đà Lạt · MẪU A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--p:#2C3A2E;--s:#8B7355;--a:#C4A882;--bg:#F8F5F0;--w:#fff;--t:#1A1A1A;--m:#9B9B9B;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.7;}
+h1,h2,h3{font-family:'Playfair Display',serif;letter-spacing:-0.03em;}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(248,245,240,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(44,58,46,.07);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--p);}
+.nav-logo span{font-weight:400;font-style:italic;color:var(--s);font-size:.78rem;display:block;letter-spacing:.06em;}
+.nav-right{display:flex;align-items:center;gap:24px;}
+.nav-phone{font-size:.83rem;font-weight:500;color:var(--s);}
+.btn{background:var(--p);color:#fff;padding:10px 24px;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;}
+.btn:hover{opacity:.82;transform:translateY(-2px);}
+.btn:active{transform:translateY(0);}
+.btn:focus-visible{outline:2px solid var(--a);outline-offset:3px;}
+.btn-o{background:transparent;border:1.5px solid var(--p);color:var(--p);}
+.btn-o:hover{background:var(--p);color:#fff;}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;padding-top:78px;}
+.hero-l{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 48px;}
+.tag{display:inline-flex;align-items:center;gap:12px;font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--s);margin-bottom:28px;}
+.tag::before{content:'';width:28px;height:1px;background:var(--a);}
+h1{font-size:clamp(2.8rem,5vw,4.4rem);font-weight:700;color:var(--p);line-height:1.08;margin-bottom:12px;}
+h1 em{color:var(--a);font-style:italic;}
+.quote{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--s);border-left:2px solid var(--a);padding-left:20px;margin:28px 0 40px;line-height:1.85;}
+.btns{display:flex;gap:14px;flex-wrap:wrap;}
+
+.hero-r{position:relative;background:var(--p);overflow:hidden;}
+.hero-r img{width:100%;height:100%;object-fit:cover;opacity:.8;mix-blend-mode:multiply;}
+.badge{position:absolute;bottom:36px;right:36px;background:var(--bg);padding:20px 26px;box-shadow:0 4px 28px rgba(44,58,46,.18);}
+.badge p{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--m);margin-bottom:4px;}
+.badge strong{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--p);}
+
+.stats{background:var(--p);display:grid;grid-template-columns:repeat(3,1fr);}
+.stat{padding:36px 40px;border-right:1px solid rgba(255,255,255,.07);text-align:center;}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;color:var(--a);line-height:1;margin-bottom:8px;}
+.stat-l{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+
+.about{display:grid;grid-template-columns:1fr 1fr;min-height:480px;}
+.about-img{overflow:hidden;background:var(--s);}
+.about-img img{width:100%;height:100%;object-fit:cover;opacity:.65;mix-blend-mode:multiply;}
+.about-c{padding:80px 60px;display:flex;flex-direction:column;justify-content:center;}
+.stag{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--a);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.stag::before{content:'';width:20px;height:1px;background:var(--a);}
+h2{font-size:2rem;color:var(--p);margin-bottom:22px;line-height:1.2;}
+.txt{color:#4a4a4a;line-height:1.95;font-size:.94rem;}
+
+.contact{padding:100px 48px;text-align:center;}
+.contact h2{font-size:2.6rem;color:var(--p);margin-bottom:14px;}
+.contact p{color:var(--s);margin-bottom:44px;font-size:.95rem;}
+.contact .btn{font-size:.95rem;padding:16px 52px;letter-spacing:.05em;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:44px auto 0;text-align:left;}
+.cc{background:var(--w);padding:28px 32px;box-shadow:0 2px 16px rgba(44,58,46,.06),0 8px 32px rgba(44,58,46,.07);}
+.cc-l{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--m);margin-bottom:8px;}
+.cc-v{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--p);}
+
+footer{background:var(--p);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;}
+.fb{font-family:'Playfair Display',serif;font-size:.95rem;color:rgba(255,255,255,.75);}
+.fc{font-size:.72rem;color:rgba(255,255,255,.32);}
+
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.tag{animation:fu .6s ease both;}
+h1{animation:fu .6s .1s ease both;}
+.quote{animation:fu .6s .2s ease both;}
+.btns{animation:fu .6s .3s ease both;}
+
+@media(max-width:768px){
+  nav{padding:16px 20px;}
+  .hero{grid-template-columns:1fr;}
+  .hero-r{min-height:260px;}
+  .hero-l{padding:40px 20px;}
+  .stats{grid-template-columns:1fr;}
+  .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);}
+  .about{grid-template-columns:1fr;}
+  .about-img{min-height:220px;}
+  .about-c{padding:40px 20px;}
+  .contact{padding:60px 20px;}
+  .cg{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:10px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ DEMO LABEL ═══ -->
+<div style="background:var(--a);color:var(--p);text-align:center;padding:8px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:200;">
+  MẪU A — LANDING ĐƠN GIẢN · GÓI 3–5 TRIỆU · Thay [Tên Vườn] bằng tên thật
+</div>
+
+<nav>
+  <div class="nav-logo">[Tên Vườn]<span>Bonsai · Đà Lạt</span></div>
+  <div class="nav-right">
+    <span class="nav-phone">[Số điện thoại]</span>
+    <a href="#contact" class="btn">Tư Vấn Ngay</a>
+  </div>
+</nav>
+
+<section class="hero" aria-label="Giới thiệu vườn bonsai">
+  <div class="hero-l">
+    <div class="tag">[Tỉnh / Thành Phố] · Est. [Năm thành lập]</div>
+    <h1>Nghệ Thuật<br><em>Bonsai</em><br>Đích Thực</h1>
+    <blockquote class="quote">
+      "Mỗi tác phẩm là một đời cây — được chắt lọc qua bàn tay<br>
+      nghệ nhân và tình yêu thuần túy với thiên nhiên."
+    </blockquote>
+    <div class="btns">
+      <a href="#contact" class="btn">Khám Phá Bộ Sưu Tập</a>
+      <a href="#about" class="btn btn-o">Về Chúng Tôi</a>
+    </div>
+  </div>
+  <div class="hero-r">
+    <img src="https://placehold.co/900x1000/2C3A2E/C4A882?text=Bonsai" alt="Tác phẩm bonsai nghệ thuật">
+    <div class="badge">
+      <p>Thành tích</p>
+      <strong>[Giải thưởng]</strong>
+    </div>
+  </div>
+</section>
+
+<section class="stats" aria-label="Thành tích nổi bật">
+  <div class="stat"><div class="stat-n">[15+]</div><div class="stat-l">Năm Kinh Nghiệm</div></div>
+  <div class="stat"><div class="stat-n">[100+]</div><div class="stat-l">Tác Phẩm</div></div>
+  <div class="stat"><div class="stat-n">Nghệ Nhân</div><div class="stat-l">Được Công Nhận</div></div>
+</section>
+
+<section class="about" id="about" aria-label="Câu chuyện nghệ nhân">
+  <div class="about-img">
+    <img src="https://placehold.co/700x600/8B7355/F8F5F0?text=Nghệ+Nhân" alt="Nghệ nhân chăm sóc bonsai">
+  </div>
+  <div class="about-c">
+    <div class="stag">Câu Chuyện</div>
+    <h2>Hơn [X] năm<br>gắn bó với cây</h2>
+    <p class="txt">[Câu chuyện của chủ vườn — nghề nghiệp, đam mê, xuất phát điểm. Tối thiểu 3–4 câu chân thật và cụ thể.]</p>
+    <br>
+    <p class="txt">Chúng tôi không bán cây — chúng tôi trao gửi những tác phẩm nghệ thuật đã được hun đúc qua năm tháng.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-label="Liên hệ">
+  <div class="stag" style="justify-content:center">Liên Hệ</div>
+  <h2>Sở Hữu Tác Phẩm<br>Của Riêng Bạn</h2>
+  <p>Tư vấn miễn phí — Giao tận nơi toàn quốc</p>
+  <a href="tel:[SĐT]" class="btn">Gọi Ngay: [Số điện thoại]</a>
+  <div class="cg">
+    <div class="cc"><div class="cc-l">Địa Chỉ</div><div class="cc-v">[Địa chỉ vườn]</div></div>
+    <div class="cc"><div class="cc-l">Zalo / Điện Thoại</div><div class="cc-v">[Số điện thoại]</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">[Tên Vườn] Bonsai</div>
+  <div class="fc">© 2026 · [Tỉnh / Thành Phố]</div>
+</footer>
+
+</body>
+</html>
