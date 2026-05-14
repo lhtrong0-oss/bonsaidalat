@@ -39,6 +39,9 @@
     .fu{opacity:0;animation:fadeUp .8s cubic-bezier(.34,1.56,.64,1) forwards;}
     .fu1{animation-delay:.1s}.fu2{animation-delay:.25s}.fu3{animation-delay:.4s}.fu4{animation-delay:.55s}
     ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
+    .scroll-reveal{opacity:0;transform:translateY(36px);transition:opacity .7s cubic-bezier(.34,1.56,.64,1),transform .7s cubic-bezier(.34,1.56,.64,1);}
+    .scroll-reveal.in-view{opacity:1;transform:translateY(0);}
+    .scroll-reveal.sold.in-view{opacity:.72;}
     .nav-link{color:rgba(248,245,240,.82);font-size:14px;letter-spacing:.03em;text-decoration:none;transition:color .2s;}
     .nav-link:hover{color:var(--accent);}
     .price{color:var(--accent);font-family:'Playfair Display',serif;font-size:18px;font-weight:600;}
@@ -57,9 +60,6 @@
       /* Section padding */
       section[aria-label*="Bộ sưu tập"] > div{padding:0 16px!important;}
       section[aria-label*="Bộ sưu tập"]{padding:40px 0 56px!important;}
-      #product-grid{grid-template-columns:1fr!important;gap:20px!important;}
-      /* Filter bar */
-      #bo-suu-tap > div{padding:0 16px!important;}
       /* Video */
       section[aria-label*="Video"]{padding:56px 20px!important;}
       /* About */
@@ -134,7 +134,7 @@
   <div style="position:absolute;right:-2%;top:50%;transform:translateY(-50%);width:360px;height:360px;border-radius:50%;border:1px solid rgba(196,168,130,.07);pointer-events:none;"></div>
   <div id="hero-img" style="display:none;position:absolute;right:0;top:0;bottom:0;width:42%;overflow:hidden;">
     <div style="position:absolute;inset:0;background:linear-gradient(to right,#18221A 0%,transparent 40%);z-index:1;"></div>
-    <img src="https://placehold.co/700x900/2C3A2E/C4A882?text=🌿" alt="Tác phẩm bonsai nghệ thuật Trang Lê Đà Lạt" style="width:100%;height:100%;object-fit:cover;opacity:.35;mix-blend-mode:luminosity;">
+    <img src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_1400/v1778748038/bonsai-dalat/dsc07182arw.jpg" alt="Sân vườn Bonsai Tuấn Trang tại Xuân Trường Đà Lạt" style="width:100%;height:100%;object-fit:cover;opacity:.78;">
   </div>
   <div style="max-width:1280px;margin:0 auto;padding:100px 32px 80px;position:relative;z-index:2;">
     <div style="max-width:560px;">
@@ -163,105 +163,97 @@
   </div>
 </section>
 
-<!-- FILTER BAR -->
-<div id="bo-suu-tap" style="position:sticky;top:72px;z-index:20;background:rgba(248,245,240,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(139,115,85,.12);">
+<!-- BỘ SƯU TẬP -->
+<section id="bo-suu-tap" aria-label="Bộ sưu tập bonsai Trang Lê" style="padding:72px 0 96px;">
   <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
-    <div style="display:flex;align-items:center;gap:10px;padding:12px 0;overflow-x:auto;scrollbar-width:none;">
-      <span style="font-size:12px;color:#9B9B9B;font-weight:500;white-space:nowrap;letter-spacing:.06em;flex-shrink:0;">LỌC:</span>
-      <button class="pill active" onclick="setFilter(this,'all')">Tất cả</button>
-      <button class="pill" onclick="setFilter(this,'do-quyen')">Đỗ Quyên</button>
-      <button class="pill" onclick="setFilter(this,'tung')">Tùng</button>
-      <div style="width:1px;height:20px;background:rgba(139,115,85,.2);flex-shrink:0;margin:0 4px;"></div>
-      <select onchange="sortCards(this.value)" style="border:1.5px solid rgba(139,115,85,.25);background:transparent;color:#1A1A1A;font-size:13px;padding:7px 32px 7px 16px;border-radius:100px;cursor:pointer;font-family:'Inter',sans-serif;outline:none;appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%228B7355%22 stroke-width=%222%22><path d=%22M6 9l6 6 6-6%22/></svg>');background-repeat:no-repeat;background-position:right 12px center;flex-shrink:0;">
-        <option value="newest">Mới nhất</option>
-        <option value="price-asc">Giá: Thấp → Cao</option>
-        <option value="price-desc">Giá: Cao → Thấp</option>
-      </select>
-    </div>
-  </div>
-</div>
 
-<!-- PRODUCT GRID -->
-<section aria-label="Bộ sưu tập bonsai Trang Lê" style="padding:56px 0 80px;">
-  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
-    <div style="margin-bottom:36px;">
+    <div class="scroll-reveal" style="margin-bottom:56px;">
       <p class="section-label" style="margin-bottom:8px;">Bộ Sưu Tập</p>
       <h2 style="font-size:clamp(28px,4vw,40px);font-weight:700;color:#2C3A2E;line-height:1.2;">Tác Phẩm Bonsai Đà Lạt</h2>
     </div>
-    <div id="product-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:28px;">
 
-      <!-- Đỗ Quyên Đỏ Pháp — ĐÃ BÁN -->
-      <article class="product-card" data-type="do-quyen" data-price="45000000" style="opacity:.72;">
-        <div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;">
-          <img class="card-img" src="https://placehold.co/600x450/2C3A2E/C4A882?text=Đỗ+Quyên+Đỏ+Pháp" alt="Bonsai đỗ quyên đỏ Pháp hoa nở rực rỡ quanh năm tại Trang Lê Bonsai Đà Lạt" style="filter:grayscale(20%);">
-          <span class="badge badge-s">Đã Sở Hữu</span>
-        </div>
-        <div style="padding:22px;">
-          <h3 style="font-size:20px;font-weight:600;color:#2C3A2E;margin-bottom:5px;">Đỗ Quyên Đỏ Pháp</h3>
-          <p style="font-size:13px;color:#9B9B9B;margin-bottom:10px;">Bonsai Hoa · Hoa Nở Quanh Năm</p>
-          <p style="font-size:14px;color:#8B7355;line-height:1.65;margin-bottom:18px;">Đỗ quyên đỏ Pháp màu sắc rực rỡ, hoa nở quanh năm, trang trí sân vườn ban công sang trọng.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span style="color:#9B9B9B;font-size:16px;text-decoration:line-through;font-family:'Playfair Display',serif;">45.000.000đ</span>
-            <span style="font-size:13px;color:#9B9B9B;font-style:italic;">Đã sở hữu</span>
-          </div>
-        </div>
-      </article>
+    <!-- Những Tác Phẩm Nổi Bật -->
+    <div style="margin-bottom:72px;">
+      <div class="scroll-reveal" style="display:flex;align-items:center;gap:16px;margin-bottom:32px;">
+        <div style="width:32px;height:1px;background:#C4A882;flex-shrink:0;"></div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,26px);font-weight:600;color:#2C3A2E;letter-spacing:-.02em;">Những Tác Phẩm Nổi Bật</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px;">
 
-      <!-- Đỗ Quyên Sakura — CÒN -->
-      <article class="product-card" data-type="do-quyen" data-price="4000000">
-        <div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;">
-          <img class="card-img" src="https://placehold.co/600x450/2C3A2E/C4A882?text=Đỗ+Quyên+Sakura" alt="Bonsai đỗ quyên Sakura dáng thác đổ hoa hồng phấn Trang Lê Bonsai">
-          <div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:13px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.05em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Hỏi Sở Hữu Ngay</a></div>
-          <span class="badge badge-n">Còn</span>
-        </div>
-        <div style="padding:22px;">
-          <h3 style="font-size:20px;font-weight:600;color:#2C3A2E;margin-bottom:5px;">Đỗ Quyên Sakura</h3>
-          <p style="font-size:13px;color:#9B9B9B;margin-bottom:10px;">Đỗ Quyên · Hoa Nở Quanh Năm</p>
-          <p style="font-size:14px;color:#8B7355;line-height:1.65;margin-bottom:18px;">Đỗ quyên Sakura dáng thác đổ uyển chuyển, hoa hồng phấn tinh tế, mang ý nghĩa phong thủy may mắn trường thọ.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span class="price">4.000.000đ</span>
-            <a href="https://zalo.me/0785925998" target="_blank" style="font-size:13px;color:#8B7355;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:4px;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='#8B7355'">Hỏi mua <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
-        </div>
-      </article>
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747969/bonsai-dalat/dsc07173arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
 
-      <!-- Duyên Tùng Dáng Huyền — CÒN -->
-      <article class="product-card" data-type="tung" data-price="35000000">
-        <div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;">
-          <img class="card-img" src="https://placehold.co/600x450/2C3A2E/C4A882?text=Duyên+Tùng+Dáng+Huyền" alt="Bonsai tùng cổ thụ dáng huyền cao 104cm Trang Lê Bonsai Đà Lạt">
-          <div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:13px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.05em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Hỏi Sở Hữu Ngay</a></div>
-          <span class="badge badge-f">Nổi Bật</span>
-        </div>
-        <div style="padding:22px;">
-          <h3 style="font-size:20px;font-weight:600;color:#2C3A2E;margin-bottom:5px;">Duyên Tùng — Dáng Huyền</h3>
-          <p style="font-size:13px;color:#9B9B9B;margin-bottom:10px;">Cao 104cm · Ngang 130cm · Hoành 34cm</p>
-          <p style="font-size:14px;color:#8B7355;line-height:1.65;margin-bottom:18px;">Tùng cổ thụ dáng huyền uốn lượn tự nhiên, thân thô ráp cổ kính, tán xanh mướt quanh năm.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span class="price">35.000.000đ</span>
-            <a href="https://zalo.me/0785925998" target="_blank" style="font-size:13px;color:#8B7355;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:4px;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='#8B7355'">Hỏi mua <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
-        </div>
-      </article>
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747975/bonsai-dalat/dsc07174arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
 
-      <!-- Duyên Tùng Dáng Lắc Chân Dài — CÒN -->
-      <article class="product-card" data-type="tung" data-price="37000000">
-        <div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;">
-          <img class="card-img" src="https://placehold.co/600x450/2C3A2E/C4A882?text=Duyên+Tùng+Lắc+Chân+Dài" alt="Bonsai tùng dáng lắc chân dài cao 180cm khí thế uy nghi Trang Lê Bonsai">
-          <div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:13px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.05em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Hỏi Sở Hữu Ngay</a></div>
-          <span class="badge badge-f">Nổi Bật</span>
-        </div>
-        <div style="padding:22px;">
-          <h3 style="font-size:20px;font-weight:600;color:#2C3A2E;margin-bottom:5px;">Duyên Tùng — Dáng Lắc Chân Dài</h3>
-          <p style="font-size:13px;color:#9B9B9B;margin-bottom:10px;">Cao 180cm · Ngang 120cm · Hoành 36cm</p>
-          <p style="font-size:14px;color:#8B7355;line-height:1.65;margin-bottom:18px;">Tùng dáng lắc chân dài vươn cao uy nghi, thân thẳng khí thế, phù hợp sân vườn rộng.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span class="price">37.000.000đ</span>
-            <a href="https://zalo.me/0785925998" target="_blank" style="font-size:13px;color:#8B7355;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:4px;" onmouseover="this.style.color='#C4A882'" onmouseout="this.style.color='#8B7355'">Hỏi mua <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
-        </div>
-      </article>
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747524/bonsai-dalat/dsc07113arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
 
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747949/bonsai-dalat/dsc07170arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747830/bonsai-dalat/dsc07154arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747423/bonsai-dalat/dsc07098arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747517/bonsai-dalat/dsc07112arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747416/bonsai-dalat/dsc07097arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747622/bonsai-dalat/dsc07126arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747643/bonsai-dalat/dsc07129arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747862/bonsai-dalat/dsc07158arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747615/bonsai-dalat/dsc07125arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747586/bonsai-dalat/dsc07121arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747713/bonsai-dalat/dsc07140arw.jpg" alt="Tác phẩm bonsai nổi bật Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+      </div>
     </div>
+
+    <!-- Trắc Bách Diệp -->
+    <div style="margin-bottom:72px;">
+      <div class="scroll-reveal" style="display:flex;align-items:center;gap:16px;margin-bottom:32px;">
+        <div style="width:32px;height:1px;background:#C4A882;flex-shrink:0;"></div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,26px);font-weight:600;color:#2C3A2E;letter-spacing:-.02em;">Trắc Bách Diệp</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px;max-width:620px;">
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747994/bonsai-dalat/dsc07176arw.jpg" alt="Cây Trắc Bách Diệp Trang Lê Bonsai Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778747987/bonsai-dalat/dsc07175arw.jpg" alt="Cây Trắc Bách Diệp Trang Lê Bonsai Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+      </div>
+    </div>
+
+    <!-- Tiểu Cảnh Bonsai -->
+    <div style="margin-bottom:72px;">
+      <div class="scroll-reveal" style="display:flex;align-items:center;gap:16px;margin-bottom:32px;">
+        <div style="width:32px;height:1px;background:#C4A882;flex-shrink:0;"></div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,26px);font-weight:600;color:#2C3A2E;letter-spacing:-.02em;">Tiểu Cảnh Bonsai</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px;max-width:620px;">
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778748008/bonsai-dalat/dsc07178arw.jpg" alt="Tiểu cảnh bonsai Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778748001/bonsai-dalat/dsc07177arw.jpg" alt="Tiểu cảnh bonsai Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+      </div>
+    </div>
+
+    <!-- Cây Chanh -->
+    <div>
+      <div class="scroll-reveal" style="display:flex;align-items:center;gap:16px;margin-bottom:32px;">
+        <div style="width:32px;height:1px;background:#C4A882;flex-shrink:0;"></div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,26px);font-weight:600;color:#2C3A2E;letter-spacing:-.02em;">Cây Chanh</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px;max-width:310px;">
+
+        <article class="product-card scroll-reveal"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;background:#EAE7E2;"><img class="card-img" src="https://res.cloudinary.com/dznkgkksu/image/upload/q_auto,f_auto,w_800/v1778748016/bonsai-dalat/dsc07179arw.jpg" alt="Cây Chanh bonsai Trang Lê Đà Lạt" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><a href="https://zalo.me/0785925998" target="_blank" style="background:#C4A882;color:#2C3A2E;font-size:12px;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;width:100%;text-align:center;display:block;" onmouseover="this.style.background='#F8F5F0'" onmouseout="this.style.background='#C4A882'">Tôi Quan Tâm Cây Này</a></div></div><div style="padding:14px 16px 18px;"><a href="https://zalo.me/0785925998" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;background:#2C3A2E;color:#C4A882;font-size:12px;font-weight:600;text-decoration:none;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;" onmouseover="this.style.background='#C4A882';this.style.color='#2C3A2E';" onmouseout="this.style.background='#2C3A2E';this.style.color='#C4A882';">Tôi Quan Tâm Cây Này <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -317,7 +309,7 @@
         </div>
       </div>
       <div style="position:relative;">
-        <img src="https://placehold.co/600x500/2C3A2E/C4A882?text=Vườn+Tuấn+Trang" alt="Vườn bonsai Tuấn Trang tại Xuân Trường Đà Lạt sương sớm" style="width:100%;height:420px;object-fit:cover;border-radius:4px;">
+        <img src="bonsai-data/bonsaidalat.PNG" alt="Vườn bonsai Tuấn Trang tại Xuân Trường Đà Lạt sương sớm" style="width:100%;height:420px;object-fit:cover;border-radius:4px;">
         <div style="position:absolute;bottom:-16px;right:-16px;width:100px;height:100px;border:2px solid #C4A882;border-radius:4px;opacity:.35;z-index:-1;"></div>
         <div id="about-badge" style="position:absolute;top:20px;left:-16px;background:#2C3A2E;color:#C4A882;padding:14px 18px;border-radius:4px;font-family:'Playfair Display',serif;font-size:13px;font-weight:600;box-shadow:0 8px 32px rgba(44,58,46,.25);">
           <div style="font-size:22px;font-weight:700;line-height:1;">15+</div>
@@ -405,26 +397,28 @@
   window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
   let open=false;
   function toggleMenu(){open=!open;document.getElementById('mobile-menu').style.display=open?'block':'none';}
-  function setFilter(btn,type){
-    document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('#product-grid article').forEach(c=>{
-      const show=type==='all'||c.dataset.type===type;
-      c.style.display=show?'block':'none';
-      if(show)c.style.animation='fadeUp .35s cubic-bezier(.34,1.56,.64,1) forwards';
-    });
-  }
-  function sortCards(by){
-    const g=document.getElementById('product-grid');
-    [...g.querySelectorAll('article')].sort((a,b)=>{
-      const pa=parseInt(a.dataset.price)||0,pb=parseInt(b.dataset.price)||0;
-      return by==='price-asc'?pa-pb:by==='price-desc'?pb-pa:0;
-    }).forEach(c=>g.appendChild(c));
-  }
   document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
     if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
   }));
+  // Scroll-triggered animations
+  const revealObserver=new IntersectionObserver((entries)=>{
+    entries.forEach((entry,i)=>{
+      if(entry.isIntersecting){
+        const el=entry.target;
+        const delay=el.dataset.delay||0;
+        setTimeout(()=>{
+          el.classList.add('in-view');
+          if(el.style.opacity&&parseFloat(el.style.opacity)<1)el.style.opacity=el.getAttribute('data-sold-opacity')||'';
+        },delay);
+        revealObserver.unobserve(el);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -48px 0px'});
+  document.querySelectorAll('.scroll-reveal').forEach((el,i)=>{
+    el.dataset.delay=Math.min(i%3,2)*80;
+    revealObserver.observe(el);
+  });
   function checkAbout(){const g=document.getElementById('about-inner');if(g)g.style.gridTemplateColumns=innerWidth<768?'1fr':'1fr 1fr';}
   window.addEventListener('resize',checkAbout);checkAbout();
 </script>
