@@ -1,382 +1,978 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>[Tên Vườn] Bonsai — Bộ Sưu Tập · MẪU B</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--p:#2C3A2E;--s:#8B7355;--a:#C4A882;--bg:#F8F5F0;--w:#fff;--t:#1A1A1A;--m:#9B9B9B;}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.7;}
-h1,h2,h3{font-family:'Playfair Display',serif;letter-spacing:-0.03em;}
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bếp Mẹ — Quán Ăn Gia Đình Đà Lạt | Ẩm thực thuần Việt</title>
+  <meta name="description" content="Bếp Mẹ Đà Lạt — Không gian ăn uống gia đình ấm cúng, thực đơn 30 món đặc sản, nguyên liệu tươi mỗi ngày. Đặt bàn qua Zalo: 0785 925 998">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(44,58,46,.97);backdrop-filter:blur(12px);}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#fff;}
-.nav-logo span{font-weight:400;font-style:italic;color:var(--a);font-size:.76rem;display:block;letter-spacing:.06em;}
-.nav-links{display:flex;gap:32px;}
-.nav-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:.82rem;letter-spacing:.04em;transition:color .2s;}
-.nav-links a:hover{color:var(--a);}
-.nav-links a:focus-visible{outline:1px solid var(--a);outline-offset:4px;}
-.btn{background:var(--a);color:var(--p);padding:9px 22px;font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;}
-.btn:hover{opacity:.88;transform:translateY(-2px);}
-.btn:active{transform:translateY(0);}
-.btn:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+    :root {
+      --green: #2C3A2E;
+      --green-light: #3d5040;
+      --gold: #C4A882;
+      --gold-dark: #8B7355;
+      --cream: #F8F5F0;
+      --cream-dark: #EDE8DF;
+      --white: #FFFFFF;
+      --text: #1A1A1A;
+      --muted: #6B6B6B;
+      --border: #E2D9CC;
+    }
 
-.hero{min-height:88vh;position:relative;display:flex;align-items:flex-end;padding-top:72px;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;}
-.hero-bg img{width:100%;height:100%;object-fit:cover;}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(44,58,46,.92) 0%,rgba(44,58,46,.4) 50%,rgba(44,58,46,.15) 100%);}
-.hero-c{position:relative;z-index:2;padding:60px 48px 72px;max-width:720px;}
-.tag{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--a);margin-bottom:20px;}
-.tag::before{content:'';width:24px;height:1px;background:var(--a);}
-h1{font-size:clamp(2.4rem,5vw,4rem);font-weight:700;color:#fff;line-height:1.08;margin-bottom:20px;}
-h1 em{color:var(--a);font-style:italic;}
-.hero-sub{color:rgba(255,255,255,.68);font-size:1rem;max-width:480px;margin-bottom:36px;line-height:1.75;}
-.btns{display:flex;gap:14px;flex-wrap:wrap;}
-.btn-o{background:transparent;border:1.5px solid rgba(255,255,255,.5);color:#fff;padding:9px 22px;font-size:.78rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;}
-.btn-o:hover{border-color:#fff;background:rgba(255,255,255,.1);}
-.btn-o:focus-visible{outline:2px solid var(--a);outline-offset:3px;}
+    html { scroll-behavior: smooth; }
 
-.stats{background:var(--p);display:grid;grid-template-columns:repeat(4,1fr);}
-.stat{padding:28px 32px;border-right:1px solid rgba(255,255,255,.07);text-align:center;}
-.stat:last-child{border-right:none;}
-.stat-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--a);line-height:1;margin-bottom:6px;}
-.stat-l{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42);}
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-/* Collection */
-.section{padding:80px 48px;}
-.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;}
-.stag{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--a);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
-.stag::before{content:'';width:20px;height:1px;background:var(--a);}
-h2{font-size:2rem;color:var(--p);line-height:1.2;}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.card{background:var(--w);overflow:hidden;box-shadow:0 2px 16px rgba(44,58,46,.06),0 8px 32px rgba(44,58,46,.07);cursor:pointer;}
-.card-img{position:relative;overflow:hidden;aspect-ratio:3/4;}
-.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.34,1.56,.64,1);}
-.card:hover .card-img img{transform:scale(1.06);}
-.card-overlay{position:absolute;inset:0;background:rgba(44,58,46,.0);display:flex;align-items:center;justify-content:center;transition:background .3s;}
-.card:hover .card-overlay{background:rgba(44,58,46,.35);}
-.card-overlay span{opacity:0;color:#fff;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;transition:opacity .3s;}
-.card:hover .card-overlay span{opacity:1;}
-.card-badge{position:absolute;top:12px;left:12px;background:var(--a);color:var(--p);font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;}
-.card-info{padding:20px 22px;}
-.card-name{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--p);margin-bottom:6px;}
-.card-meta{display:flex;justify-content:space-between;align-items:center;}
-.card-detail{font-size:.75rem;color:var(--m);}
-.card-price{font-size:.82rem;font-weight:600;color:var(--s);letter-spacing:.02em;}
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
 
-/* About */
-.about{display:grid;grid-template-columns:1fr 1fr;min-height:500px;}
-.about-img{overflow:hidden;position:relative;}
-.about-img img{width:100%;height:100%;object-fit:cover;}
-.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,58,46,.6),transparent);}
-.about-c{padding:80px 64px;background:var(--p);display:flex;flex-direction:column;justify-content:center;}
-.about-c .stag::before{background:var(--a);}
-.about-c h2{color:#fff;}
-.about-c .txt{color:rgba(255,255,255,.65);line-height:1.95;font-size:.94rem;}
-.about-c .stag{color:var(--a);}
+    /* ── DEMO BANNER ────────────────────────────── */
+    .demo-banner {
+      background: var(--gold-dark);
+      color: var(--cream);
+      text-align: center;
+      padding: 9px 20px;
+      font-size: 12.5px;
+      letter-spacing: 0.04em;
+    }
+    .demo-banner strong { color: #fff; }
+    .demo-banner a { color: #fff; font-weight: 600; text-decoration: underline; margin-left: 10px; }
 
-/* Pricing */
-.pricing{padding:80px 48px;background:var(--bg);}
-.pricing-head{text-align:center;margin-bottom:56px;}
-.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px;margin:0 auto;}
-.price-card{background:var(--w);padding:40px 36px;box-shadow:0 2px 16px rgba(44,58,46,.06),0 8px 32px rgba(44,58,46,.08);position:relative;overflow:hidden;}
-.price-card.featured{background:var(--p);}
-.price-card.featured::before{content:'PHỔ BIẾN';position:absolute;top:16px;right:-24px;background:var(--a);color:var(--p);font-size:.62rem;font-weight:700;letter-spacing:.1em;padding:5px 36px;transform:rotate(45deg);}
-.price-tier{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--m);margin-bottom:12px;}
-.price-card.featured .price-tier{color:rgba(255,255,255,.5);}
-.price-card h3{font-size:1.5rem;color:var(--p);margin-bottom:8px;}
-.price-card.featured h3{color:#fff;}
-.price-amount{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--a);margin-bottom:24px;line-height:1;}
-.price-list{list-style:none;margin-bottom:32px;}
-.price-list li{font-size:.85rem;color:#555;padding:8px 0;border-bottom:1px solid rgba(44,58,46,.06);display:flex;align-items:center;gap:10px;}
-.price-card.featured .price-list li{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.08);}
-.price-list li::before{content:'✓';color:var(--a);font-weight:700;flex-shrink:0;}
-.btn-price{width:100%;padding:14px;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:1.5px solid var(--p);background:transparent;color:var(--p);text-decoration:none;display:block;text-align:center;}
-.btn-price:hover{background:var(--p);color:#fff;}
-.price-card.featured .btn-price{border-color:var(--a);background:var(--a);color:var(--p);}
-.price-card.featured .btn-price:hover{opacity:.88;}
-.btn-price:focus-visible{outline:2px solid var(--a);outline-offset:3px;}
+    /* ── NAV ────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
+      padding: 20px 0;
+    }
+    nav.scrolled {
+      background: rgba(248,245,240,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      transition: color 0.4s;
+      letter-spacing: 0.02em;
+    }
+    nav.scrolled .nav-logo { color: var(--green); }
+    .nav-logo em { font-style: italic; color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    nav.scrolled .nav-links a { color: var(--text); }
+    .nav-links a:hover { color: var(--gold); }
+    nav.scrolled .nav-links a:hover { color: var(--gold-dark); }
+    .nav-reserve {
+      background: var(--gold);
+      color: var(--green) !important;
+      font-weight: 600 !important;
+      padding: 9px 22px;
+      border-radius: 3px;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-reserve:hover { background: #d4b894 !important; transform: translateY(-1px); }
 
-/* Contact Form */
-.contact{padding:80px 48px;}
-.contact-inner{max-width:680px;margin:0 auto;}
-.contact-head{text-align:center;margin-bottom:48px;}
-.contact-head h2{font-size:2.2rem;color:var(--p);margin-bottom:12px;}
-.contact-head p{color:var(--s);font-size:.95rem;}
-.form{display:grid;gap:16px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.field label{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--s);margin-bottom:8px;font-weight:500;}
-.field input,.field select,.field textarea{width:100%;padding:12px 16px;border:1.5px solid rgba(44,58,46,.15);background:var(--w);font-family:'Inter',sans-serif;font-size:.9rem;color:var(--t);outline:none;}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--p);}
-.field textarea{resize:vertical;min-height:120px;}
-.btn-submit{background:var(--p);color:#fff;padding:15px 40px;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;width:100%;}
-.btn-submit:hover{opacity:.85;}
-.btn-submit:focus-visible{outline:2px solid var(--a);outline-offset:3px;}
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://placehold.co/1920x1080/1a2419/C4A882?text=') center/cover;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(26,36,25,0.88) 0%, rgba(26,36,25,0.5) 55%, rgba(26,36,25,0.15) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      padding-top: 80px;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow span { width: 40px; height: 1px; background: var(--gold); }
+    .hero-eyebrow p { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 700;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); display: block; }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 32px;
+    }
+    .hero p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      max-width: 440px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: var(--green);
+      font-weight: 600; font-size: 15px;
+      padding: 15px 32px; border-radius: 3px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-gold:hover { background: #d4b894; transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: rgba(255,255,255,0.85);
+      font-size: 15px; font-weight: 400;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
 
-footer{background:var(--p);padding:40px 48px;}
-.foot-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.08);}
-.fb{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;}
-.fb span{font-size:.76rem;font-style:italic;color:rgba(255,255,255,.45);font-family:'Inter',sans-serif;display:block;letter-spacing:.05em;}
-.foot-links{display:flex;gap:24px;}
-.foot-links a{color:rgba(255,255,255,.45);font-size:.8rem;text-decoration:none;}
-.foot-links a:hover{color:var(--a);}
-.foot-links a:focus-visible{outline:1px solid var(--a);outline-offset:3px;}
-.foot-bot{padding-top:24px;font-size:.72rem;color:rgba(255,255,255,.28);}
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.45);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(196,168,130,0.6), transparent);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.5); opacity: 0.4; }
+    }
 
-@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.hero-c>*{animation:fu .6s ease both;}
-.hero-c>*:nth-child(2){animation-delay:.1s}
-.hero-c>*:nth-child(3){animation-delay:.2s}
-.hero-c>*:nth-child(4){animation-delay:.3s}
-.hero-c>*:nth-child(5){animation-delay:.4s}
+    /* ── STATS BAR ───────────────────────────────── */
+    .stats-bar {
+      background: var(--green);
+    }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat {
+      padding: 28px 24px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; }
 
-@media(max-width:900px){
-  .grid{grid-template-columns:repeat(2,1fr);}
-  .stats{grid-template-columns:repeat(2,1fr);}
-}
-@media(max-width:640px){
-  nav{padding:14px 20px;}
-  .nav-links{display:none;}
-  .grid{grid-template-columns:1fr;}
-  .section{padding:60px 20px;}
-  .pricing{padding:60px 20px;}
-  .pricing-grid{grid-template-columns:1fr;}
-  .contact{padding:60px 20px;}
-  .form-row{grid-template-columns:1fr;}
-  .about{grid-template-columns:1fr;}
-  .about-img{min-height:220px;}
-  .about-c{padding:40px 20px;}
-  .foot-top{flex-direction:column;gap:20px;}
-  footer{padding:32px 20px;}
-  .stats{grid-template-columns:repeat(2,1fr);}
-}
-</style>
+    /* ── ABOUT EDITORIAL ─────────────────────────── */
+    .about-editorial { padding: 100px 32px; }
+    .about-editorial .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-text-col { order: 1; }
+    .about-img-col { order: 2; }
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-kicker::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold-dark);
+    }
+    h2.display {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+    h2.display em { font-style: italic; color: var(--gold-dark); }
+    .body-text {
+      font-size: 15.5px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    blockquote.pull {
+      border-left: 2px solid var(--gold);
+      padding: 12px 0 12px 24px;
+      margin: 28px 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--green);
+      line-height: 1.5;
+    }
+    .about-img-col { position: relative; }
+    .img-main {
+      border-radius: 4px;
+      overflow: hidden;
+      height: 520px;
+      box-shadow: 0 24px 60px rgba(44,58,46,0.15), 0 4px 16px rgba(44,58,46,0.08);
+    }
+    .img-accent {
+      position: absolute;
+      bottom: -32px;
+      left: -32px;
+      width: 200px;
+      height: 200px;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(44,58,46,0.2);
+      border: 6px solid var(--cream);
+    }
+
+    /* ── GALLERY ─────────────────────────────────── */
+    .gallery-section {
+      background: var(--cream-dark);
+      padding: 80px 32px;
+    }
+    .gallery-head {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .gallery-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 240px 240px;
+      gap: 12px;
+    }
+    .g1 { grid-column: span 5; grid-row: span 2; }
+    .g2 { grid-column: span 4; }
+    .g3 { grid-column: span 3; }
+    .g4 { grid-column: span 3; }
+    .g5 { grid-column: span 4; }
+    .gallery-item {
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item img { height: 100%; transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1); }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(44,58,46,0);
+      transition: background 0.3s;
+    }
+    .gallery-item:hover::after { background: rgba(44,58,46,0.08); }
+
+    /* ── MENU SECTION ───────────────────────────── */
+    .menu-section { padding: 100px 32px; background: var(--white); }
+    .menu-inner { max-width: 1200px; margin: 0 auto; }
+    .menu-top { text-align: center; margin-bottom: 56px; }
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 9px 22px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.03em;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+    .menu-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .menu-row {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      background: var(--white);
+      padding: 20px 24px;
+      transition: background 0.2s;
+    }
+    .menu-row:hover { background: var(--cream); }
+    .menu-thumb {
+      width: 72px;
+      height: 72px;
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .menu-thumb img { height: 72px; }
+    .menu-row-info { flex: 1; min-width: 0; }
+    .menu-row-info h3 {
+      font-size: 17px;
+      color: var(--green);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .menu-row-info p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .menu-row-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      white-space: nowrap;
+    }
+
+    /* ── TESTIMONIALS ────────────────────────────── */
+    .testimonials { padding: 100px 32px; background: var(--green); }
+    .testi-inner { max-width: 1200px; margin: 0 auto; }
+    .testi-header { text-align: center; margin-bottom: 56px; }
+    .testi-header .section-kicker { justify-content: center; color: var(--gold); }
+    .testi-header .section-kicker::before { background: var(--gold); }
+    .testi-header h2.display { color: #fff; }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 32px 28px;
+      transition: background 0.25s;
+    }
+    .testi-card:hover { background: rgba(255,255,255,0.1); }
+    .stars { color: var(--gold); font-size: 15px; margin-bottom: 16px; letter-spacing: 2px; }
+    .testi-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--gold);
+      flex-shrink: 0;
+    }
+    .testi-avatar img { height: 44px; }
+    .testi-name { font-size: 14px; font-weight: 600; color: #fff; }
+    .testi-role { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
+    /* ── MAP + CONTACT ───────────────────────────── */
+    .contact-section { padding: 100px 32px; }
+    .contact-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .map-wrap {
+      border-radius: 6px;
+      overflow: hidden;
+      height: 400px;
+      border: 1px solid var(--border);
+      background: var(--cream-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-placeholder {
+      text-align: center;
+      color: var(--muted);
+    }
+    .map-placeholder .map-icon { font-size: 48px; margin-bottom: 12px; }
+    .map-placeholder p { font-size: 14px; }
+    .contact-right .section-kicker { margin-bottom: 14px; }
+    .contact-right h2.display { margin-bottom: 28px; }
+    .contact-grid { display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+    .c-icon {
+      width: 42px; height: 42px;
+      background: rgba(196,168,130,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+    .c-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 3px; }
+    .c-value { font-size: 14.5px; color: var(--text); line-height: 1.6; }
+    .cta-block {
+      background: var(--green);
+      border-radius: 6px;
+      padding: 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cta-block p { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 4px; }
+    .zalo-cta {
+      display: flex; align-items: center; gap: 12px;
+      background: #0068FF; color: #fff;
+      font-weight: 600; font-size: 15px;
+      padding: 14px 22px; border-radius: 4px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .zalo-cta:hover { background: #0059d9; transform: translateY(-2px); }
+    .zalo-cta:active { transform: translateY(0); }
+    .tel-cta {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px; padding: 10px 0;
+      transition: color 0.2s;
+    }
+    .tel-cta:hover { color: var(--gold); }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: #141f13;
+      padding: 40px 32px 24px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 24px;
+    }
+    .footer-brand h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .footer-brand h3 em { font-style: italic; color: var(--gold); }
+    .footer-brand p { font-size: 13.5px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .footer-col ul a { font-size: 13.5px; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .footer-col ul a:hover { color: rgba(255,255,255,0.8); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 12.5px; color: rgba(255,255,255,0.3); }
+    .footer-bottom a { color: var(--gold); }
+
+    /* ── FLOAT ZALO ──────────────────────────────── */
+    .float-zalo {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 999;
+      background: #0068FF;
+      color: #fff;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,104,255,0.45);
+      animation: pulse 2.5s infinite;
+      transition: transform 0.2s;
+    }
+    .float-zalo:hover { transform: scale(1.1); }
+    .float-zalo:active { transform: scale(0.97); }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(0,104,255,0.45), 0 0 0 0 rgba(0,104,255,0.3); }
+      50% { box-shadow: 0 4px 20px rgba(0,104,255,0.45), 0 0 0 16px rgba(0,104,255,0); }
+    }
+
+    /* ── ANIMATE ON SCROLL ───────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.34,1.56,0.64,1), transform 0.7s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.delay-1 { transition-delay: 0.1s; }
+    .fade-up.delay-2 { transition-delay: 0.2s; }
+    .fade-up.delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 900px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .about-editorial .inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-img-col { order: -1; }
+      .img-main { height: 360px; }
+      .img-accent { display: none; }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+      .g1, .g2, .g3, .g4, .g5 { grid-column: span 1; grid-row: span 1; height: 220px; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 16px 0; }
+      .nav-links { display: none; }
+      .hero h1 { font-size: 42px; }
+      section, .about-editorial, .gallery-section, .menu-section, .testimonials, .contact-section { padding: 60px 20px; }
+      .menu-list { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<div style="background:var(--s);color:#fff;text-align:center;padding:8px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:200;">
-  MẪU B — CÓ BỘ SƯU TẬP + GIÁ · GÓI 8–15 TRIỆU · Thay nội dung [trong ngoặc]
+<!-- DEMO BANNER -->
+<div class="demo-banner">
+  🎨 <strong>Mẫu B — Gói 8–15 triệu</strong> · Full website: gallery, thực đơn, đánh giá, bản đồ, hiệu ứng cuộn
+  <a href="tel:0785925998">Tư vấn: 0785 925 998</a>
 </div>
 
-<nav>
-  <div class="nav-logo">[Tên Vườn]<span>Bonsai · [Tỉnh/Thành]</span></div>
-  <div class="nav-links">
-    <a href="#collection">Bộ Sưu Tập</a>
-    <a href="#about">Về Chúng Tôi</a>
-    <a href="#pricing">Bảng Giá</a>
-    <a href="#contact">Liên Hệ</a>
+<!-- NAV -->
+<nav id="mainNav" aria-label="Điều hướng chính">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Bếp <em>Mẹ</em></a>
+    <ul class="nav-links">
+      <li><a href="#about">Câu chuyện</a></li>
+      <li><a href="#gallery">Hình ảnh</a></li>
+      <li><a href="#menu">Thực đơn</a></li>
+      <li><a href="#lien-he">Liên hệ</a></li>
+      <li><a href="https://zalo.me/0785925998" class="nav-reserve">Đặt bàn</a></li>
+    </ul>
   </div>
-  <a href="#contact" class="btn">Tư Vấn Ngay</a>
 </nav>
 
-<section class="hero" aria-label="Trang chủ vườn bonsai">
-  <div class="hero-bg">
-    <img src="https://placehold.co/1920x1080/2C3A2E/C4A882?text=Vườn+Bonsai" alt="Toàn cảnh vườn bonsai">
+<!-- HERO -->
+<section class="hero" aria-label="Giới thiệu quán Bếp Mẹ">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span></span>
+      <p>Ẩm thực gia đình · Đà Lạt từ 2014</p>
+    </div>
+    <h1>Bếp Mẹ<em>Vị nhà — giữa phố</em></h1>
+    <p class="hero-tagline">Quán ăn gia đình Đà Lạt</p>
+    <p>Những công thức bếp nhà qua bàn tay người nấu thật, nguyên liệu chọn lọc mỗi sáng. Chỗ ngồi ấm, hương vị quen, bạn có thể trở lại mỗi ngày.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-gold">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2"/></svg>
+        Khám phá thực đơn
+      </a>
+      <a href="#about" class="btn-ghost">Câu chuyện của chúng tôi →</a>
+    </div>
   </div>
-  <div class="hero-c">
-    <div class="tag">[Tỉnh/Thành] · Est. [Năm]</div>
-    <h1>Bộ Sưu Tập<br><em>Bonsai Nghệ Thuật</em></h1>
-    <p class="hero-sub">Hàng trăm tác phẩm được chọn lọc kỹ lưỡng — từ cây thế độc bản đến tác phẩm giải thưởng quốc gia.</p>
-    <div class="btns">
-      <a href="#collection" class="btn">Xem Bộ Sưu Tập</a>
-      <a href="#contact" class="btn-o">Tư Vấn Qua Zalo</a>
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Cuộn xuống</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar" aria-label="Thống kê">
+  <div class="stats-inner">
+    <div class="stat fade-up"><div class="stat-num">10+</div><div class="stat-label">Năm phục vụ</div></div>
+    <div class="stat fade-up delay-1"><div class="stat-num">500+</div><div class="stat-label">Khách / tuần</div></div>
+    <div class="stat fade-up delay-2"><div class="stat-num">30+</div><div class="stat-label">Món đặc sản</div></div>
+    <div class="stat fade-up delay-3"><div class="stat-num">★ 4.9</div><div class="stat-label">Google Review</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about-editorial" aria-label="Câu chuyện Bếp Mẹ">
+  <div class="inner">
+    <div class="about-text-col fade-up">
+      <p class="section-kicker">Câu chuyện</p>
+      <h2 class="display">Từ bếp nhỏ<br>trong hẻm,<br><em>đến lòng bạn</em></h2>
+      <p class="body-text">Năm 2014, cô Hoa bắt đầu nấu cơm tháng cho sinh viên trong hẻm nhỏ đường Phan Đình Phùng. Không bảng hiệu, không menu in — chỉ có tiếng người gọi "ăn cơm chưa?" và mùi thức ăn lan ra tận đầu ngõ.</p>
+      <blockquote class="pull">"Nấu ăn với tôi là nói chuyện bằng hương vị. Không cần cầu kỳ, chỉ cần thật lòng."</blockquote>
+      <p class="body-text">Mười năm sau, Bếp Mẹ đã có mặt trên từng con phố nhỏ qua lời truyền miệng. Vẫn là những công thức cũ, vẫn bếp lửa và tay người. Chỉ thêm một ngôi nhà rộng hơn, đủ chỗ cho nhiều ký ức hơn.</p>
+      <a href="#lien-he" class="btn-gold" style="margin-top:8px; width:fit-content">Ghé thăm chúng tôi</a>
+    </div>
+    <div class="about-img-col fade-up delay-2">
+      <div class="img-main">
+        <img src="https://placehold.co/800x1000/2C3A2E/C4A882?text=Bếp+Mẹ+Đà+Lạt" alt="Không gian ấm cúng của Bếp Mẹ với ánh đèn vàng và bàn gỗ">
+      </div>
+      <div class="img-accent">
+        <img src="https://placehold.co/400x400/C4A882/2C3A2E?text=Nguyên+liệu+tươi" alt="Nguyên liệu rau củ tươi Đà Lạt mỗi sáng">
+      </div>
     </div>
   </div>
 </section>
 
-<section class="stats" aria-label="Thống kê vườn">
-  <div class="stat"><div class="stat-n">[X]+</div><div class="stat-l">Năm Nghề</div></div>
-  <div class="stat"><div class="stat-n">[X]+</div><div class="stat-l">Tác Phẩm</div></div>
-  <div class="stat"><div class="stat-n">[X]+</div><div class="stat-l">Khách Hàng</div></div>
-  <div class="stat"><div class="stat-n">[X]</div><div class="stat-l">Giải Thưởng</div></div>
-</section>
-
-<section class="section" id="collection" aria-label="Bộ sưu tập bonsai">
-  <div class="section-head">
+<!-- GALLERY -->
+<section id="gallery" class="gallery-section" aria-label="Hình ảnh quán Bếp Mẹ">
+  <div class="gallery-head">
     <div>
-      <div class="stag">Bộ Sưu Tập</div>
-      <h2>Tác Phẩm Tiêu Biểu</h2>
+      <p class="section-kicker">Hình ảnh</p>
+      <h2 class="display fade-up">Một thoáng <em>Bếp Mẹ</em></h2>
     </div>
-    <a href="#contact" class="btn" style="font-size:.76rem">Xem Tất Cả →</a>
+    <a href="https://zalo.me/0785925998" class="btn-gold fade-up delay-1">Đặt bàn ngay</a>
   </div>
-  <div class="grid">
-    <div class="card">
-      <div class="card-img">
-        <img src="https://placehold.co/400x520/2C3A2E/C4A882?text=Tác+Phẩm+1" alt="Bonsai tác phẩm 1">
-        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
-        <div class="card-badge">Độc Bản</div>
-      </div>
-      <div class="card-info">
-        <div class="card-name">[Tên cây / Dòng cây]</div>
-        <div class="card-meta">
-          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
-          <span class="card-price">Liên hệ</span>
+  <div class="gallery-grid">
+    <div class="gallery-item g1 fade-up">
+      <img src="https://placehold.co/800x1000/2C3A2E/C4A882?text=Không+gian+quán" alt="Không gian nội thất mộc mạc ấm cúng của Bếp Mẹ Đà Lạt" style="height:100%">
+    </div>
+    <div class="gallery-item g2 fade-up delay-1">
+      <img src="https://placehold.co/700x400/C4A882/2C3A2E?text=Cơm+gà+đặc+sản" alt="Cơm gà Đà Lạt đặc sản thơm ngon" style="height:100%">
+    </div>
+    <div class="gallery-item g3 fade-up delay-2">
+      <img src="https://placehold.co/500x400/8B7355/F8F5F0?text=Không+gian+sân+vườn" alt="Sân vườn xanh mát tại Bếp Mẹ" style="height:100%">
+    </div>
+    <div class="gallery-item g4 fade-up delay-1">
+      <img src="https://placehold.co/500x400/F8F5F0/2C3A2E?text=Lẩu+nấm+rừng" alt="Lẩu nấm rừng Đà Lạt nóng hổi thơm ngào ngạt" style="height:100%">
+    </div>
+    <div class="gallery-item g5 fade-up delay-2">
+      <img src="https://placehold.co/700x400/1a2419/C4A882?text=Bữa+cơm+gia+đình" alt="Bữa cơm gia đình đầm ấm tại Bếp Mẹ Đà Lạt" style="height:100%">
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="menu-section" aria-label="Thực đơn Bếp Mẹ">
+  <div class="menu-inner">
+    <div class="menu-top fade-up">
+      <p class="section-kicker" style="justify-content:center">Thực đơn</p>
+      <h2 class="display">Những món <em>không thể bỏ lỡ</em></h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab-btn active">Món chính</button>
+      <button class="tab-btn">Khai vị</button>
+      <button class="tab-btn">Lẩu & Nướng</button>
+      <button class="tab-btn">Tráng miệng</button>
+    </div>
+    <div class="menu-list">
+      <div class="menu-row">
+        <div class="menu-thumb"><img src="https://placehold.co/150x150/C4A882/2C3A2E?text=1" alt="Cơm gà Đà Lạt"></div>
+        <div class="menu-row-info">
+          <h3>Cơm gà Đà Lạt</h3>
+          <p>Gà ta thả đồi, cơm nấu nước cốt gà, rau sống tươi, nước mắm gừng</p>
         </div>
+        <div class="menu-row-price">65k</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-thumb"><img src="https://placehold.co/150x150/8B7355/F8F5F0?text=2" alt="Bún bò Huế"></div>
+        <div class="menu-row-info">
+          <h3>Bún bò Huế</h3>
+          <p>Hầm xương 12 tiếng · Phục vụ 6h–10h sáng · Số lượng có hạn</p>
+        </div>
+        <div class="menu-row-price">55k</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-thumb"><img src="https://placehold.co/150x150/2C3A2E/C4A882?text=3" alt="Cơm tấm sườn nướng"></div>
+        <div class="menu-row-info">
+          <h3>Cơm tấm sườn nướng</h3>
+          <p>Sườn cốt lết ướp sả chanh, nướng than hoa, bì chả trứng mỡ hành</p>
+        </div>
+        <div class="menu-row-price">60k</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-thumb"><img src="https://placehold.co/150x150/F8F5F0/8B7355?text=4" alt="Canh chua cá lóc"></div>
+        <div class="menu-row-info">
+          <h3>Canh chua cá lóc</h3>
+          <p>Cá lóc đồng tươi, me chua thanh, cà chua rau om bạc hà chuẩn Nam Bộ</p>
+        </div>
+        <div class="menu-row-price">Theo kg</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-thumb"><img src="https://placehold.co/150x150/3d5040/C4A882?text=5" alt="Lẩu nấm rừng"></div>
+        <div class="menu-row-info">
+          <h3>Lẩu nấm rừng Đà Lạt</h3>
+          <p>7 loại nấm Đà Lạt · Nước hầm xương ngọt lành · 2–4 người</p>
+        </div>
+        <div class="menu-row-price">180k</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-thumb"><img src="https://placehold.co/150x150/EDE8DF/8B7355?text=6" alt="Chè Thái Đà Lạt"></div>
+        <div class="menu-row-info">
+          <h3>Chè thái Đà Lạt</h3>
+          <p>Nước cốt dừa béo, thạch nhiều màu, trái cây tươi đá bào mát lạnh</p>
+        </div>
+        <div class="menu-row-price">35k</div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-img">
-        <img src="https://placehold.co/400x520/3D4F3F/D4B896?text=Tác+Phẩm+2" alt="Bonsai tác phẩm 2">
-        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
-      </div>
-      <div class="card-info">
-        <div class="card-name">[Tên cây / Dòng cây]</div>
-        <div class="card-meta">
-          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
-          <span class="card-price">[X.X] triệu</span>
+    <p style="text-align:center;margin-top:20px;font-size:13px;color:var(--muted)">* Giá chưa bao gồm VAT · Thực đơn có thể thay đổi theo mùa</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" aria-label="Đánh giá từ thực khách">
+  <div class="testi-inner">
+    <div class="testi-header">
+      <p class="section-kicker">Thực khách nói gì</p>
+      <h2 class="display fade-up" style="color:#fff">Ngàn lời từ <em style="color:var(--gold)">bàn ăn</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Không gian ấm như ở nhà, đồ ăn thơm ngon và giá cả phải chăng. Cơm gà của quán là ngon nhất Đà Lạt tôi từng ăn."</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img src="https://placehold.co/88x88/C4A882/2C3A2E?text=TL" alt="Khách hàng Thanh Lan"></div>
+          <div>
+            <div class="testi-name">Thanh Lan</div>
+            <div class="testi-role">Du khách từ TP.HCM</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-img">
-        <img src="https://placehold.co/400x520/8B7355/F8F5F0?text=Tác+Phẩm+3" alt="Bonsai tác phẩm 3">
-        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
-        <div class="card-badge">Mới</div>
-      </div>
-      <div class="card-info">
-        <div class="card-name">[Tên cây / Dòng cây]</div>
-        <div class="card-meta">
-          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
-          <span class="card-price">[X.X] triệu</span>
+      <div class="testi-card fade-up delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Mỗi lần lên Đà Lạt là ghé Bếp Mẹ. Bún bò sáng sớm ở đây hầm xương thật sự, ngọt nước kiểu mà hiếm quán nào làm được."</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img src="https://placehold.co/88x88/8B7355/F8F5F0?text=MH" alt="Khách hàng Minh Hùng"></div>
+          <div>
+            <div class="testi-name">Minh Hùng</div>
+            <div class="testi-role">Khách quen · Đà Lạt</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-img">
-        <img src="https://placehold.co/400x520/4A5C4C/C4A882?text=Tác+Phẩm+4" alt="Bonsai tác phẩm 4">
-        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
-      </div>
-      <div class="card-info">
-        <div class="card-name">[Tên cây / Dòng cây]</div>
-        <div class="card-meta">
-          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
-          <span class="card-price">[X.X] triệu</span>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-img">
-        <img src="https://placehold.co/400x520/2C3A2E/D4B896?text=Tác+Phẩm+5" alt="Bonsai tác phẩm 5">
-        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
-      </div>
-      <div class="card-info">
-        <div class="card-name">[Tên cây / Dòng cây]</div>
-        <div class="card-meta">
-          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
-          <span class="card-price">[X.X] triệu</span>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-img">
-        <img src="https://placehold.co/400x520/6B5B47/F8F5F0?text=Tác+Phẩm+6" alt="Bonsai tác phẩm 6">
-        <div class="card-overlay"><span>Xem Chi Tiết</span></div>
-        <div class="card-badge">Giải Vàng</div>
-      </div>
-      <div class="card-info">
-        <div class="card-name">[Tên cây / Dòng cây]</div>
-        <div class="card-meta">
-          <span class="card-detail">[Tuổi] năm · [Cao] cm</span>
-          <span class="card-price">Liên hệ</span>
+      <div class="testi-card fade-up delay-2">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Dẫn cả gia đình 8 người đến ăn, ai cũng khen. Lẩu nấm rừng ngon xuất sắc, nước lẩu ngọt tự nhiên không cần bột nêm."</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img src="https://placehold.co/88x88/2C3A2E/C4A882?text=KT" alt="Khách hàng Kim Thoa"></div>
+          <div>
+            <div class="testi-name">Kim Thoa</div>
+            <div class="testi-role">Gia đình · Bình Dương</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="about" id="about" aria-label="Câu chuyện vườn bonsai">
-  <div class="about-img">
-    <img src="https://placehold.co/800x600/8B7355/F8F5F0?text=Nghệ+Nhân" alt="Nghệ nhân bonsai tại vườn">
-  </div>
-  <div class="about-c">
-    <div class="stag">Câu Chuyện</div>
-    <h2>Hơn [X] năm<br>sống cùng bonsai</h2>
-    <p class="txt">[Câu chuyện chân thật của chủ vườn — bắt đầu từ đâu, tại sao yêu bonsai, điều gì tạo nên sự khác biệt.]</p>
-    <br>
-    <p class="txt">[Câu thứ hai — về triết lý làm nghề, cam kết với khách hàng, điều khiến họ tự hào nhất.]</p>
-    <br>
-    <a href="#contact" class="btn" style="margin-top:8px;align-self:flex-start">Gặp Gỡ Chúng Tôi</a>
-  </div>
-</section>
-
-<section class="pricing" id="pricing" aria-label="Bảng giá bonsai">
-  <div class="pricing-head">
-    <div class="stag" style="justify-content:center">Bảng Giá</div>
-    <h2 style="font-size:2.2rem;color:var(--p)">Xứng Đáng Với Giá Trị</h2>
-  </div>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <div class="price-tier">Cây Thường</div>
-      <h3>Bộ Sưu Tập Cơ Bản</h3>
-      <div class="price-amount">Từ [X] triệu</div>
-      <ul class="price-list">
-        <li>[Tuổi cây] năm tuổi trở lên</li>
-        <li>[Dòng cây phổ biến]</li>
-        <li>Chậu đi kèm</li>
-        <li>Hướng dẫn chăm sóc</li>
-        <li>Giao hàng toàn quốc</li>
-      </ul>
-      <a href="#contact" class="btn-price">Tư Vấn Ngay</a>
-    </div>
-    <div class="price-card featured">
-      <div class="price-tier">Tác Phẩm Nghệ Thuật</div>
-      <h3 style="color:#fff">Bộ Sưu Tập Cao Cấp</h3>
-      <div class="price-amount">Từ [XX] triệu</div>
-      <ul class="price-list">
-        <li>Cây độc bản / giải thưởng</li>
-        <li>[Dòng cây quý hiếm]</li>
-        <li>Chậu thủ công cao cấp</li>
-        <li>Chứng nhận nguồn gốc</li>
-        <li>Tư vấn định kỳ 1 năm</li>
-      </ul>
-      <a href="#contact" class="btn-price">Sở Hữu Ngay</a>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact" aria-label="Liên hệ đặt cây">
+<!-- CONTACT + MAP -->
+<section id="lien-he" class="contact-section" aria-label="Địa chỉ và liên hệ Bếp Mẹ">
   <div class="contact-inner">
-    <div class="contact-head">
-      <div class="stag" style="justify-content:center">Liên Hệ</div>
-      <h2>Đặt Cây — Tư Vấn Miễn Phí</h2>
-      <p>Điền thông tin bên dưới, chúng tôi sẽ liên hệ trong 30 phút</p>
+    <div class="fade-up">
+      <div class="map-wrap">
+        <div class="map-placeholder">
+          <div class="map-icon">🗺️</div>
+          <p style="font-size:16px;font-weight:500;color:var(--green);margin-bottom:6px">Bếp Mẹ — Đà Lạt</p>
+          <p>123 Phan Đình Phùng, P. 2<br>TP. Đà Lạt, Lâm Đồng</p>
+          <a href="https://maps.google.com" style="display:inline-block;margin-top:14px;color:#0068FF;font-size:14px;font-weight:500">Mở Google Maps →</a>
+        </div>
+      </div>
     </div>
-    <form class="form" onsubmit="return false;">
-      <div class="form-row">
-        <div class="field"><label>Họ và Tên</label><input type="text" placeholder="Nguyễn Văn A"></div>
-        <div class="field"><label>Số Điện Thoại</label><input type="tel" placeholder="0900 000 000"></div>
+    <div class="contact-right fade-up delay-1">
+      <p class="section-kicker">Tìm chúng tôi</p>
+      <h2 class="display">Ghé thăm<br><em>bất cứ lúc nào</em></h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Địa chỉ</div>
+            <div class="c-value">123 Phan Đình Phùng, Phường 2<br>TP. Đà Lạt, Lâm Đồng</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🕐</div>
+          <div>
+            <div class="c-label">Giờ mở cửa</div>
+            <div class="c-value">Thứ 2 – CN: 6:00 – 21:30<br><span style="font-size:13px;color:var(--muted)">Bún bò sáng: 6:00 – 10:00</span></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Điện thoại</div>
+            <div class="c-value"><a href="tel:0785925998" style="color:var(--green);font-weight:500">0785 925 998</a></div>
+          </div>
+        </div>
       </div>
-      <div class="field">
-        <label>Bạn Quan Tâm Đến</label>
-        <select>
-          <option>Cây trang trí nhà / văn phòng</option>
-          <option>Cây làm quà tặng</option>
-          <option>Cây đầu tư / sưu tầm</option>
-          <option>Tư vấn chung</option>
-        </select>
+      <div class="cta-block">
+        <p>Đặt bàn trước — tránh chờ vào giờ cao điểm. Nhóm từ 10 người liên hệ để có phòng riêng.</p>
+        <a href="https://zalo.me/0785925998" class="zalo-cta">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/></svg>
+          Nhắn Zalo đặt bàn
+        </a>
+        <a href="tel:0785925998" class="tel-cta">📞 Gọi ngay: 0785 925 998</a>
       </div>
-      <div class="field"><label>Ghi Chú Thêm</label><textarea placeholder="Ngân sách dự kiến, yêu cầu đặc biệt..."></textarea></div>
-      <button type="submit" class="btn-submit">Gửi Yêu Cầu Tư Vấn</button>
-    </form>
+    </div>
   </div>
 </section>
 
-<footer>
-  <div class="foot-top">
-    <div class="fb">[Tên Vườn] Bonsai<span>[Tỉnh/Thành Phố] · [Số điện thoại]</span></div>
-    <div class="foot-links">
-      <a href="#collection">Bộ Sưu Tập</a>
-      <a href="#about">Về Chúng Tôi</a>
-      <a href="#pricing">Bảng Giá</a>
-      <a href="#contact">Liên Hệ</a>
+<!-- FOOTER -->
+<footer aria-label="Footer Bếp Mẹ">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Bếp <em>Mẹ</em></h3>
+        <p>Quán ăn gia đình Đà Lạt từ 2014. Nơi hương vị bữa cơm nhà được giữ gìn bằng tình yêu và nguyên liệu tươi mỗi ngày.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Khám phá</h4>
+        <ul>
+          <li><a href="#about">Câu chuyện</a></li>
+          <li><a href="#gallery">Hình ảnh</a></li>
+          <li><a href="#menu">Thực đơn</a></li>
+          <li><a href="#lien-he">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kết nối</h4>
+        <ul>
+          <li><a href="https://zalo.me/0785925998">Zalo</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Google Maps</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Bếp Mẹ · 123 Phan Đình Phùng, TP. Đà Lạt</p>
+      <p>Thiết kế bởi <a href="tel:0785925998">TrongLeTour360</a></p>
     </div>
   </div>
-  <div class="foot-bot">© 2026 [Tên Vườn] Bonsai · [Tỉnh/Thành Phố]. Mọi quyền được bảo lưu.</div>
 </footer>
 
+<!-- FLOATING ZALO -->
+<a href="https://zalo.me/0785925998" class="float-zalo" aria-label="Nhắn Zalo với Bếp Mẹ">
+  <svg width="28" height="28" viewBox="0 0 64 64" fill="none">
+    <path d="M32 4C16.536 4 4 16.536 4 32c0 5.228 1.418 10.134 3.894 14.348L4 60l13.977-3.853C22.035 58.672 26.888 60 32 60c15.464 0 28-12.536 28-28S47.464 4 32 4z" fill="white"/>
+    <path d="M20 24h6M26 32h-6M24 38h2m4-14c0 0 4 2 4 8s-4 8-4 8h6l4 4V32c0-6-4-8-4-8h-6z" stroke="#0068FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Menu tabs (visual only)
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>

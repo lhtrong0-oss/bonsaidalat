@@ -1,540 +1,1292 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>[Tên Vườn] — Nghệ Thuật Bonsai Cao Cấp · MẪU C</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--p:#2C3A2E;--s:#8B7355;--a:#C4A882;--bg:#F8F5F0;--w:#fff;--t:#1A1A1A;--m:#9B9B9B;}
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);line-height:1.7;overflow-x:hidden;}
-h1,h2,h3,h4{font-family:'Playfair Display',serif;letter-spacing:-0.03em;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bếp Mẹ Fine Dining — Đà Lạt | Ẩm thực tinh tế Cao Nguyên</title>
+  <meta name="description" content="Bếp Mẹ Fine Dining — Trải nghiệm ẩm thực Việt tinh tế giữa lòng Đà Lạt. Đặt bàn riêng tư, thực đơn theo mùa, không gian đẳng cấp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* GRAIN */
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px;}
+    :root {
+      --bg: #0F1409;
+      --surface: #171e11;
+      --surface-2: #1e2916;
+      --gold: #D4A853;
+      --gold-dim: #9B7A3C;
+      --gold-pale: rgba(212,168,83,0.12);
+      --cream: #F0EAD6;
+      --white: #FAFAF7;
+      --text: rgba(240,234,214,0.85);
+      --muted: rgba(240,234,214,0.4);
+      --border: rgba(212,168,83,0.15);
+    }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 60px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,padding .4s,box-shadow .4s;}
-nav.scrolled{background:rgba(248,245,240,.96);backdrop-filter:blur(20px);padding:16px 60px;box-shadow:0 1px 40px rgba(44,58,46,.08);}
-.nav-logo{display:flex;flex-direction:column;}
-.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#fff;letter-spacing:-.01em;transition:color .4s;}
-nav.scrolled .nav-logo-text{color:var(--p);}
-.nav-logo-sub{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);transition:color .4s;}
-nav.scrolled .nav-logo-sub{color:var(--m);}
-.nav-links{display:flex;gap:36px;align-items:center;}
-.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;letter-spacing:.04em;transition:color .2s;}
-.nav-links a:hover,.nav-links a:focus-visible{color:var(--a);}
-nav.scrolled .nav-links a{color:var(--s);}
-nav.scrolled .nav-links a:hover{color:var(--p);}
-.nav-cta{background:var(--a);color:var(--p);padding:10px 26px;font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;transition:opacity .2s,transform .2s cubic-bezier(.34,1.56,.64,1);}
-.nav-cta:hover{opacity:.85;transform:translateY(-2px);}
-.nav-cta:active{transform:translateY(0);}
-.nav-cta:focus-visible{outline:2px solid var(--p);outline-offset:3px;}
+    html { scroll-behavior: smooth; }
 
-/* HERO */
-.hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;}
-.hero-bg img{width:100%;height:100%;object-fit:cover;}
-.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(44,58,46,.85) 0%,rgba(44,58,46,.55) 50%,rgba(44,58,46,.2) 100%);}
-.hero-deco{position:absolute;top:0;right:0;width:40%;height:100%;background:linear-gradient(to left,rgba(44,58,46,.6),transparent);pointer-events:none;}
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: none;
+    }
 
-.hero-content{position:relative;z-index:2;padding:0 60px 80px;display:grid;grid-template-columns:1fr 1fr;align-items:flex-end;gap:60px;}
-.hero-left .eyebrow{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--a);margin-bottom:24px;display:flex;align-items:center;gap:14px;}
-.hero-left .eyebrow::before{content:'';width:36px;height:1px;background:var(--a);}
-.hero-left h1{font-size:clamp(3rem,6vw,5.5rem);font-weight:700;color:#fff;line-height:1.0;margin-bottom:28px;}
-.hero-left h1 em{color:var(--a);font-style:italic;display:block;}
-.hero-left p{color:rgba(255,255,255,.65);font-size:1rem;max-width:420px;margin-bottom:40px;line-height:1.85;}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
-.btn-gold{background:var(--a);color:var(--p);padding:14px 36px;font-size:.82rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;display:inline-block;border:none;cursor:pointer;transition:opacity .2s,transform .2s cubic-bezier(.34,1.56,.64,1);}
-.btn-gold:hover{opacity:.88;transform:translateY(-3px);}
-.btn-gold:active{transform:translateY(0);}
-.btn-gold:focus-visible{outline:2px solid #fff;outline-offset:3px;}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;padding:14px 36px;font-size:.82rem;font-weight:400;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:border-color .2s,background .2s,transform .2s cubic-bezier(.34,1.56,.64,1);}
-.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);transform:translateY(-3px);}
-.btn-ghost:active{transform:translateY(0);}
-.btn-ghost:focus-visible{outline:2px solid var(--a);outline-offset:3px;}
+    h1, h2, h3 { font-family: 'Italiana', serif; }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
 
-.hero-right{display:flex;flex-direction:column;gap:16px;align-items:flex-end;}
-.hero-stat{background:rgba(248,245,240,.08);backdrop-filter:blur(8px);border:1px solid rgba(196,168,130,.2);padding:20px 28px;text-align:right;min-width:180px;}
-.hero-stat-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--a);line-height:1;}
-.hero-stat-l{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;}
+    /* ── CUSTOM CURSOR ───────────────────────────── */
+    .cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s, width 0.2s, height 0.2s, background 0.2s;
+      mix-blend-mode: difference;
+    }
+    .cursor.grow {
+      width: 40px; height: 40px;
+      background: rgba(212,168,83,0.25);
+    }
 
-.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.4);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;z-index:2;}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollAnim 2s ease infinite;}
-@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+    /* ── DEMO BANNER ────────────────────────────── */
+    .demo-banner {
+      position: relative;
+      z-index: 300;
+      background: var(--gold);
+      color: var(--bg);
+      text-align: center;
+      padding: 9px 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+    .demo-banner a { color: var(--bg); font-weight: 700; margin-left: 10px; text-decoration: underline; }
 
-/* MARQUEE */
-.marquee-wrap{background:var(--a);padding:14px 0;overflow:hidden;}
-.marquee{display:flex;gap:48px;animation:marquee 20s linear infinite;white-space:nowrap;}
-.marquee span{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--p);font-weight:600;flex-shrink:0;}
-.marquee span.dot{color:var(--p);opacity:.4;}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 24px 0;
+      transition: background 0.5s, padding 0.4s, box-shadow 0.4s;
+    }
+    nav.compact {
+      background: rgba(15,20,9,0.96);
+      backdrop-filter: blur(16px);
+      padding: 14px 0;
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Italiana', serif;
+      font-size: 24px;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+    }
+    .nav-logo em { font-style: normal; color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-reserve {
+      font-size: 11px !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase;
+      border: 1px solid var(--gold) !important;
+      color: var(--gold) !important;
+      padding: 10px 24px;
+      transition: background 0.25s, color 0.25s !important;
+    }
+    .nav-reserve:hover {
+      background: var(--gold) !important;
+      color: var(--bg) !important;
+    }
 
-/* STORY */
-.story{padding:120px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.story-visual{position:relative;}
-.story-img{width:100%;aspect-ratio:4/5;object-fit:cover;}
-.story-frame{position:absolute;top:-20px;left:-20px;right:20px;bottom:20px;border:1px solid var(--a);pointer-events:none;opacity:.4;}
-.story-tag{position:absolute;bottom:-20px;right:-20px;background:var(--p);padding:24px 28px;box-shadow:0 8px 40px rgba(44,58,46,.25);}
-.story-tag p{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:6px;}
-.story-tag strong{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--a);}
-.stag{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--a);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
-.stag::before{content:'';width:20px;height:1px;background:var(--a);}
-h2{font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--p);line-height:1.2;margin-bottom:24px;}
-.txt{color:#4d4d4d;line-height:1.95;font-size:.95rem;margin-bottom:16px;}
-.story-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--s);border-left:2px solid var(--a);padding-left:20px;margin:28px 0;line-height:1.85;}
+    /* ── HERO ─────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-parallax {
+      position: absolute;
+      inset: -10%;
+      background: url('https://placehold.co/2000x1200/0F1409/D4A853?text=') center/cover no-repeat;
+      will-change: transform;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center bottom, rgba(15,20,9,0.3) 0%, rgba(15,20,9,0.85) 100%);
+    }
+    .hero-overlay-top {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(15,20,9,0.6) 0%, transparent 30%, transparent 70%, rgba(15,20,9,0.9) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 32px;
+      max-width: 900px;
+    }
+    .hero-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .hero-ornament .line { flex: 1; max-width: 60px; height: 1px; background: var(--gold-dim); }
+    .hero-ornament span { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 400; }
+    .hero h1 {
+      font-size: clamp(56px, 9vw, 120px);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 0.95;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); display: block; font-size: 0.65em; }
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 48px;
+      letter-spacing: 0.03em;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-reserve {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: var(--bg);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 16px 36px;
+      border: 1px solid var(--gold);
+      transition: background 0.25s, color 0.25s, transform 0.2s;
+    }
+    .btn-reserve:hover { background: transparent; color: var(--gold); transform: translateY(-2px); }
+    .btn-reserve:active { transform: translateY(0); }
+    .btn-link {
+      font-size: 12px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted);
+      border-bottom: 1px solid rgba(240,234,214,0.15);
+      padding-bottom: 2px;
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .btn-link:hover { color: var(--gold); border-color: var(--gold); }
 
-/* FEATURED */
-.featured{padding:0 60px 120px;}
-.featured-head{text-align:center;margin-bottom:64px;}
-.featured-head h2{font-size:clamp(2rem,4vw,3rem);color:var(--p);}
-.featured-head p{color:var(--s);font-size:.95rem;margin-top:12px;}
-.featured-grid{display:grid;gap:2px;}
-.feat-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2px;}
-.feat-row:nth-child(2){grid-template-columns:1fr 1fr 2fr;}
-.feat-card{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:auto;}
-.feat-card-img{width:100%;height:320px;object-fit:cover;transition:transform .6s cubic-bezier(.34,1.56,.64,1);}
-.feat-row .feat-card:first-child .feat-card-img,.feat-row:nth-child(2) .feat-card:last-child .feat-card-img{height:420px;}
-.feat-card:hover .feat-card-img{transform:scale(1.05);}
-.feat-card-info{position:absolute;bottom:0;left:0;right:0;padding:24px 28px;background:linear-gradient(to top,rgba(44,58,46,.9) 0%,transparent 100%);transform:translateY(8px);transition:transform .3s;}
-.feat-card:hover .feat-card-info{transform:translateY(0);}
-.feat-card-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;margin-bottom:4px;}
-.feat-card-meta{font-size:.74rem;color:rgba(255,255,255,.6);display:flex;justify-content:space-between;}
-.feat-card-price{color:var(--a);font-weight:600;}
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-scroll span { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .scroll-dot {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+      position: relative;
+      overflow: hidden;
+    }
+    .scroll-dot::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 20px;
+      background: var(--gold);
+      animation: scrollDot 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollDot {
+      0% { top: -20px; }
+      100% { top: 80px; }
+    }
 
-/* RECOGNITION */
-.recognition{background:var(--p);padding:80px 60px;}
-.rec-inner{max-width:1100px;margin:0 auto;}
-.rec-head{text-align:center;margin-bottom:56px;}
-.rec-head h2{color:#fff;font-size:2rem;}
-.rec-head p{color:rgba(255,255,255,.5);font-size:.9rem;margin-top:10px;}
-.rec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.07);}
-.rec-item{background:var(--p);padding:36px 28px;text-align:center;}
-.rec-icon{font-size:2rem;margin-bottom:14px;}
-.rec-name{font-family:'Playfair Display',serif;font-size:1.05rem;color:#fff;margin-bottom:6px;}
-.rec-detail{font-size:.78rem;color:rgba(255,255,255,.4);}
+    /* ── PHILOSOPHY ──────────────────────────────── */
+    .philosophy {
+      padding: 120px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .philosophy::before {
+      content: 'Bếp Mẹ';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-family: 'Italiana', serif;
+      font-size: 280px;
+      color: rgba(212,168,83,0.025);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: 0.02em;
+    }
+    .philo-inner { max-width: 860px; margin: 0 auto; position: relative; }
+    .philo-ornament {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent);
+      margin: 0 auto 32px;
+    }
+    .philo-kicker {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px;
+    }
+    .philo-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(22px, 3.5vw, 36px);
+      color: var(--cream);
+      line-height: 1.55;
+      margin-bottom: 32px;
+    }
+    .philo-credit { font-size: 13px; color: var(--muted); letter-spacing: 0.08em; }
 
-/* PROCESS */
-.process{padding:120px 60px;}
-.process-head{text-align:center;margin-bottom:72px;}
-.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1100px;margin:0 auto;}
-.proc-item{text-align:center;}
-.proc-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:rgba(44,58,46,.1);line-height:1;margin-bottom:16px;}
-.proc-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--p);margin-bottom:12px;}
-.proc-desc{font-size:.85rem;color:var(--m);line-height:1.75;}
-.proc-divider{width:1px;background:var(--a);height:60px;margin:0 auto 16px;opacity:.4;}
+    /* ── ABOUT ───────────────────────────────────── */
+    .about-dark {
+      padding: 80px 0;
+      background: var(--surface);
+    }
+    .about-grid {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .about-img { height: 680px; overflow: hidden; }
+    .about-img img { height: 100%; transition: transform 8s ease-out; }
+    .about-img:hover img { transform: scale(1.04); }
+    .about-text {
+      padding: 80px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .gold-rule {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 32px;
+    }
+    .gold-rule span { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .gold-rule::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold-dim); }
+    .about-text h2 {
+      font-size: clamp(36px, 4vw, 60px);
+      color: var(--cream);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+    .about-text h2 em { font-style: italic; color: var(--gold); }
+    .about-text p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+    .about-divider {
+      width: 40px; height: 1px;
+      background: var(--gold-dim);
+      margin: 24px 0;
+    }
+    .awards {
+      display: flex; gap: 32px; flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .award-item { text-align: center; }
+    .award-num {
+      font-family: 'Italiana', serif;
+      font-size: 36px;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .award-label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 
-/* PRICING */
-.pricing{padding:80px 60px;background:var(--bg);}
-.pricing-head{text-align:center;margin-bottom:64px;}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto;}
-.pc{background:var(--w);padding:44px 36px;position:relative;box-shadow:0 2px 16px rgba(44,58,46,.05),0 12px 48px rgba(44,58,46,.08);}
-.pc.featured{background:var(--p);transform:translateY(-12px);}
-.pc-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--a);color:var(--p);font-size:.64rem;font-weight:700;letter-spacing:.12em;padding:6px 20px;text-transform:uppercase;}
-.pc-tier{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--m);margin-bottom:12px;}
-.pc.featured .pc-tier{color:rgba(255,255,255,.4);}
-.pc h3{font-size:1.4rem;color:var(--p);margin-bottom:6px;}
-.pc.featured h3{color:#fff;}
-.pc-price{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--a);line-height:1;margin-bottom:8px;}
-.pc-note{font-size:.78rem;color:var(--m);margin-bottom:28px;}
-.pc.featured .pc-note{color:rgba(255,255,255,.4);}
-.pc-sep{height:1px;background:rgba(44,58,46,.08);margin-bottom:24px;}
-.pc.featured .pc-sep{background:rgba(255,255,255,.08);}
-.pc-list{list-style:none;margin-bottom:32px;}
-.pc-list li{font-size:.85rem;color:#555;padding:9px 0;border-bottom:1px solid rgba(44,58,46,.06);display:flex;align-items:center;gap:10px;}
-.pc.featured .pc-list li{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.07);}
-.pc-list li::before{content:'✦';color:var(--a);font-size:.6rem;flex-shrink:0;}
-.pc-btn{width:100%;padding:14px;font-size:.8rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:block;text-align:center;border:1.5px solid var(--p);background:transparent;color:var(--p);}
-.pc-btn:hover{background:var(--p);color:#fff;}
-.pc.featured .pc-btn{border-color:var(--a);background:var(--a);color:var(--p);}
-.pc.featured .pc-btn:hover{opacity:.88;}
-.pc-btn:focus-visible{outline:2px solid var(--a);outline-offset:3px;}
+    /* ── GALLERY LIGHTBOX ────────────────────────── */
+    .gallery-dark { padding: 100px 48px; }
+    .gallery-head {
+      max-width: 1300px;
+      margin: 0 auto 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .gallery-head h2 {
+      font-size: clamp(32px, 4vw, 56px);
+      color: var(--cream);
+      font-weight: 400;
+    }
+    .gallery-head h2 em { font-style: italic; color: var(--gold); }
+    .gallery-grid-dark {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .g-item {
+      position: relative;
+      overflow: hidden;
+      cursor: none;
+    }
+    .g-item.tall { grid-row: span 2; }
+    .g-item img {
+      height: 320px;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .g-item.tall img { height: 648px; }
+    .g-item:hover img { transform: scale(1.06); }
+    .g-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,20,9,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.35s;
+    }
+    .g-item:hover .g-overlay { background: rgba(15,20,9,0.4); }
+    .g-icon {
+      width: 48px; height: 48px;
+      border: 1px solid rgba(212,168,83,0.6);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      font-size: 18px;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .g-item:hover .g-icon { opacity: 1; transform: scale(1); }
 
-/* CONTACT */
-.contact{padding:120px 60px;background:var(--p);position:relative;overflow:hidden;}
-.contact::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(196,168,130,.07) 0%,transparent 70%);pointer-events:none;}
-.contact-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.contact-left .stag::before{background:var(--a);}
-.contact-left .stag{color:var(--a);}
-.contact-left h2{color:#fff;font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:20px;}
-.contact-left p{color:rgba(255,255,255,.55);line-height:1.85;font-size:.94rem;margin-bottom:32px;}
-.contact-info{display:flex;flex-direction:column;gap:16px;}
-.ci{display:flex;gap:16px;align-items:flex-start;}
-.ci-icon{width:36px;height:36px;border:1px solid rgba(196,168,130,.3);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--a);flex-shrink:0;}
-.ci-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:4px;}
-.ci-val{color:rgba(255,255,255,.8);font-size:.92rem;}
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.95);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border: 1px solid var(--border);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 28px; right: 36px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 32px;
+      cursor: none;
+      transition: color 0.2s;
+      line-height: 1;
+    }
+    .lightbox-close:hover { color: var(--gold); }
+    .lightbox-nav {
+      display: flex;
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .lightbox-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      padding: 10px 28px;
+      cursor: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .lightbox-btn:hover { background: var(--gold-pale); border-color: var(--gold); }
 
-.form{display:flex;flex-direction:column;gap:14px;}
-.field label{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:7px;font-weight:500;}
-.field input,.field select,.field textarea{width:100%;padding:13px 16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);font-family:'Inter',sans-serif;font-size:.9rem;color:#fff;outline:none;transition:border-color .2s;}
-.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.25);}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--a);}
-.field select option{background:var(--p);color:#fff;}
-.field textarea{resize:vertical;min-height:110px;}
-.btn-submit{background:var(--a);color:var(--p);padding:15px 40px;font-size:.82rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;border:none;cursor:pointer;width:100%;}
-.btn-submit:hover{opacity:.88;}
-.btn-submit:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+    /* ── MENU DARK ───────────────────────────────── */
+    .menu-dark {
+      background: var(--surface);
+      padding: 100px 48px;
+    }
+    .menu-dark-inner { max-width: 1300px; margin: 0 auto; }
+    .menu-dark-header { text-align: center; margin-bottom: 64px; }
+    .menu-dark-header h2 { font-size: clamp(36px, 5vw, 64px); color: var(--cream); font-weight: 400; margin-bottom: 12px; }
+    .menu-dark-header h2 em { font-style: italic; color: var(--gold); }
+    .menu-dark-header p { font-size: 14px; color: var(--muted); letter-spacing: 0.05em; }
+    .menu-season {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+    .menu-season .line { flex: 1; max-width: 80px; height: 1px; background: var(--border); }
+    .menu-season span { font-size: 11px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; }
+    .menu-dark-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .menu-dark-card {
+      background: var(--surface);
+      padding: 36px 32px;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .menu-dark-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      transform-origin: left;
+    }
+    .menu-dark-card:hover { background: var(--surface-2); }
+    .menu-dark-card:hover::before { transform: scaleX(1); }
+    .dish-num {
+      font-size: 11px;
+      color: var(--gold-dim);
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+    }
+    .dish-img {
+      height: 180px;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .dish-img img { height: 100%; transition: transform 0.5s; }
+    .menu-dark-card:hover .dish-img img { transform: scale(1.06); }
+    .dish-name {
+      font-size: 22px;
+      color: var(--cream);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .dish-desc { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; font-weight: 300; }
+    .dish-footer { display: flex; justify-content: space-between; align-items: center; }
+    .dish-price { font-family: 'Italiana', serif; font-size: 24px; color: var(--gold); }
+    .dish-tag {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+    }
 
-/* FOOTER */
-footer{background:#1a2419;padding:48px 60px 32px;}
-.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06);}
-.foot-brand{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;margin-bottom:12px;}
-.foot-brand-sub{font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.75;font-family:'Inter',sans-serif;}
-.foot-col-title{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--a);margin-bottom:16px;}
-.foot-col a{display:block;color:rgba(255,255,255,.38);text-decoration:none;font-size:.82rem;margin-bottom:10px;transition:color .2s;}
-.foot-col a:hover{color:rgba(255,255,255,.75);}
-.foot-col a:focus-visible{outline:1px solid var(--a);outline-offset:3px;}
-.foot-bot{padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
-.foot-copy{font-size:.72rem;color:rgba(255,255,255,.2);}
+    /* ── RESERVATION ─────────────────────────────── */
+    .reservation {
+      padding: 120px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .reservation::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(212,168,83,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .reservation-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .reservation-header { text-align: center; margin-bottom: 64px; }
+    .reservation-header h2 { font-size: clamp(36px, 5vw, 64px); color: var(--cream); font-weight: 400; }
+    .reservation-header h2 em { font-style: italic; color: var(--gold); }
+    .reservation-header p { font-size: 14px; color: var(--muted); margin-top: 12px; line-height: 1.7; }
+    .res-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .res-form .full { grid-column: span 2; }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-field label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+    .form-field input, .form-field select, .form-field textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color 0.25s;
+      width: 100%;
+    }
+    .form-field input::placeholder, .form-field textarea::placeholder { color: var(--muted); }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--gold); }
+    .form-field select { appearance: none; cursor: pointer; }
+    .form-field select option { background: var(--surface); }
+    .form-field textarea { min-height: 100px; resize: vertical; }
+    .res-submit {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      background: var(--gold);
+      color: var(--bg);
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: none;
+      cursor: none;
+      margin-top: 8px;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .res-submit:hover { background: #c4973d; transform: translateY(-2px); }
+    .res-submit:active { transform: translateY(0); }
+    .res-note {
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 16px;
+      font-weight: 300;
+    }
+    .res-note a { color: var(--gold); }
 
-/* ANIMATIONS */
-@keyframes fu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.hero-left .eyebrow{animation:fu .7s ease both;}
-.hero-left h1{animation:fu .7s .12s ease both;}
-.hero-left p{animation:fu .7s .24s ease both;}
-.hero-btns{animation:fu .7s .36s ease both;}
-.hero-right{animation:fu .7s .2s ease both;}
-.scroll-hint{animation:fu .7s .6s ease both;}
+    /* ── TESTIMONIALS ────────────────────────────── */
+    .testi-dark {
+      background: var(--surface);
+      padding: 100px 48px;
+    }
+    .testi-dark-inner { max-width: 1100px; margin: 0 auto; }
+    .testi-dark-header { text-align: center; margin-bottom: 64px; }
+    .testi-dark-header h2 { font-size: clamp(32px, 4vw, 52px); color: var(--cream); font-weight: 400; }
+    .testi-dark-header h2 em { font-style: italic; color: var(--gold); }
+    .testi-dark-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .testi-dark-card {
+      border: 1px solid var(--border);
+      padding: 40px 36px;
+      position: relative;
+    }
+    .testi-dark-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px; left: 28px;
+      font-family: 'Italiana', serif;
+      font-size: 80px;
+      color: var(--gold-pale);
+      line-height: 1;
+    }
+    .testi-stars { color: var(--gold); letter-spacing: 3px; font-size: 13px; margin-bottom: 16px; }
+    .testi-dark-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 16.5px;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+    .testi-dark-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .testi-dark-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--gold-dim);
+    }
+    .testi-dark-avatar img { height: 42px; }
+    .testi-dark-name { font-size: 14px; color: var(--cream); font-weight: 500; }
+    .testi-dark-role { font-size: 12px; color: var(--muted); margin-top: 2px; letter-spacing: 0.04em; }
 
-/* SCROLL REVEAL */
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
+    /* ── CONTACT DARK ────────────────────────────── */
+    .contact-dark { padding: 100px 48px; }
+    .contact-dark-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .contact-dark h2 { font-size: clamp(32px, 4vw, 56px); color: var(--cream); font-weight: 400; margin-bottom: 32px; }
+    .contact-dark h2 em { font-style: italic; color: var(--gold); }
+    .contact-lines { display: flex; flex-direction: column; gap: 24px; }
+    .c-line {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .c-line:last-child { border-bottom: none; }
+    .c-num {
+      font-family: 'Italiana', serif;
+      font-size: 28px;
+      color: var(--gold-dim);
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .c-content-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .c-content-val { font-size: 15px; color: var(--text); line-height: 1.6; font-weight: 300; }
+    .c-content-val a { color: var(--gold); transition: opacity 0.2s; }
+    .c-content-val a:hover { opacity: 0.75; }
+    .contact-cta-col { display: flex; flex-direction: column; gap: 16px; }
+    .cta-gold {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      background: var(--gold); color: var(--bg);
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 18px 32px;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .cta-gold:hover { background: #c4973d; transform: translateY(-2px); }
+    .cta-gold:active { transform: translateY(0); }
+    .cta-zalo {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      background: transparent; color: var(--cream);
+      font-size: 13px; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 17px 32px;
+      border: 1px solid var(--border);
+      transition: border-color 0.25s, color 0.25s, transform 0.2s;
+    }
+    .cta-zalo:hover { border-color: #0068FF; color: #6EB5FF; transform: translateY(-2px); }
+    .cta-zalo:active { transform: translateY(0); }
+    .contact-note { font-size: 12px; color: var(--muted); text-align: center; letter-spacing: 0.04em; }
 
-@media(max-width:1100px){
-  .foot-top{grid-template-columns:1fr 1fr;}
-  .pricing-grid{grid-template-columns:1fr;}
-  .pc.featured{transform:none;}
-  .rec-grid{grid-template-columns:repeat(2,1fr);}
-  .process-grid{grid-template-columns:repeat(2,1fr);}
-}
-@media(max-width:768px){
-  nav{padding:16px 20px;}
-  nav.scrolled{padding:14px 20px;}
-  .nav-links{display:none;}
-  .hero-content{grid-template-columns:1fr;padding:0 20px 60px;gap:32px;}
-  .hero-right{flex-direction:row;justify-content:flex-start;}
-  .story{grid-template-columns:1fr;padding:60px 20px;}
-  .story-frame{display:none;}
-  .story-tag{position:static;margin-top:20px;}
-  .featured{padding:0 20px 60px;}
-  .feat-row,.feat-row:nth-child(2){grid-template-columns:1fr;}
-  .feat-card-img,.feat-row .feat-card:first-child .feat-card-img,.feat-row:nth-child(2) .feat-card:last-child .feat-card-img{height:260px;}
-  .recognition{padding:60px 20px;}
-  .rec-grid{grid-template-columns:repeat(2,1fr);}
-  .process{padding:60px 20px;}
-  .process-grid{grid-template-columns:1fr 1fr;}
-  .pricing{padding:60px 20px;}
-  .contact{padding:60px 20px;}
-  .contact-inner{grid-template-columns:1fr;gap:40px;}
-  footer{padding:40px 20px 24px;}
-  .foot-top{grid-template-columns:1fr;}
-  .foot-bot{flex-direction:column;gap:12px;text-align:center;}
-}
-</style>
+    /* ── FOOTER DARK ─────────────────────────────── */
+    footer {
+      background: #060c04;
+      padding: 60px 48px 28px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner { max-width: 1300px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+    .footer-logo {
+      font-family: 'Italiana', serif;
+      font-size: 28px;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .footer-logo em { font-style: italic; color: var(--gold); }
+    .footer-brand-text { font-size: 13px; color: var(--muted); line-height: 1.75; font-weight: 300; max-width: 280px; }
+    .footer-col h4 {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      font-size: 13.5px;
+      color: var(--muted);
+      font-weight: 300;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .footer-col ul a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 12px; color: var(--muted); font-weight: 300; }
+    .footer-bottom a { color: var(--gold-dim); }
+
+    /* ── FLOAT CTA ───────────────────────────────── */
+    .float-cta {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 300;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
+    .float-zalo-dark {
+      background: #0068FF;
+      color: #fff;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,104,255,0.35);
+      transition: transform 0.2s;
+    }
+    .float-zalo-dark:hover { transform: scale(1.1); }
+    .float-zalo-dark:active { transform: scale(0.97); }
+
+    /* ── REVEAL ANIMATIONS ───────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .reveal.d1 { transition-delay: 0.1s; }
+    .reveal.d2 { transition-delay: 0.2s; }
+    .reveal.d3 { transition-delay: 0.3s; }
+    .reveal.d4 { transition-delay: 0.4s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-line {
+      opacity: 0;
+      clip-path: inset(0 100% 0 0);
+      transition: opacity 0.1s, clip-path 1s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .reveal-line.visible { opacity: 1; clip-path: inset(0 0% 0 0); }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 1000px) {
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { height: 400px; }
+      .about-text { padding: 48px 32px; }
+      .gallery-grid-dark { grid-template-columns: repeat(2, 1fr); }
+      .g-item.tall img { height: 320px; }
+      .menu-dark-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-dark-grid { grid-template-columns: 1fr; }
+      .contact-dark-inner { grid-template-columns: 1fr; gap: 48px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      body { cursor: auto; }
+      .cursor { display: none; }
+    }
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 54px; }
+      .philosophy { padding: 80px 24px; }
+      .gallery-dark, .menu-dark, .testi-dark, .contact-dark, .reservation { padding: 64px 20px; }
+      .about-text { padding: 40px 20px; }
+      .res-form { grid-template-columns: 1fr; }
+      .res-form .full { grid-column: span 1; }
+      .menu-dark-grid { grid-template-columns: 1fr; }
+      .gallery-grid-dark { grid-template-columns: 1fr; }
+      footer { padding: 48px 20px 24px; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
 </head>
 <body>
 
-<div style="background:var(--p);color:var(--a);text-align:center;padding:8px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:200;border-bottom:1px solid rgba(196,168,130,.2);">
-  MẪU C — LUXURY FULL BRAND · GÓI 25–50 TRIỆU · Thay nội dung [trong ngoặc]
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+
+<!-- DEMO BANNER -->
+<div class="demo-banner">
+  🖤 MẪU C — GÓI 25–50 TRIỆU · Dark luxury · Parallax · Lightbox · Đặt bàn online · Micro-animations
+  <a href="tel:0785925998">Tư vấn: 0785 925 998</a>
 </div>
 
-<nav id="nav">
-  <div class="nav-logo">
-    <span class="nav-logo-text">[Tên Vườn]</span>
-    <span class="nav-logo-sub">Nghệ Thuật Bonsai · [Năm]</span>
+<!-- NAV -->
+<nav id="mainNav" aria-label="Điều hướng chính">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Bếp <em>Mẹ</em></a>
+    <ul class="nav-links">
+      <li><a href="#philosophy">Triết Lý</a></li>
+      <li><a href="#gallery-section">Hình Ảnh</a></li>
+      <li><a href="#menu-section">Thực Đơn</a></li>
+      <li><a href="#reservation">Đặt Bàn</a></li>
+      <li><a href="#contact" class="nav-reserve">Liên Hệ</a></li>
+    </ul>
   </div>
-  <div class="nav-links">
-    <a href="#story">Câu Chuyện</a>
-    <a href="#featured">Tác Phẩm</a>
-    <a href="#recognition">Thành Tích</a>
-    <a href="#pricing">Giá Trị</a>
-  </div>
-  <a href="#contact" class="nav-cta">Tư Vấn Ngay</a>
 </nav>
 
-<section class="hero" aria-label="Trang chủ vườn bonsai cao cấp">
-  <div class="hero-bg">
-    <img src="https://placehold.co/1920x1080/1a2419/C4A882?text=Bonsai+Luxury" alt="Tác phẩm bonsai đỉnh cao nghệ thuật Việt Nam">
-  </div>
-  <div class="hero-deco"></div>
+<!-- HERO -->
+<section class="hero" aria-label="Giới thiệu Bếp Mẹ Fine Dining">
+  <div class="hero-parallax" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay-top"></div>
   <div class="hero-content">
-    <div class="hero-left">
-      <div class="eyebrow">[Tỉnh/Thành] · Nghệ Nhân Được Công Nhận</div>
-      <h1>Đỉnh Cao<br><em>Nghệ Thuật Bonsai</em><br>Việt Nam</h1>
-      <p>Mỗi tác phẩm là di sản sống — được hun đúc qua hàng thập kỷ bởi bàn tay nghệ nhân, mang linh hồn của đất cao nguyên và rừng thông bất tận.</p>
-      <div class="hero-btns">
-        <a href="#featured" class="btn-gold">Khám Phá Tác Phẩm</a>
-        <a href="#story" class="btn-ghost">Câu Chuyện Của Chúng Tôi</a>
-      </div>
+    <div class="hero-ornament">
+      <span class="line"></span>
+      <span>Fine Dining · Đà Lạt · Est. 2014</span>
+      <span class="line"></span>
     </div>
-    <div class="hero-right">
-      <div class="hero-stat"><div class="hero-stat-n">[X]+</div><div class="hero-stat-l">Năm Nghề</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">[X]+</div><div class="hero-stat-l">Tác Phẩm Độc Bản</div></div>
-      <div class="hero-stat"><div class="hero-stat-n">[X]</div><div class="hero-stat-l">Giải Thưởng QG</div></div>
+    <h1>Bếp <em>Mẹ</em></h1>
+    <p class="hero-tagline">Khi ẩm thực Việt chạm đến tinh tế</p>
+    <div class="hero-actions">
+      <a href="#reservation" class="btn-reserve">Đặt Bàn Ngay</a>
+      <a href="#menu-section" class="btn-link">Khám phá thực đơn</a>
     </div>
   </div>
-  <div class="scroll-hint"><div class="scroll-line"></div>Cuộn Xuống</div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Cuộn</span>
+    <div class="scroll-dot"></div>
+  </div>
 </section>
 
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee">
-    <span>Nghệ Thuật Bonsai</span><span class="dot">✦</span>
-    <span>[Tên Vườn]</span><span class="dot">✦</span>
-    <span>Đỉnh Cao Nghề Nghiệp</span><span class="dot">✦</span>
-    <span>Giải Thưởng Toàn Quốc</span><span class="dot">✦</span>
-    <span>Tác Phẩm Độc Bản</span><span class="dot">✦</span>
-    <span>[Tỉnh/Thành Phố]</span><span class="dot">✦</span>
-    <span>Nghệ Thuật Bonsai</span><span class="dot">✦</span>
-    <span>[Tên Vườn]</span><span class="dot">✦</span>
-    <span>Đỉnh Cao Nghề Nghiệp</span><span class="dot">✦</span>
-    <span>Giải Thưởng Toàn Quốc</span><span class="dot">✦</span>
-    <span>Tác Phẩm Độc Bản</span><span class="dot">✦</span>
-    <span>[Tỉnh/Thành Phố]</span><span class="dot">✦</span>
+<!-- PHILOSOPHY -->
+<section id="philosophy" class="philosophy" aria-label="Triết lý ẩm thực">
+  <div class="philo-inner reveal">
+    <div class="philo-ornament"></div>
+    <p class="philo-kicker">Triết Lý Ẩm Thực</p>
+    <p class="philo-text">"Nấu ăn với tôi là cuộc trò chuyện không lời — giữa người nấu và người thưởng thức, giữa đất Đà Lạt và bàn tay người giữ bếp."</p>
+    <p class="philo-credit">— Cô Hoa, người sáng lập Bếp Mẹ</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-dark" aria-label="Câu chuyện và triết lý">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <img src="https://placehold.co/1000x1200/0F1409/D4A853?text=Bếp+Mẹ" alt="Không gian Bếp Mẹ Fine Dining Đà Lạt với ánh nến và bàn gỗ tối">
+    </div>
+    <div class="about-text">
+      <div class="gold-rule reveal"><span>Câu Chuyện</span></div>
+      <h2 class="reveal d1">Từ bếp lửa nhỏ<br><em>đến nghệ thuật</em></h2>
+      <p class="reveal d2">Năm 2014, Bếp Mẹ bắt đầu như bao quán cơm bình thường trong một hẻm nhỏ Đà Lạt. Nhưng khi người ta ăn mà im lặng, nhắm mắt lại — đó là khoảnh khắc chúng tôi hiểu điều mình đang làm đã vượt qua giới hạn của "quán ăn".</p>
+      <p class="reveal d3">Một thập kỷ sau, chúng tôi không còn nấu ăn. Chúng tôi kể chuyện — chuyện mùa, chuyện đất, chuyện về người Đà Lạt — bằng ngôn ngữ của hương vị.</p>
+      <div class="about-divider reveal d3"></div>
+      <div class="awards reveal d4">
+        <div class="award-item">
+          <span class="award-num">10+</span>
+          <span class="award-label">Năm kinh nghiệm</span>
+        </div>
+        <div class="award-item">
+          <span class="award-num">★ 4.9</span>
+          <span class="award-label">Google Review</span>
+        </div>
+        <div class="award-item">
+          <span class="award-num">2000+</span>
+          <span class="award-label">Thực khách tin tưởng</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery-section" class="gallery-dark" aria-label="Thư viện ảnh Bếp Mẹ">
+  <div class="gallery-head reveal">
+    <div>
+      <p style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:12px;font-weight:400">Hình Ảnh</p>
+      <h2 class="reveal d1">Một thoáng <em>Bếp Mẹ</em></h2>
+    </div>
+    <a href="#reservation" class="btn-reserve reveal d2">Đặt Bàn</a>
+  </div>
+  <div class="gallery-grid-dark">
+    <div class="g-item tall reveal" data-img="https://placehold.co/1200x1400/0F1409/D4A853?text=Không+gian+1">
+      <img src="https://placehold.co/600x700/0F1409/D4A853?text=Không+gian+1" alt="Không gian fine dining tối tĩnh tại Bếp Mẹ" style="height:648px">
+      <div class="g-overlay"><div class="g-icon">⊕</div></div>
+    </div>
+    <div class="g-item reveal d1" data-img="https://placehold.co/800x600/1e2916/D4A853?text=Món+khai+vị">
+      <img src="https://placehold.co/600x320/1e2916/D4A853?text=Món+khai+vị" alt="Món khai vị tinh tế được trình bày nghệ thuật">
+      <div class="g-overlay"><div class="g-icon">⊕</div></div>
+    </div>
+    <div class="g-item reveal d2" data-img="https://placehold.co/800x600/171e11/D4A853?text=Bàn+tiệc">
+      <img src="https://placehold.co/600x320/171e11/D4A853?text=Bàn+tiệc" alt="Bàn tiệc riêng tư với nến và hoa tươi">
+      <div class="g-overlay"><div class="g-icon">⊕</div></div>
+    </div>
+    <div class="g-item reveal d1" data-img="https://placehold.co/800x600/0F1409/9B7A3C?text=Nguyên+liệu">
+      <img src="https://placehold.co/600x320/0F1409/9B7A3C?text=Nguyên+liệu" alt="Nguyên liệu tươi Đà Lạt được chọn lựa mỗi sáng">
+      <div class="g-overlay"><div class="g-icon">⊕</div></div>
+    </div>
+    <div class="g-item reveal d2" data-img="https://placehold.co/800x600/1e2916/C4A882?text=Không+gian+2">
+      <img src="https://placehold.co/600x320/1e2916/C4A882?text=Không+gian+2" alt="Góc ngồi riêng tư bên cửa sổ nhìn ra vườn">
+      <div class="g-overlay"><div class="g-icon">⊕</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh phóng to">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Đóng">×</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="Hình ảnh phóng to">
+  <div class="lightbox-nav">
+    <button class="lightbox-btn" id="prevBtn">← Trước</button>
+    <button class="lightbox-btn" id="nextBtn">Tiếp →</button>
   </div>
 </div>
 
-<section class="story reveal" id="story" aria-label="Câu chuyện nghệ nhân bonsai">
-  <div class="story-visual">
-    <img class="story-img" src="https://placehold.co/700x875/2C3A2E/C4A882?text=Nghệ+Nhân" alt="Nghệ nhân chăm sóc tác phẩm bonsai tại vườn">
-    <div class="story-frame"></div>
-    <div class="story-tag">
-      <p>Thành lập</p>
-      <strong>[Năm] · [Tỉnh/Thành]</strong>
+<!-- MENU -->
+<section id="menu-section" class="menu-dark" aria-label="Thực đơn theo mùa">
+  <div class="menu-dark-inner">
+    <div class="menu-dark-header reveal">
+      <h2>Thực Đơn <em>Theo Mùa</em></h2>
+      <p>Cập nhật theo nguyên liệu tươi Đà Lạt · Tháng 5, 2026</p>
     </div>
-  </div>
-  <div>
-    <div class="stag">Câu Chuyện</div>
-    <h2>Từ Tình Yêu Thuần Túy<br>Đến Di Sản Nghệ Thuật</h2>
-    <p class="txt">[Đoạn 1 — xuất phát điểm của nghệ nhân. Bắt đầu nghề từ đâu, điều gì thôi thúc? Câu chuyện cụ thể, chân thực, có chi tiết cảm xúc.]</p>
-    <p class="txt">[Đoạn 2 — hành trình phát triển, thành tích, điều tạo nên phong cách riêng. Điều gì khiến vườn này khác biệt?]</p>
-    <blockquote class="story-quote">
-      "[Câu nói / triết lý của nghệ nhân về bonsai hoặc về nghề — nên là câu thật, tự nhiên]"
-    </blockquote>
-    <a href="#contact" class="btn-gold" style="margin-top:8px">Gặp Gỡ Nghệ Nhân</a>
-  </div>
-</section>
-
-<section class="featured reveal" id="featured" aria-label="Tác phẩm bonsai tiêu biểu">
-  <div class="featured-head">
-    <div class="stag" style="justify-content:center">Tác Phẩm Tiêu Biểu</div>
-    <h2>Những Kiệt Tác<br>Chờ Người Tri Kỷ</h2>
-    <p>Mỗi tác phẩm là một câu chuyện riêng — chỉ có một, không lặp lại</p>
-  </div>
-  <div class="featured-grid">
-    <div class="feat-row">
-      <div class="feat-card">
-        <img class="feat-card-img" src="https://placehold.co/800x520/2C3A2E/C4A882?text=Tác+Phẩm+Chính" alt="Tác phẩm bonsai đặc sắc 1">
-        <div class="feat-card-info">
-          <div class="feat-card-name">[Tên cây — dòng chính]</div>
-          <div class="feat-card-meta"><span>[Tuổi] năm · [Phong cách]</span><span class="feat-card-price">Liên hệ</span></div>
-        </div>
-      </div>
-      <div class="feat-card">
-        <img class="feat-card-img" src="https://placehold.co/400x420/3D4F3F/D4B896?text=Tác+Phẩm+2" alt="Tác phẩm bonsai 2">
-        <div class="feat-card-info">
-          <div class="feat-card-name">[Tên cây 2]</div>
-          <div class="feat-card-meta"><span>[Tuổi] năm</span><span class="feat-card-price">[X] triệu</span></div>
-        </div>
-      </div>
-      <div class="feat-card">
-        <img class="feat-card-img" src="https://placehold.co/400x420/8B7355/F8F5F0?text=Tác+Phẩm+3" alt="Tác phẩm bonsai 3">
-        <div class="feat-card-info">
-          <div class="feat-card-name">[Tên cây 3]</div>
-          <div class="feat-card-meta"><span>[Tuổi] năm</span><span class="feat-card-price">[X] triệu</span></div>
-        </div>
-      </div>
+    <div class="menu-season reveal d1">
+      <span class="line"></span>
+      <span>Mùa Mưa Cao Nguyên — Tháng 5</span>
+      <span class="line"></span>
     </div>
-    <div class="feat-row">
-      <div class="feat-card">
-        <img class="feat-card-img" src="https://placehold.co/400x420/4A5C4C/C4A882?text=Tác+Phẩm+4" alt="Tác phẩm bonsai 4">
-        <div class="feat-card-info">
-          <div class="feat-card-name">[Tên cây 4]</div>
-          <div class="feat-card-meta"><span>[Tuổi] năm</span><span class="feat-card-price">[X] triệu</span></div>
+    <div class="menu-dark-grid">
+      <div class="menu-dark-card reveal">
+        <div class="dish-num">01 — Khai vị</div>
+        <div class="dish-img"><img src="https://placehold.co/600x360/1e2916/D4A853?text=Salad+Đà+Lạt" alt="Salad rau củ Đà Lạt với sốt chanh leo"></div>
+        <h3 class="dish-name">Salad Cao Nguyên</h3>
+        <p class="dish-desc">Rau trồng tại chỗ, sốt chanh leo Đà Lạt, hạt óc chó rang bơ nhẹ, phủ lá húng thơm tươi.</p>
+        <div class="dish-footer">
+          <span class="dish-price">85k</span>
+          <span class="dish-tag">Chay</span>
         </div>
       </div>
-      <div class="feat-card">
-        <img class="feat-card-img" src="https://placehold.co/400x420/6B5B47/F8F5F0?text=Tác+Phẩm+5" alt="Tác phẩm bonsai 5">
-        <div class="feat-card-info">
-          <div class="feat-card-name">[Tên cây 5]</div>
-          <div class="feat-card-meta"><span>[Tuổi] năm</span><span class="feat-card-price">[X] triệu</span></div>
+      <div class="menu-dark-card reveal d1">
+        <div class="dish-num">02 — Món chính</div>
+        <div class="dish-img"><img src="https://placehold.co/600x360/0F1409/D4A853?text=Cơm+gà+đặc+biệt" alt="Cơm gà ta Đà Lạt trình bày nghệ thuật fine dining"></div>
+        <h3 class="dish-name">Cơm Gà Đặc Biệt</h3>
+        <p class="dish-desc">Gà ta thả đồi 180 ngày tuổi, cơm nấu nước cốt gà, dầu gà mỡ hành xanh — công thức 10 năm không đổi.</p>
+        <div class="dish-footer">
+          <span class="dish-price">120k</span>
+          <span class="dish-tag">Signature</span>
         </div>
       </div>
-      <div class="feat-card">
-        <img class="feat-card-img" src="https://placehold.co/800x520/1a2419/C4A882?text=Tác+Phẩm+Giải+Vàng" alt="Tác phẩm bonsai giải vàng">
-        <div class="feat-card-info">
-          <div class="feat-card-name">[Tên cây — Giải Vàng]</div>
-          <div class="feat-card-meta"><span>[Tuổi] năm · Giải Vàng QG</span><span class="feat-card-price">Liên hệ</span></div>
+      <div class="menu-dark-card reveal d2">
+        <div class="dish-num">03 — Nước dùng</div>
+        <div class="dish-img"><img src="https://placehold.co/600x360/171e11/9B7A3C?text=Lẩu+nấm+cao+cấp" alt="Lẩu nấm cao cấp 7 loại nấm Đà Lạt"></div>
+        <h3 class="dish-name">Lẩu Nấm Cao Nguyên</h3>
+        <p class="dish-desc">7 loại nấm Đà Lạt được hái tươi mỗi sáng, nước hầm xương bò 10 tiếng, ăn kèm rau đồng và bánh mì nướng.</p>
+        <div class="dish-footer">
+          <span class="dish-price">280k</span>
+          <span class="dish-tag">2–4 người</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="recognition reveal" id="recognition" aria-label="Thành tích và giải thưởng">
-  <div class="rec-inner">
-    <div class="rec-head">
-      <div class="stag" style="justify-content:center;color:rgba(255,255,255,.4)">Thành Tích</div>
-      <h2>Được Công Nhận<br>Trên Toàn Quốc</h2>
-      <p>Những giải thưởng là minh chứng cho hàng thập kỷ cống hiến</p>
+<!-- TESTIMONIALS -->
+<section class="testi-dark" aria-label="Đánh giá từ thực khách">
+  <div class="testi-dark-inner">
+    <div class="testi-dark-header reveal">
+      <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:12px">Thực Khách Chia Sẻ</p>
+      <h2>Những khoảnh khắc <em>không quên</em></h2>
     </div>
-    <div class="rec-grid">
-      <div class="rec-item"><div class="rec-icon">🥇</div><div class="rec-name">[Giải thưởng 1]</div><div class="rec-detail">[Năm] · [Tổ chức trao]</div></div>
-      <div class="rec-item"><div class="rec-icon">🏆</div><div class="rec-name">[Giải thưởng 2]</div><div class="rec-detail">[Năm] · [Tổ chức trao]</div></div>
-      <div class="rec-item"><div class="rec-icon">⭐</div><div class="rec-name">[Danh hiệu / Công nhận]</div><div class="rec-detail">[Năm] · [Nơi công nhận]</div></div>
-      <div class="rec-item"><div class="rec-icon">🌿</div><div class="rec-name">[Thành tích đặc biệt]</div><div class="rec-detail">[Năm] · [Chi tiết]</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="process reveal" aria-label="Quy trình mua cây bonsai">
-  <div class="process-head">
-    <div class="stag" style="justify-content:center">Quy Trình</div>
-    <h2>Sở Hữu Tác Phẩm<br>Dễ Dàng — 4 Bước</h2>
-  </div>
-  <div class="process-grid">
-    <div class="proc-item"><div class="proc-num">01</div><div class="proc-divider"></div><div class="proc-title">Tư Vấn Miễn Phí</div><div class="proc-desc">Liên hệ qua Zalo hoặc điện thoại — chúng tôi lắng nghe nhu cầu và ngân sách của bạn.</div></div>
-    <div class="proc-item"><div class="proc-num">02</div><div class="proc-divider"></div><div class="proc-title">Chọn Tác Phẩm</div><div class="proc-desc">Xem trực tiếp tại vườn hoặc qua video call — chúng tôi giới thiệu các tác phẩm phù hợp nhất.</div></div>
-    <div class="proc-item"><div class="proc-num">03</div><div class="proc-divider"></div><div class="proc-title">Đặt Cọc & Xác Nhận</div><div class="proc-desc">Đặt cọc để giữ cây. Chúng tôi chuẩn bị đóng gói chuyên nghiệp, an toàn cho vận chuyển.</div></div>
-    <div class="proc-item"><div class="proc-num">04</div><div class="proc-divider"></div><div class="proc-title">Nhận Cây & Chăm Sóc</div><div class="proc-desc">Giao tận nơi toàn quốc. Hỗ trợ hướng dẫn chăm sóc miễn phí sau khi nhận cây.</div></div>
-  </div>
-</section>
-
-<section class="pricing reveal" id="pricing" aria-label="Bảng giá tác phẩm bonsai">
-  <div class="pricing-head">
-    <div class="stag" style="justify-content:center">Giá Trị Xứng Đáng</div>
-    <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);color:var(--p)">Đầu Tư Cho Nghệ Thuật<br>Sống Bền Theo Năm Tháng</h2>
-  </div>
-  <div class="pricing-grid">
-    <div class="pc">
-      <div class="pc-tier">Khởi Đầu</div>
-      <h3>Bộ Sưu Tập Cơ Bản</h3>
-      <div class="pc-price">Từ [X] triệu</div>
-      <div class="pc-note">Phù hợp trang trí nhà, văn phòng</div>
-      <div class="pc-sep"></div>
-      <ul class="pc-list">
-        <li>Cây [X]–[Y] năm tuổi</li>
-        <li>[Dòng cây phổ biến]</li>
-        <li>Chậu đi kèm</li>
-        <li>Hướng dẫn chăm sóc</li>
-        <li>Giao hàng toàn quốc</li>
-      </ul>
-      <a href="#contact" class="pc-btn">Tư Vấn Ngay</a>
-    </div>
-    <div class="pc featured">
-      <div class="pc-badge">Phổ Biến</div>
-      <div class="pc-tier">Nghệ Thuật</div>
-      <h3>Tác Phẩm Đặc Sắc</h3>
-      <div class="pc-price">Từ [XX] triệu</div>
-      <div class="pc-note" style="color:rgba(255,255,255,.35)">Dòng cây quý, thế độc đáo</div>
-      <div class="pc-sep"></div>
-      <ul class="pc-list">
-        <li>Cây [X]+ năm tuổi</li>
-        <li>Dòng cây quý hiếm</li>
-        <li>Chậu thủ công cao cấp</li>
-        <li>Chứng nhận nguồn gốc</li>
-        <li>Hỗ trợ chăm sóc 6 tháng</li>
-        <li>Ưu tiên xem trực tiếp</li>
-      </ul>
-      <a href="#contact" class="pc-btn">Sở Hữu Ngay</a>
-    </div>
-    <div class="pc">
-      <div class="pc-tier">Đỉnh Cao</div>
-      <h3>Tác Phẩm Độc Bản</h3>
-      <div class="pc-price">Liên hệ</div>
-      <div class="pc-note">Giải thưởng, cây trăm năm</div>
-      <div class="pc-sep"></div>
-      <ul class="pc-list">
-        <li>Cây đã đoạt giải thưởng</li>
-        <li>Tuổi đời [X]+ năm</li>
-        <li>Hoàn toàn độc bản</li>
-        <li>Chứng nhận nghệ nhân</li>
-        <li>Hỗ trợ chăm sóc trọn đời</li>
-        <li>Giao hàng có bảo hiểm</li>
-      </ul>
-      <a href="#contact" class="pc-btn">Đặt Lịch Xem</a>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact" aria-label="Liên hệ tư vấn bonsai cao cấp">
-  <div class="contact-inner">
-    <div class="contact-left">
-      <div class="stag">Liên Hệ</div>
-      <h2>Bắt Đầu Hành Trình<br>Sở Hữu Tác Phẩm</h2>
-      <p>Chúng tôi sẵn sàng tư vấn, giải đáp mọi thắc mắc và giúp bạn tìm được tác phẩm phù hợp nhất.</p>
-      <div class="contact-info">
-        <div class="ci"><div class="ci-icon">✆</div><div><div class="ci-label">Điện Thoại / Zalo</div><div class="ci-val">[Số điện thoại]</div></div></div>
-        <div class="ci"><div class="ci-icon">✉</div><div><div class="ci-label">Email</div><div class="ci-val">[Email nếu có]</div></div></div>
-        <div class="ci"><div class="ci-icon">⌖</div><div><div class="ci-label">Địa Chỉ Vườn</div><div class="ci-val">[Địa chỉ], [Tỉnh/Thành]</div></div></div>
+    <div class="testi-dark-grid">
+      <div class="testi-dark-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-dark-text">"Đây là trải nghiệm ẩm thực tốt nhất tôi có tại Đà Lạt. Không gian tối tĩnh, thức ăn tinh tế và đội ngũ phục vụ chu đáo. Nhất định sẽ trở lại."</p>
+        <div class="testi-dark-author">
+          <div class="testi-dark-avatar"><img src="https://placehold.co/84x84/D4A853/0F1409?text=TL" alt="Khách hàng Thanh Lâm"></div>
+          <div>
+            <div class="testi-dark-name">Thanh Lâm</div>
+            <div class="testi-dark-role">Director · TP. Hồ Chí Minh</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-dark-card reveal d1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-dark-text">"Cơm gà Đà Lạt ở đây là một tác phẩm. Không phải ẩm thực thông thường — đó là nghệ thuật. Tôi đã dẫn đối tác từ Singapore đến và họ ấn tượng thật sự."</p>
+        <div class="testi-dark-author">
+          <div class="testi-dark-avatar"><img src="https://placehold.co/84x84/9B7A3C/F0EAD6?text=MK" alt="Khách hàng Minh Khoa"></div>
+          <div>
+            <div class="testi-dark-name">Minh Khoa</div>
+            <div class="testi-dark-role">Entrepreneur · Hà Nội</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div>
-      <form class="form" onsubmit="return false;">
-        <div class="field"><label>Họ và Tên</label><input type="text" placeholder="Nguyễn Văn A"></div>
-        <div class="field"><label>Số Điện Thoại</label><input type="tel" placeholder="0900 000 000"></div>
-        <div class="field">
-          <label>Nhu Cầu</label>
-          <select>
-            <option>Tìm hiểu bộ sưu tập</option>
-            <option>Tác phẩm cao cấp / độc bản</option>
-            <option>Quà tặng đặc biệt</option>
-            <option>Đầu tư / sưu tầm lâu dài</option>
-          </select>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reservation" class="reservation" aria-label="Đặt bàn trực tuyến">
+  <div class="reservation-inner">
+    <div class="reservation-header reveal">
+      <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:12px">Đặt Bàn</p>
+      <h2>Đặt Bàn <em>Trực Tuyến</em></h2>
+      <p>Bếp Mẹ nhận đặt bàn trước tối thiểu 2 tiếng. Phòng riêng tư từ 8 người trở lên — vui lòng liên hệ trực tiếp.</p>
+    </div>
+    <form class="res-form" onsubmit="return false;" novalidate>
+      <div class="form-field reveal">
+        <label for="name">Họ và Tên</label>
+        <input type="text" id="name" placeholder="Nguyễn Văn A" autocomplete="name">
+      </div>
+      <div class="form-field reveal d1">
+        <label for="phone">Số Điện Thoại</label>
+        <input type="tel" id="phone" placeholder="0785 925 998" autocomplete="tel">
+      </div>
+      <div class="form-field reveal d1">
+        <label for="date">Ngày Đặt Bàn</label>
+        <input type="date" id="date">
+      </div>
+      <div class="form-field reveal d2">
+        <label for="time">Giờ Đến</label>
+        <select id="time">
+          <option value="">Chọn giờ đến</option>
+          <option>11:30</option>
+          <option>12:00</option>
+          <option>12:30</option>
+          <option>17:30</option>
+          <option>18:00</option>
+          <option>18:30</option>
+          <option>19:00</option>
+          <option>19:30</option>
+          <option>20:00</option>
+        </select>
+      </div>
+      <div class="form-field reveal d2">
+        <label for="guests">Số Người</label>
+        <select id="guests">
+          <option>1–2 người</option>
+          <option>3–4 người</option>
+          <option>5–6 người</option>
+          <option>7–8 người</option>
+          <option>Nhóm lớn hơn (liên hệ)</option>
+        </select>
+      </div>
+      <div class="form-field full reveal d3">
+        <label for="notes">Ghi Chú Thêm</label>
+        <textarea id="notes" placeholder="Dịp đặc biệt, yêu cầu ăn kiêng, bàn riêng tư..."></textarea>
+      </div>
+      <div class="full reveal d3">
+        <button type="submit" class="res-submit">Gửi Yêu Cầu Đặt Bàn</button>
+        <p class="res-note">Chúng tôi sẽ xác nhận qua Zalo trong vòng 30 phút · Hoặc gọi trực tiếp <a href="tel:0785925998">0785 925 998</a></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-dark" aria-label="Liên hệ và địa chỉ Bếp Mẹ">
+  <div class="contact-dark-inner">
+    <div class="reveal">
+      <h2>Tìm Chúng Tôi <em>Tại Đây</em></h2>
+      <div class="contact-lines">
+        <div class="c-line">
+          <div class="c-num">01</div>
+          <div>
+            <div class="c-content-label">Địa Chỉ</div>
+            <div class="c-content-val">123 Phan Đình Phùng, Phường 2<br>TP. Đà Lạt, Lâm Đồng</div>
+          </div>
         </div>
-        <div class="field"><label>Lời Nhắn</label><textarea placeholder="Ngân sách, phong cách yêu thích, hoặc câu hỏi của bạn..."></textarea></div>
-        <button type="submit" class="btn-submit">Gửi Yêu Cầu — Tư Vấn Miễn Phí</button>
-      </form>
+        <div class="c-line">
+          <div class="c-num">02</div>
+          <div>
+            <div class="c-content-label">Giờ Phục Vụ</div>
+            <div class="c-content-val">Thứ 3 – Chủ nhật: 11:00 – 21:30<br>Thứ 2: Nghỉ</div>
+          </div>
+        </div>
+        <div class="c-line">
+          <div class="c-num">03</div>
+          <div>
+            <div class="c-content-label">Liên Hệ</div>
+            <div class="c-content-val">
+              <a href="tel:0785925998">0785 925 998</a><br>
+              <a href="mailto:bepme@gmail.com">bepme@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-cta-col reveal d2">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px;letter-spacing:0.04em">Đặt bàn ngay hôm nay</p>
+      <a href="#reservation" class="cta-gold">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Đặt Bàn Online
+      </a>
+      <a href="https://zalo.me/0785925998" class="cta-zalo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/></svg>
+        Nhắn Zalo
+      </a>
+      <p class="contact-note">Phòng riêng tư · Tiệc doanh nghiệp · Kỷ niệm đặc biệt</p>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="foot-top">
-    <div>
-      <div class="foot-brand">[Tên Vườn] Bonsai</div>
-      <div class="foot-brand-sub">[Địa chỉ], [Tỉnh/Thành]<br>[Số điện thoại] · [Email nếu có]</div>
+<!-- FOOTER -->
+<footer aria-label="Footer Bếp Mẹ Fine Dining">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Bếp <em>Mẹ</em></div>
+        <p class="footer-brand-text">Fine Dining từ những giá trị giản dị của bếp nhà. Mười năm kể chuyện bằng hương vị Cao Nguyên.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Khám phá</h4>
+        <ul>
+          <li><a href="#philosophy">Triết lý</a></li>
+          <li><a href="#gallery-section">Hình ảnh</a></li>
+          <li><a href="#menu-section">Thực đơn mùa</a></li>
+          <li><a href="#reservation">Đặt bàn</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kết nối</h4>
+        <ul>
+          <li><a href="https://zalo.me/0785925998">Zalo</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">TikTok</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Thông tin</h4>
+        <ul>
+          <li><a href="tel:0785925998">0785 925 998</a></li>
+          <li><a href="#">123 Phan Đình Phùng</a></li>
+          <li><a href="#">Chính sách hủy</a></li>
+          <li><a href="#">Phòng riêng tư</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="foot-col">
-      <div class="foot-col-title">Khám Phá</div>
-      <a href="#story">Câu Chuyện</a>
-      <a href="#featured">Tác Phẩm</a>
-      <a href="#recognition">Thành Tích</a>
+    <div class="footer-bottom">
+      <p>© 2024 Bếp Mẹ Fine Dining · TP. Đà Lạt</p>
+      <p>Thiết kế bởi <a href="tel:0785925998">TrongLeTour360</a></p>
     </div>
-    <div class="foot-col">
-      <div class="foot-col-title">Dịch Vụ</div>
-      <a href="#pricing">Bảng Giá</a>
-      <a href="#process">Quy Trình</a>
-      <a href="#contact">Tư Vấn</a>
-    </div>
-    <div class="foot-col">
-      <div class="foot-col-title">Kết Nối</div>
-      <a href="#">Facebook</a>
-      <a href="#">Zalo</a>
-      <a href="#">YouTube</a>
-    </div>
-  </div>
-  <div class="foot-bot">
-    <div class="foot-copy">© 2026 [Tên Vườn] Bonsai · [Tỉnh/Thành Phố]. Mọi quyền được bảo lưu.</div>
-    <div class="foot-copy">Thiết kế bởi TrongLeTour360</div>
   </div>
 </footer>
 
-<script>
-// Nav scroll effect
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
+<!-- FLOAT CTA -->
+<div class="float-cta">
+  <a href="https://zalo.me/0785925998" class="float-zalo-dark" aria-label="Zalo Bếp Mẹ">
+    <svg width="24" height="24" viewBox="0 0 64 64" fill="none">
+      <path d="M32 4C16.536 4 4 16.536 4 32c0 5.228 1.418 10.134 3.894 14.348L4 60l13.977-3.853C22.035 58.672 26.888 60 32 60c15.464 0 28-12.536 28-28S47.464 4 32 4z" fill="white"/>
+      <path d="M20 24h6M26 32h-6M24 38h2m4-14c0 0 4 2 4 8s-4 8-4 8h6l4 4V32c0-6-4-8-4-8h-6z" stroke="#0068FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>
 
-// Scroll reveal
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.1 });
-reveals.forEach(el => observer.observe(el));
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  }, { passive: true });
+  document.querySelectorAll('a, button, .g-item').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+  });
+
+  // Nav compact
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('compact', window.scrollY > 80);
+  }, { passive: true });
+
+  // Hero parallax
+  const heroBg = document.getElementById('heroBg');
+  window.addEventListener('scroll', () => {
+    const offset = window.scrollY * 0.35;
+    heroBg.style.transform = `translateY(${offset}px)`;
+  }, { passive: true });
+
+  // Scroll reveal
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const items = [...document.querySelectorAll('.g-item[data-img]')];
+  let current = 0;
+
+  function openLightbox(index) {
+    current = index;
+    lightboxImg.src = items[current].dataset.img;
+    lightboxImg.alt = items[current].querySelector('img').alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  items.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)));
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    current = (current - 1 + items.length) % items.length;
+    lightboxImg.src = items[current].dataset.img;
+  });
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    current = (current + 1) % items.length;
+    lightboxImg.src = items[current].dataset.img;
+  });
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') document.getElementById('prevBtn').click();
+    if (e.key === 'ArrowRight') document.getElementById('nextBtn').click();
+  });
 </script>
 </body>
 </html>
