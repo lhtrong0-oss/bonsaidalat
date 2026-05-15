@@ -76,13 +76,8 @@ nav.scrolled{
   max-width:1280px;margin:0 auto;padding:0 60px;
   display:flex;align-items:center;justify-content:space-between;
 }
-.logo{
-  font-family:'Bodoni Moda',serif;
-  display:flex;flex-direction:column;line-height:1;
-  letter-spacing:.08em;
-}
-.logo-ram{font-size:28px;font-weight:700;color:var(--gold);letter-spacing:.12em}
-.logo-sub{font-size:8px;letter-spacing:.38em;text-transform:uppercase;color:rgba(201,169,110,.6);font-family:'Jost',sans-serif;font-weight:300;margin-top:4px}
+.logo{display:flex;align-items:center;}
+.logo-img{height:48px;width:auto;object-fit:contain;}
 .nav-links{display:flex;gap:40px;list-style:none;align-items:center}
 .nav-links a{
   font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;
@@ -478,8 +473,7 @@ footer{
 <nav id="nav" aria-label="Điều hướng chính">
   <div class="nav-in">
     <a href="#" class="logo" aria-label="RAM Wedding House">
-      <span class="logo-ram">RAM</span>
-      <span class="logo-sub">Wedding House · Đà Lạt</span>
+      <img src="../assets/lam-thien.jpg" class="logo-img" alt="RAM Wedding House Đà Lạt — Logo">
     </a>
     <ul class="nav-links">
       <li><a href="#about">Về Chúng Tôi</a></li>
@@ -724,7 +718,7 @@ footer{
 <!-- FOOTER -->
 <footer aria-label="Footer">
   <div class="footer-in">
-    <div class="footer-logo-text">RAM</div>
+    <img src="../assets/lam-thien.jpg" style="height:56px;width:auto;object-fit:contain;" alt="RAM Wedding House Đà Lạt — Logo">
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="#about">Về chúng tôi</a>
       <a href="#services">Dịch vụ</a>
