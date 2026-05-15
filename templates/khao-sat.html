@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khảo Sát Thông Tin Tạo Website — TrongLeTour360</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #2C3A2E;
+    --secondary: #8B7355;
+    --accent: #C4A882;
+    --bg: #F8F5F0;
+    --surface: #FFFFFF;
+    --text: #1A1A1A;
+    --muted: #9B9B9B;
+    --border: #E8E2D9;
+    --error: #C0392B;
+    --success: #2C7A4B;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
+
+  /* Header */
+  .header { background: var(--primary); padding: 20px 24px; text-align: center; }
+  .header-logo { font-family: 'Playfair Display', serif; color: var(--accent); font-size: 1.1rem; letter-spacing: 0.05em; }
+  .header-sub { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 2px; }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, var(--primary) 0%, #3d5040 100%); padding: 48px 24px 40px; text-align: center; }
+  .hero h1 { font-family: 'Playfair Display', serif; color: #fff; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.3; margin-bottom: 12px; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { color: rgba(255,255,255,0.75); font-size: 0.95rem; max-width: 480px; margin: 0 auto 28px; }
+
+  /* Mẫu cards */
+  .mau-section { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 20px; max-width: 560px; margin: 0 auto; text-align: left; }
+  .mau-title { color: var(--accent); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .mau-list { display: flex; flex-direction: column; gap: 8px; }
+  .mau-item { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.06); border-radius: 8px; padding: 10px 14px; text-decoration: none; transition: background 0.2s; }
+  .mau-item:hover { background: rgba(255,255,255,0.12); }
+  .mau-badge { background: var(--accent); color: var(--primary); font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+  .mau-info { flex: 1; }
+  .mau-info strong { display: block; color: #fff; font-size: 0.85rem; font-weight: 600; }
+  .mau-info span { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+  .mau-arrow { color: var(--accent); font-size: 1rem; }
+
+  /* Form container */
+  .container { max-width: 640px; margin: 0 auto; padding: 32px 16px 64px; }
+
+  /* Section divider */
+  .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 36px 0 16px; display: flex; align-items: center; gap: 10px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* Form fields */
+  .field { margin-bottom: 20px; }
+  .field label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
+  .field label .req { color: var(--accent); margin-left: 3px; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text); background: var(--surface);
+    transition: border-color 0.2s, box-shadow 0.2s; outline: none; -webkit-appearance: none; appearance: none;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(139,115,85,0.1);
+  }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B7355' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+  .field .hint { font-size: 0.75rem; color: var(--muted); margin-top: 5px; }
+  .field.row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 480px) { .field.row { grid-template-columns: 1fr; } }
+
+  /* Radio/Checkbox groups */
+  .check-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .check-item { display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1.5px solid var(--border); border-radius: 8px; padding: 8px 14px; cursor: pointer; transition: border-color 0.2s, background 0.2s; font-size: 0.85rem; }
+  .check-item input[type=radio], .check-item input[type=checkbox] { accent-color: var(--primary); width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
+  .check-item:has(input:checked) { border-color: var(--primary); background: rgba(44,58,46,0.05); font-weight: 500; }
+
+  /* Submit */
+  .submit-wrap { margin-top: 36px; }
+  .btn-submit { width: 100%; padding: 16px; background: var(--primary); color: #fff; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; border: none; border-radius: 10px; cursor: pointer; letter-spacing: 0.02em; transition: background 0.2s, transform 0.1s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .btn-submit:hover { background: #3d5040; }
+  .btn-submit:active { transform: scale(0.98); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  /* States */
+  .msg { display: none; border-radius: 10px; padding: 16px 20px; font-size: 0.9rem; margin-top: 16px; }
+  .msg.error { background: #fdf2f2; border: 1px solid #f5c6c6; color: var(--error); }
+  .msg.success { background: #f0faf4; border: 1px solid #a8d5b8; color: var(--success); }
+
+  /* Success screen */
+  .success-screen { display: none; text-align: center; padding: 48px 24px; }
+  .success-screen .icon { font-size: 3rem; margin-bottom: 16px; }
+  .success-screen h2 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; }
+  .success-screen p { color: var(--muted); font-size: 0.9rem; max-width: 360px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">TrongLeTour360</div>
+  <div class="header-sub">Web Agency · Đà Lạt</div>
+</div>
+
+<div class="hero">
+  <h1>Khảo Sát Thông Tin<br><span>Tạo Website</span></h1>
+  <p>Điền đầy đủ để chúng tôi thiết kế website phù hợp nhất — Claude sẽ build trong vòng 1 ngày.</p>
+
+  <div class="mau-section">
+    <div class="mau-title">Xem mẫu trước khi điền</div>
+    <div class="mau-list">
+      <a class="mau-item" href="https://bonsai-dalat-trangle.vercel.app/templates/mau-a.html" target="_blank">
+        <span class="mau-badge">Mẫu A</span>
+        <div class="mau-info">
+          <strong>Landing page đơn giản</strong>
+          <span>3–5 triệu · 1 ngày</span>
+        </div>
+        <span class="mau-arrow">↗</span>
+      </a>
+      <a class="mau-item" href="https://bonsai-dalat-trangle.vercel.app/templates/mau-b.html" target="_blank">
+        <span class="mau-badge">Mẫu B</span>
+        <div class="mau-info">
+          <strong>3–5 trang + gallery + bảng giá</strong>
+          <span>8–15 triệu · 2–3 ngày</span>
+        </div>
+        <span class="mau-arrow">↗</span>
+      </a>
+      <a class="mau-item" href="https://bonsai-dalat-trangle.vercel.app/templates/mau-c.html" target="_blank">
+        <span class="mau-badge">Mẫu C</span>
+        <div class="mau-info">
+          <strong>Premium · animation · form</strong>
+          <span>25–50 triệu · 4–7 ngày</span>
+        </div>
+        <span class="mau-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div id="formWrap">
+    <form id="mainForm" novalidate>
+
+      <div class="section-label">Thông tin liên hệ</div>
+
+      <div class="field">
+        <label>Tên thương hiệu / Dự án <span class="req">*</span></label>
+        <input type="text" name="ten" placeholder="VD: Bonsai Tuấn Trang, Spa Hoa Mộc..." required>
+      </div>
+
+      <div class="field row">
+        <div class="field" style="margin:0">
+          <label>SĐT / Zalo <span class="req">*</span></label>
+          <input type="tel" name="sdt" placeholder="0xxx xxx xxx" required>
+        </div>
+        <div class="field" style="margin:0">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="email@gmail.com">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Địa chỉ (tỉnh/thành phố)</label>
+        <input type="text" name="diachi" placeholder="VD: Đà Lạt, Lâm Đồng">
+      </div>
+
+      <div class="section-label">Thông tin dự án</div>
+
+      <div class="field">
+        <label>Lĩnh vực kinh doanh <span class="req">*</span></label>
+        <select name="linhVuc" required>
+          <option value="">— Chọn lĩnh vực —</option>
+          <option>Ăn uống / F&B</option>
+          <option>Spa / Làm đẹp</option>
+          <option>Homestay / Khách sạn</option>
+          <option>Bất động sản</option>
+          <option>Bonsai / Cây cảnh</option>
+          <option>Bán lẻ / Shop</option>
+          <option>Dịch vụ chuyên nghiệp</option>
+          <option>Giáo dục</option>
+          <option>Y tế / Sức khỏe</option>
+          <option>Khác</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Ngân sách dự kiến <span class="req">*</span></label>
+        <div class="check-group">
+          <label class="check-item"><input type="radio" name="nganSach" value="3–5 triệu" required> Mẫu A · 3–5 triệu</label>
+          <label class="check-item"><input type="radio" name="nganSach" value="8–15 triệu"> Mẫu B · 8–15 triệu</label>
+          <label class="check-item"><input type="radio" name="nganSach" value="25–50 triệu"> Mẫu C · 25–50 triệu</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Mục tiêu chính của website</label>
+        <div class="check-group">
+          <label class="check-item"><input type="radio" name="mucTieu" value="Giới thiệu thương hiệu"> Giới thiệu thương hiệu</label>
+          <label class="check-item"><input type="radio" name="mucTieu" value="Bán hàng online"> Bán hàng online</label>
+          <label class="check-item"><input type="radio" name="mucTieu" value="Đặt lịch hẹn"> Đặt lịch hẹn</label>
+          <label class="check-item"><input type="radio" name="mucTieu" value="Nhận đơn liên hệ"> Nhận đơn liên hệ</label>
+          <label class="check-item"><input type="radio" name="mucTieu" value="Portfolio / Showcase"> Portfolio</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Phong cách thiết kế</label>
+        <select name="phongCach">
+          <option value="">— Chọn phong cách —</option>
+          <option>Sang trọng / Luxury</option>
+          <option>Tối giản / Minimal</option>
+          <option>Vui tươi / Playful</option>
+          <option>Chuyên nghiệp / Corporate</option>
+          <option>Tự nhiên / Nature</option>
+          <option>Vintage / Cổ điển</option>
+          <option>Đậm / Bold</option>
+        </select>
+      </div>
+
+      <div class="section-label">Nội dung thương hiệu</div>
+
+      <div class="field">
+        <label>Mô tả ngắn về thương hiệu</label>
+        <textarea name="moTa" placeholder="Thành lập năm nào, làm gì, điểm đặc biệt là gì..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>Danh sách dịch vụ / Sản phẩm</label>
+        <textarea name="dichVu" placeholder="VD: Phòng Deluxe 2 người, Phòng Suite, Bonsai đa, Tiểu cảnh..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>Khách hàng mục tiêu</label>
+        <input type="text" name="khachHang" placeholder="VD: Cặp đôi 25–35 tuổi, doanh nhân, khách du lịch...">
+      </div>
+
+      <div class="field row">
+        <div class="field" style="margin:0">
+          <label>Màu sắc thương hiệu</label>
+          <input type="text" name="mauSac" placeholder="VD: Xanh lá, vàng đồng...">
+        </div>
+        <div class="field" style="margin:0">
+          <label>Slogan (nếu có)</label>
+          <input type="text" name="slogan" placeholder="VD: Nơi thiên nhiên thở...">
+        </div>
+      </div>
+
+      <div class="section-label">Tài nguyên sẵn có</div>
+
+      <div class="field">
+        <label>Đã có ảnh thật chưa?</label>
+        <div class="check-group">
+          <label class="check-item"><input type="radio" name="coAnh" value="co"> Có sẵn rồi</label>
+          <label class="check-item"><input type="radio" name="coAnh" value="chua"> Chưa có</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Đã có logo chưa?</label>
+        <div class="check-group">
+          <label class="check-item"><input type="radio" name="coLogo" value="co"> Có sẵn rồi</label>
+          <label class="check-item"><input type="radio" name="coLogo" value="chua"> Chưa có</label>
+        </div>
+      </div>
+
+      <div class="section-label">Liên kết & Tham khảo</div>
+
+      <div class="field row">
+        <div class="field" style="margin:0">
+          <label>Facebook / Fanpage</label>
+          <input type="url" name="facebook" placeholder="https://facebook.com/...">
+        </div>
+        <div class="field" style="margin:0">
+          <label>Instagram</label>
+          <input type="url" name="instagram" placeholder="https://instagram.com/...">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Website tham khảo (muốn làm giống kiểu nào)</label>
+        <input type="url" name="webRef" placeholder="https://...">
+      </div>
+
+      <div class="field">
+        <label>Ghi chú thêm / Yêu cầu đặc biệt</label>
+        <textarea name="ghiChu" placeholder="Deadline, yêu cầu riêng, hay bất cứ điều gì muốn chia sẻ..."></textarea>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span id="btnText">Gửi Thông Tin</span>
+        </button>
+        <div class="msg error" id="errMsg"></div>
+        <div class="msg success" id="successMsg"></div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="success-screen" id="successScreen">
+    <div class="icon">🎉</div>
+    <h2>Gửi thành công!</h2>
+    <p>Chúng tôi đã nhận được thông tin. <strong>Trọng sẽ liên hệ lại trong vòng 24 giờ</strong> để xác nhận và bắt đầu làm website cho bạn.</p>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('mainForm');
+  const btn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  const errMsg = document.getElementById('errMsg');
+  const successMsg = document.getElementById('successMsg');
+  const successScreen = document.getElementById('successScreen');
+  const formWrap = document.getElementById('formWrap');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errMsg.style.display = 'none';
+
+    const ten = form.ten.value.trim();
+    const sdt = form.sdt.value.trim();
+    const nganSach = form.querySelector('input[name="nganSach"]:checked');
+    const linhVuc = form.linhVuc.value;
+
+    if (!ten || !sdt || !linhVuc || !nganSach) {
+      errMsg.textContent = 'Vui lòng điền đầy đủ các mục có dấu *.';
+      errMsg.style.display = 'block';
+      errMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    btn.disabled = true;
+    btnText.textContent = 'Đang gửi...';
+
+    const getVal = (name) => {
+      const el = form.elements[name];
+      if (!el) return '';
+      if (el.type === 'radio' || el.type === 'checkbox') {
+        const checked = form.querySelector(`input[name="${name}"]:checked`);
+        return checked ? checked.value : '';
+      }
+      return el.value.trim();
+    };
+
+    const payload = {
+      ten, sdt,
+      email:     getVal('email'),
+      diachi:    getVal('diachi'),
+      linhVuc:   getVal('linhVuc'),
+      nganSach:  nganSach.value,
+      mucTieu:   getVal('mucTieu'),
+      phongCach: getVal('phongCach'),
+      moTa:      getVal('moTa'),
+      dichVu:    getVal('dichVu'),
+      khachHang: getVal('khachHang'),
+      mauSac:    getVal('mauSac'),
+      slogan:    getVal('slogan'),
+      coAnh:     getVal('coAnh'),
+      coLogo:    getVal('coLogo'),
+      facebook:  getVal('facebook'),
+      instagram: getVal('instagram'),
+      webRef:    getVal('webRef'),
+      ghiChu:    getVal('ghiChu'),
+    };
+
+    try {
+      const res = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        formWrap.style.display = 'none';
+        successScreen.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        errMsg.textContent = data.error || 'Gửi không thành công. Vui lòng thử lại.';
+        errMsg.style.display = 'block';
+        btn.disabled = false;
+        btnText.textContent = 'Gửi Thông Tin';
+      }
+    } catch {
+      errMsg.textContent = 'Lỗi kết nối. Vui lòng thử lại sau.';
+      errMsg.style.display = 'block';
+      btn.disabled = false;
+      btnText.textContent = 'Gửi Thông Tin';
+    }
+  });
+</script>
+</body>
+</html>
