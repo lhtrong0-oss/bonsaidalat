@@ -56,7 +56,7 @@ module.exports = async function handler(req, res) {
     if (!r.ok) {
       const err = await r.json();
       console.error('Notion error:', JSON.stringify(err));
-      return res.status(500).json({ error: 'Không lưu được.', detail: err, token_len: (process.env.NOTION_TOKEN||'').trim().length });
+      return res.status(500).json({ error: 'Không lưu được. Vui lòng thử lại.' });
     }
 
     return res.status(200).json({ success: true });
