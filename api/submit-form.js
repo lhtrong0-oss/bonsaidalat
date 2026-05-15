@@ -14,29 +14,30 @@ module.exports = async function handler(req, res) {
     ? [{ type: 'text', text: { content: String(val).slice(0, 2000) } }]
     : [];
 
+  // Keys are Notion property IDs (avoid Vietnamese name encoding issues)
   const properties = {
-    'Tên dự án / Thương hiệu': { title: [{ text: { content: String(b.ten).slice(0, 200) } }] },
-    'SĐT / Zalo':              { phone_number: b.sdt || null },
-    'Địa chỉ':                 { rich_text: rt(b.diachi) },
-    'Câu chuyện thương hiệu':  { rich_text: rt(b.moTa) },
-    'Danh sách dịch vụ / Sản phẩm': { rich_text: rt(b.dichVu) },
-    'Khách hàng mục tiêu':     { rich_text: rt(b.khachHang) },
-    'Màu sắc muốn dùng':       { rich_text: rt(b.mauSac) },
-    'Slogan':                  { rich_text: rt(b.slogan) },
-    'Ghi chú thêm':            { rich_text: rt(b.ghiChu) },
-    'Có ảnh thật sẵn':         { checkbox: b.coAnh === 'co' },
-    'Có logo sẵn':             { checkbox: b.coLogo === 'co' },
-    'Trạng thái':              { select: { name: 'Tiếp nhận' } },
+    'title':      { title: [{ text: { content: String(b.ten).slice(0, 200) } }] },
+    '%3Em%7DS':   { phone_number: b.sdt || null },
+    'VP%7BN':     { rich_text: rt(b.diachi) },
+    '%5DXlu':     { rich_text: rt(b.moTa) },
+    '%7DJbR':     { rich_text: rt(b.dichVu) },
+    'TZdx':       { rich_text: rt(b.khachHang) },
+    'E%5Czg':     { rich_text: rt(b.mauSac) },
+    '%3EU%3Bf':   { rich_text: rt(b.slogan) },
+    'uviv':       { rich_text: rt(b.ghiChu) },
+    'y_eh':       { checkbox: b.coAnh === 'co' },
+    '%7DRZj':     { checkbox: b.coLogo === 'co' },
+    'r%3BXs':     { select: { id: '4aa0c007-08f8-4a1d-8572-38f16f02c061' } },
   };
 
-  if (b.email)      properties['Email']                  = { email: b.email };
-  if (b.linhVuc)    properties['Lĩnh vực']               = { select: { name: b.linhVuc } };
-  if (b.nganSach)   properties['Ngân sách']              = { select: { name: b.nganSach } };
-  if (b.phongCach)  properties['Phong cách thiết kế']    = { select: { name: b.phongCach } };
-  if (b.mucTieu)    properties['Mục tiêu website']       = { select: { name: b.mucTieu } };
-  if (b.facebook)   properties['Facebook']               = { url: b.facebook };
-  if (b.instagram)  properties['Instagram']              = { url: b.instagram };
-  if (b.webRef)     properties['Website tham khảo']      = { url: b.webRef };
+  if (b.email)     properties['_ade']        = { email: b.email };
+  if (b.linhVuc)   properties['JLVw']        = { select: { name: b.linhVuc } };
+  if (b.nganSach)  properties['%40%5E%7Bo'] = { select: { name: b.nganSach } };
+  if (b.phongCach) properties['%5D~pj']     = { select: { name: b.phongCach } };
+  if (b.mucTieu)   properties['Oo%60%40']   = { select: { name: b.mucTieu } };
+  if (b.facebook)  properties['Ex%5CR']     = { url: b.facebook };
+  if (b.instagram) properties['~VZv']       = { url: b.instagram };
+  if (b.webRef)    properties['_TfR']       = { url: b.webRef };
 
   try {
     const r = await fetch('https://api.notion.com/v1/pages', {
