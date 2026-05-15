@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spa Ngọc Lan Đà Lạt — Chạm vào tĩnh lặng, Tìm lại chính mình</title>
+<meta name="description" content="Spa Ngọc Lan — Eco spa thiên nhiên tại Đà Lạt. Massage đá núi lửa, tắm thảo mộc, chăm sóc da mặt từ nguyên liệu hoa Đà Lạt. Hotline: 0901 234 567">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --sage:#7A9E7E;
+  --sage-deep:#4E7252;
+  --sage-pale:rgba(122,158,126,.1);
+  --cream:#FAF7F2;
+  --cream-dark:#F0EBE1;
+  --earth:#C4956A;
+  --earth-light:#E8C9A0;
+  --text:#2A2A2A;
+  --muted:#8A8A8A;
+  --white:#FFFFFF;
+  --border:rgba(122,158,126,.2);
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* grain overlay */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px;
+}
+
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;object-fit:cover}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 0;
+  transition:background .4s,padding .3s,box-shadow .3s;
+}
+nav.scrolled{
+  background:rgba(250,247,242,.97);
+  backdrop-filter:blur(12px);
+  padding:12px 0;
+  box-shadow:0 1px 0 var(--border);
+}
+.nav-in{
+  max-width:1200px;margin:0 auto;padding:0 48px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;
+  color:var(--sage-deep);letter-spacing:.06em;
+  display:flex;flex-direction:column;line-height:1;
+}
+.logo span{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--earth);font-family:'DM Sans',sans-serif;margin-top:3px}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-links a{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--sage-deep)}
+.nav-cta{
+  padding:10px 24px;border:1px solid var(--sage);
+  color:var(--sage-deep)!important;font-size:11px!important;
+  transition:background .2s,color .2s!important;
+}
+.nav-cta:hover{background:var(--sage)!important;color:var(--white)!important}
+
+/* HERO */
+.hero{
+  min-height:100vh;position:relative;
+  display:flex;align-items:center;overflow:hidden;
+  background:var(--cream);
+}
+.hero-bg-circle{
+  position:absolute;right:-10%;top:50%;transform:translateY(-50%);
+  width:65vw;height:65vw;max-width:800px;max-height:800px;
+  border-radius:50%;
+  background:radial-gradient(ellipse at 40% 40%,rgba(122,158,126,.18) 0%,rgba(122,158,126,.06) 60%,transparent 80%);
+  border:1px solid var(--border);
+}
+.hero-arc{
+  position:absolute;right:8%;top:50%;transform:translateY(-50%);
+  width:52vw;height:52vw;max-width:640px;max-height:640px;
+  border-radius:50%;
+  border:1px solid rgba(122,158,126,.15);
+}
+.hero-img-wrap{
+  position:absolute;right:5%;top:50%;transform:translateY(-50%);
+  width:44vw;height:44vw;max-width:560px;max-height:560px;
+  border-radius:50%;overflow:hidden;
+  border:6px solid var(--cream);
+  box-shadow:0 32px 80px rgba(78,114,82,.12);
+}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover}
+.hero-leaf{
+  position:absolute;left:2%;bottom:10%;opacity:.06;
+  font-size:320px;line-height:1;color:var(--sage-deep);
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  pointer-events:none;user-select:none;
+}
+.hero-content{
+  position:relative;z-index:2;
+  max-width:1200px;margin:0 auto;padding:0 48px;
+  padding-top:100px;
+  width:100%;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:14px;margin-bottom:28px;
+}
+.hero-eyebrow::before{content:'';display:block;width:36px;height:1px;background:var(--earth)}
+.hero-eyebrow span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--earth);font-weight:400}
+.hero h1{
+  font-size:clamp(52px,7vw,96px);
+  font-weight:300;color:var(--sage-deep);
+  line-height:1.02;margin-bottom:10px;
+  max-width:520px;
+}
+.hero h1 em{font-style:italic;color:var(--sage);display:block}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:19px;color:var(--muted);
+  max-width:400px;margin-bottom:40px;line-height:1.6;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--sage-deep);color:var(--white);
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  padding:16px 36px;
+  transition:background .25s,transform .2s;
+}
+.btn-primary:hover{background:var(--sage);transform:translateY(-2px)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:10px;
+  background:transparent;color:var(--sage-deep);
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  padding:15px 32px;border:1px solid var(--border);
+  transition:border-color .25s,transform .2s;
+}
+.btn-outline:hover{border-color:var(--sage);transform:translateY(-2px)}
+.hero-scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;
+}
+.hero-scroll span{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.scroll-line{width:1px;height:52px;background:linear-gradient(to bottom,var(--earth-light),transparent);overflow:hidden}
+.scroll-line::after{
+  content:'';display:block;width:100%;height:16px;
+  background:var(--earth);animation:drop 1.9s ease-in-out infinite;
+}
+@keyframes drop{0%{transform:translateY(-20px)}100%{transform:translateY(70px)}}
+
+/* SHARED */
+.wrap{max-width:1200px;margin:0 auto;padding:0 48px}
+.kicker{
+  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--earth);margin-bottom:12px;
+  display:flex;align-items:center;gap:12px;
+}
+.kicker::before{content:'';display:block;width:24px;height:1px;background:var(--earth-light)}
+h2.sec-title{
+  font-size:clamp(36px,4.5vw,62px);
+  font-weight:300;color:var(--sage-deep);line-height:1.1;margin-bottom:16px;
+}
+h2.sec-title em{font-style:italic;color:var(--sage)}
+.sec-desc{font-size:15px;font-weight:300;color:var(--muted);line-height:1.85;max-width:520px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.25,.46,.45,.94),transform .9s cubic-bezier(.25,.46,.45,.94)}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+.reveal.on{opacity:1;transform:none}
+
+/* ABOUT */
+.about{padding:110px 0;background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-wrap{
+  position:relative;height:580px;
+}
+.about-img-main{
+  position:absolute;inset:0;
+  border-radius:2px;overflow:hidden;
+}
+.about-img-main img{height:100%;border-radius:2px}
+.about-badge{
+  position:absolute;bottom:28px;left:-24px;
+  background:var(--cream);padding:20px 24px;
+  border:1px solid var(--border);
+  border-radius:2px;
+  box-shadow:0 8px 32px rgba(78,114,82,.08);
+}
+.about-badge-num{font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--sage-deep);line-height:1}
+.about-badge-txt{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+.about-text .sec-desc{max-width:100%}
+.about-quote{
+  margin:28px 0;
+  padding:16px 0 16px 20px;
+  border-left:2px solid var(--earth-light);
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:20px;color:var(--sage-deep);line-height:1.55;
+}
+.about-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.pill{
+  padding:8px 18px;border:1px solid var(--border);
+  font-size:12px;color:var(--sage-deep);letter-spacing:.06em;
+  border-radius:100px;
+}
+
+/* SERVICES */
+.services{padding:110px 0;background:var(--cream)}
+.services-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;flex-wrap:wrap;gap:24px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.svc{
+  background:var(--white);padding:44px 36px;
+  transition:background .3s;cursor:default;
+}
+.svc:hover{background:var(--cream)}
+.svc-num{font-size:11px;letter-spacing:.18em;color:var(--earth);margin-bottom:24px}
+.svc-icon{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--sage-pale);display:flex;align-items:center;
+  justify-content:center;margin-bottom:20px;font-size:22px;
+}
+.svc h3{
+  font-size:28px;color:var(--sage-deep);font-weight:300;
+  line-height:1.2;margin-bottom:12px;
+}
+.svc h3 em{font-style:italic;color:var(--sage);display:block;font-size:.85em}
+.svc p{font-size:13.5px;color:var(--muted);line-height:1.8;margin-bottom:24px;font-weight:300}
+.svc-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:20px;border-top:1px solid var(--border);
+}
+.svc-price{
+  font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--earth);font-weight:400;
+}
+.svc-dur{font-size:11.5px;color:var(--muted);letter-spacing:.05em}
+
+/* WHY */
+.why{padding:100px 0;background:var(--sage-deep);position:relative;overflow:hidden}
+.why::before{
+  content:'';position:absolute;right:-10%;top:-20%;
+  width:60%;height:140%;border-radius:50%;
+  background:rgba(255,255,255,.03);
+}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.why-item{text-align:center;padding:0 16px}
+.why-circle{
+  width:72px;height:72px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;font-size:28px;
+  background:rgba(255,255,255,.05);
+}
+.why-item h3{font-size:24px;color:var(--cream);font-weight:300;margin-bottom:10px}
+.why-item p{font-size:13.5px;color:rgba(250,247,242,.55);line-height:1.8;font-weight:300}
+
+/* PRICING */
+.pricing{padding:110px 0;background:var(--white)}
+.pricing-head{text-align:center;margin-bottom:60px}
+.pricing-head .kicker{justify-content:center}
+.pricing-head .kicker::before{display:none}
+.pricing-head .sec-desc{margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.plan{background:var(--cream);padding:44px 36px;transition:background .3s}
+.plan.featured{background:var(--sage-deep)}
+.plan:hover:not(.featured){background:var(--cream-dark)}
+.plan-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--earth);margin-bottom:18px}
+.plan.featured .plan-label{color:var(--earth-light)}
+.plan-price{
+  font-family:'Cormorant Garamond',serif;font-size:50px;
+  color:var(--sage-deep);line-height:1;margin-bottom:4px;
+}
+.plan.featured .plan-price{color:var(--cream)}
+.plan-unit{font-size:12px;color:var(--muted);margin-bottom:24px;font-weight:300}
+.plan.featured .plan-unit{color:rgba(250,247,242,.5)}
+.plan h3{font-size:26px;color:var(--sage-deep);font-weight:300;margin-bottom:16px}
+.plan.featured h3{color:var(--cream)}
+.plan-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.plan-list li{
+  font-size:13.5px;color:var(--muted);font-weight:300;
+  padding-left:18px;position:relative;
+}
+.plan.featured .plan-list li{color:rgba(250,247,242,.65)}
+.plan-list li::before{
+  content:'✦';position:absolute;left:0;
+  color:var(--earth);font-size:9px;top:3px;
+}
+.plan.featured .plan-list li::before{color:var(--earth-light)}
+.plan-btn{
+  display:block;text-align:center;
+  padding:14px 24px;border:1px solid var(--border);
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--sage-deep);transition:all .25s;
+}
+.plan:hover:not(.featured) .plan-btn{background:var(--sage-deep);color:var(--white);border-color:var(--sage-deep)}
+.plan.featured .plan-btn{background:var(--earth);color:var(--white);border-color:var(--earth)}
+.plan.featured .plan-btn:hover{background:#b5844f}
+
+/* CONTACT */
+.contact{padding:110px 0;background:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:28px}
+.c-item{
+  display:flex;gap:18px;align-items:flex-start;
+  padding-bottom:28px;border-bottom:1px solid var(--border);
+}
+.c-item:last-child{border-bottom:none}
+.c-icon{
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid var(--border);display:flex;align-items:center;
+  justify-content:center;color:var(--sage);flex-shrink:0;font-size:16px;
+}
+.c-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.c-val{font-size:15px;color:var(--text);font-weight:300}
+.c-val a{color:var(--sage-deep);transition:color .2s}
+.c-val a:hover{color:var(--earth)}
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f-inp{
+  width:100%;background:var(--white);border:1px solid var(--border);
+  color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;
+  padding:14px 16px;outline:none;transition:border-color .2s;
+}
+.f-inp:focus{border-color:var(--sage)}
+.f-inp::placeholder{color:var(--muted);font-size:13px}
+textarea.f-inp{resize:vertical;min-height:120px}
+.f-submit{
+  background:var(--sage-deep);color:var(--white);border:none;
+  font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;
+  padding:18px 32px;cursor:pointer;
+  transition:background .25s,transform .2s;
+  align-self:flex-start;
+}
+.f-submit:hover{background:var(--sage);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{
+  background:var(--sage-deep);padding:48px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.footer-in{
+  max-width:1200px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:20px;
+}
+.f-logo{
+  font-family:'Cormorant Garamond',serif;font-size:22px;
+  color:var(--cream);font-weight:300;letter-spacing:.04em;
+}
+.f-logo span{color:var(--earth-light)}
+.f-copy{font-size:12px;color:rgba(250,247,242,.35);letter-spacing:.04em}
+.f-links{display:flex;gap:28px}
+.f-links a{font-size:12px;color:rgba(250,247,242,.45);letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.f-links a:hover{color:var(--earth-light)}
+
+/* FLOAT */
+.float-zalo{
+  position:fixed;bottom:28px;right:28px;z-index:100;
+  width:52px;height:52px;border-radius:50%;
+  background:#0068FF;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(0,104,255,.35);
+  animation:zpulse 2.5s infinite;transition:transform .2s;
+}
+.float-zalo:hover{transform:scale(1.1)}
+@keyframes zpulse{
+  0%,100%{box-shadow:0 4px 20px rgba(0,104,255,.35),0 0 0 0 rgba(0,104,255,.25)}
+  50%{box-shadow:0 4px 20px rgba(0,104,255,.35),0 0 0 14px rgba(0,104,255,0)}
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .nav-links{display:none}
+  .hero-img-wrap{display:none}
+  .hero-bg-circle,.hero-arc{display:none}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .services-grid,.pricing-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .about-badge{left:0}
+}
+@media(max-width:640px){
+  .wrap,.nav-in{padding:0 20px}
+  .hero-content{padding:0 20px;padding-top:90px}
+  .hero h1{font-size:48px}
+  .about,.services,.pricing,.contact{padding:64px 0}
+  .why{padding:64px 0}
+  .form-row{grid-template-columns:1fr}
+  footer{padding:32px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" aria-label="Điều hướng Spa Ngọc Lan">
+  <div class="nav-in">
+    <a href="/" class="logo">
+      Spa Ngọc Lan
+      <span>Đà Lạt · Eco Wellness</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#dich-vu">Dịch vụ</a></li>
+      <li><a href="#bang-gia">Bảng giá</a></li>
+      <li><a href="#ve-chung-toi">Về chúng tôi</a></li>
+      <li><a href="#lien-he" class="nav-cta">Đặt lịch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="Spa Ngọc Lan Đà Lạt">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-arc"></div>
+  <div class="hero-img-wrap">
+    <img src="https://placehold.co/1200x1200/e8f0e9/7A9E7E?text=Spa+Ngọc+Lan" alt="Không gian Spa Ngọc Lan Đà Lạt — Eco spa thiên nhiên">
+  </div>
+  <div class="hero-leaf">✦</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">
+      <span>Eco Spa · Đà Lạt · Thiên nhiên thuần khiết</span>
+    </div>
+    <h1 class="reveal d1">
+      Chạm vào
+      <em>tĩnh lặng</em>
+    </h1>
+    <p class="hero-sub reveal d2">Tìm lại chính mình giữa lòng Đà Lạt sương mù — nơi hương thảo mộc chữa lành từng hơi thở.</p>
+    <div class="hero-btns reveal d3">
+      <a href="#lien-he" class="btn-primary">Đặt lịch ngay</a>
+      <a href="#dich-vu" class="btn-outline">Khám phá dịch vụ</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Cuộn</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="ve-chung-toi" class="about" aria-label="Về Spa Ngọc Lan Đà Lạt">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-img-main">
+          <img src="https://placehold.co/800x1160/ddeede/7A9E7E?text=Không+gian+Spa" alt="Không gian thiên nhiên của Spa Ngọc Lan Đà Lạt" style="height:100%">
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">5+</div>
+          <div class="about-badge-txt">Năm phục vụ tại Đà Lạt</div>
+        </div>
+      </div>
+      <div class="about-text reveal d2">
+        <p class="kicker">Câu chuyện của chúng tôi</p>
+        <h2 class="sec-title">Thiên nhiên<em>là liệu pháp</em></h2>
+        <p class="sec-desc">Spa Ngọc Lan ra đời từ tình yêu với vùng đất cao nguyên Đà Lạt — nơi mỗi loài hoa, mỗi nhánh thảo mộc đều mang trong mình sức chữa lành kỳ diệu.</p>
+        <blockquote class="about-quote">"Chúng tôi không bán sự thư giãn. Chúng tôi tạo ra khoảnh khắc bạn trở về với chính mình."</blockquote>
+        <p class="sec-desc">Tất cả nguyên liệu được tuyển chọn từ vườn thảo mộc Đà Lạt — sạch, thuần khiết và đầy dưỡng chất. Mỗi liệu trình là một hành trình riêng, được thiết kế để phục hồi cả thể xác lẫn tâm trí.</p>
+        <div class="about-pills">
+          <span class="pill">🌿 Nguyên liệu thiên nhiên</span>
+          <span class="pill">💧 Không hóa chất</span>
+          <span class="pill">🌸 Hoa Đà Lạt thuần khiết</span>
+          <span class="pill">✨ Kỹ thuật viên được đào tạo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="dich-vu" class="services" aria-label="Dịch vụ Spa Ngọc Lan">
+  <div class="wrap">
+    <div class="services-head">
+      <div>
+        <p class="kicker reveal">Liệu trình nổi bật</p>
+        <h2 class="sec-title reveal d1">Dịch vụ<em>thư giãn</em></h2>
+        <p class="sec-desc reveal d2">Ba liệu trình được thiết kế riêng để phục hồi từ sâu bên trong, bằng nguyên liệu hoa Đà Lạt thuần khiết.</p>
+      </div>
+      <a href="#lien-he" class="btn-outline reveal d2">Đặt lịch →</a>
+    </div>
+    <div class="services-grid">
+      <div class="svc reveal">
+        <div class="svc-num">01</div>
+        <div class="svc-icon">🪨</div>
+        <h3>Massage<em>Đá Núi Lửa</em></h3>
+        <p>Đá bazan được nung nóng tự nhiên kết hợp kỹ thuật massage truyền thống — thư giãn cơ sâu, khai thông kinh mạch, tái tạo năng lượng từ bên trong.</p>
+        <div class="svc-meta">
+          <span class="svc-price">350.000đ</span>
+          <span class="svc-dur">⏱ 90 phút</span>
+        </div>
+      </div>
+      <div class="svc reveal d1">
+        <div class="svc-num">02</div>
+        <div class="svc-icon">🌿</div>
+        <h3>Tắm<em>Thảo Mộc</em></h3>
+        <p>Hơn 15 loại thảo mộc Đà Lạt — gừng, ngải cứu, hoa lavender, sả chanh — kết hợp trong bồn tắm ấm áp, thải độc và tái tạo làn da từ bên ngoài.</p>
+        <div class="svc-meta">
+          <span class="svc-price">280.000đ</span>
+          <span class="svc-dur">⏱ 60 phút</span>
+        </div>
+      </div>
+      <div class="svc reveal d2">
+        <div class="svc-num">03</div>
+        <div class="svc-icon">🌸</div>
+        <h3>Chăm Sóc<em>Da Mặt</em></h3>
+        <p>Liệu trình làm sạch sâu và nuôi dưỡng da bằng chiết xuất hoa hồng, trà xanh Đà Lạt. Da căng bóng, đều màu sau mỗi lần trị liệu.</p>
+        <div class="svc-meta">
+          <span class="svc-price">320.000đ</span>
+          <span class="svc-dur">⏱ 75 phút</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" aria-label="Lý do chọn Spa Ngọc Lan">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:56px" class="reveal">
+      <p class="kicker" style="justify-content:center;color:var(--earth-light)"><span style="background:rgba(232,201,160,.2)"></span>Tại sao chọn chúng tôi</p>
+      <h2 class="sec-title" style="color:var(--cream)">Khác biệt từ<em style="color:var(--earth-light)">tâm trí</em></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal d1">
+        <div class="why-circle">🌱</div>
+        <h3>100% Thiên Nhiên</h3>
+        <p>Mọi nguyên liệu đều từ vườn thảo mộc Đà Lạt — không hóa chất, không phụ gia tổng hợp. Sạch hoàn toàn cho da nhạy cảm.</p>
+      </div>
+      <div class="why-item reveal d2">
+        <div class="why-circle">🤲</div>
+        <h3>Chuyên Gia Được Đào Tạo</h3>
+        <p>Đội ngũ kỹ thuật viên được đào tạo bài bản theo kỹ thuật massage truyền thống Á Đông và phương pháp spa hiện đại.</p>
+      </div>
+      <div class="why-item reveal d3">
+        <div class="why-circle">🏔️</div>
+        <h3>Không Gian Đà Lạt</h3>
+        <p>Giữa khí hậu mát lành 1.500m, không gian spa được thiết kế để đón nhận hơi lạnh và hương thông — chữa lành bắt đầu từ khoảnh khắc bạn bước vào.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="bang-gia" class="pricing" aria-label="Bảng giá Spa Ngọc Lan">
+  <div class="wrap">
+    <div class="pricing-head reveal">
+      <p class="kicker">Gói dịch vụ</p>
+      <h2 class="sec-title">Chọn hành trình<em>của bạn</em></h2>
+      <p class="sec-desc">Ba gói được thiết kế cho ba trạng thái khác nhau — từ thư giãn nhanh đến phục hồi toàn diện.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan reveal d1">
+        <div class="plan-label">Gói cơ bản</div>
+        <div class="plan-price">450.000</div>
+        <div class="plan-unit">đồng / buổi</div>
+        <h3>Thư Giãn</h3>
+        <ul class="plan-list">
+          <li>1 liệu trình tự chọn</li>
+          <li>Trà thảo mộc Đà Lạt</li>
+          <li>Phòng nghỉ sau liệu trình (30 phút)</li>
+          <li>Khăn + trang phục spa</li>
+        </ul>
+        <a href="#lien-he" class="plan-btn">Đặt ngay</a>
+      </div>
+      <div class="plan featured reveal d2">
+        <div class="plan-label">Phổ biến nhất</div>
+        <div class="plan-price">780.000</div>
+        <div class="plan-unit">đồng / buổi</div>
+        <h3>Cân Bằng</h3>
+        <ul class="plan-list">
+          <li>2 liệu trình kết hợp</li>
+          <li>Ngâm chân thảo mộc</li>
+          <li>Trà + bánh nhẹ</li>
+          <li>Phòng nghỉ ngơi (60 phút)</li>
+          <li>Tư vấn chăm sóc da cá nhân</li>
+        </ul>
+        <a href="#lien-he" class="plan-btn">Đặt ngay</a>
+      </div>
+      <div class="plan reveal d3">
+        <div class="plan-label">Trải nghiệm đầy đủ</div>
+        <div class="plan-price">1.200.000</div>
+        <div class="plan-unit">đồng / buổi</div>
+        <h3>Toàn Thân</h3>
+        <ul class="plan-list">
+          <li>3 liệu trình trọn gói</li>
+          <li>Tắm thảo mộc riêng tư</li>
+          <li>Detox drink + bữa nhẹ</li>
+          <li>Phòng nghỉ VIP (90 phút)</li>
+          <li>Serum dưỡng da gift set</li>
+        </ul>
+        <a href="#lien-he" class="plan-btn">Đặt ngay</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="lien-he" class="contact" aria-label="Đặt lịch Spa Ngọc Lan Đà Lạt">
+  <div class="wrap">
+    <div style="margin-bottom:56px" class="reveal">
+      <p class="kicker">Liên hệ & Đặt lịch</p>
+      <h2 class="sec-title">Bắt đầu hành trình<em>chữa lành</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal d1">
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Địa chỉ</div>
+            <div class="c-val">12 Nguyễn Chí Thanh, TP. Đà Lạt<br>Lâm Đồng</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Hotline & Zalo</div>
+            <div class="c-val"><a href="tel:0901234567">0901 234 567</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🕐</div>
+          <div>
+            <div class="c-label">Giờ mở cửa</div>
+            <div class="c-val">Thứ 2 – Chủ nhật: 8:00 – 21:00<br>Không nghỉ lễ</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">✨</div>
+          <div>
+            <div class="c-label">Ưu đãi đặc biệt</div>
+            <div class="c-val">Đặt lịch trước 24h — giảm 10%<br>Nhóm 3+ người — giảm 15%</div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form reveal d2" onsubmit="return false">
+        <div class="form-row">
+          <input class="f-inp" type="text" placeholder="Họ và tên *" required>
+          <input class="f-inp" type="tel" placeholder="Số điện thoại *" required>
+        </div>
+        <select class="f-inp">
+          <option value="">Chọn dịch vụ quan tâm</option>
+          <option>Massage Đá Núi Lửa — 350.000đ</option>
+          <option>Tắm Thảo Mộc — 280.000đ</option>
+          <option>Chăm Sóc Da Mặt — 320.000đ</option>
+          <option>Gói Thư Giãn — 450.000đ</option>
+          <option>Gói Cân Bằng — 780.000đ</option>
+          <option>Gói Toàn Thân — 1.200.000đ</option>
+        </select>
+        <input class="f-inp" type="datetime-local" placeholder="Ngày và giờ mong muốn">
+        <textarea class="f-inp" placeholder="Ghi chú thêm (tình trạng sức khỏe, yêu cầu đặc biệt...)"></textarea>
+        <button type="submit" class="f-submit">Gửi yêu cầu đặt lịch →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer aria-label="Footer Spa Ngọc Lan Đà Lạt">
+  <div class="footer-in">
+    <div>
+      <div class="f-logo">Spa <span>Ngọc Lan</span></div>
+      <p style="font-size:12px;color:rgba(250,247,242,.3);margin-top:6px">12 Nguyễn Chí Thanh · TP. Đà Lạt</p>
+    </div>
+    <div class="f-links">
+      <a href="#dich-vu">Dịch vụ</a>
+      <a href="#bang-gia">Bảng giá</a>
+      <a href="tel:0901234567">0901 234 567</a>
+    </div>
+    <p class="f-copy">© 2025 Spa Ngọc Lan Đà Lạt</p>
+  </div>
+</footer>
+
+<!-- FLOAT ZALO -->
+<a href="https://zalo.me/0901234567" class="float-zalo" aria-label="Nhắn Zalo Spa Ngọc Lan">
+  <svg width="24" height="24" viewBox="0 0 64 64" fill="none">
+    <path d="M32 4C16.536 4 4 16.536 4 32c0 5.228 1.418 10.134 3.894 14.348L4 60l13.977-3.853C22.035 58.672 26.888 60 32 60c15.464 0 28-12.536 28-28S47.464 4 32 4z" fill="white"/>
+    <path d="M20 24h6M26 32h-6M24 38h2m4-14c0 0 4 2 4 8s-4 8-4 8h6l4 4V32c0-6-4-8-4-8h-6z" stroke="#0068FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), {passive:true});
+
+  // Reveal on scroll
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); ro.unobserve(e.target); } });
+  }, {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  // Form submit
+  document.querySelector('.contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = this.querySelector('.f-submit');
+    btn.textContent = '✓ Đã nhận — Chúng tôi sẽ gọi lại trong 30 phút!';
+    btn.style.background = '#7A9E7E';
+  });
+</script>
+</body>
+</html>
