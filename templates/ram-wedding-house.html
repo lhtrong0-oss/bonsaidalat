@@ -77,7 +77,7 @@ nav.scrolled{
   display:flex;align-items:center;justify-content:space-between;
 }
 .logo{display:flex;align-items:center;}
-.logo-img{height:48px;width:auto;object-fit:contain;}
+.logo-img{height:72px;width:auto;object-fit:contain;}
 .nav-links{display:flex;gap:40px;list-style:none;align-items:center}
 .nav-links a{
   font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em;
@@ -440,27 +440,64 @@ footer{
 
 /* MOBILE */
 @media(max-width:768px){
-  .nav-in{padding:0 24px}
+  /* Nav */
+  .nav-in{padding:0 20px}
   .nav-links{display:none}
-  .hero-content{padding:0 24px}
-  .hero-title{font-size:clamp(52px,13vw,90px)}
-  .hero-bottom{flex-direction:column;gap:32px;align-items:flex-start}
-  .hero-cta-wrap{align-items:flex-start}
-  .letterbox-top,.letterbox-bot{height:50px}
-  .about,.gallery-in,.services-in,.contact-in{padding:80px 24px}
-  .about-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
-  .about-badge{bottom:-16px;left:-16px;width:120px;height:120px}
-  .about-badge-num{font-size:24px}
-  .about-badge-text{font-size:11px}
-  .about-stats{grid-template-columns:repeat(3,1fr);gap:16px}
-  .stat-num{font-size:36px}
-  .services-grid{grid-template-columns:1fr}
-  .gallery-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .logo-img{height:56px}
+
+  /* Hero */
+  .hero-content{padding:0 20px}
+  .hero-title{font-size:clamp(44px,12vw,80px)}
+  .hero-bottom{flex-direction:column;gap:24px;align-items:flex-start}
+  .hero-cta-wrap{align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:12px}
+  .hero-tagline{max-width:100%;font-size:12px}
+  .letterbox-top,.letterbox-bot{height:40px}
+
+  /* Sections */
+  .about,.gallery-in,.services-in,.contact-in{padding:60px 20px}
+  .gold-divider{padding-inline:20px}
+
+  /* About */
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .about-visual{padding-bottom:24px}
+  .about-badge{
+    position:static;transform:none;
+    width:100%;height:auto;border-radius:12px;
+    padding:16px 24px;flex-direction:row;gap:16px;
+    justify-content:flex-start;margin-top:24px;
+  }
+  .about-badge-num{font-size:28px}
+  .about-badge-text{font-size:13px;text-align:left}
+  .about-stats{grid-template-columns:1fr 1fr;gap:20px}
+  .stat-num{font-size:32px}
+
+  /* Services */
+  .services-grid{grid-template-columns:1fr;gap:2px}
+  .service-img{aspect-ratio:16/9}
+
+  /* Gallery */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+    gap:6px;
+  }
   .g1,.g2,.g3,.g4,.g5{grid-column:auto;grid-row:auto}
+  .gallery-item img{min-height:140px}
+
+  /* Form */
   .f-row{grid-template-columns:1fr}
-  .footer-in,.footer-bottom{flex-direction:column;gap:24px;text-align:center;padding:0 24px}
-  .footer-bottom{margin-top:24px;padding-top:24px}
-  .gold-divider{padding:0 24px}
+
+  /* Footer */
+  .footer-in{flex-direction:column;gap:20px;text-align:center;padding:0 20px}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:16px}
+  .footer-bottom{
+    flex-direction:column;gap:8px;text-align:center;
+    margin-top:24px;padding:24px 20px 0;
+  }
+
+  /* Zalo float */
+  .zalo-float{bottom:20px;right:20px;width:46px;height:46px}
 }
 </style>
 </head>
@@ -511,7 +548,7 @@ footer{
 </section>
 
 <!-- DIVIDER -->
-<div class="gold-divider" style="padding:48px 60px" aria-hidden="true">
+<div class="gold-divider" style="padding-block:48px" aria-hidden="true">
   <span>— Wedding · Bridal · Studio —</span>
 </div>
 
@@ -718,7 +755,7 @@ footer{
 <!-- FOOTER -->
 <footer aria-label="Footer">
   <div class="footer-in">
-    <img src="../assets/lam-thien.jpg" style="height:56px;width:auto;object-fit:contain;" alt="RAM Wedding House Đà Lạt — Logo">
+    <img src="../assets/lam-thien.jpg" style="height:84px;width:auto;object-fit:contain;" alt="RAM Wedding House Đà Lạt — Logo">
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="#about">Về chúng tôi</a>
       <a href="#services">Dịch vụ</a>
