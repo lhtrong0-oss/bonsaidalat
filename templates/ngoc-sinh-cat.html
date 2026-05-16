@@ -1522,8 +1522,8 @@
       return;
     }
 
-    // Gửi về Notion Bookings
-    fetch('https://trongletour360.vercel.app/api/save-booking', {
+    // Gửi về Notion Bookings (cùng domain, không cần CORS)
+    fetch('/api/save-booking', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, phone, room, checkin: ci, checkout: co, guests, note }),
