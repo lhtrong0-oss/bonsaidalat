@@ -1522,6 +1522,13 @@
       return;
     }
 
+    // Gửi về Notion Bookings
+    fetch('https://trongletour360.vercel.app/api/save-booking', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, phone, room, checkin: ci, checkout: co, guests, note }),
+    }).catch(() => {});
+
     const msg = encodeURIComponent(
 `🏡 ĐẶT PHÒNG NGỌC SINH CÁT
 ━━━━━━━━━━━━━━━━━━
