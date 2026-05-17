@@ -1550,7 +1550,7 @@ Xin chào, tôi muốn đặt phòng tại Ngọc Sinh Cát!`
 <!-- ── AI CHATBOT NGỌC SINH CÁT ─────────────────────────── -->
 <style>
   #nsc-btn {
-    position: fixed; bottom: 28px; right: 28px; z-index: 1000;
+    position: fixed; bottom: 28px; left: 28px; z-index: 1000;
     width: 54px; height: 54px; border-radius: 50%;
     background: var(--deep); border: 1.5px solid var(--gold);
     color: var(--gold); cursor: pointer;
@@ -1567,12 +1567,12 @@ Xin chào, tôi muốn đặt phòng tại Ngọc Sinh Cát!`
   }
 
   #nsc-panel {
-    position: fixed; bottom: 92px; right: 28px; z-index: 1000;
+    position: fixed; bottom: 92px; left: 28px; z-index: 1000;
     width: 340px; height: 500px;
     background: var(--warm); border: 1px solid rgba(201,168,76,.3);
     display: flex; flex-direction: column;
     box-shadow: 0 24px 64px rgba(61,43,31,.3);
-    transform-origin: bottom right;
+    transform-origin: bottom left;
     transform: scale(.9) translateY(10px);
     opacity: 0; pointer-events: none;
     transition: transform .35s cubic-bezier(.34,1.56,.64,1), opacity .25s;
@@ -1680,8 +1680,8 @@ Xin chào, tôi muốn đặt phòng tại Ngọc Sinh Cát!`
   #nsc-send:hover { background: var(--gold-l); }
 
   @media (max-width: 480px) {
-    #nsc-panel { width: calc(100vw - 28px); right: 14px; bottom: 76px; }
-    #nsc-btn   { right: 14px; bottom: 14px; }
+    #nsc-panel { width: calc(100vw - 28px); left: 14px; bottom: 76px; }
+    #nsc-btn   { left: 14px; bottom: 14px; }
   }
 </style>
 
