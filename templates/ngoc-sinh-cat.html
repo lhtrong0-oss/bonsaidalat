@@ -1706,11 +1706,12 @@ Xin chào, tôi muốn đặt phòng tại Ngọc Sinh Cát!`
 <script>
 (function () {
   const ROOMS = [
-    { name: 'Lý Ngữ Viên',         cap: '4–6 người', price: '1.350.000đ/đêm', desc: 'Nhà gỗ ven hồ cá koi, sân BBQ. Không gian lãng mạn, yên tĩnh — lý tưởng cho cặp đôi và nhóm nhỏ.' },
-    { name: 'Thanh Phong Viên',     cap: '4–6 người', price: '1.350.000đ/đêm', desc: 'Kiến trúc Nhật Bản tinh tế, điều hòa, ánh sáng dịu nhẹ. Phong vị thiền định giữa rừng Đà Lạt.' },
-    { name: 'Tùng Quang Ngữ Cảnh', cap: '8–12 người', price: '3.500.000đ/đêm', desc: 'Không gian đại gia đình cổ trang — 4 phòng đơn riêng, WC riêng. Phù hợp team building, họp mặt.' },
+    { name: 'Lý Ngữ Viên',         cap: '4–6 người', price: '1.350.000đ/đêm', priceNum: 1350000, desc: 'Nhà gỗ ven hồ cá koi, sân BBQ. Không gian lãng mạn, yên tĩnh — lý tưởng cho cặp đôi và nhóm nhỏ.' },
+    { name: 'Thanh Phong Viên',     cap: '4–6 người', price: '1.350.000đ/đêm', priceNum: 1350000, desc: 'Kiến trúc Nhật Bản tinh tế, điều hòa, ánh sáng dịu nhẹ. Phong vị thiền định giữa rừng Đà Lạt.' },
+    { name: 'Tùng Quang Ngữ Cảnh', cap: '8–12 người', price: '3.500.000đ/đêm', priceNum: 3500000, desc: 'Không gian đại gia đình cổ trang — 4 phòng đơn riêng, WC riêng. Phù hợp team building, họp mặt.' },
   ];
   const ZALO = '0785925998';
+  const CHECK_API = 'https://trongletour360.net/api/check-availability';
 
   const panel  = document.getElementById('nsc-panel');
   const btn    = document.getElementById('nsc-btn');
@@ -1719,6 +1720,8 @@ Xin chào, tôi muốn đặt phòng tại Ngọc Sinh Cát!`
   const input  = document.getElementById('nsc-input');
   const send   = document.getElementById('nsc-send');
 
+  // state machine: step = null | 'await_checkin' | 'await_nights'
+  let state = { step: null, room: null, checkin: null };
   let opened = false;
 
   const now = () => new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
@@ -1784,10 +1787,87 @@ Xin chào, tôi muốn đặt phòng tại Ngọc Sinh Cát!`
     };
   }
 
+  async function checkAvailability(checkin, nights, room) {
+    addMsg('bot', '⏳ Đang kiểm tra lịch phòng…');
+    try {
+      const res = await fetch(CHECK_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ checkin, nights }),
+      });
+      const data = await res.json();
+      const r = ROOMS.find(x => x.name === room) || ROOMS[0];
+      const total = (r.priceNum * nights).toLocaleString('vi-VN') + 'đ';
+
+      if (data.available) {
+        addMsg('bot', `✅ Còn phòng!\nCheck-in: ${data.checkinVN} · Check-out: ${data.checkoutVN} (${nights} đêm)\n💰 Tổng ước tính: ${total}\n\nAnh/chị để lại thông tin để Trọng giữ phòng ngay:`);
+        state = { step: null, room: null, checkin: null };
+        setTimeout(() => showLeadForm(`${room} · ${data.checkinVN}→${data.checkoutVN}`), 400);
+      } else {
+        addMsg('bot', `😔 Rất tiếc, phòng đã có booking ngày đó.\n📅 Ngày trống sớm nhất: ${data.nextVN}\n\nAnh/chị muốn thử ngày khác không?`);
+        state = { step: 'await_checkin', room, checkin: null };
+        setTimeout(() => addQR([`Thử từ ${data.nextVN}`, 'Nhập ngày khác', 'Xem phòng khác']), 500);
+      }
+    } catch {
+      addMsg('bot', `Em không kiểm tra được lịch lúc này 😔\nAnh/chị nhắn thẳng Zalo ${ZALO} để Trọng check ngay nhé!`);
+      state = { step: null, room: null, checkin: null };
+    }
+  }
+
+  function startBooking(room) {
+    state = { step: 'await_checkin', room, checkin: null };
+    setTimeout(() => addMsg('bot', `Tuyệt vời! Anh/chị muốn đặt ${room} 🌿\n\nCho em biết ngày check-in dự kiến nhé\n(kiểu DD/MM — ví dụ: 25/6):`), 300);
+  }
+
   function handleText(text) {
     addMsg('usr', text);
     const t = text.toLowerCase();
 
+    // ── STATE MACHINE ────────────────────────────────────────
+    if (state.step === 'await_checkin') {
+      if (/xem phòng|phong khac|quay lại/.test(t) || text === 'Xem phòng khác') {
+        state = { step: null, room: null, checkin: null };
+        setTimeout(() => addMsg('bot', 'Anh/chị muốn xem phòng nào?'), 300);
+        setTimeout(() => addQR(ROOMS.map(r => r.name)), 700);
+        return;
+      }
+      const fromMatch = text.match(/từ\s+(\d{1,2}\/\d{1,2})/i);
+      const dateMatch = fromMatch
+        ? [null, fromMatch[1]]
+        : text.match(/(\d{1,2}[\/\-\.]\d{1,2}(?:[\/\-\.]\d{2,4})?)/);
+      if (dateMatch) {
+        const dateStr = fromMatch ? fromMatch[1] : dateMatch[1];
+        state.checkin = dateStr;
+        state.step = 'await_nights';
+        setTimeout(() => {
+          addMsg('bot', `Check-in ${dateStr} — anh/chị ở mấy đêm ạ?`);
+          setTimeout(() => addQR(['1 đêm', '2 đêm', '3 đêm', '4+ đêm']), 400);
+        }, 300);
+      } else if (/nhập|chọn ngày/.test(t) || text === 'Nhập ngày khác') {
+        setTimeout(() => addMsg('bot', 'Anh/chị nhập ngày check-in nhé (kiểu DD/MM — ví dụ: 25/6):'), 300);
+      } else {
+        setTimeout(() => addMsg('bot', 'Anh/chị nhập ngày check-in nhé (kiểu DD/MM — ví dụ: 25/6):'), 300);
+      }
+      return;
+    }
+
+    if (state.step === 'await_nights') {
+      if (/xem phòng|phong khac|quay lại/.test(t) || text === 'Xem phòng khác') {
+        state = { step: null, room: null, checkin: null };
+        setTimeout(() => addMsg('bot', 'Anh/chị muốn xem phòng nào?'), 300);
+        setTimeout(() => addQR(ROOMS.map(r => r.name)), 700);
+        return;
+      }
+      const nightsMatch = text.match(/(\d+)/);
+      if (nightsMatch) {
+        checkAvailability(state.checkin, Math.max(1, parseInt(nightsMatch[1])), state.room);
+      } else {
+        setTimeout(() => addMsg('bot', 'Anh/chị nhập số đêm nhé (ví dụ: 2):'), 300);
+      }
+      return;
+    }
+
+    // ── NORMAL FLOW ──────────────────────────────────────────
     if (/lý ngữ|ly ngu/.test(t)) {
       const r = ROOMS[0];
       setTimeout(() => addMsg('bot', `✦ ${r.name}\n${r.cap} · ${r.price}\n\n${r.desc}\n\nAnh/chị muốn đặt phòng này không?`), 300);
@@ -1804,15 +1884,15 @@ Xin chào, tôi muốn đặt phòng tại Ngọc Sinh Cát!`
       const list = ROOMS.map(r => `✦ ${r.name} — ${r.cap} · ${r.price}`).join('\n');
       setTimeout(() => addMsg('bot', `Ngọc Sinh Cát có 3 không gian lưu trú:\n\n${list}\n\nAnh/chị muốn biết thêm về phòng nào?`), 300);
       setTimeout(() => addQR(['Lý Ngữ Viên', 'Thanh Phong Viên', 'Tùng Quang Ngữ Cảnh']), 700);
-    } else if (/đặt|dat|book/.test(t) || text === 'Đặt phòng') {
-      setTimeout(() => addMsg('bot', 'Anh/chị muốn đặt phòng nào? Em xin tư vấn:'), 300);
+    } else if (/^đặt phòng$/i.test(text.trim()) || text === 'Đặt phòng') {
+      setTimeout(() => addMsg('bot', 'Anh/chị muốn đặt phòng nào?'), 300);
       setTimeout(() => addQR(ROOMS.map(r => r.name)), 700);
-    } else if (/đặt lý ngữ|đặt thanh phong|đặt tùng quang/.test(t)) {
-      const room = /lý ngữ/.test(t) ? ROOMS[0].name : /thanh phong/.test(t) ? ROOMS[1].name : ROOMS[2].name;
-      setTimeout(() => {
-        addMsg('bot', `Anh/chị để lại thông tin để Trọng xác nhận giữ ${room} nhé:`);
-        setTimeout(() => showLeadForm(room), 400);
-      }, 300);
+    } else if (/đặt lý ngữ/.test(t) || text === 'Đặt Lý Ngữ Viên') {
+      startBooking(ROOMS[0].name);
+    } else if (/đặt thanh phong/.test(t) || text === 'Đặt Thanh Phong Viên') {
+      startBooking(ROOMS[1].name);
+    } else if (/đặt tùng quang/.test(t) || text === 'Đặt Tùng Quang') {
+      startBooking(ROOMS[2].name);
     } else if (/dịch vụ|dich vu|team|bbq|lửa|cắm|hóa trang|ca nhạc/.test(t) || text === 'Dịch vụ') {
       setTimeout(() => addMsg('bot', `Dịch vụ đặc biệt tại Ngọc Sinh Cát:\n\n🔥 Nhóm lửa cắm trại\n🎯 Team Building\n🎵 Ca nhạc sân khấu\n👘 Hóa trang cổ trang Châu Á\n\nTất cả cần đặt trước. Anh/chị muốn thêm dịch vụ nào?`), 300);
       setTimeout(() => addQR(['Đặt phòng', 'Liên hệ Zalo', 'Quay lại']), 700);
