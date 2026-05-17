@@ -1503,18 +1503,18 @@
   document.getElementById('fci').min = fmt(tomorrow);
   document.getElementById('fco').min = fmt(dayAfter);
 
-  /* ── BOOKING FORM → ZALO ── */
+  /* ── BOOKING FORM ── */
   function submitForm(e) {
     e.preventDefault();
     const v = id => document.getElementById(id).value.trim();
     const name    = v('fn')  || 'Khách';
     const phone   = v('fp');
     const room    = v('fr')  || 'Chưa chọn';
-    const ci      = v('fci') || 'Chưa chọn';
-    const co      = v('fco') || 'Chưa chọn';
-    const guests  = v('fg')  || '?';
+    const ci      = v('fci') || '';
+    const co      = v('fco') || '';
+    const guests  = v('fg')  || '';
     const service = v('fsv') || 'Không';
-    const note    = v('fno') || 'Không có';
+    const note    = v('fno') || '';
 
     if (!phone) {
       alert('Vui lòng nhập số điện thoại để chúng tôi có thể liên hệ lại!');
@@ -1522,28 +1522,64 @@
       return;
     }
 
-    // Gửi về Notion Bookings (cùng domain, không cần CORS)
+    const submitBtn = e.target.querySelector('button[type=submit]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Đang gửi…';
+
+    // Gửi Notion + email
     fetch('/api/save-booking', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, phone, room, checkin: ci, checkout: co, guests, note }),
-    }).catch(() => {});
+    }).catch(() => {}).finally(() => {
+      // Ẩn form, hiện panel xác nhận + STK
+      e.target.style.display = 'none';
+      e.target.insertAdjacentHTML('afterend', `
+<div style="
+  background:rgba(201,168,76,.07);
+  border:1.5px solid rgba(201,168,76,.35);
+  padding:36px 28px;
+  text-align:center;
+  margin-top:8px;
+">
+  <p style="font-family:var(--f-display);font-size:1rem;color:var(--gold);letter-spacing:.1em;margin-bottom:14px;">✦ ĐÃ NHẬN YÊU CẦU ✦</p>
+  <p style="color:var(--cream);font-size:.88rem;line-height:1.85;margin-bottom:28px;">
+    Cảm ơn <strong>${name}</strong>! Trọng sẽ gọi xác nhận trong <strong>30 phút</strong>.<br>
+    Để giữ phòng, anh/chị chuyển khoản cọc theo thông tin bên dưới:
+  </p>
 
-    const msg = encodeURIComponent(
-`🏡 ĐẶT PHÒNG NGỌC SINH CÁT
-━━━━━━━━━━━━━━━━━━
-👤 Tên: ${name}
-📞 SĐT: ${phone}
-🏠 Phòng: ${room}
-📅 Check-in: ${ci}
-📅 Check-out: ${co}
-👥 Số khách: ${guests}
-🎭 Dịch vụ: ${service}
-📝 Ghi chú: ${note}
-━━━━━━━━━━━━━━━━━━
-Xin chào, tôi muốn đặt phòng tại Ngọc Sinh Cát!`
-    );
-    window.open(`https://zalo.me/0785925998?source=qr&data=${msg}`, '_blank');
+  <div style="
+    background:rgba(0,0,0,.28);
+    border:1px solid rgba(201,168,76,.22);
+    padding:22px 32px;
+    display:inline-block;
+    text-align:left;
+    margin-bottom:28px;
+    font-family:var(--f-display);
+    letter-spacing:.04em;
+  ">
+    <p style="color:var(--gold);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px;">Thông Tin Chuyển Khoản</p>
+    <p style="color:var(--cream);font-size:.9rem;margin-bottom:8px;">🏦 Ngân hàng: <strong>VIB</strong></p>
+    <p style="color:var(--cream);font-size:.9rem;margin-bottom:8px;">💳 STK: <strong style="color:var(--gold);font-size:1.15rem;letter-spacing:.06em;">025 379 016</strong></p>
+    <p style="color:var(--cream);font-size:.9rem;margin-bottom:8px;">👤 Chủ tài khoản: <strong>LE TU TRONG</strong></p>
+    <p style="color:var(--cream);font-size:.9rem;">📝 Nội dung: <strong style="color:var(--gold);">${name} coc NSC</strong></p>
+  </div>
+
+  <br>
+  <a href="https://zalo.me/0785925998" target="_blank" rel="noopener" style="
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--gold);color:var(--ink);
+    font-family:var(--f-display);font-size:.78rem;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;
+    padding:15px 36px;text-decoration:none;
+    transition:background .2s;
+  ">💬 Gửi Bill Chuyển Khoản Qua Zalo →</a>
+
+  <p style="color:rgba(245,237,214,.3);font-size:.7rem;margin-top:16px;font-family:var(--f-display);">
+    Gửi ảnh chuyển khoản → Trọng xác nhận giữ phòng ngay
+  </p>
+</div>`);
+    });
   }
 </script>
 
@@ -1800,9 +1836,16 @@ Xin chào, tôi muốn đặt phòng tại Ngọc Sinh Cát!`
       const total = (r.priceNum * nights).toLocaleString('vi-VN') + 'đ';
 
       if (data.available) {
-        addMsg('bot', `✅ Còn phòng!\nCheck-in: ${data.checkinVN} · Check-out: ${data.checkoutVN} (${nights} đêm)\n💰 Tổng ước tính: ${total}\n\nAnh/chị để lại thông tin để Trọng giữ phòng ngay:`);
+        addMsg('bot', `✅ Còn phòng!\nCheck-in: ${data.checkinVN} · Check-out: ${data.checkoutVN} (${nights} đêm)\n💰 Tổng ước tính: ${total}\n\nEm kéo anh/chị xuống form đặt phòng để điền thông tin giữ chỗ nhé 🌿`);
         state = { step: null, room: null, checkin: null };
-        setTimeout(() => showLeadForm(`${room} · ${data.checkinVN}→${data.checkoutVN}`), 400);
+        // Pre-fill phòng trong form
+        const roomSel = document.getElementById('fr');
+        if (roomSel) roomSel.value = room;
+        // Scroll xuống #booking và đóng chat
+        setTimeout(() => {
+          document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(() => { panel.classList.remove('open'); btn.style.transform = ''; }, 700);
+        }, 1000);
       } else {
         addMsg('bot', `😔 Rất tiếc, phòng đã có booking ngày đó.\n📅 Ngày trống sớm nhất: ${data.nextVN}\n\nAnh/chị muốn thử ngày khác không?`);
         state = { step: 'await_checkin', room, checkin: null };
