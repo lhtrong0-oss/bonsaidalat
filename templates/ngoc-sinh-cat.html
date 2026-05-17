@@ -1919,15 +1919,30 @@
       if (dateMatch) {
         const dateStr = fromMatch ? fromMatch[1] : dateMatch[1];
         state.checkin = dateStr;
-        state.step = 'await_nights';
+        state.step = 'await_confirm_checkin';
         setTimeout(() => {
-          addMsg('bot', `Check-in ${dateStr} — anh/chị ở mấy đêm ạ?`);
-          setTimeout(() => addQR(['1 đêm', '2 đêm', '3 đêm', '4+ đêm']), 400);
+          addMsg('bot', `Anh/chị check-in ngày ${dateStr} đúng không ạ?`);
+          setTimeout(() => addQR(['✅ Đúng rồi', '❌ Sửa lại ngày']), 400);
         }, 300);
       } else if (/nhập|chọn ngày/.test(t) || text === 'Nhập ngày khác') {
         setTimeout(() => addMsg('bot', 'Anh/chị nhập ngày check-in nhé (kiểu DD/MM — ví dụ: 25/6):'), 300);
       } else {
         setTimeout(() => addMsg('bot', 'Anh/chị nhập ngày check-in nhé (kiểu DD/MM — ví dụ: 25/6):'), 300);
+      }
+      return;
+    }
+
+    if (state.step === 'await_confirm_checkin') {
+      if (/đúng|yes|ok|✅/.test(t) || text === '✅ Đúng rồi') {
+        state.step = 'await_nights';
+        setTimeout(() => {
+          addMsg('bot', `Check-in ${state.checkin} — anh/chị ở mấy đêm ạ?`);
+          setTimeout(() => addQR(['1 đêm', '2 đêm', '3 đêm', '4+ đêm']), 400);
+        }, 300);
+      } else {
+        state.checkin = null;
+        state.step = 'await_checkin';
+        setTimeout(() => addMsg('bot', 'Anh/chị nhập lại ngày check-in nhé (kiểu DD/MM — ví dụ: 25/6):'), 300);
       }
       return;
     }
