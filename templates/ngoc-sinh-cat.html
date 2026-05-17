@@ -1836,16 +1836,54 @@
       const total = (r.priceNum * nights).toLocaleString('vi-VN') + 'đ';
 
       if (data.available) {
-        addMsg('bot', `✅ Còn phòng!\nCheck-in: ${data.checkinVN} · Check-out: ${data.checkoutVN} (${nights} đêm)\n💰 Tổng ước tính: ${total}\n\nEm kéo anh/chị xuống form đặt phòng để điền thông tin giữ chỗ nhé 🌿`);
+        addMsg('bot', `✅ Còn phòng!\nCheck-in: ${data.checkinVN} · Check-out: ${data.checkoutVN} (${nights} đêm)\n💰 Tổng ước tính: ${total}\n\nTuyệt! Anh/chị cho em xin tên và SĐT để ghi nhận giữ chỗ nhé:`);
         state = { step: null, room: null, checkin: null };
-        // Pre-fill phòng trong form
-        const roomSel = document.getElementById('fr');
-        if (roomSel) roomSel.value = room;
-        // Scroll xuống #booking và đóng chat
-        setTimeout(() => {
-          document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
-          setTimeout(() => { panel.classList.remove('open'); btn.style.transform = ''; }, 700);
-        }, 1000);
+        input.disabled = true;
+
+        // Form thu tên + SĐT trong chat
+        const fw = document.createElement('div');
+        fw.className = 'nsc-form-wrap';
+        fw.innerHTML = `
+          <input class="nsc-inp" id="nsc-bname"  type="text" placeholder="Tên anh/chị"  maxlength="60" autocomplete="name">
+          <input class="nsc-inp" id="nsc-bphone" type="tel"  placeholder="SĐT / Zalo"   maxlength="15" autocomplete="tel">
+          <button class="nsc-submit" id="nsc-bsub">XÁC NHẬN GIỮ PHÒNG →</button>
+          <button class="nsc-decline" id="nsc-bdec">Chưa muốn đặt</button>`;
+        msgs.appendChild(fw);
+        msgs.scrollTop = msgs.scrollHeight;
+
+        const checkinISO  = data.checkin;
+        const checkoutISO = data.checkout;
+
+        document.getElementById('nsc-bsub').onclick = async () => {
+          const name  = document.getElementById('nsc-bname').value.trim();
+          const phone = document.getElementById('nsc-bphone').value.trim();
+          if (!name)  { document.getElementById('nsc-bname').style.borderColor  = 'var(--gold)'; return; }
+          if (!phone) { document.getElementById('nsc-bphone').style.borderColor = 'var(--gold)'; return; }
+          fw.innerHTML = '<p style="text-align:center;padding:8px 0;color:var(--muted)">Đang lưu…</p>';
+          try {
+            await fetch('/api/save-booking', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name, phone, room, checkin: checkinISO, checkout: checkoutISO, nights, note: 'Từ chatbot — đã check lịch' }),
+            });
+          } catch {}
+          fw.remove();
+          addMsg('bot', `Đã ghi nhận! ${name} — ${room} · ${data.checkinVN}→${data.checkoutVN} 🌿\n\nAnh/chị điền đầy đủ thông tin bên dưới để hoàn tất đặt phòng nhé:`);
+          // Pre-fill phòng trong form chính
+          const roomSel = document.getElementById('fr');
+          if (roomSel) roomSel.value = room;
+          input.disabled = false;
+          setTimeout(() => {
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => { panel.classList.remove('open'); btn.style.transform = ''; }, 800);
+          }, 1200);
+        };
+
+        document.getElementById('nsc-bdec').onclick = () => {
+          fw.remove();
+          addMsg('bot', `Dạ không sao! Khi nào cần anh/chị nhắn Zalo ${ZALO} — Trọng giữ chỗ ngay nhé 🌿`);
+          input.disabled = false;
+        };
       } else {
         addMsg('bot', `😔 Rất tiếc, phòng đã có booking ngày đó.\n📅 Ngày trống sớm nhất: ${data.nextVN}\n\nAnh/chị muốn thử ngày khác không?`);
         state = { step: 'await_checkin', room, checkin: null };
