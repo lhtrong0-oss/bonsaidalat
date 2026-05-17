@@ -1546,5 +1546,307 @@ Xin chào, tôi muốn đặt phòng tại Ngọc Sinh Cát!`
     window.open(`https://zalo.me/0785925998?source=qr&data=${msg}`, '_blank');
   }
 </script>
+
+<!-- ── AI CHATBOT NGỌC SINH CÁT ─────────────────────────── -->
+<style>
+  #nsc-btn {
+    position: fixed; bottom: 28px; right: 28px; z-index: 1000;
+    width: 54px; height: 54px; border-radius: 50%;
+    background: var(--deep); border: 1.5px solid var(--gold);
+    color: var(--gold); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 24px rgba(61,43,31,.35);
+    animation: nscpulse 3s infinite;
+    transition: transform .2s, background .2s;
+  }
+  #nsc-btn:hover { transform: scale(1.08); background: var(--brown); }
+  @keyframes nscpulse {
+    0%,100% { box-shadow: 0 4px 24px rgba(201,168,76,.2); }
+    50%      { box-shadow: 0 4px 32px rgba(201,168,76,.5); }
+  }
+
+  #nsc-panel {
+    position: fixed; bottom: 92px; right: 28px; z-index: 1000;
+    width: 340px; height: 500px;
+    background: var(--warm); border: 1px solid rgba(201,168,76,.3);
+    display: flex; flex-direction: column;
+    box-shadow: 0 24px 64px rgba(61,43,31,.3);
+    transform-origin: bottom right;
+    transform: scale(.9) translateY(10px);
+    opacity: 0; pointer-events: none;
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1), opacity .25s;
+  }
+  #nsc-panel.open { transform: none; opacity: 1; pointer-events: all; }
+
+  .nsc-head {
+    padding: 14px 16px; border-bottom: 1px solid rgba(201,168,76,.2);
+    display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    background: var(--deep);
+  }
+  .nsc-avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid rgba(201,168,76,.4); background: rgba(201,168,76,.1);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--f-display); font-size: .85rem; color: var(--gold);
+    flex-shrink: 0;
+  }
+  .nsc-hname { font-family: var(--f-display); font-size: .88rem; color: var(--cream); letter-spacing: .04em; }
+  .nsc-hstatus { font-size: .68rem; color: #6db56a; display: flex; align-items: center; gap: 4px; margin-top: 2px; }
+  .nsc-hstatus::before { content:''; width:5px; height:5px; border-radius:50%; background:#6db56a; }
+  #nsc-close {
+    margin-left: auto; background: none; border: none;
+    color: var(--muted); cursor: pointer; font-size: 1.1rem; padding: 4px 6px;
+    transition: color .2s;
+  }
+  #nsc-close:hover { color: var(--cream); }
+
+  #nsc-msgs {
+    flex: 1; overflow-y: auto; padding: 14px;
+    display: flex; flex-direction: column; gap: 10px;
+    scroll-behavior: smooth;
+  }
+  #nsc-msgs::-webkit-scrollbar { width: 3px; }
+  #nsc-msgs::-webkit-scrollbar-thumb { background: rgba(201,168,76,.25); border-radius: 4px; }
+
+  .nsc-msg { display: flex; flex-direction: column; max-width: 88%; animation: nscMsgIn .3s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes nscMsgIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+  .nsc-msg.bot { align-self: flex-start; }
+  .nsc-msg.usr { align-self: flex-end; }
+  .nsc-bubble {
+    padding: 9px 13px; font-family: var(--f-body); font-size: .8rem;
+    line-height: 1.65; border-radius: 2px; white-space: pre-wrap;
+  }
+  .nsc-msg.bot .nsc-bubble { background: var(--paper); color: var(--ink); border: 1px solid rgba(201,168,76,.18); }
+  .nsc-msg.usr .nsc-bubble { background: var(--gold); color: var(--ink); font-weight: 500; }
+  .nsc-time { font-size: .6rem; color: var(--muted); margin-top: 3px; letter-spacing: .04em; }
+  .nsc-msg.usr .nsc-time { text-align: right; }
+
+  .nsc-qr { display: flex; flex-wrap: wrap; gap: 6px; padding: 2px 0; }
+  .nsc-qr-btn {
+    background: transparent; border: 1px solid rgba(201,168,76,.4);
+    color: var(--brown); font-family: var(--f-display); font-size: .72rem;
+    padding: 5px 11px; cursor: pointer; letter-spacing: .06em;
+    transition: all .2s; touch-action: manipulation;
+    border-radius: 1px;
+  }
+  .nsc-qr-btn:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+  .nsc-form-wrap {
+    margin: 4px 0; padding: 12px;
+    background: rgba(201,168,76,.06); border: 1px solid rgba(201,168,76,.25);
+  }
+  .nsc-form-wrap p { font-size: .7rem; color: var(--muted); margin-bottom: 8px; letter-spacing: .04em; font-family: var(--f-display); }
+  .nsc-inp {
+    width: 100%; background: var(--warm); border: 1px solid rgba(201,168,76,.25);
+    color: var(--ink); font-family: var(--f-body); font-size: .8rem;
+    padding: 8px 11px; margin-bottom: 7px; outline: none; box-sizing: border-box;
+    transition: border-color .2s;
+  }
+  .nsc-inp:focus { border-color: var(--gold); }
+  .nsc-inp::placeholder { color: var(--muted); }
+  .nsc-submit {
+    width: 100%; padding: 9px; background: var(--gold); color: var(--ink);
+    border: none; font-family: var(--f-display); font-size: .75rem;
+    font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    cursor: pointer; transition: background .2s; touch-action: manipulation;
+  }
+  .nsc-submit:hover { background: var(--gold-l); }
+  .nsc-decline {
+    width: 100%; margin-top: 5px; padding: 7px; background: transparent;
+    border: 1px solid rgba(61,43,31,.2); color: var(--muted);
+    font-family: var(--f-body); font-size: .7rem; cursor: pointer; transition: all .2s;
+  }
+  .nsc-decline:hover { border-color: var(--brown); color: var(--brown); }
+
+  #nsc-footer {
+    padding: 10px 12px; border-top: 1px solid rgba(201,168,76,.15);
+    display: flex; gap: 8px; align-items: center; flex-shrink: 0;
+    background: var(--deep);
+  }
+  #nsc-input {
+    flex: 1; background: rgba(255,255,255,.08); border: 1px solid rgba(201,168,76,.2);
+    color: var(--cream); font-family: var(--f-body); font-size: .8rem;
+    padding: 9px 12px; outline: none; transition: border-color .2s;
+  }
+  #nsc-input:focus { border-color: rgba(201,168,76,.5); }
+  #nsc-input::placeholder { color: var(--muted); font-size: .75rem; }
+  #nsc-send {
+    width: 38px; height: 38px; background: var(--gold); border: none;
+    color: var(--ink); cursor: pointer; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; font-size: 1rem;
+    transition: background .2s; touch-action: manipulation;
+  }
+  #nsc-send:hover { background: var(--gold-l); }
+
+  @media (max-width: 480px) {
+    #nsc-panel { width: calc(100vw - 28px); right: 14px; bottom: 76px; }
+    #nsc-btn   { right: 14px; bottom: 14px; }
+  }
+</style>
+
+<button id="nsc-btn" aria-label="Tư vấn Ngọc Sinh Cát">✦</button>
+
+<div id="nsc-panel" role="dialog" aria-label="Trợ lý Ngọc Sinh Cát">
+  <div class="nsc-head">
+    <div class="nsc-avatar">玉</div>
+    <div>
+      <div class="nsc-hname">Ngọc Sinh Cát</div>
+      <div class="nsc-hstatus">Trực tuyến 24/7</div>
+    </div>
+    <button id="nsc-close" aria-label="Đóng chat">✕</button>
+  </div>
+  <div id="nsc-msgs" role="log" aria-live="polite"></div>
+  <div id="nsc-footer">
+    <input id="nsc-input" type="text" placeholder="Nhắn tin hoặc chọn bên trên…" maxlength="200" autocomplete="off">
+    <button id="nsc-send" aria-label="Gửi">➤</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  const ROOMS = [
+    { name: 'Lý Ngữ Viên',         cap: '4–6 người', price: '1.350.000đ/đêm', desc: 'Nhà gỗ ven hồ cá koi, sân BBQ. Không gian lãng mạn, yên tĩnh — lý tưởng cho cặp đôi và nhóm nhỏ.' },
+    { name: 'Thanh Phong Viên',     cap: '4–6 người', price: '1.350.000đ/đêm', desc: 'Kiến trúc Nhật Bản tinh tế, điều hòa, ánh sáng dịu nhẹ. Phong vị thiền định giữa rừng Đà Lạt.' },
+    { name: 'Tùng Quang Ngữ Cảnh', cap: '8–12 người', price: '3.500.000đ/đêm', desc: 'Không gian đại gia đình cổ trang — 4 phòng đơn riêng, WC riêng. Phù hợp team building, họp mặt.' },
+  ];
+  const ZALO = '0785925998';
+
+  const panel  = document.getElementById('nsc-panel');
+  const btn    = document.getElementById('nsc-btn');
+  const close  = document.getElementById('nsc-close');
+  const msgs   = document.getElementById('nsc-msgs');
+  const input  = document.getElementById('nsc-input');
+  const send   = document.getElementById('nsc-send');
+
+  let opened = false;
+
+  const now = () => new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+
+  function addMsg(role, text) {
+    const w = document.createElement('div');
+    w.className = `nsc-msg ${role}`;
+    w.innerHTML = `<div class="nsc-bubble"></div><div class="nsc-time">${now()}</div>`;
+    w.querySelector('.nsc-bubble').textContent = text;
+    msgs.appendChild(w);
+    msgs.scrollTop = msgs.scrollHeight;
+    return w.querySelector('.nsc-bubble');
+  }
+
+  function addQR(choices) {
+    const w = document.createElement('div');
+    w.className = 'nsc-qr';
+    choices.forEach(c => {
+      const b = document.createElement('button');
+      b.className = 'nsc-qr-btn'; b.textContent = c;
+      b.onclick = () => { w.remove(); handleText(c); };
+      w.appendChild(b);
+    });
+    msgs.appendChild(w);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function showLeadForm(context) {
+    const w = document.createElement('div');
+    w.className = 'nsc-form-wrap';
+    w.innerHTML = `
+      <p>ĐỂ LẠI THÔNG TIN — TRỌNG GỌI LẠI TRONG 30 PHÚT</p>
+      <input class="nsc-inp" id="nsc-name"  type="text" placeholder="Tên anh/chị" maxlength="60" autocomplete="name">
+      <input class="nsc-inp" id="nsc-phone" type="tel"  placeholder="SĐT / Zalo"  maxlength="15" autocomplete="tel">
+      <button class="nsc-submit" id="nsc-sub">GỬI ĐẶT PHÒNG →</button>
+      <button class="nsc-decline" id="nsc-dec">Không cần, cảm ơn</button>`;
+    msgs.appendChild(w);
+    msgs.scrollTop = msgs.scrollHeight;
+    input.disabled = true;
+
+    document.getElementById('nsc-sub').onclick = async () => {
+      const name  = document.getElementById('nsc-name').value.trim();
+      const phone = document.getElementById('nsc-phone').value.trim();
+      if (!name)  { document.getElementById('nsc-name').style.borderColor  = 'var(--gold)'; return; }
+      if (!phone) { document.getElementById('nsc-phone').style.borderColor = 'var(--gold)'; return; }
+      w.innerHTML = '<p style="text-align:center;padding:8px 0;color:var(--muted)">Đang gửi…</p>';
+      try {
+        await fetch('/api/save-booking', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, phone, room: context || 'Chưa chọn', checkin: '', checkout: '', guests: '', note: 'Từ chatbot' }),
+        });
+      } catch {}
+      w.remove();
+      addMsg('bot', `Cảm ơn ${name}! Em đã ghi nhận yêu cầu đặt phòng 🌿\n\nĐể giữ phòng, anh/chị chuyển cọc về:\n🏦 VIB — STK: 025379016\nTên: LE TU TRONG\nNội dung: ${name} coc NSC\n\nSau khi chuyển gửi bill qua Zalo ${ZALO} để Trọng xác nhận nhé!`);
+      input.disabled = false;
+    };
+
+    document.getElementById('nsc-dec').onclick = () => {
+      w.remove();
+      addMsg('bot', `Dạ không sao! Khi nào cần anh/chị nhắn Zalo ${ZALO} — Trọng hỗ trợ 24/7 🌿`);
+      input.disabled = false;
+    };
+  }
+
+  function handleText(text) {
+    addMsg('usr', text);
+    const t = text.toLowerCase();
+
+    if (/lý ngữ|ly ngu/.test(t)) {
+      const r = ROOMS[0];
+      setTimeout(() => addMsg('bot', `✦ ${r.name}\n${r.cap} · ${r.price}\n\n${r.desc}\n\nAnh/chị muốn đặt phòng này không?`), 300);
+      setTimeout(() => addQR(['Đặt Lý Ngữ Viên', 'Xem phòng khác', 'Quay lại']), 700);
+    } else if (/thanh phong|phong vien/.test(t)) {
+      const r = ROOMS[1];
+      setTimeout(() => addMsg('bot', `✦ ${r.name}\n${r.cap} · ${r.price}\n\n${r.desc}\n\nAnh/chị muốn đặt không?`), 300);
+      setTimeout(() => addQR(['Đặt Thanh Phong Viên', 'Xem phòng khác', 'Quay lại']), 700);
+    } else if (/tùng quang|tung quang|gia đình|family|nhóm|nhom/.test(t)) {
+      const r = ROOMS[2];
+      setTimeout(() => addMsg('bot', `✦ ${r.name}\n${r.cap} · ${r.price}\n\n${r.desc}\n\nPhù hợp cho nhóm lớn. Anh/chị muốn đặt không?`), 300);
+      setTimeout(() => addQR(['Đặt Tùng Quang', 'Xem phòng khác', 'Quay lại']), 700);
+    } else if (/phòng|phong|giá|gia|bảng|bang/.test(t) || text === 'Phòng & Bảng giá') {
+      const list = ROOMS.map(r => `✦ ${r.name} — ${r.cap} · ${r.price}`).join('\n');
+      setTimeout(() => addMsg('bot', `Ngọc Sinh Cát có 3 không gian lưu trú:\n\n${list}\n\nAnh/chị muốn biết thêm về phòng nào?`), 300);
+      setTimeout(() => addQR(['Lý Ngữ Viên', 'Thanh Phong Viên', 'Tùng Quang Ngữ Cảnh']), 700);
+    } else if (/đặt|dat|book/.test(t) || text === 'Đặt phòng') {
+      setTimeout(() => addMsg('bot', 'Anh/chị muốn đặt phòng nào? Em xin tư vấn:'), 300);
+      setTimeout(() => addQR(ROOMS.map(r => r.name)), 700);
+    } else if (/đặt lý ngữ|đặt thanh phong|đặt tùng quang/.test(t)) {
+      const room = /lý ngữ/.test(t) ? ROOMS[0].name : /thanh phong/.test(t) ? ROOMS[1].name : ROOMS[2].name;
+      setTimeout(() => {
+        addMsg('bot', `Anh/chị để lại thông tin để Trọng xác nhận giữ ${room} nhé:`);
+        setTimeout(() => showLeadForm(room), 400);
+      }, 300);
+    } else if (/dịch vụ|dich vu|team|bbq|lửa|cắm|hóa trang|ca nhạc/.test(t) || text === 'Dịch vụ') {
+      setTimeout(() => addMsg('bot', `Dịch vụ đặc biệt tại Ngọc Sinh Cát:\n\n🔥 Nhóm lửa cắm trại\n🎯 Team Building\n🎵 Ca nhạc sân khấu\n👘 Hóa trang cổ trang Châu Á\n\nTất cả cần đặt trước. Anh/chị muốn thêm dịch vụ nào?`), 300);
+      setTimeout(() => addQR(['Đặt phòng', 'Liên hệ Zalo', 'Quay lại']), 700);
+    } else if (/địa chỉ|dia chi|đường|duong|ở đâu|o dau/.test(t) || text === 'Địa chỉ') {
+      setTimeout(() => addMsg('bot', `📍 09 Xuân Trường, TP. Đà Lạt, Lâm Đồng\n\nCách trung tâm Đà Lạt ~8km, view rừng thông yên tĩnh.\n\n📞 Zalo: ${ZALO}`), 300);
+      setTimeout(() => addQR(['Đặt phòng', 'Xem phòng', 'Quay lại']), 700);
+    } else if (/zalo|liên hệ|lien he|gọi|goi/.test(t) || text === 'Liên hệ Zalo') {
+      setTimeout(() => { addMsg('bot', `Anh/chị nhắn thẳng qua Zalo ${ZALO} nhé — Trọng phản hồi trong vài phút 🌿`); window.open(`https://zalo.me/${ZALO}`, '_blank'); }, 300);
+    } else if (/quay lại|menu|main/.test(t) || text === 'Quay lại') {
+      setTimeout(() => addMsg('bot', 'Anh/chị cần tư vấn gì thêm ạ?'), 300);
+      setTimeout(() => addQR(['Phòng & Bảng giá', 'Đặt phòng', 'Dịch vụ', 'Địa chỉ']), 700);
+    } else {
+      setTimeout(() => addMsg('bot', 'Cảm ơn anh/chị đã nhắn! Anh/chị đang quan tâm đến:'), 300);
+      setTimeout(() => addQR(['Phòng & Bảng giá', 'Đặt phòng', 'Dịch vụ', 'Địa chỉ']), 700);
+    }
+  }
+
+  function togglePanel() {
+    const isOpen = panel.classList.toggle('open');
+    btn.style.transform = isOpen ? 'rotate(45deg)' : '';
+    if (isOpen && !opened) {
+      opened = true;
+      setTimeout(() => {
+        addMsg('bot', 'Kính chào quý khách! Em là trợ lý của Ngọc Sinh Cát 🌿\n\nAnh/chị cần tư vấn gì về homestay cổ trang Đà Lạt?');
+        setTimeout(() => addQR(['Phòng & Bảng giá', 'Đặt phòng', 'Dịch vụ', 'Địa chỉ']), 500);
+      }, 300);
+    }
+  }
+
+  btn.addEventListener('click', togglePanel);
+  close.addEventListener('click', () => { panel.classList.remove('open'); btn.style.transform = ''; });
+  send.addEventListener('click', () => { const t = input.value.trim(); if (t) { input.value = ''; handleText(t); } });
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { const t = input.value.trim(); if (t) { input.value = ''; handleText(t); } } });
+})();
+</script>
 </body>
 </html>
