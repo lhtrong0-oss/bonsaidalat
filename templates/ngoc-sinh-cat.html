@@ -1910,8 +1910,17 @@
       return;
     }
 
-    // ── NORMAL FLOW ──────────────────────────────────────────
-    if (/lý ngữ|ly ngu/.test(t)) {
+    // ── NORMAL FLOW — specific trước, general sau ────────────
+    if (/đặt lý ngữ/.test(t) || text === 'Đặt Lý Ngữ Viên') {
+      startBooking(ROOMS[0].name);
+    } else if (/đặt thanh phong/.test(t) || text === 'Đặt Thanh Phong Viên') {
+      startBooking(ROOMS[1].name);
+    } else if (/đặt tùng quang/.test(t) || text === 'Đặt Tùng Quang') {
+      startBooking(ROOMS[2].name);
+    } else if (/đặt phòng|dat phong|muốn đặt|book|đặt ngay|đặt thôi|đặt chỗ/.test(t) || text === 'Đặt phòng') {
+      setTimeout(() => addMsg('bot', 'Anh/chị muốn đặt phòng nào ạ? Em giới thiệu 3 không gian:'), 300);
+      setTimeout(() => addQR(ROOMS.map(r => r.name)), 700);
+    } else if (/lý ngữ|ly ngu/.test(t)) {
       const r = ROOMS[0];
       setTimeout(() => addMsg('bot', `✦ ${r.name}\n${r.cap} · ${r.price}\n\n${r.desc}\n\nAnh/chị muốn đặt phòng này không?`), 300);
       setTimeout(() => addQR(['Đặt Lý Ngữ Viên', 'Xem phòng khác', 'Quay lại']), 700);
@@ -1923,19 +1932,10 @@
       const r = ROOMS[2];
       setTimeout(() => addMsg('bot', `✦ ${r.name}\n${r.cap} · ${r.price}\n\n${r.desc}\n\nPhù hợp cho nhóm lớn. Anh/chị muốn đặt không?`), 300);
       setTimeout(() => addQR(['Đặt Tùng Quang', 'Xem phòng khác', 'Quay lại']), 700);
-    } else if (/đặt phòng|dat phong|muốn đặt|book|đặt ngay|đặt thôi|đặt chỗ/.test(t) || text === 'Đặt phòng') {
-      setTimeout(() => addMsg('bot', 'Anh/chị muốn đặt phòng nào ạ? Em giới thiệu 3 không gian:'), 300);
-      setTimeout(() => addQR(ROOMS.map(r => r.name)), 700);
     } else if (/phòng|phong|giá|gia|bảng|bang/.test(t) || text === 'Phòng & Bảng giá') {
       const list = ROOMS.map(r => `✦ ${r.name} — ${r.cap} · ${r.price}`).join('\n');
       setTimeout(() => addMsg('bot', `Ngọc Sinh Cát có 3 không gian lưu trú:\n\n${list}\n\nAnh/chị muốn biết thêm về phòng nào?`), 300);
       setTimeout(() => addQR(['Lý Ngữ Viên', 'Thanh Phong Viên', 'Tùng Quang Ngữ Cảnh']), 700);
-    } else if (/đặt lý ngữ/.test(t) || text === 'Đặt Lý Ngữ Viên') {
-      startBooking(ROOMS[0].name);
-    } else if (/đặt thanh phong/.test(t) || text === 'Đặt Thanh Phong Viên') {
-      startBooking(ROOMS[1].name);
-    } else if (/đặt tùng quang/.test(t) || text === 'Đặt Tùng Quang') {
-      startBooking(ROOMS[2].name);
     } else if (/dịch vụ|dich vu|team|bbq|lửa|cắm|hóa trang|ca nhạc/.test(t) || text === 'Dịch vụ') {
       setTimeout(() => addMsg('bot', `Dịch vụ đặc biệt tại Ngọc Sinh Cát:\n\n🔥 Nhóm lửa cắm trại\n🎯 Team Building\n🎵 Ca nhạc sân khấu\n👘 Hóa trang cổ trang Châu Á\n\nTất cả cần đặt trước. Anh/chị muốn thêm dịch vụ nào?`), 300);
       setTimeout(() => addQR(['Đặt phòng', 'Liên hệ Zalo', 'Quay lại']), 700);
