@@ -1,7 +1,7 @@
 export const config = { runtime: "edge" };
 
 const NOTION_VER = "2022-06-28";
-const BOOKINGS_DB = "564c93c2cbba4a1c95e1c7f67aab9793";
+const BOOKINGS_DB = "564c93c235914f77814099d6b9c5ce88";
 
 export default async function handler(req) {
   if (req.method === "OPTIONS") {
