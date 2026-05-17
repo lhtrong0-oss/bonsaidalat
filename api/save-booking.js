@@ -9,7 +9,7 @@ export default async function handler(req) {
   }
   if (req.method !== "POST") return new Response("Method not allowed", { status: 405 });
 
-  const { name, phone, email, room, checkin, checkout, guests, nights, note } = await req.json();
+  const { name, phone, email, room, checkin, checkout, guests, nights, service, note } = await req.json();
   const NOTION_TOKEN = process.env.NOTION_TOKEN;
 
   // Email notify — gửi TRƯỚC, độc lập
@@ -44,8 +44,8 @@ export default async function handler(req) {
     const props = {
       "Tên khách": { title: [{ text: { content: name || "Khách" } }] },
       "SĐT / Zalo": { phone_number: phone || "" },
-      "Phòng": { select: { name: room || "Home Ngọc Sinh Cát" } },
-      "Ghi chú": { rich_text: [{ text: { content: (guests ? `${guests} khách. ` : "") + (note || "") } }] },
+      "Phòng": { select: { name: room || "Chưa chọn" } },
+      "Ghi chú": { rich_text: [{ text: { content: [guests && `${guests} khách`, service && `DV: ${service}`, note].filter(Boolean).join(' · ') || "" } }] },
       "Trạng thái": { select: { name: "⏳ Chờ xác nhận" } },
     };
     if (checkin) props["Check-in"] = { date: { start: checkin } };
