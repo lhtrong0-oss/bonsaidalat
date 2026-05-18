@@ -191,11 +191,21 @@ nav.scrolled {
   background: none;
   border: 1px solid var(--border);
   color: var(--gold);
-  width: 40px; height: 40px;
-  font-size: 18px;
+  width: 44px; height: 44px;
+  min-width: 44px; min-height: 44px;
+  font-size: 20px;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 4px;
+  transition: border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
 }
+.nav-burger:hover,
+.nav-burger:focus-visible { border-color: var(--gold); background: rgba(196,168,98,0.08); outline: none; }
+.nav-burger:active { opacity: 0.7; }
 .nav-mobile {
   display: none;
   position: fixed;

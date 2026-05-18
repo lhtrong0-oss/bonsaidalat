@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
@@ -183,7 +183,8 @@
 <div class="zalo-float"><div class="zalo-tooltip">Nhắn Zalo ngay</div><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="zalo-btn" aria-label="Zalo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div>
 <script>
 const nav=document.getElementById('main-nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
-function toggleNav(){document.getElementById('nav-mobile').classList.toggle('open');}
+function toggleNav(){const m=document.getElementById('nav-mobile');const o=m.classList.toggle('open');document.querySelector('.nav-burger').setAttribute('aria-expanded',o);}
+document.querySelectorAll('#nav-mobile a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('nav-mobile').classList.remove('open');document.querySelector('.nav-burger').setAttribute('aria-expanded','false');}));
 const io=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const sections=['mua-bonsai','cay-nguyen-lieu','trong-hat','giam-canh'];
