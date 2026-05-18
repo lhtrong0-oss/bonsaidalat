@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trang Lê BonSai — Nghệ Nhân Bonsai Blog · Đà Lạt</title>
+<meta name="description" content="Trang Lê BonSai — Bonsai nghệ thuật Đà Lạt. Cắt cốt, uốn rễ, tạo dáng — từng tác phẩm là một câu chuyện sống. Mua cây & chia sẻ kiến thức bonsai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #08080A;
+    --deep:     #0E130F;
+    --forest:   #1B2B1C;
+    --moss:     #2C3A2E;
+    --fern:     #3D5140;
+    --gold:     #C4A862;
+    --gold-lt:  #D9C08A;
+    --cream:    #EDE4D3;
+    --stone:    #B8AFA0;
+    --mist:     #7A7068;
+    --white:    #F5F0E8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.35;
+  }
+
+  /* ── SCROLL ANIMATION ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.24s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+  .reveal-delay-4 { transition-delay: 0.48s; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    transition: background 0.4s, border-color 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(8,8,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,168,98,0.12);
+  }
+  .nav-logo {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .nav-logo span {
+    color: var(--cream);
+    font-weight: 400;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--stone);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid rgba(196,168,98,0.4);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 9px 22px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 40%, rgba(43,59,44,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(28,42,28,0.4) 0%, transparent 60%),
+      linear-gradient(to bottom, var(--ink) 0%, var(--deep) 50%, #0A0F0A 100%);
+  }
+  /* Decorative bonsai silhouette */
+  .hero-silhouette {
+    position: absolute;
+    right: 8%;
+    bottom: 0;
+    width: 42vw;
+    max-width: 600px;
+    height: 95%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .hero-silhouette svg {
+    width: 100%;
+    height: auto;
+    opacity: 0.18;
+  }
+  .hero-kanji {
+    position: absolute;
+    right: 5%;
+    top: 15%;
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(80px, 9vw, 140px);
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(196,168,98,0.12);
+    line-height: 1;
+    writing-mode: vertical-rl;
+    letter-spacing: 0.08em;
+    user-select: none;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 80px 96px;
+    max-width: 720px;
+  }
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards cubic-bezier(0.16,1,0.3,1);
+  }
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+  .hero-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.35s forwards cubic-bezier(0.16,1,0.3,1);
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--stone);
+    letter-spacing: 0.06em;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.5s forwards cubic-bezier(0.16,1,0.3,1);
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.65s forwards cubic-bezier(0.16,1,0.3,1);
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 16px 40px;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    display: inline-block;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+  .btn-secondary {
+    color: var(--stone);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.2s, gap 0.2s;
+  }
+  .btn-secondary:hover { color: var(--gold); gap: 14px; }
+  .btn-secondary::after { content: '→'; }
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    opacity: 0;
+    animation: fadeUp 1s 0.9s forwards cubic-bezier(0.16,1,0.3,1);
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(196,168,98,0.7), transparent);
+    animation: scrollLine 2s 1.2s infinite;
+  }
+  .hero-scroll span {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mist);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.4; transform: scaleY(1) translateY(0); }
+    50% { opacity: 1; transform: scaleY(0.6) translateY(8px); }
+  }
+
+  /* ── SECTION BASE ── */
+  section { position: relative; }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .section-label::before {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .section-body {
+    font-size: 15px;
+    color: var(--stone);
+    line-height: 1.8;
+    max-width: 560px;
+  }
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(196,168,98,0.2), transparent);
+  }
+
+  /* ── STATS STRIP ── */
+  .stats {
+    background: var(--forest);
+    border-top: 1px solid rgba(196,168,98,0.1);
+    border-bottom: 1px solid rgba(196,168,98,0.1);
+    padding: 40px 0;
+  }
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 16px 24px;
+    border-right: 1px solid rgba(196,168,98,0.1);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mist);
+  }
+
+  /* ── STORY ── */
+  .story {
+    padding: 120px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 96px;
+    align-items: center;
+  }
+  .story-image {
+    position: relative;
+    aspect-ratio: 3/4;
+    background: var(--forest);
+    overflow: hidden;
+  }
+  .story-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 60% 40%, rgba(43,59,44,0.5) 0%, transparent 70%);
+  }
+  .story-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .story-image-placeholder svg { opacity: 0.25; }
+  .story-image-placeholder span {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mist);
+  }
+  .story-image-frame {
+    position: absolute;
+    inset: 16px;
+    border: 1px solid rgba(196,168,98,0.15);
+    pointer-events: none;
+  }
+  .story-year {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    background: var(--moss);
+    padding: 24px 28px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    border: 1px solid rgba(196,168,98,0.2);
+  }
+  .story-text { padding-top: 20px; }
+  .story-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--gold-lt);
+    line-height: 1.4;
+    margin: 28px 0 32px;
+    padding-left: 24px;
+    border-left: 2px solid rgba(196,168,98,0.35);
+  }
+
+  /* ── SERVICES ── */
+  .services-section {
+    background: var(--deep);
+    padding: 120px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .services-section::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(43,59,44,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .services-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .services-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 72px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .service-card {
+    background: var(--forest);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: background 0.35s;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .service-card:hover { background: #1F2F20; }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-num {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 32px;
+  }
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 28px;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+  .service-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .service-desc {
+    font-size: 14px;
+    color: var(--mist);
+    line-height: 1.75;
+  }
+
+  /* ── GALLERY ── */
+  .gallery-section {
+    padding: 120px 0;
+    overflow: hidden;
+  }
+  .gallery-header {
+    max-width: 1200px;
+    margin: 0 auto 64px;
+    padding: 0 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 0.9fr;
+    grid-template-rows: 300px 240px;
+    gap: 3px;
+    padding: 0 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .gallery-item {
+    background: var(--forest);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .gallery-item:first-child { grid-row: span 2; }
+  .gallery-item-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .gallery-item:hover .gallery-item-inner { transform: scale(1.04); }
+  .gallery-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(8,8,10,0.7) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+  }
+  .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+  .gallery-item-label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    opacity: 0.2;
+  }
+  .gallery-placeholder svg { width: 32px; height: 32px; }
+  .gallery-placeholder span {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* ── KNOWLEDGE / BLOG ── */
+  .blog-section {
+    background: var(--deep);
+    padding: 120px 80px;
+  }
+  .blog-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .blog-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 64px;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 2px;
+  }
+  .blog-card {
+    background: var(--forest);
+    padding: 40px 36px;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .blog-card:hover { background: #1F2F20; }
+  .blog-card.featured { padding: 56px 48px; }
+  .blog-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(196,168,98,0.3);
+    padding: 5px 12px;
+    margin-bottom: 24px;
+  }
+  .blog-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(16px, 1.6vw, 22px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.35;
+    margin-bottom: 16px;
+  }
+  .blog-card.featured .blog-title { font-size: clamp(20px, 2vw, 28px); }
+  .blog-excerpt {
+    font-size: 13px;
+    color: var(--mist);
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+  .blog-date {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(120,110,100,0.7);
+  }
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    margin-top: 24px;
+    transition: gap 0.2s;
+  }
+  .read-more:hover { gap: 14px; }
+  .read-more::after { content: '→'; }
+
+  /* ── PROCESS ── */
+  .process-section {
+    padding: 120px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+    margin-top: 72px;
+    position: relative;
+  }
+  .process-grid::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 56px;
+    right: 56px;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), rgba(196,168,98,0.1));
+  }
+  .process-step { position: relative; }
+  .process-dot {
+    width: 56px;
+    height: 56px;
+    border: 1px solid rgba(196,168,98,0.3);
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .process-dot-inner {
+    width: 12px;
+    height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+  .process-num {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+  .process-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .process-desc {
+    font-size: 13px;
+    color: var(--mist);
+    line-height: 1.75;
+  }
+
+  /* ── CONTACT / CTA ── */
+  .contact-section {
+    position: relative;
+    overflow: hidden;
+    background: var(--forest);
+    padding: 120px 80px;
+  }
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 80% at 50% 50%, rgba(196,168,98,0.06) 0%, transparent 70%);
+  }
+  .contact-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .contact-section .section-label { justify-content: center; }
+  .contact-section .section-label::before { display: none; }
+  .contact-section .section-title {
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 20px;
+  }
+  .contact-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2vw, 22px);
+    font-style: italic;
+    color: var(--stone);
+    margin-bottom: 56px;
+    line-height: 1.6;
+  }
+  .contact-methods {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(8,8,10,0.4);
+    border: 1px solid rgba(196,168,98,0.2);
+    padding: 18px 28px;
+    text-decoration: none;
+    color: var(--cream);
+    font-size: 14px;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  }
+  .contact-method:hover {
+    border-color: var(--gold);
+    background: rgba(196,168,98,0.08);
+    transform: translateY(-3px);
+  }
+  .contact-method svg { color: var(--gold); flex-shrink: 0; }
+  .contact-divider {
+    height: 1px;
+    background: rgba(196,168,98,0.15);
+    margin: 64px auto;
+    max-width: 240px;
+  }
+  .contact-form {
+    background: rgba(8,8,10,0.5);
+    border: 1px solid rgba(196,168,98,0.15);
+    padding: 56px;
+    text-align: left;
+  }
+  .contact-form h3 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .contact-form p {
+    font-size: 13px;
+    color: var(--mist);
+    margin-bottom: 40px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .form-group label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mist);
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(27,43,28,0.5);
+    border: 1px solid rgba(196,168,98,0.15);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 14px 18px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: rgba(196,168,98,0.5); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group select { cursor: pointer; }
+  .form-group select option { background: var(--forest); }
+  .btn-submit {
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 18px 48px;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+    margin-top: 8px;
+  }
+  .btn-submit:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(196,168,98,0.1);
+    padding: 60px 80px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .footer-logo span { color: rgba(197,186,170,0.5); font-weight: 400; }
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mist);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(120,110,100,0.5);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── FLOATING ZALO ── */
+  .zalo-float {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .zalo-tooltip {
+    background: var(--moss);
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    padding: 8px 16px;
+    white-space: nowrap;
+    border: 1px solid rgba(196,168,98,0.25);
+    opacity: 0;
+    transform: translateX(8px);
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  .zalo-float:hover .zalo-tooltip { opacity: 1; transform: translateX(0); }
+  .zalo-btn {
+    width: 56px;
+    height: 56px;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 32px rgba(196,168,98,0.25);
+  }
+  .zalo-btn:hover { background: var(--gold-lt); transform: scale(1.1); }
+  .zalo-btn svg { color: var(--ink); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 0 32px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 40px 80px; }
+    .hero-scroll { left: 40px; }
+    .story { grid-template-columns: 1fr; padding: 80px 40px; gap: 56px; }
+    .story-image { max-width: 440px; }
+    .services-section, .blog-section, .contact-section { padding: 80px 40px; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; padding: 0 40px; }
+    .gallery-item:first-child { grid-row: span 1; }
+    .gallery-grid > .gallery-item { height: 220px; }
+    .process-section { padding: 80px 40px; }
+    .process-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .process-grid::before { display: none; }
+    .stats-inner { padding: 0 40px; grid-template-columns: repeat(2, 1fr); }
+    .stat-item:nth-child(2) { border-right: none; }
+    footer { padding: 48px 40px; }
+    .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+  @media (max-width: 640px) {
+    .hero-content { padding: 0 24px 72px; }
+    .hero-kanji { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr; }
+    .contact-form { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    .contact-methods { flex-direction: column; align-items: center; }
+    .gallery-grid { padding: 0 24px; grid-template-columns: 1fr; }
+    footer { padding: 40px 24px; }
+    .story { padding: 64px 24px; }
+    .services-section, .blog-section, .contact-section, .process-section { padding: 64px 24px; }
+    .gallery-header, .blog-header { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+    .services-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────────── -->
+<nav id="main-nav" role="navigation" aria-label="Điều hướng chính">
+  <a href="#" class="nav-logo">Trang Lê <span>BonSai</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Về Trang</a></li>
+    <li><a href="#services">Dịch Vụ</a></li>
+    <li><a href="#gallery">Tác Phẩm</a></li>
+    <li><a href="#knowledge">Kiến Thức</a></li>
+    <li><a href="#contact">Liên Hệ</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Sở Hữu Cây</a>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<section class="hero" aria-label="Hero — Trang Lê BonSai">
+  <div class="hero-bg"></div>
+  <div class="hero-kanji" aria-hidden="true">盆栽</div>
+
+  <!-- Bonsai tree silhouette SVG -->
+  <div class="hero-silhouette" aria-hidden="true">
+    <svg viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 540 L200 200" stroke="#C4A862" stroke-width="8" stroke-linecap="round"/>
+      <path d="M200 400 Q140 340 80 300 Q120 280 180 340" stroke="#C4A862" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M200 350 Q260 300 310 260 Q290 245 240 300" stroke="#C4A862" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M200 300 Q150 240 110 200 Q145 185 190 250" stroke="#C4A862" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <path d="M200 280 Q240 230 280 195 Q265 178 225 235" stroke="#C4A862" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <!-- Crown -->
+      <ellipse cx="165" cy="170" rx="65" ry="55" fill="#2C3A2E" opacity="0.7"/>
+      <ellipse cx="220" cy="145" rx="75" ry="60" fill="#2C3A2E" opacity="0.7"/>
+      <ellipse cx="200" cy="120" rx="70" ry="55" fill="#3D5140" opacity="0.5"/>
+      <ellipse cx="170" cy="130" rx="50" ry="45" fill="#3D5140" opacity="0.3"/>
+      <ellipse cx="235" cy="115" rx="55" ry="42" fill="#2C3A2E" opacity="0.4"/>
+      <!-- Pot -->
+      <path d="M170 540 L230 540 L220 570 L180 570 Z" fill="#1B2B1C" stroke="#C4A862" stroke-width="1.5"/>
+      <line x1="168" y1="545" x2="232" y2="545" stroke="#C4A862" stroke-width="1" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-label">Nghệ Nhân Bonsai · Đà Lạt</div>
+    <h1 class="hero-title">Trang Lê<br><em>BonSai</em></h1>
+    <p class="hero-subtitle">Nghệ Nhân Bonsai Blog</p>
+    <div class="hero-actions">
+      <a href="#gallery" class="btn-primary">Xem Tác Phẩm</a>
+      <a href="#contact" class="btn-secondary">Sở Hữu Cây</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span>Khám phá</span>
+  </div>
+</section>
+
+<!-- ── STATS ──────────────────────────────────────────────────── -->
+<div class="stats" aria-label="Thống kê">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Năm Kinh Nghiệm</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Tác Phẩm Đã Tạo</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Khách Hàng Tin Dùng</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-num">Đà Lạt</div>
+      <div class="stat-label">Trung Tâm Nghề</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STORY / ABOUT ──────────────────────────────────────────── -->
+<section id="about" aria-label="Câu chuyện Trang Lê BonSai">
+  <div class="story">
+    <div class="story-image reveal">
+      <div class="story-image-placeholder">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1.2">
+          <path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/>
+        </svg>
+        <span>Ảnh nghệ nhân</span>
+      </div>
+      <div class="story-image-frame"></div>
+      <div class="story-year">Trangle · Bonsai</div>
+    </div>
+    <div class="story-text">
+      <div class="section-label reveal">Về Trang</div>
+      <h2 class="section-title reveal reveal-delay-1">Làm nghề<br>mỗi <em>ngày</em></h2>
+      <blockquote class="story-quote reveal reveal-delay-2">
+        "Cắt cốt, uốn rễ, tạo dáng — mỗi nhát kéo là một quyết định, mỗi vòng dây là một hành trình."
+      </blockquote>
+      <p class="section-body reveal reveal-delay-3">
+        Trang Lê BonSai khởi nguồn từ niềm đam mê với cây cảnh nghệ thuật tại Đà Lạt — nơi khí hậu và thiên nhiên tạo nên những tác phẩm bonsai có hồn. Từng đường nét, từng dáng thế đều được chăm chút bằng đôi tay và con mắt của người thật sự yêu nghề.
+      </p>
+      <p class="section-body reveal reveal-delay-4" style="margin-top:16px;">
+        Không chỉ bán cây — Trang còn chia sẻ kiến thức: kỹ thuật tạo dáng, chăm sóc, và câu chuyện đằng sau mỗi tác phẩm. Để bonsai không chỉ là cây — mà là một người bạn sống trong không gian của bạn.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SERVICES ──────────────────────────────────────────────── -->
+<section id="services" class="services-section" aria-label="Dịch vụ và nội dung">
+  <div class="services-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-label reveal">Dịch Vụ</div>
+        <h2 class="section-title reveal reveal-delay-1">Tất cả những gì<br>bạn cần về <em>bonsai</em></h2>
+      </div>
+      <a href="#contact" class="btn-secondary reveal reveal-delay-2">Tư vấn miễn phí</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+            <path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/>
+          </svg>
+        </div>
+        <div class="service-name">Bán Cây Bonsai</div>
+        <p class="service-desc">Tuyển chọn tác phẩm bonsai độc đáo — cây thành phẩm sẵn sàng trưng bày, hoặc cây thế đang phát triển cho người muốn tự tay chăm. Mỗi cây kèm lý lịch và hướng dẫn chăm sóc.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">02</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+            <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/>
+          </svg>
+        </div>
+        <div class="service-name">Tư Vấn & Tạo Dáng</div>
+        <p class="service-desc">Đặt hàng dáng thế theo yêu cầu, hoặc mang cây đến để Trang trực tiếp cắt cốt, uốn dây, chỉnh thế. Dịch vụ tận tâm cho cả người mới và người chơi bonsai lâu năm.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">03</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+        </div>
+        <div class="service-name">Chia Sẻ Kiến Thức</div>
+        <p class="service-desc">Blog bonsai thực chiến: từ chọn cây nguyên liệu, kỹ thuật cắt tỉa, cách nhìn thế, đến triết lý đằng sau từng dáng. Nội dung từ người trong nghề — không lý thuyết suông.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY / TÁC PHẨM ─────────────────────────────────────── -->
+<section id="gallery" aria-label="Tác phẩm bonsai">
+  <div class="gallery-header">
+    <div>
+      <div class="section-label reveal">Tác Phẩm</div>
+      <h2 class="section-title reveal reveal-delay-1">Bộ sưu tập<br><em>đang cập nhật</em></h2>
+    </div>
+    <a href="#contact" class="btn-secondary reveal reveal-delay-2">Hỏi cây</a>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal">
+      <div class="gallery-item-inner">
+        <div class="gallery-placeholder" style="color:var(--stone)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/>
+          </svg>
+          <span>Tác phẩm nổi bật</span>
+        </div>
+      </div>
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Liên hệ Zalo để xem</span>
+      </div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <div class="gallery-item-inner">
+        <div class="gallery-placeholder" style="color:var(--stone)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/>
+          </svg>
+          <span>Ảnh sắp cập nhật</span>
+        </div>
+      </div>
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Ảnh sắp cập nhật</span>
+      </div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <div class="gallery-item-inner">
+        <div class="gallery-placeholder" style="color:var(--stone)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/>
+          </svg>
+          <span>Ảnh sắp cập nhật</span>
+        </div>
+      </div>
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Ảnh sắp cập nhật</span>
+      </div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-3">
+      <div class="gallery-item-inner">
+        <div class="gallery-placeholder" style="color:var(--stone)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/>
+          </svg>
+          <span>Ảnh sắp cập nhật</span>
+        </div>
+      </div>
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Ảnh sắp cập nhật</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ──────────────────────────────────────────────────── -->
+<section aria-label="Quy trình làm việc">
+  <div class="process-section">
+    <div class="section-label reveal">Quy Trình</div>
+    <h2 class="section-title reveal reveal-delay-1">Từ ý tưởng đến<br>tác phẩm hoàn <em>chỉnh</em></h2>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-dot"><div class="process-dot-inner"></div></div>
+        <div class="process-num">Bước 01</div>
+        <div class="process-name">Tư Vấn</div>
+        <p class="process-desc">Nhắn Zalo hoặc inbox Facebook — Trang lắng nghe không gian, sở thích, và ngân sách để tư vấn loại cây phù hợp.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="process-dot"><div class="process-dot-inner"></div></div>
+        <div class="process-num">Bước 02</div>
+        <div class="process-name">Chọn Cây</div>
+        <p class="process-desc">Chọn từ bộ sưu tập sẵn có, hoặc đặt hàng theo dáng thế. Trang gửi ảnh/video thực tế để bạn quyết định.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="process-dot"><div class="process-dot-inner"></div></div>
+        <div class="process-num">Bước 03</div>
+        <div class="process-name">Hoàn Thiện</div>
+        <p class="process-desc">Trang chăm chút lần cuối, đóng gói an toàn. Giao tận nơi hoặc nhận tại vườn Đà Lạt.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="process-dot"><div class="process-dot-inner"></div></div>
+        <div class="process-num">Bước 04</div>
+        <div class="process-name">Hậu Mãi</div>
+        <p class="process-desc">Hướng dẫn chăm sóc chi tiết, hỗ trợ tư vấn sau mua. Trang luôn ở đây để giúp cây luôn khỏe đẹp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── KNOWLEDGE / BLOG ──────────────────────────────────────────── -->
+<section id="knowledge" class="blog-section" aria-label="Blog kiến thức bonsai">
+  <div class="blog-inner">
+    <div class="blog-header">
+      <div>
+        <div class="section-label reveal">Kiến Thức Bonsai</div>
+        <h2 class="section-title reveal reveal-delay-1">Học từ<br>người <em>trong nghề</em></h2>
+      </div>
+      <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="btn-secondary reveal reveal-delay-2">Xem tất cả</a>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card featured reveal">
+        <span class="blog-tag">Kỹ Thuật</span>
+        <h3 class="blog-title">Tạo Dáng Bonsai: Từ Cây Nguyên Liệu Đến Tác Phẩm Nghệ Thuật</h3>
+        <p class="blog-excerpt">Mỗi cây nguyên liệu đều tiềm ẩn một dáng thế riêng. Cách Trang nhìn ra tiềm năng của cây, quyết định góc nhìn chính, và từng bước biến cây hoang dã thành tác phẩm bonsai...</p>
+        <div class="blog-date">Trang Lê BonSai · Đà Lạt</div>
+        <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="read-more">Đọc tiếp</a>
+      </div>
+      <div class="blog-card reveal reveal-delay-1">
+        <span class="blog-tag">Chăm Sóc</span>
+        <h3 class="blog-title">Tưới Nước Đúng Cách: Sai Lầm Phổ Biến Nhất</h3>
+        <p class="blog-excerpt">Hầu hết cây chết không phải vì thiếu nước — mà vì tưới sai thời điểm và sai cách. Bí quyết đơn giản từ kinh nghiệm thực tế...</p>
+        <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="read-more">Đọc tiếp</a>
+      </div>
+      <div class="blog-card reveal reveal-delay-2">
+        <span class="blog-tag">Phong Cách</span>
+        <h3 class="blog-title">5 Dáng Thế Bonsai Cổ Điển Và Ý Nghĩa Triết Học</h3>
+        <p class="blog-excerpt">Chokkan, Shakan, Kengai, Moyogi, Literati — mỗi dáng thế là một triết lý về sự cân bằng giữa con người và thiên nhiên...</p>
+        <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="read-more">Đọc tiếp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ──────────────────────────────────────────────────── -->
+<section id="contact" class="contact-section" aria-label="Liên hệ và mua cây">
+  <div class="contact-inner">
+    <div class="section-label reveal">Liên Hệ</div>
+    <h2 class="section-title reveal reveal-delay-1">Sẵn sàng<br>sở hữu <em>tác phẩm?</em></h2>
+    <p class="contact-desc reveal reveal-delay-2">
+      Nhắn Zalo hoặc inbox Facebook — Trang phản hồi trong ngày.<br>
+      Mỗi cây đều có câu chuyện riêng, hãy để Trang kể cho bạn nghe.
+    </p>
+    <div class="contact-methods reveal reveal-delay-3">
+      <a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="contact-method">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        Zalo: 0326 514 468
+      </a>
+      <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="contact-method">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+        Facebook · Trang Lê BonSai
+      </a>
+    </div>
+    <div class="contact-form reveal reveal-delay-4">
+      <h3>Để lại thông tin</h3>
+      <p>Trang sẽ liên hệ tư vấn trong vòng 24 giờ.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contact-name">Họ tên *</label>
+          <input id="contact-name" type="text" placeholder="Nguyễn Văn A">
+        </div>
+        <div class="form-group">
+          <label for="contact-phone">Số điện thoại / Zalo *</label>
+          <input id="contact-phone" type="tel" placeholder="0xxx xxx xxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="contact-interest">Bạn quan tâm đến?</label>
+        <select id="contact-interest">
+          <option value="">Chọn mục đích</option>
+          <option value="buy">Mua cây thành phẩm</option>
+          <option value="order">Đặt hàng theo dáng thế</option>
+          <option value="consult">Tư vấn chăm sóc cây hiện có</option>
+          <option value="gift">Tặng quà — cây bonsai cao cấp</option>
+          <option value="learn">Học kỹ thuật bonsai</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="contact-message">Tin nhắn thêm</label>
+        <textarea id="contact-message" placeholder="Không gian đặt cây, ngân sách dự kiến, hoặc câu hỏi của bạn..."></textarea>
+      </div>
+      <button type="button" class="btn-submit" onclick="handleContactSubmit()">
+        Gửi Thông Tin
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer aria-label="Footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Trang Lê <span>BonSai</span></div>
+    <div class="footer-links">
+      <a href="#about">Về Trang</a>
+      <a href="#services">Dịch Vụ</a>
+      <a href="#gallery">Tác Phẩm</a>
+      <a href="#knowledge">Kiến Thức</a>
+      <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <div class="footer-copy">© 2025 Trang Lê BonSai · Đà Lạt</div>
+  </div>
+</footer>
+
+<!-- ── ZALO FLOAT ──────────────────────────────────────────────── -->
+<div class="zalo-float" aria-label="Liên hệ Zalo">
+  <div class="zalo-tooltip">Nhắn Zalo ngay</div>
+  <a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="zalo-btn" aria-label="Mở Zalo 0326514468">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // Contact form
+  function handleContactSubmit() {
+    const name  = document.getElementById('contact-name').value.trim();
+    const phone = document.getElementById('contact-phone').value.trim();
+    const inter = document.getElementById('contact-interest').value;
+    const msg   = document.getElementById('contact-message').value.trim();
+    if (!name || !phone) {
+      alert('Vui lòng nhập họ tên và số điện thoại.');
+      return;
+    }
+    const text = encodeURIComponent(`Xin chào Trang! Em tên ${name} - SĐT: ${phone}${inter ? '. Quan tâm: ' + inter : ''}${msg ? '. Ghi chú: ' + msg : ''}`);
+    window.open(`https://zalo.me/0326514468?text=${text}`, '_blank');
+  }
+
+  // Counter animation
+  function animateCounters() {
+    document.querySelectorAll('.stat-num').forEach(el => {
+      const text = el.textContent;
+      const num  = parseInt(text);
+      if (isNaN(num)) return;
+      const suffix = text.replace(/[0-9]/g, '');
+      let start = 0;
+      const step = Math.ceil(num / 40);
+      const timer = setInterval(() => {
+        start = Math.min(start + step, num);
+        el.textContent = start + suffix;
+        if (start >= num) clearInterval(timer);
+      }, 35);
+    });
+  }
+  const statsIo = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) { animateCounters(); statsIo.disconnect(); }
+  }, { threshold: 0.5 });
+  const statsEl = document.querySelector('.stats');
+  if (statsEl) statsIo.observe(statsEl);
+</script>
+</body>
+</html>
