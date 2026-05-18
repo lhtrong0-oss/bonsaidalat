@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trang Lê BonSai — Nghệ Nhân Bonsai Blog · Đà Lạt</title>
+<meta name="description" content="Trang Lê BonSai — kênh bonsai thật – đời từ Đà Lạt. Học kỹ thuật tạo dáng, chăm sóc cây, giao lưu và mua bán bonsai nghệ thuật.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 680px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 80% at 68% 35%, rgba(43,59,44,0.38) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 15% 85%, rgba(27,43,28,0.45) 0%, transparent 60%),
+    linear-gradient(160deg, var(--ink) 0%, #0A0F0A 55%, var(--deep) 100%);
+}
+.hero-kanji {
+  position: absolute;
+  right: 7%;
+  top: 12%;
+  font-family: var(--font-serif);
+  font-size: clamp(90px, 10vw, 160px);
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(196,168,98,0.09);
+  line-height: 1;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.08em;
+  user-select: none;
+  pointer-events: none;
+}
+.hero-tree {
+  position: absolute;
+  right: 6%;
+  bottom: 0;
+  width: 44vw;
+  max-width: 640px;
+  height: 96%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+.hero-tree svg { width: 100%; height: auto; opacity: 0.14; }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 80px 100px;
+  max-width: 760px;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: heroFadeUp 0.8s 0.2s forwards cubic-bezier(0.16,1,0.3,1);
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 36px; height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+.hero-h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(52px, 8vw, 108px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  color: var(--white);
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: heroFadeUp 0.9s 0.35s forwards cubic-bezier(0.16,1,0.3,1);
+}
+.hero-h1 em { color: var(--gold); font-weight: 500; font-style: italic; }
+.hero-sub {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 2.2vw, 26px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--stone);
+  letter-spacing: 0.06em;
+  margin-bottom: 52px;
+  opacity: 0;
+  animation: heroFadeUp 0.9s 0.5s forwards cubic-bezier(0.16,1,0.3,1);
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  animation: heroFadeUp 0.9s 0.65s forwards cubic-bezier(0.16,1,0.3,1);
+}
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  animation: heroFadeUp 1s 0.9s forwards;
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(to bottom, rgba(196,168,98,0.7), transparent);
+  animation: pulse 2.4s 1.2s infinite;
+}
+.hero-scroll-hint span {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mist);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ── FEATURES STRIP ── */
+.features-strip {
+  background: var(--forest);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 32px 0;
+}
+.features-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 32px;
+  border-right: 1px solid var(--border);
+}
+.feature-item:last-child { border-right: none; }
+.feature-icon { color: var(--gold); flex-shrink: 0; opacity: 0.8; }
+.feature-text-label {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 2px;
+}
+.feature-text-val {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 80px;
+}
+.about-img {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: var(--forest);
+}
+.about-img::after {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border: 1px solid var(--border);
+  pointer-events: none;
+}
+.about-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  opacity: 0.18;
+  color: var(--gold);
+}
+.about-img-placeholder span { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mist); }
+.about-badge {
+  position: absolute;
+  bottom: -24px; right: -24px;
+  background: var(--moss);
+  border: 1px solid rgba(196,168,98,0.2);
+  padding: 20px 24px;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-align: center;
+  line-height: 1.5;
+}
+.about-quote {
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2vw, 26px);
+  font-style: italic;
+  color: var(--gold-lt);
+  line-height: 1.45;
+  margin: 24px 0 28px;
+  padding-left: 24px;
+  border-left: 2px solid rgba(196,168,98,0.35);
+}
+
+/* ── TOPICS PREVIEW ── */
+.topics-section { background: var(--deep); }
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+/* ── ARTICLES PREVIEW ── */
+.articles-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 2px;
+}
+.article-featured { }
+.article-featured .article-card-body { padding: 40px 40px; }
+.article-featured .article-card-title { font-size: clamp(20px, 2vw, 28px); }
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  position: relative;
+  overflow: hidden;
+  background: var(--forest);
+  padding: 100px 80px;
+  text-align: center;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(196,168,98,0.07) 0%, transparent 70%);
+}
+.cta-banner-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.cta-banner h2 { font-size: clamp(32px, 4.5vw, 60px); margin-bottom: 16px; }
+.cta-banner p {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.8vw, 21px);
+  font-style: italic;
+  color: var(--stone);
+  margin-bottom: 48px;
+  line-height: 1.55;
+  max-width: none;
+}
+.cta-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; padding: 64px 40px; gap: 48px; }
+  .about-img { max-width: 400px; }
+  .topics-grid { grid-template-columns: repeat(2, 1fr); }
+  .articles-grid { grid-template-columns: 1fr; }
+  .features-inner { grid-template-columns: 1fr; padding: 0 40px; }
+  .feature-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .feature-item:last-child { border-bottom: none; }
+  .hero-content { padding: 0 40px 80px; }
+  .hero-scroll-hint { left: 40px; }
+  .cta-banner { padding: 64px 40px; }
+}
+@media (max-width: 768px) {
+  .hero-kanji { display: none; }
+  .topics-grid { grid-template-columns: 1fr; }
+  .hero-content { padding: 0 24px 72px; }
+  .hero-scroll-hint { left: 24px; }
+  .about-grid { padding: 48px 24px; }
+  .cta-banner { padding: 48px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav" role="navigation" aria-label="Điều hướng chính">
+  <a href="index.html" class="nav-logo">Trang Lê <span>BonSai</span></a>
+  <div class="nav-center">
+    <div class="nav-item">
+      <a href="kien-thuc.html">Kiến Thức <span class="chevron">▾</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="cham-soc.html">Chăm Sóc Cây Bonsai</a></li>
+        <li><a href="tao-the.html">Tạo Thế Bonsai</a></li>
+        <li><a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a></li>
+        <li><a href="bonsai-la-gi.html">Bonsai Là Gì?</a></li>
+      </ul>
+    </div>
+    <div class="nav-item"><a href="giong-cay.html">Giống Cây</a></div>
+    <div class="nav-item"><a href="cam-hung.html">Cảm Hứng</a></div>
+    <div class="nav-item"><a href="lien-he.html">Mua Cây</a></div>
+  </div>
+  <a href="lien-he.html" class="nav-cta">Liên Hệ Mua Cây</a>
+  <button class="nav-burger" onclick="toggleNav()" aria-label="Mở menu">☰</button>
+</nav>
+<nav class="nav-mobile" id="nav-mobile" aria-label="Menu di động">
+  <a href="index.html">Trang Chủ</a>
+  <a href="kien-thuc.html">Kiến Thức Bonsai</a>
+  <a href="cham-soc.html" class="sub">Chăm Sóc Cây</a>
+  <a href="tao-the.html" class="sub">Tạo Thế Bonsai</a>
+  <a href="trong-canh-tac.html" class="sub">Trồng &amp; Canh Tác</a>
+  <a href="bonsai-la-gi.html" class="sub">Bonsai Là Gì?</a>
+  <a href="giong-cay.html">Giống Cây</a>
+  <a href="cam-hung.html">Cảm Hứng &amp; Blog</a>
+  <a href="lien-he.html">Mua Cây / Liên Hệ</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="Trang chủ Trang Lê BonSai">
+  <div class="hero-bg"></div>
+  <div class="hero-kanji" aria-hidden="true">盆栽</div>
+  <div class="hero-tree" aria-hidden="true">
+    <svg viewBox="0 0 420 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M210 580 L210 180" stroke="#C4A862" stroke-width="10" stroke-linecap="round"/>
+      <path d="M210 430 Q140 370 70 320 Q112 298 185 368" stroke="#C4A862" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <path d="M210 380 Q270 315 330 270 Q305 250 248 315" stroke="#C4A862" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <path d="M210 320 Q150 255 100 205 Q138 188 200 262" stroke="#C4A862" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M210 295 Q260 240 305 198 Q286 180 240 242" stroke="#C4A862" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+      <path d="M210 260 Q170 215 140 182 Q168 165 205 218" stroke="#C4A862" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      <path d="M210 245 Q245 200 275 168 Q258 151 225 198" stroke="#C4A862" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      <!-- Crown foliage pads -->
+      <ellipse cx="175" cy="175" rx="72" ry="58" fill="#2C3A2E" opacity="0.75"/>
+      <ellipse cx="235" cy="148" rx="80" ry="64" fill="#2C3A2E" opacity="0.72"/>
+      <ellipse cx="210" cy="122" rx="75" ry="60" fill="#3D5140" opacity="0.55"/>
+      <ellipse cx="172" cy="135" rx="55" ry="46" fill="#3D5140" opacity="0.38"/>
+      <ellipse cx="248" cy="118" rx="60" ry="48" fill="#2C3A2E" opacity="0.42"/>
+      <ellipse cx="210" cy="100" rx="52" ry="42" fill="#3D5140" opacity="0.3"/>
+      <!-- Pot -->
+      <path d="M178 578 L242 578 L230 612 L190 612 Z" fill="#1B2B1C" stroke="#C4A862" stroke-width="1.5"/>
+      <line x1="176" y1="583" x2="244" y2="583" stroke="#C4A862" stroke-width="1" opacity="0.5"/>
+      <ellipse cx="210" cy="578" rx="32" ry="5" fill="#1B2B1C" stroke="#C4A862" stroke-width="1" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Bonsai Nghệ Thuật · Đà Lạt</div>
+    <h1 class="hero-h1">Trang Lê<br><em>BonSai</em></h1>
+    <p class="hero-sub">Nghệ Nhân Bonsai Blog</p>
+    <div class="hero-actions">
+      <a href="kien-thuc.html" class="btn-primary">Khám Phá Kiến Thức</a>
+      <a href="lien-he.html" class="link-arrow">Xem Cây &amp; Mua</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span>Cuộn xuống</span>
+  </div>
+</section>
+
+<!-- FEATURES STRIP -->
+<div class="features-strip" aria-label="Điểm nổi bật">
+  <div class="features-inner">
+    <div class="feature-item reveal">
+      <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div>
+      <div>
+        <div class="feature-text-label">Chuyên Về</div>
+        <div class="feature-text-val">Bonsai Thực Chiến</div>
+      </div>
+    </div>
+    <div class="feature-item reveal reveal-delay-1">
+      <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <div>
+        <div class="feature-text-label">Nội Dung</div>
+        <div class="feature-text-val">Blog &amp; Hướng Dẫn</div>
+      </div>
+    </div>
+    <div class="feature-item reveal reveal-delay-2">
+      <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <div>
+        <div class="feature-text-label">Giao Lưu</div>
+        <div class="feature-text-val">Mua Bán &amp; Trao Đổi</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar" aria-label="Thống kê">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="10">0</div>
+      <div class="stat-label">Năm kinh nghiệm</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num" data-target="200">0</div>
+      <div class="stat-label">Tác phẩm đã tạo</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num" data-suffix="+">50</div>
+      <div class="stat-label">Khách hàng tin dùng</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-num">Đà Lạt</div>
+      <div class="stat-label">Trung tâm nghề</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section aria-label="Câu chuyện Trang Lê BonSai">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <div class="about-img-placeholder">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg>
+        <span>Ảnh nghệ nhân</span>
+      </div>
+      <div class="about-badge">Trangle<br>Bonsai<br>Đà Lạt</div>
+    </div>
+    <div>
+      <div class="section-label reveal">Về Trang</div>
+      <h2 class="section-title reveal reveal-delay-1">Làm nghề<br>mỗi <em>ngày</em></h2>
+      <blockquote class="about-quote reveal reveal-delay-2">
+        "Bonsai thật – đời – làm nghề mỗi ngày. Tại đây Trang ghi lại quá trình làm cây từ những công đoạn thực tế nhất."
+      </blockquote>
+      <p class="reveal reveal-delay-3">Trangle Bonsai là kênh chia sẻ về bonsai và cây cảnh theo cách thật — đời — làm nghề mỗi ngày. Cắt cốt, uốn rễ, tạo dáng, dưỡng cây, phục hồi cây yếu — cùng những câu chuyện vui buồn trong nghề bonsai.</p>
+      <p class="reveal reveal-delay-4" style="margin-top:14px;">Không chỉ dạy lý thuyết — Trang làm cây bằng cái tâm của người làm nghề, chơi bonsai bằng đam mê và sự kiên nhẫn. Mỗi vlog là một ngày làm thật.</p>
+      <div style="margin-top:36px;" class="reveal reveal-delay-4">
+        <a href="bonsai-la-gi.html" class="btn-ghost" style="margin-right:12px;">Tìm Hiểu Thêm</a>
+        <a href="cam-hung.html" class="link-arrow">Xem Blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TOPICS PREVIEW -->
+<section class="topics-section section-pad" aria-label="Chủ đề kiến thức bonsai">
+  <div class="container" style="margin-bottom:56px;">
+    <div class="section-label reveal">Kiến Thức</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <h2 class="section-title reveal reveal-delay-1" style="margin-bottom:0;">Học từ người<br><em>trong nghề</em></h2>
+      <a href="kien-thuc.html" class="link-arrow reveal reveal-delay-2">Xem tất cả chủ đề</a>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 80px;" class="topics-grid-wrap">
+    <div class="topics-grid">
+      <a href="cham-soc.html" class="topic-card card-border-bottom reveal">
+        <div class="topic-card-num">01</div>
+        <div class="topic-card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div>
+        <div class="topic-card-title">Chăm Sóc Cây Bonsai</div>
+        <p class="topic-card-desc">Tưới nước, bón phân, thay chậu, chất nền — những điều cơ bản nhất để giữ cây khỏe và đẹp.</p>
+        <div class="topic-card-sub">
+          <span class="topic-tag">Tưới nước</span><span class="topic-tag">Bón phân</span><span class="topic-tag">Thay chậu</span>
+        </div>
+        <span class="link-arrow" style="font-size:11px;">Đọc ngay</span>
+      </a>
+      <a href="tao-the.html" class="topic-card card-border-bottom reveal reveal-delay-1">
+        <div class="topic-card-num">02</div>
+        <div class="topic-card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3v18"/><path d="M18 3v18"/><path d="M3 6h18"/><path d="M3 18h18"/></svg></div>
+        <div class="topic-card-title">Tạo Thế Bonsai</div>
+        <p class="topic-card-desc">Kỹ thuật tỉa cành, uốn dây, chỉnh thế — từ cây nguyên liệu đến tác phẩm hoàn chỉnh.</p>
+        <div class="topic-card-sub">
+          <span class="topic-tag">Tỉa cành</span><span class="topic-tag">Uốn dây</span><span class="topic-tag">Công cụ</span>
+        </div>
+        <span class="link-arrow" style="font-size:11px;">Đọc ngay</span>
+      </a>
+      <a href="trong-canh-tac.html" class="topic-card card-border-bottom reveal reveal-delay-2">
+        <div class="topic-card-num">03</div>
+        <div class="topic-card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div class="topic-card-title">Trồng &amp; Canh Tác</div>
+        <p class="topic-card-desc">Từ hạt đến cây con, cách chọn cây nguyên liệu, nhân giống và trồng mới bonsai từ đầu.</p>
+        <div class="topic-card-sub">
+          <span class="topic-tag">Từ hạt</span><span class="topic-tag">Cây nguyên liệu</span><span class="topic-tag">Nhân giống</span>
+        </div>
+        <span class="link-arrow" style="font-size:11px;">Đọc ngay</span>
+      </a>
+      <a href="giong-cay.html" class="topic-card card-border-bottom reveal reveal-delay-3">
+        <div class="topic-card-num">04</div>
+        <div class="topic-card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div class="topic-card-title">Các Giống Cây Bonsai</div>
+        <p class="topic-card-desc">Hướng dẫn chi tiết từng loài — từ Sanh, Mai, Tùng đến các loại cây phổ biến và đặc biệt.</p>
+        <div class="topic-card-sub">
+          <span class="topic-tag">Sanh</span><span class="topic-tag">Tùng</span><span class="topic-tag">Linh sam</span>
+        </div>
+        <span class="link-arrow" style="font-size:11px;">Khám phá</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BLOG PREVIEW -->
+<section class="section-pad" aria-label="Bài viết mới nhất">
+  <div class="container" style="margin-bottom:56px;">
+    <div class="section-label reveal">Blog</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <h2 class="section-title reveal reveal-delay-1" style="margin-bottom:0;">Chuyện nghề<br><em>mỗi ngày</em></h2>
+      <a href="cam-hung.html" class="link-arrow reveal reveal-delay-2">Xem tất cả bài viết</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="articles-grid">
+      <a href="cam-hung.html" class="article-card article-featured card-border-bottom reveal">
+        <div class="article-card-img" style="aspect-ratio:16/10;">
+          <div class="article-card-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg>
+          </div>
+        </div>
+        <div class="article-card-body">
+          <span class="article-card-tag">Kỹ Thuật</span>
+          <div class="article-card-title">Tạo Dáng Bonsai: Từ Cây Nguyên Liệu Đến Tác Phẩm Nghệ Thuật</div>
+          <p class="article-card-excerpt">Mỗi cây nguyên liệu đều tiềm ẩn một dáng thế riêng. Cách Trang nhìn ra tiềm năng, chọn góc nhìn chính và từng bước tạo hình bonsai theo đúng cái tâm của người làm nghề...</p>
+          <div class="article-card-footer">
+            <span class="article-card-date">Trang Lê BonSai</span>
+            <span class="link-arrow" style="font-size:11px;">Đọc tiếp</span>
+          </div>
+        </div>
+      </a>
+      <a href="cam-hung.html" class="article-card card-border-bottom reveal reveal-delay-1">
+        <div class="article-card-img">
+          <div class="article-card-img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/></svg></div>
+        </div>
+        <div class="article-card-body">
+          <span class="article-card-tag">Chăm Sóc</span>
+          <div class="article-card-title">Tưới Nước Đúng Cách — Sai Lầm Phổ Biến Nhất</div>
+          <p class="article-card-excerpt">Hầu hết cây chết không vì thiếu nước mà vì tưới sai thời điểm. Bí quyết từ kinh nghiệm thực tế.</p>
+          <div class="article-card-footer">
+            <span class="article-card-date">Chăm sóc cây</span>
+            <span class="link-arrow" style="font-size:11px;">Đọc tiếp</span>
+          </div>
+        </div>
+      </a>
+      <a href="cam-hung.html" class="article-card card-border-bottom reveal reveal-delay-2">
+        <div class="article-card-img">
+          <div class="article-card-img-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div>
+        </div>
+        <div class="article-card-body">
+          <span class="article-card-tag">Dáng Thế</span>
+          <div class="article-card-title">5 Dáng Thế Bonsai Cổ Điển và Ý Nghĩa Triết Học</div>
+          <p class="article-card-excerpt">Chokkan, Shakan, Kengai, Moyogi, Literati — mỗi dáng là một triết lý về thiên nhiên và con người.</p>
+          <div class="article-card-footer">
+            <span class="article-card-date">Kiến thức cơ bản</span>
+            <span class="link-arrow" style="font-size:11px;">Đọc tiếp</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner" aria-label="Kêu gọi hành động">
+  <div class="cta-banner-inner">
+    <div class="section-label reveal" style="justify-content:center;"><span style="display:none;"></span>Liên Hệ</div>
+    <h2 class="reveal reveal-delay-1">Sẵn sàng sở hữu<br><em>tác phẩm bonsai?</em></h2>
+    <p class="reveal reveal-delay-2">Nhắn Zalo hoặc inbox Facebook — Trang phản hồi trong ngày.<br>Mỗi cây đều có câu chuyện riêng.</p>
+    <div class="cta-actions reveal reveal-delay-3">
+      <a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Nhắn Zalo
+      </a>
+      <a href="lien-he.html" class="btn-ghost">Xem &amp; Mua Cây</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">Trang Lê <span>BonSai</span></div>
+      <p class="footer-tagline">"Nghệ Nhân Bonsai Blog"<br>Làm nghề mỗi ngày — Đà Lạt</p>
+      <div class="footer-socials">
+        <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="footer-social" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="footer-social" aria-label="Zalo"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Kiến Thức</div>
+      <div class="footer-links-list">
+        <a href="cham-soc.html">Chăm Sóc Cây</a>
+        <a href="tao-the.html">Tạo Thế Bonsai</a>
+        <a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a>
+        <a href="giong-cay.html">Giống Cây</a>
+        <a href="bonsai-la-gi.html">Bonsai Là Gì?</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Khám Phá</div>
+      <div class="footer-links-list">
+        <a href="cam-hung.html">Blog &amp; Cảm Hứng</a>
+        <a href="cam-hung.html#gallery">Thư Viện Ảnh</a>
+        <a href="cam-hung.html#top10">Top 10 Bonsai</a>
+        <a href="lien-he.html">Mua Cây</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Liên Hệ</div>
+      <div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><a href="https://zalo.me/0326514468">0326 514 468</a></div>
+      <div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><a href="https://facebook.com/mymen.pham.9">mymen.pham.9</a></div>
+      <div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Đà Lạt, Lâm Đồng</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Trang Lê BonSai · Đà Lạt</div>
+    <div class="footer-legal"><a href="#">Chính sách</a><a href="lien-he.html">Liên hệ</a></div>
+  </div>
+</footer>
+
+<!-- ZALO FLOAT -->
+<div class="zalo-float"><div class="zalo-tooltip">Nhắn Zalo ngay</div><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="zalo-btn" aria-label="Zalo 0326514468"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div>
+
+<script>
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), {passive:true});
+function toggleNav() { document.getElementById('nav-mobile').classList.toggle('open'); }
+const io = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}); }, {threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// Counter
+const statsIo = new IntersectionObserver(([e]) => {
+  if(e.isIntersecting) {
+    document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+      const target = +el.dataset.target, suffix = el.dataset.suffix||'';
+      let n=0; const step=Math.ceil(target/40);
+      const t = setInterval(() => { n=Math.min(n+step,target); el.textContent=n+suffix; if(n>=target)clearInterval(t); }, 30);
+    });
+    statsIo.disconnect();
+  }
+}, {threshold:0.5});
+const sb=document.querySelector('.stats-bar'); if(sb) statsIo.observe(sb);
+// Topics responsive
+function fixTopics(){
+  const g=document.querySelector('.topics-grid-wrap');
+  if(!g)return;
+  g.style.padding = window.innerWidth<=768?'0 24px':window.innerWidth<=1100?'0 40px':'0 80px';
+}
+fixTopics(); window.addEventListener('resize',fixTopics);
+</script>
+</body>
+</html>

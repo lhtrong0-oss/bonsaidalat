@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Các Giống Cây Bonsai — Trang Lê BonSai</title>
+<meta name="description" content="Hướng dẫn chi tiết các giống cây bonsai phổ biến tại Việt Nam: Sanh, Tùng, Linh sam, Mai chiếu thủy, Ngân hạnh — từ Trang Lê BonSai Đà Lạt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px;}
+.filter-btn{font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 18px;border:1px solid var(--border);background:transparent;color:var(--mist);cursor:pointer;transition:all .2s;font-family:var(--font-body);}
+.filter-btn:hover,.filter-btn.active{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.species-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.species-img{aspect-ratio:4/3;background:var(--deep);margin-bottom:20px;display:flex;align-items:center;justify-content:center;opacity:.25;overflow:hidden;}
+@media(max-width:900px){.species-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.species-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Trang Lê <span>BonSai</span></a>
+  <div class="nav-center">
+    <div class="nav-item"><a href="kien-thuc.html">Kiến Thức <span class="chevron">▾</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="cham-soc.html">Chăm Sóc Cây Bonsai</a></li>
+        <li><a href="tao-the.html">Tạo Thế Bonsai</a></li>
+        <li><a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a></li>
+        <li><a href="bonsai-la-gi.html">Bonsai Là Gì?</a></li>
+      </ul>
+    </div>
+    <div class="nav-item"><a href="giong-cay.html" class="active">Giống Cây</a></div>
+    <div class="nav-item"><a href="cam-hung.html">Cảm Hứng</a></div>
+    <div class="nav-item"><a href="lien-he.html">Mua Cây</a></div>
+  </div>
+  <a href="lien-he.html" class="nav-cta">Liên Hệ Mua Cây</a>
+  <button class="nav-burger" onclick="toggleNav()" aria-label="Menu">☰</button>
+</nav>
+<nav class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Trang Chủ</a>
+  <a href="kien-thuc.html">Kiến Thức Bonsai</a>
+  <a href="cham-soc.html" class="sub">Chăm Sóc Cây</a>
+  <a href="tao-the.html" class="sub">Tạo Thế Bonsai</a>
+  <a href="trong-canh-tac.html" class="sub">Trồng &amp; Canh Tác</a>
+  <a href="bonsai-la-gi.html" class="sub">Bonsai Là Gì?</a>
+  <a href="giong-cay.html">Giống Cây</a>
+  <a href="cam-hung.html">Cảm Hứng &amp; Blog</a>
+  <a href="lien-he.html">Mua Cây / Liên Hệ</a>
+</nav>
+
+<section class="page-hero" aria-label="Các giống cây bonsai">
+  <div class="page-hero-bg-text" aria-hidden="true">樹種</div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Trang Chủ</a><span class="sep">›</span><span>Giống Cây</span></div>
+    <div class="section-label">Hướng Dẫn Loài Cây</div>
+    <h1>Các Giống Cây<br><em>Bonsai</em></h1>
+    <p>Hướng dẫn chi tiết từng loài — đặc điểm, mức độ khó tính, cách chăm và bí quyết tạo thế riêng của từng loại.</p>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="container">
+    <div class="filter-bar" role="group" aria-label="Lọc theo nhóm">
+      <button class="filter-btn active" data-filter="all" onclick="filterSpecies('all',this)">Tất Cả</button>
+      <button class="filter-btn" data-filter="pho-bien" onclick="filterSpecies('pho-bien',this)">Phổ Biến</button>
+      <button class="filter-btn" data-filter="ngoai-troi" onclick="filterSpecies('ngoai-troi',this)">Ngoài Trời</button>
+      <button class="filter-btn" data-filter="trong-nha" onclick="filterSpecies('trong-nha',this)">Trong Nhà</button>
+      <button class="filter-btn" data-filter="da-lat" onclick="filterSpecies('da-lat',this)">Đà Lạt</button>
+    </div>
+
+    <div class="species-grid">
+
+      <div class="species-card reveal" data-groups="pho-bien ngoai-troi">
+        <div class="species-img"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div>
+        <div class="species-difficulty"><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot"></span><span class="species-dot"></span><span class="species-dot"></span></div>
+        <div class="species-name-jp">Ficus microcarpa · いちじく</div>
+        <div class="species-name-vn">Sanh (Đa)</div>
+        <p class="species-desc">Cây bonsai số 1 của Việt Nam. Lá nhỏ bóng, bộ rễ khí sinh đặc trưng, phong thủy tốt. Dễ chăm nhất trong tất cả các loài — lý tưởng cho người mới bắt đầu.</p>
+        <div class="species-tags">
+          <span class="species-tag">Dễ chăm</span>
+          <span class="species-tag">Phong thủy</span>
+          <span class="species-tag">Trong nhà được</span>
+        </div>
+      </div>
+
+      <div class="species-card reveal reveal-delay-1" data-groups="da-lat ngoai-troi">
+        <div class="species-img"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V4"/><path d="M5 12L12 4l7 8"/><path d="M5 18L12 10l7 8"/></svg></div>
+        <div class="species-difficulty"><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot"></span></div>
+        <div class="species-name-jp">Pinus · 松</div>
+        <div class="species-name-vn">Tùng (Thông)</div>
+        <p class="species-desc">Biểu tượng của sự trường thọ và sức mạnh. Thông 2 lá và 3 lá rất phổ biến tại Đà Lạt. Khó tính hơn — cần ánh sáng đủ, tưới đúng và không khí lưu thông tốt.</p>
+        <div class="species-tags">
+          <span class="species-tag">Đặc sản Đà Lạt</span>
+          <span class="species-tag">Cây lâu năm</span>
+          <span class="species-tag">Khó chăm</span>
+        </div>
+      </div>
+
+      <div class="species-card reveal reveal-delay-2" data-groups="pho-bien ngoai-troi da-lat">
+        <div class="species-img"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><circle cx="12" cy="8" r="5"/><path d="M12 13v9"/></svg></div>
+        <div class="species-difficulty"><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot"></span><span class="species-dot"></span></div>
+        <div class="species-name-jp">Juniperus · 杜松</div>
+        <div class="species-name-vn">Linh Sam (Tùng Bách)</div>
+        <p class="species-desc">Cây xanh quanh năm với lá kim đặc trưng. Chịu được cắt tỉa mạnh, tạo thế linh hoạt. Cần ánh sáng đủ và đất thoát nước tốt. Rất phổ biến trong bonsai thế giới.</p>
+        <div class="species-tags">
+          <span class="species-tag">Dễ tạo thế</span>
+          <span class="species-tag">Xanh quanh năm</span>
+          <span class="species-tag">Phổ biến quốc tế</span>
+        </div>
+      </div>
+
+      <div class="species-card reveal reveal-delay-3" data-groups="pho-bien trong-nha">
+        <div class="species-img"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/></svg></div>
+        <div class="species-difficulty"><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot"></span><span class="species-dot"></span><span class="species-dot"></span></div>
+        <div class="species-name-jp">Carmona retusa · 福建茶</div>
+        <div class="species-name-vn">Mai Chiếu Thủy</div>
+        <p class="species-desc">Lá nhỏ bóng đẹp, ra hoa trắng li ti quanh năm. Một trong số ít loài thật sự sống tốt trong nhà. Phong thủy rất tốt, được ưa chuộng làm quà tặng cao cấp.</p>
+        <div class="species-tags">
+          <span class="species-tag">Trong nhà tốt</span>
+          <span class="species-tag">Ra hoa đẹp</span>
+          <span class="species-tag">Quà tặng</span>
+        </div>
+      </div>
+
+      <div class="species-card reveal reveal-delay-1" data-groups="da-lat ngoai-troi">
+        <div class="species-img"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V12"/><path d="M8 12C5 9 3 5 5 3c2 0 5 2 7 5z"/><path d="M16 12c3-3 5-7 3-9c-2 0-5 2-7 5z"/></svg></div>
+        <div class="species-difficulty"><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot"></span><span class="species-dot"></span></div>
+        <div class="species-name-jp">Rhododendron · 躑躅</div>
+        <div class="species-name-vn">Đỗ Quyên Rừng</div>
+        <p class="species-desc">Mùa hoa đỗ quyên là một trong những cảnh đẹp nhất trong bonsai. Đà Lạt có đỗ quyên rừng tự nhiên tuyệt đẹp. Cần đất acid, không chịu vôi và nước có pH cao.</p>
+        <div class="species-tags">
+          <span class="species-tag">Đặc sản Đà Lạt</span>
+          <span class="species-tag">Hoa đẹp</span>
+          <span class="species-tag">Đất acid</span>
+        </div>
+      </div>
+
+      <div class="species-card reveal reveal-delay-2" data-groups="ngoai-troi pho-bien">
+        <div class="species-img"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M17 12h.01"/><path d="M3 12h.01"/><path d="M12 3v.01"/><path d="M12 21v.01"/><path d="M4.22 4.22l.01.01"/><path d="M19.78 19.78l.01.01"/><path d="M19.78 4.22l.01.01"/><path d="M4.22 19.78l.01.01"/><circle cx="12" cy="12" r="5"/></svg></div>
+        <div class="species-difficulty"><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot"></span><span class="species-dot"></span><span class="species-dot"></span></div>
+        <div class="species-name-jp">Serissa japonica · 雪見草</div>
+        <div class="species-name-vn">Tuyết Tùng Nhật</div>
+        <p class="species-desc">Cây nhỏ gọn, lá cực nhỏ tạo tán tinh tế. Ra hoa trắng nhỏ như tuyết rất đẹp. Khá kén người chăm — ghét di chuyển và thay đổi môi trường đột ngột.</p>
+        <div class="species-tags">
+          <span class="species-tag">Lá siêu nhỏ</span>
+          <span class="species-tag">Hoa trắng</span>
+          <span class="species-tag">Kén chủ</span>
+        </div>
+      </div>
+
+      <div class="species-card reveal" data-groups="ngoai-troi da-lat">
+        <div class="species-img"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="species-difficulty"><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot"></span></div>
+        <div class="species-name-jp">Ginkgo biloba · 銀杏</div>
+        <div class="species-name-vn">Ngân Hạnh (Bạch Quả)</div>
+        <p class="species-desc">Cây hóa thạch sống — có từ 270 triệu năm trước. Lá hình quạt đặc trưng, vàng rực rỡ vào mùa thu. Rất lâu để tạo được bonsai chất lượng nhưng đáng từng năm chờ đợi.</p>
+        <div class="species-tags">
+          <span class="species-tag">Cực hiếm</span>
+          <span class="species-tag">Vàng mùa thu</span>
+          <span class="species-tag">Cao cấp</span>
+        </div>
+      </div>
+
+      <div class="species-card reveal reveal-delay-1" data-groups="pho-bien trong-nha ngoai-troi">
+        <div class="species-img"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V12"/><path d="M20 7c-2 2-4 3-8 3S6 9 4 7c0-4 3-6 8-6s8 2 8 6z"/></svg></div>
+        <div class="species-difficulty"><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot"></span><span class="species-dot"></span><span class="species-dot"></span></div>
+        <div class="species-name-jp">Ulmus parvifolia · 楡</div>
+        <div class="species-name-vn">Du (Elm)</div>
+        <p class="species-desc">Cây thân gỗ tán xòe đẹp, lá nhỏ oval. Thích nghi tốt với điều kiện trong nhà hơn hầu hết cây gỗ. Rụng lá vào mùa đông (semi-deciduous) nhưng mọc lại rất nhanh.</p>
+        <div class="species-tags">
+          <span class="species-tag">Thích nghi tốt</span>
+          <span class="species-tag">Tán đẹp</span>
+          <span class="species-tag">Dễ chăm</span>
+        </div>
+      </div>
+
+      <div class="species-card reveal reveal-delay-2" data-groups="da-lat ngoai-troi">
+        <div class="species-img"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 2a9 9 0 0 1 9 9c0 4-2 7-5 9H8c-3-2-5-5-5-9a9 9 0 0 1 9-9z"/></svg></div>
+        <div class="species-difficulty"><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot filled"></span><span class="species-dot"></span><span class="species-dot"></span></div>
+        <div class="species-name-jp">Buxus · 黄楊</div>
+        <div class="species-name-vn">Hoàng Dương</div>
+        <p class="species-desc">Cây lá xanh quanh năm, phân nhánh rất dày. Tán mịn và gọn — lý tưởng cho dáng thế tròn và chùm. Chịu được cắt tỉa mạnh, phục hồi nhanh.</p>
+        <div class="species-tags">
+          <span class="species-tag">Tán dày mịn</span>
+          <span class="species-tag">Chịu cắt tốt</span>
+          <span class="species-tag">Lá nhỏ</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:64px;padding:40px;background:var(--forest);border:1px solid var(--border);text-align:center;">
+      <div style="font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--white);margin-bottom:10px;">Muốn biết loài nào phù hợp với bạn?</div>
+      <p style="margin-bottom:24px;">Trang sẵn sàng tư vấn loài cây phù hợp với không gian, kinh nghiệm và ngân sách của bạn.</p>
+      <a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="btn-primary">Nhắn Zalo Tư Vấn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand-logo">Trang Lê <span>BonSai</span></div><p class="footer-tagline">"Nghệ Nhân Bonsai Blog"<br>Làm nghề mỗi ngày — Đà Lạt</p><div class="footer-socials"><a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="footer-social" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="footer-social" aria-label="Zalo"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div></div>
+    <div><div class="footer-col-title">Kiến Thức</div><div class="footer-links-list"><a href="cham-soc.html">Chăm Sóc Cây</a><a href="tao-the.html">Tạo Thế Bonsai</a><a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a><a href="giong-cay.html">Giống Cây</a><a href="bonsai-la-gi.html">Bonsai Là Gì?</a></div></div>
+    <div><div class="footer-col-title">Khám Phá</div><div class="footer-links-list"><a href="cam-hung.html">Blog &amp; Cảm Hứng</a><a href="cam-hung.html#gallery">Thư Viện Ảnh</a><a href="cam-hung.html#top10">Top 10 Bonsai</a><a href="lien-he.html">Mua Cây</a></div></div>
+    <div><div class="footer-col-title">Liên Hệ</div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><a href="https://zalo.me/0326514468">0326 514 468</a></div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><a href="https://facebook.com/mymen.pham.9">mymen.pham.9</a></div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Đà Lạt, Lâm Đồng</span></div></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 Trang Lê BonSai · Đà Lạt</div><div class="footer-legal"><a href="#">Chính sách</a><a href="lien-he.html">Liên hệ</a></div></div>
+</footer>
+<div class="zalo-float"><div class="zalo-tooltip">Nhắn Zalo ngay</div><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="zalo-btn" aria-label="Zalo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div>
+<script>
+const nav=document.getElementById('main-nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+function toggleNav(){document.getElementById('nav-mobile').classList.toggle('open');}
+const io=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function filterSpecies(filter, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.species-card').forEach(card=>{
+    if(filter==='all'||card.dataset.groups.includes(filter)){card.style.display='block';}
+    else{card.style.display='none';}
+  });
+}
+</script>
+</body>
+</html>

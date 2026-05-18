@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tạo Thế Bonsai — Trang Lê BonSai</title>
+<meta name="description" content="Kỹ thuật tạo thế bonsai: tỉa cành, uốn dây, công cụ và cách nhìn thế — từ nghệ nhân bonsai Trang Lê Đà Lạt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.anchor-nav{background:var(--forest);border-bottom:1px solid var(--border);position:sticky;top:68px;z-index:50;}
+.anchor-nav-inner{max-width:1200px;margin:0 auto;padding:0 80px;display:flex;gap:0;overflow-x:auto;}
+.anchor-nav a{padding:14px 20px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;flex-shrink:0;}
+.anchor-nav a:hover,.anchor-nav a.active{color:var(--gold);border-bottom-color:var(--gold);}
+@media(max-width:768px){.anchor-nav-inner{padding:0 16px;}}
+
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0;}
+.tool-item{background:var(--forest);padding:24px;border:1px solid var(--border);transition:border-color .2s;}
+.tool-item:hover{border-color:var(--border-hover);}
+.tool-name{font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.tool-desc{font-size:12px;color:var(--mist);line-height:1.65;}
+.tool-must{display:inline-block;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,168,98,.3);padding:3px 8px;margin-bottom:10px;}
+@media(max-width:768px){.tools-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.tools-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Trang Lê <span>BonSai</span></a>
+  <div class="nav-center">
+    <div class="nav-item"><a href="kien-thuc.html" class="active">Kiến Thức <span class="chevron">▾</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="cham-soc.html">Chăm Sóc Cây Bonsai</a></li>
+        <li><a href="tao-the.html">Tạo Thế Bonsai</a></li>
+        <li><a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a></li>
+        <li><a href="bonsai-la-gi.html">Bonsai Là Gì?</a></li>
+      </ul>
+    </div>
+    <div class="nav-item"><a href="giong-cay.html">Giống Cây</a></div>
+    <div class="nav-item"><a href="cam-hung.html">Cảm Hứng</a></div>
+    <div class="nav-item"><a href="lien-he.html">Mua Cây</a></div>
+  </div>
+  <a href="lien-he.html" class="nav-cta">Liên Hệ Mua Cây</a>
+  <button class="nav-burger" onclick="toggleNav()" aria-label="Menu">☰</button>
+</nav>
+<nav class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Trang Chủ</a>
+  <a href="kien-thuc.html">Kiến Thức Bonsai</a>
+  <a href="cham-soc.html" class="sub">Chăm Sóc Cây</a>
+  <a href="tao-the.html" class="sub">Tạo Thế Bonsai</a>
+  <a href="trong-canh-tac.html" class="sub">Trồng &amp; Canh Tác</a>
+  <a href="bonsai-la-gi.html" class="sub">Bonsai Là Gì?</a>
+  <a href="giong-cay.html">Giống Cây</a>
+  <a href="cam-hung.html">Cảm Hứng &amp; Blog</a>
+  <a href="lien-he.html">Mua Cây / Liên Hệ</a>
+</nav>
+
+<section class="page-hero" aria-label="Tạo thế bonsai">
+  <div class="page-hero-bg-text" aria-hidden="true">造形</div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Trang Chủ</a><span class="sep">›</span><a href="kien-thuc.html">Kiến Thức</a><span class="sep">›</span><span>Tạo Thế</span></div>
+    <div class="section-label">Kỹ Thuật Nâng Cao</div>
+    <h1>Tạo Thế<br><em>Bonsai</em></h1>
+    <p>Kỹ thuật tỉa cành, uốn dây và chỉnh thế — từ cây nguyên liệu thô đến tác phẩm nghệ thuật hoàn chỉnh. Mỗi nhát kéo là một quyết định.</p>
+  </div>
+</section>
+
+<nav class="anchor-nav" aria-label="Mục lục">
+  <div class="anchor-nav-inner">
+    <a href="#nhin-the">Nhìn Thế</a>
+    <a href="#tia-canh">Tỉa Cành</a>
+    <a href="#uon-day">Uốn Dây</a>
+    <a href="#cong-cu">Công Cụ</a>
+  </div>
+</nav>
+
+<section class="section-pad">
+  <div class="container">
+    <div class="content-layout">
+      <article class="content-body">
+
+        <h2 id="nhin-the">Nhìn Thế — Đọc Tiềm Năng Của Cây</h2>
+        <p>Trước khi cắt một nhát kéo nào, Trang luôn ngắm cây ít nhất 15–20 phút từ mọi góc độ. Cây nguyên liệu luôn có một "thế tự nhiên" ẩn trong đó — nhiệm vụ của người làm nghề là tìm ra nó, không phải áp đặt lên nó.</p>
+        <h3>Xác định mặt chính (Front)</h3>
+        <p>Mặt chính là góc nhìn đẹp nhất của cây — nơi thân cây bộc lộ rõ ràng nhất, bộ rễ nổi ấn tượng nhất, và tán cây cân đối hợp lý.</p>
+        <ul>
+          <li>Thường là góc nhìn thấy được 60–70% thân và bộ rễ</li>
+          <li>Cành đầu tiên (từ dưới lên) nên hướng về phía người xem hoặc sang ngang</li>
+          <li>Không để cành đâm thẳng ra phía trước hoặc thẳng ra sau</li>
+          <li>Đường nét thân cây nên có nhịp — cong, zigzag, không thẳng đứng hoàn toàn</li>
+        </ul>
+        <h3>Xác định chiều cao lý tưởng</h3>
+        <p>Tỷ lệ chuẩn: chiều cao cây = 6–8 lần đường kính gốc (nebari). Cây có gốc 3cm nên cao khoảng 18–24cm là đẹp. Đây là tỷ lệ thẩm mỹ — không cứng nhắc, nhưng là điểm xuất phát tốt.</p>
+        <div class="info-box">
+          <p><strong>Trang nói:</strong> Mình hay chụp ảnh cây từ nhiều góc, in ra rồi vẽ bút chì phác thảo thế muốn tạo trước khi cắt. Khi nhìn trên giấy, mình thấy rõ hơn cần giữ cành nào, bỏ cành nào.</p>
+        </div>
+
+        <h2 id="tia-canh">Tỉa Cành — Kỹ Thuật và Thời Điểm</h2>
+        <p>Tỉa cành là việc loại bỏ cành thừa để định hình cấu trúc, tăng ánh sáng lọc vào tán, và kích thích phân nhánh mạnh hơn.</p>
+        <h3>Hai loại tỉa cành</h3>
+        <ul>
+          <li><strong style="color:var(--gold-lt)">Tỉa tạo hình (Structural pruning)</strong>: cắt bỏ cành lớn không cần thiết để xây dựng cấu trúc chính. Làm vào đầu mùa xuân hoặc cuối thu khi cây đang nghỉ.</li>
+          <li><strong style="color:var(--gold-lt)">Tỉa duy trì (Maintenance pruning)</strong>: bấm đọt non, tỉa cành nhỏ mọc sai hướng để giữ dáng thế. Làm quanh năm.</li>
+        </ul>
+        <h3>Quy tắc cơ bản khi tỉa</h3>
+        <ul>
+          <li>Cắt sát thân, không để mẩu cành thừa — dễ thối</li>
+          <li>Dùng kéo cắt cành sắc và sạch (lau cồn trước khi cắt)</li>
+          <li>Cành đối nhau (mọc đối xứng) — bỏ một cái</li>
+          <li>Cành mọc thẳng lên trời hoặc thẳng xuống đất — xem xét bỏ</li>
+          <li>Sau khi cắt cành lớn: bôi keo tạo sẹo để bảo vệ vết cắt</li>
+        </ul>
+        <h3>Bấm đọt (Pinching)</h3>
+        <p>Bấm đọt non bằng ngón tay hoặc kéo nhỏ khi chồi mới dài 2–4cm. Giúp tán dày, mịn và phân nhánh nhiều hơn. Với Tùng và Linh sam — bấm đọt là kỹ thuật chủ đạo.</p>
+
+        <h2 id="uon-day">Uốn Cành — Dây Nhôm và Đồng</h2>
+        <p>Uốn dây (wiring) là kỹ thuật dùng dây nhôm hoặc đồng quấn quanh cành để bẻ và giữ cành theo hướng muốn. Đây là kỹ thuật biến đổi mạnh nhất trong bonsai.</p>
+        <h3>Dây nhôm vs dây đồng</h3>
+        <ul>
+          <li><strong style="color:var(--gold-lt)">Dây nhôm</strong>: mềm hơn, dễ uốn, ít gây hại cành — phù hợp cho người mới và cành non nhạy cảm</li>
+          <li><strong style="color:var(--gold-lt)">Dây đồng</strong>: cứng hơn 3 lần, giữ hình tốt hơn — dùng cho cành cứng và kỹ thuật viên có kinh nghiệm</li>
+        </ul>
+        <h3>Kỹ thuật quấn dây</h3>
+        <ul>
+          <li>Chọn dây có đường kính bằng 1/3 đường kính cành cần uốn</li>
+          <li>Quấn theo góc 45° so với trục cành — không quá chặt, không quá lỏng</li>
+          <li>Luôn bắt đầu từ thân chính ra ngoài, quấn 2 cành song song cùng 1 sợi dây</li>
+          <li>Sau khi uốn: kiểm tra lại mỗi 3–4 tuần, gỡ dây trước khi cắt vào vỏ</li>
+          <li>Thời gian giữ dây: 3–6 tháng tùy loài và tốc độ sinh trưởng</li>
+        </ul>
+        <div class="info-box">
+          <p><strong>Cảnh báo quan trọng:</strong> Dây cắt vào vỏ cây tạo sẹo xấu và có thể hỏng cành. Kiểm tra định kỳ và gỡ kịp thời. Dấu dây trên cành không phải "phong cách" — là sai lầm cần tránh.</p>
+        </div>
+
+        <h2 id="cong-cu">Bộ Công Cụ Bonsai Cơ Bản</h2>
+        <p>Không cần mua hết ngay từ đầu. Dưới đây là những công cụ thiết yếu theo thứ tự ưu tiên:</p>
+        <div class="tools-grid">
+          <div class="tool-item">
+            <span class="tool-must">Thiết Yếu</span>
+            <div class="tool-name">Kéo Cắt Cành (Shears)</div>
+            <p class="tool-desc">Kéo bonsai Nhật sắc, cắt gọn không ép cành. Dùng cho tỉa lá, cắt cành nhỏ và bấm đọt.</p>
+          </div>
+          <div class="tool-item">
+            <span class="tool-must">Thiết Yếu</span>
+            <div class="tool-name">Kéo Cắt Cành Lớn (Branch Cutter)</div>
+            <p class="tool-desc">Lưỡi cong cho phép cắt cành sát thân mà không để lại mẩu thừa. Vết cắt tròn lành đẹp hơn kéo thường.</p>
+          </div>
+          <div class="tool-item">
+            <span class="tool-must">Thiết Yếu</span>
+            <div class="tool-name">Kẹp Nhổ Cỏ (Tweezers)</div>
+            <p class="tool-desc">Nhổ cỏ dại, bỏ lá chết, tỉa đọt non mà không làm tổn thương cây xung quanh.</p>
+          </div>
+          <div class="tool-item">
+            <span class="tool-must">Cần Có</span>
+            <div class="tool-name">Dây Nhôm Các Cỡ</div>
+            <p class="tool-desc">Bộ dây từ 1mm đến 3.5mm cho các loại cành khác nhau. Mua dây nhôm trước, dây đồng sau khi quen tay.</p>
+          </div>
+          <div class="tool-item">
+            <span class="tool-must">Cần Có</span>
+            <div class="tool-name">Cào Đất Nhỏ (Rake/Pick)</div>
+            <p class="tool-desc">Cào và gỡ đất bám vào rễ khi thay chậu. Đầu nhọn để đưa đất vào kẽ rễ khi trồng lại.</p>
+          </div>
+          <div class="tool-item">
+            <span class="tool-must">Nâng Cao</span>
+            <div class="tool-name">Kìm Uốn (Pliers/Jin Tools)</div>
+            <p class="tool-desc">Tạo jin (cành chết nghệ thuật) và shari (vỏ chết trên thân). Cho cây trưởng thành muốn tạo hiệu ứng cây cổ thụ.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:48px;padding:40px;background:var(--forest);border:1px solid var(--border);text-align:center;">
+          <div style="font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--white);margin-bottom:10px;">Muốn Trang trực tiếp cắt cốt, tạo thế cây của bạn?</div>
+          <p style="margin-bottom:24px;">Mang cây đến vườn Đà Lạt hoặc gửi ảnh qua Zalo để được tư vấn.</p>
+          <a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="btn-primary">Nhắn Zalo Ngay</a>
+        </div>
+      </article>
+
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <div class="sidebar-title">Trong Bài Này</div>
+          <div class="sidebar-links">
+            <a href="#nhin-the">Nhìn Thế <span class="arrow">→</span></a>
+            <a href="#tia-canh">Tỉa Cành <span class="arrow">→</span></a>
+            <a href="#uon-day">Uốn Dây <span class="arrow">→</span></a>
+            <a href="#cong-cu">Công Cụ <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-title">Xem Thêm</div>
+          <div class="sidebar-links">
+            <a href="cham-soc.html">Chăm Sóc Cây <span class="arrow">→</span></a>
+            <a href="trong-canh-tac.html">Trồng &amp; Canh Tác <span class="arrow">→</span></a>
+            <a href="bonsai-la-gi.html">Các Dáng Thế Cổ Điển <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="sidebar-box">
+          <div style="font-family:var(--font-serif);font-size:13px;font-weight:700;color:var(--gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:.1em;">Tip Từ Trang</div>
+          <p style="font-size:12px;line-height:1.7;">"Mình nghĩ đây là nguyên tắc số 1: <strong style='color:var(--cream)'>ít hơn là nhiều hơn</strong>. Cắt ít — sau đó ngắm. Chắc chắn rồi mới cắt tiếp. Không cắt được trả lại."</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand-logo">Trang Lê <span>BonSai</span></div><p class="footer-tagline">"Nghệ Nhân Bonsai Blog"<br>Làm nghề mỗi ngày — Đà Lạt</p><div class="footer-socials"><a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="footer-social" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="footer-social" aria-label="Zalo"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div></div>
+    <div><div class="footer-col-title">Kiến Thức</div><div class="footer-links-list"><a href="cham-soc.html">Chăm Sóc Cây</a><a href="tao-the.html">Tạo Thế Bonsai</a><a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a><a href="giong-cay.html">Giống Cây</a><a href="bonsai-la-gi.html">Bonsai Là Gì?</a></div></div>
+    <div><div class="footer-col-title">Khám Phá</div><div class="footer-links-list"><a href="cam-hung.html">Blog &amp; Cảm Hứng</a><a href="cam-hung.html#gallery">Thư Viện Ảnh</a><a href="cam-hung.html#top10">Top 10 Bonsai</a><a href="lien-he.html">Mua Cây</a></div></div>
+    <div><div class="footer-col-title">Liên Hệ</div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><a href="https://zalo.me/0326514468">0326 514 468</a></div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><a href="https://facebook.com/mymen.pham.9">mymen.pham.9</a></div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Đà Lạt, Lâm Đồng</span></div></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 Trang Lê BonSai · Đà Lạt</div><div class="footer-legal"><a href="#">Chính sách</a><a href="lien-he.html">Liên hệ</a></div></div>
+</footer>
+<div class="zalo-float"><div class="zalo-tooltip">Nhắn Zalo ngay</div><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="zalo-btn" aria-label="Zalo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div>
+<script>
+const nav=document.getElementById('main-nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+function toggleNav(){document.getElementById('nav-mobile').classList.toggle('open');}
+const io=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const sections=['nhin-the','tia-canh','uon-day','cong-cu'];
+const links=document.querySelectorAll('.anchor-nav a');
+window.addEventListener('scroll',()=>{let cur='';sections.forEach(id=>{const s=document.getElementById(id);if(s&&scrollY>=s.offsetTop-120)cur=id;});links.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});},{passive:true});
+</script>
+</body>
+</html>

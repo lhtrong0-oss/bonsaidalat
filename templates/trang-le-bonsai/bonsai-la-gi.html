@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonsai Là Gì? — Trang Lê BonSai</title>
+<meta name="description" content="Bonsai là gì? Lịch sử, định nghĩa, các dáng thế bonsai cổ điển và triết lý đằng sau nghệ thuật bonsai — từ Trang Lê BonSai Đà Lạt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.styles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:32px 0;}
+.style-card{background:var(--forest);padding:28px 24px;border:1px solid var(--border);transition:border-color .3s,transform .3s var(--ease-out);}
+.style-card:hover{border-color:var(--border-hover);transform:translateY(-3px);}
+.style-jp{font-family:var(--font-serif);font-size:clamp(28px,4vw,48px);font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(196,168,98,.2);line-height:1;margin-bottom:12px;}
+.style-card:hover .style-jp{-webkit-text-stroke-color:rgba(196,168,98,.5);}
+.style-name{font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.style-vn{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.style-desc{font-size:12px;color:var(--mist);line-height:1.7;}
+@media(max-width:900px){.styles-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.styles-grid{grid-template-columns:1fr;}}
+
+.timeline{position:relative;padding-left:32px;}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold),transparent);}
+.timeline-item{position:relative;padding:0 0 40px 32px;}
+.timeline-item::before{content:'';position:absolute;left:-4px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--gold);}
+.timeline-year{font-family:var(--font-serif);font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.12em;margin-bottom:6px;}
+.timeline-title{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;}
+.timeline-desc{font-size:13px;color:var(--mist);line-height:1.75;}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Trang Lê <span>BonSai</span></a>
+  <div class="nav-center">
+    <div class="nav-item"><a href="kien-thuc.html" class="active">Kiến Thức <span class="chevron">▾</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="cham-soc.html">Chăm Sóc Cây Bonsai</a></li>
+        <li><a href="tao-the.html">Tạo Thế Bonsai</a></li>
+        <li><a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a></li>
+        <li><a href="bonsai-la-gi.html">Bonsai Là Gì?</a></li>
+      </ul>
+    </div>
+    <div class="nav-item"><a href="giong-cay.html">Giống Cây</a></div>
+    <div class="nav-item"><a href="cam-hung.html">Cảm Hứng</a></div>
+    <div class="nav-item"><a href="lien-he.html">Mua Cây</a></div>
+  </div>
+  <a href="lien-he.html" class="nav-cta">Liên Hệ Mua Cây</a>
+  <button class="nav-burger" onclick="toggleNav()" aria-label="Menu">☰</button>
+</nav>
+<nav class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Trang Chủ</a>
+  <a href="kien-thuc.html">Kiến Thức Bonsai</a>
+  <a href="cham-soc.html" class="sub">Chăm Sóc Cây</a>
+  <a href="tao-the.html" class="sub">Tạo Thế Bonsai</a>
+  <a href="trong-canh-tac.html" class="sub">Trồng &amp; Canh Tác</a>
+  <a href="bonsai-la-gi.html" class="sub">Bonsai Là Gì?</a>
+  <a href="giong-cay.html">Giống Cây</a>
+  <a href="cam-hung.html">Cảm Hứng &amp; Blog</a>
+  <a href="lien-he.html">Mua Cây / Liên Hệ</a>
+</nav>
+
+<section class="page-hero" aria-label="Bonsai là gì">
+  <div class="page-hero-bg-text" aria-hidden="true">盆栽</div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Trang Chủ</a><span class="sep">›</span><a href="kien-thuc.html">Kiến Thức</a><span class="sep">›</span><span>Bonsai Là Gì?</span></div>
+    <div class="section-label">Nền Tảng &amp; Triết Lý</div>
+    <h1>Bonsai<br><em>là gì?</em></h1>
+    <p>Lịch sử hơn 1000 năm, triết lý sâu sắc và những dáng thế cổ điển — hiểu gốc rễ của bonsai để yêu nó đúng cách.</p>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="container">
+    <div class="content-layout">
+      <article class="content-body">
+
+        <h2 id="dinh-nghia">Định Nghĩa</h2>
+        <p>Bonsai (盆栽) — từ "bon" (盆) nghĩa là chậu/khay, "sai" (栽) nghĩa là cây trồng. Bonsai là nghệ thuật trồng và tạo hình cây trong chậu nhỏ, mô phỏng vẻ đẹp và cái hồn của cây trong tự nhiên nhưng ở quy mô thu nhỏ.</p>
+        <p>Bonsai không phải cây cảnh trang trí thông thường. Bonsai là một hành trình — giữa con người và thiên nhiên, giữa kiên nhẫn và ý chí, giữa kiểm soát và buông thả.</p>
+        <div class="info-box">
+          <p><strong>"Bonsai không phải cây trong chậu. Đó là thiên nhiên được chắt lọc, thời gian được cô đọng, và tâm trí người làm nghề được thể hiện qua từng cành lá."</strong></p>
+        </div>
+
+        <h2 id="lich-su">Lịch Sử Bonsai</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">~ Thế kỷ 6 CN</div>
+            <div class="timeline-title">Khởi Nguồn Từ Trung Quốc — Penjing</div>
+            <p class="timeline-desc">Người Trung Quốc gọi là "Penjing" (盆景) — nghệ thuật trồng cây cảnh kết hợp đá và đất để tái tạo phong cảnh thiên nhiên. Các nhà sư Phật giáo mang kỹ thuật này đến Nhật Bản.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Thế kỷ 12–14</div>
+            <div class="timeline-title">Nhật Bản Phát Triển Thành Nghệ Thuật Độc Lập</div>
+            <p class="timeline-desc">Người Nhật không chỉ sao chép Penjing — họ tạo ra triết lý riêng, đơn giản hóa từ cảnh quan phức tạp xuống còn một cây duy nhất trong chậu. Wabi-sabi (không hoàn hảo là hoàn hảo) trở thành nền tảng thẩm mỹ.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Thế kỷ 17–18</div>
+            <div class="timeline-title">Bonsai Trở Thành Nghệ Thuật Của Tầng Lớp Quý Tộc</div>
+            <p class="timeline-desc">Samurai và giới quý tộc Nhật coi bonsai là biểu tượng địa vị và sự tu dưỡng. Những cây bonsai hàng trăm năm tuổi được truyền từ đời này sang đời khác như gia bảo.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Sau 1945</div>
+            <div class="timeline-title">Lan Rộng Ra Thế Giới</div>
+            <p class="timeline-desc">Bộ đội Mỹ mang bonsai về từ Nhật Bản sau thế chiến 2. Từ đó bonsai lan ra toàn cầu — hiện nay được thực hành tại hơn 100 quốc gia với hàng triệu người theo đuổi.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Hiện tại</div>
+            <div class="timeline-title">Bonsai Việt Nam — Phong Cách Riêng</div>
+            <p class="timeline-desc">Việt Nam có truyền thống cây cảnh nghệ thuật lâu đời. Bonsai Việt kết hợp phong cách Nhật với cây bản địa (Sanh, Linh sam Việt) và thẩm mỹ riêng — đặc biệt là phong trào bonsai hiện đại tại Đà Lạt.</p>
+          </div>
+        </div>
+
+        <h2 id="triet-ly">Triết Lý Đằng Sau Bonsai</h2>
+        <p>Bonsai dựa trên triết lý <strong style="color:var(--gold-lt)">Wabi-sabi</strong> của Nhật Bản — vẻ đẹp trong sự không hoàn hảo, không hoàn chỉnh và vô thường. Một cây bonsai không cần "đẹp hoàn hảo" theo nghĩa đối xứng hay tròn trịa — nó đẹp vì sự chân thật của mình.</p>
+        <ul>
+          <li><strong style="color:var(--gold-lt)">Mu (Không)</strong>: Không gian âm trong tán cây quan trọng như không gian dương</li>
+          <li><strong style="color:var(--gold-lt)">Mono no aware</strong>: Cảm giác bồi hồi trước vẻ đẹp tạm thời — cây thay đổi theo mùa</li>
+          <li><strong style="color:var(--gold-lt)">Kiên nhẫn</strong>: Bonsai dạy người chơi sống chậm lại — không thể vội vàng</li>
+          <li><strong style="color:var(--gold-lt)">Hợp tác với thiên nhiên</strong>: Người làm bonsai không áp đặt — họ lắng nghe cây muốn gì</li>
+        </ul>
+        <blockquote style="font-family:var(--font-display);font-size:20px;font-style:italic;color:var(--gold-lt);line-height:1.5;margin:32px 0;padding-left:24px;border-left:2px solid rgba(196,168,98,.35);">"Trồng một cây bonsai không phải để tạo ra thứ gì đó tuyệt đẹp cho người khác ngắm. Đó là cách bạn rèn luyện bản thân — sự kiên nhẫn, sự chú tâm và khả năng đón nhận thất bại."</blockquote>
+
+        <h2 id="dang-the">Các Dáng Thế Bonsai Cổ Điển</h2>
+        <p>Bonsai truyền thống Nhật Bản có 8 dáng thế cơ bản — mỗi dáng mô phỏng một kiểu cây trong thiên nhiên và mang ý nghĩa riêng.</p>
+        <div class="styles-grid">
+          <div class="style-card reveal">
+            <div class="style-jp">直</div>
+            <div class="style-name">Chokkan</div>
+            <div class="style-vn">Dáng Trực Đứng</div>
+            <p class="style-desc">Thân thẳng đứng, tán cân đối. Biểu tượng sức mạnh và ổn định. Dáng khó nhất để làm đẹp vì không có đường cong che giấu khiếm khuyết.</p>
+          </div>
+          <div class="style-card reveal reveal-delay-1">
+            <div class="style-jp">斜</div>
+            <div class="style-name">Shakan</div>
+            <div class="style-vn">Dáng Nghiêng</div>
+            <p class="style-desc">Thân nghiêng 45–80° — như cây bị gió thổi mãi một phía. Cành tán cân bằng ngược chiều nghiêng. Năng động và tự nhiên.</p>
+          </div>
+          <div class="style-card reveal reveal-delay-2">
+            <div class="style-jp">懸崖</div>
+            <div class="style-name">Kengai</div>
+            <div class="style-vn">Dáng Thác Đổ</div>
+            <p class="style-desc">Ngọn cây rũ xuống thấp hơn đáy chậu — như cây bám vách đá rừng thác. Dáng thế mạnh mẽ và ấn tượng nhất. Thường dùng chậu cao.</p>
+          </div>
+          <div class="style-card reveal reveal-delay-3">
+            <div class="style-jp">文人</div>
+            <div class="style-name">Bunjin (Literati)</div>
+            <div class="style-vn">Dáng Văn Nhân</div>
+            <p class="style-desc">Thân mảnh, cao, tán thưa — như bút vẽ của văn nhân Trung Quốc. Dáng thế từ chối mọi quy tắc thông thường và tạo vẻ đẹp riêng.</p>
+          </div>
+          <div class="style-card reveal">
+            <div class="style-jp">模様木</div>
+            <div class="style-name">Moyogi</div>
+            <div class="style-vn">Dáng Cong Tự Nhiên</div>
+            <p class="style-desc">Thân cây cong tự nhiên không theo quy tắc cứng — như cây thật ngoài thiên nhiên. Phổ biến nhất và dễ đạt được nhất.</p>
+          </div>
+          <div class="style-card reveal reveal-delay-1">
+            <div class="style-jp">双幹</div>
+            <div class="style-name">Sokan</div>
+            <div class="style-vn">Dáng Song Thân</div>
+            <p class="style-desc">Hai thân từ cùng một gốc rễ — một cao một thấp. Biểu tượng sự đồng hành. Thường tạo từ một cây gốc có 2 thân hoặc ghép.</p>
+          </div>
+          <div class="style-card reveal reveal-delay-2">
+            <div class="style-jp">石付</div>
+            <div class="style-name">Seki-joju</div>
+            <div class="style-vn">Dáng Bám Đá</div>
+            <p class="style-desc">Rễ cây ôm lấy tảng đá, chui xuống đất. Sau nhiều năm cây và đá trở thành một. Cần sự kiên nhẫn rất cao — đẹp nhất sau 5–10 năm.</p>
+          </div>
+          <div class="style-card reveal reveal-delay-3">
+            <div class="style-jp">寄植</div>
+            <div class="style-name">Yose-ue</div>
+            <div class="style-vn">Dáng Rừng Cây</div>
+            <p class="style-desc">Nhiều cây trồng chung một chậu tạo thành cảnh rừng thu nhỏ. Phối hợp các cây lớn-nhỏ-cao-thấp để tạo chiều sâu và cảnh quan.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:48px;padding:40px;background:var(--forest);border:1px solid var(--border);text-align:center;">
+          <div style="font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--white);margin-bottom:10px;">Sẵn sàng bắt đầu hành trình bonsai?</div>
+          <p style="margin-bottom:24px;">Bắt đầu từ Chăm Sóc Cây — kiến thức nền tảng nhất trước khi tạo thế.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <a href="cham-soc.html" class="btn-primary">Học Chăm Sóc Cây</a>
+            <a href="lien-he.html" class="btn-ghost">Mua Cây Đầu Tiên</a>
+          </div>
+        </div>
+      </article>
+
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <div class="sidebar-title">Trong Bài Này</div>
+          <div class="sidebar-links">
+            <a href="#dinh-nghia">Định Nghĩa <span class="arrow">→</span></a>
+            <a href="#lich-su">Lịch Sử <span class="arrow">→</span></a>
+            <a href="#triet-ly">Triết Lý <span class="arrow">→</span></a>
+            <a href="#dang-the">8 Dáng Thế <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="sidebar-box" style="background:rgba(196,168,98,.05);border-color:rgba(196,168,98,.2);">
+          <div style="font-family:var(--font-serif);font-size:56px;font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(196,168,98,.15);line-height:1;margin-bottom:12px;text-align:center;">盆栽</div>
+          <div style="text-align:center;font-family:var(--font-display);font-size:14px;font-style:italic;color:var(--mist);">"Cây trong chậu"<br>Nhật Bản · Thế kỷ 12</div>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-title">Bước Tiếp Theo</div>
+          <div class="sidebar-links">
+            <a href="cham-soc.html">Chăm Sóc Cây <span class="arrow">→</span></a>
+            <a href="tao-the.html">Tạo Thế Bonsai <span class="arrow">→</span></a>
+            <a href="giong-cay.html">Chọn Giống Cây <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand-logo">Trang Lê <span>BonSai</span></div><p class="footer-tagline">"Nghệ Nhân Bonsai Blog"<br>Làm nghề mỗi ngày — Đà Lạt</p><div class="footer-socials"><a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="footer-social" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="footer-social" aria-label="Zalo"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div></div>
+    <div><div class="footer-col-title">Kiến Thức</div><div class="footer-links-list"><a href="cham-soc.html">Chăm Sóc Cây</a><a href="tao-the.html">Tạo Thế Bonsai</a><a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a><a href="giong-cay.html">Giống Cây</a><a href="bonsai-la-gi.html">Bonsai Là Gì?</a></div></div>
+    <div><div class="footer-col-title">Khám Phá</div><div class="footer-links-list"><a href="cam-hung.html">Blog &amp; Cảm Hứng</a><a href="cam-hung.html#gallery">Thư Viện Ảnh</a><a href="cam-hung.html#top10">Top 10 Bonsai</a><a href="lien-he.html">Mua Cây</a></div></div>
+    <div><div class="footer-col-title">Liên Hệ</div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><a href="https://zalo.me/0326514468">0326 514 468</a></div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><a href="https://facebook.com/mymen.pham.9">mymen.pham.9</a></div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Đà Lạt, Lâm Đồng</span></div></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 Trang Lê BonSai · Đà Lạt</div><div class="footer-legal"><a href="#">Chính sách</a><a href="lien-he.html">Liên hệ</a></div></div>
+</footer>
+<div class="zalo-float"><div class="zalo-tooltip">Nhắn Zalo ngay</div><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="zalo-btn" aria-label="Zalo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div>
+<script>
+const nav=document.getElementById('main-nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+function toggleNav(){document.getElementById('nav-mobile').classList.toggle('open');}
+const io=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

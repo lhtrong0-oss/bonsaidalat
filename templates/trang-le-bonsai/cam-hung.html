@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cảm Hứng & Blog — Trang Lê BonSai</title>
+<meta name="description" content="Blog bonsai, thư viện ảnh và Top 10 bonsai đẹp nhất — từ Trang Lê BonSai Đà Lạt. Cảm hứng sáng tác từ người làm nghề mỗi ngày.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.blog-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:56px;}
+.blog-tab{padding:14px 28px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);cursor:pointer;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--font-body);}
+.blog-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+.blog-grid-main{display:grid;grid-template-columns:1.5fr 1fr;gap:3px;margin-bottom:3px;}
+.blog-grid-sub{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+
+.top10-list{display:flex;flex-direction:column;gap:0;}
+.top10-item{display:flex;align-items:center;gap:24px;padding:24px 0;border-bottom:1px solid rgba(196,168,98,.08);transition:background .2s;}
+.top10-rank{font-family:var(--font-serif);font-size:clamp(32px,4vw,52px);font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(196,168,98,.2);min-width:64px;line-height:1;}
+.top10-item:hover .top10-rank{-webkit-text-stroke-color:var(--gold);}
+.top10-img{width:88px;height:72px;background:var(--forest);flex-shrink:0;display:flex;align-items:center;justify-content:center;opacity:.3;}
+.top10-info{flex:1;}
+.top10-title{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--white);margin-bottom:6px;line-height:1.3;}
+.top10-desc{font-size:13px;color:var(--mist);line-height:1.6;}
+.top10-tag{display:inline-block;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,168,98,.25);padding:3px 9px;margin-top:8px;}
+
+@media(max-width:900px){.blog-grid-main{grid-template-columns:1fr;}.blog-grid-sub{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.blog-grid-sub{grid-template-columns:1fr;}.top10-item{flex-wrap:wrap;}.blog-tabs{flex-wrap:wrap;}}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Trang Lê <span>BonSai</span></a>
+  <div class="nav-center">
+    <div class="nav-item"><a href="kien-thuc.html">Kiến Thức <span class="chevron">▾</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="cham-soc.html">Chăm Sóc Cây Bonsai</a></li>
+        <li><a href="tao-the.html">Tạo Thế Bonsai</a></li>
+        <li><a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a></li>
+        <li><a href="bonsai-la-gi.html">Bonsai Là Gì?</a></li>
+      </ul>
+    </div>
+    <div class="nav-item"><a href="giong-cay.html">Giống Cây</a></div>
+    <div class="nav-item"><a href="cam-hung.html" class="active">Cảm Hứng</a></div>
+    <div class="nav-item"><a href="lien-he.html">Mua Cây</a></div>
+  </div>
+  <a href="lien-he.html" class="nav-cta">Liên Hệ Mua Cây</a>
+  <button class="nav-burger" onclick="toggleNav()" aria-label="Menu">☰</button>
+</nav>
+<nav class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Trang Chủ</a>
+  <a href="kien-thuc.html">Kiến Thức Bonsai</a>
+  <a href="cham-soc.html" class="sub">Chăm Sóc Cây</a>
+  <a href="tao-the.html" class="sub">Tạo Thế Bonsai</a>
+  <a href="trong-canh-tac.html" class="sub">Trồng &amp; Canh Tác</a>
+  <a href="bonsai-la-gi.html" class="sub">Bonsai Là Gì?</a>
+  <a href="giong-cay.html">Giống Cây</a>
+  <a href="cam-hung.html">Cảm Hứng &amp; Blog</a>
+  <a href="lien-he.html">Mua Cây / Liên Hệ</a>
+</nav>
+
+<section class="page-hero" aria-label="Cảm hứng và blog bonsai">
+  <div class="page-hero-bg-text" aria-hidden="true">感動</div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Trang Chủ</a><span class="sep">›</span><span>Cảm Hứng</span></div>
+    <div class="section-label">Blog &amp; Nghệ Thuật</div>
+    <h1>Cảm Hứng<br><em>Bonsai</em></h1>
+    <p>Blog thực chiến từ vườn cây, thư viện ảnh tác phẩm và Top 10 bonsai — nơi người yêu cây tìm nguồn cảm hứng mỗi ngày.</p>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="container">
+    <div class="blog-tabs" role="tablist">
+      <button class="blog-tab active" role="tab" onclick="showTab('blog',this)">Blog</button>
+      <button class="blog-tab" id="gallery-tab" role="tab" onclick="showTab('gallery',this)">Thư Viện Ảnh</button>
+      <button class="blog-tab" id="top10-tab" role="tab" onclick="showTab('top10',this)">Top 10</button>
+    </div>
+
+    <!-- BLOG TAB -->
+    <div class="tab-panel active" id="tab-blog">
+      <div class="blog-grid-main">
+        <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="article-card reveal">
+          <div class="article-card-img" style="aspect-ratio:16/10;">
+            <div class="article-card-img-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div>
+          </div>
+          <div class="article-card-body" style="padding:36px;">
+            <span class="article-card-tag">Tạo Hình</span>
+            <div class="article-card-title" style="font-size:clamp(20px,2.2vw,28px);">Tạo Dáng Bonsai: Từ Cây Nguyên Liệu Đến Tác Phẩm Nghệ Thuật</div>
+            <p class="article-card-excerpt" style="font-size:14px;">Mỗi cây nguyên liệu đều tiềm ẩn một dáng thế riêng. Cách Trang nhìn ra tiềm năng, quyết định mặt chính, và từng bước tạo hình bonsai theo đúng cái tâm của người làm nghề. Quá trình dài nhưng đáng từng phút ngắm nhìn...</p>
+            <div class="article-card-footer">
+              <span class="article-card-date">Trang Lê BonSai · Đà Lạt</span>
+              <span class="link-arrow" style="font-size:11px;">Đọc tiếp</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="article-card reveal reveal-delay-1">
+          <div class="article-card-img">
+            <div class="article-card-img-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/></svg></div>
+          </div>
+          <div class="article-card-body">
+            <span class="article-card-tag">Chăm Sóc</span>
+            <div class="article-card-title">Tưới Nước Đúng Cách — Sai Lầm Phổ Biến Nhất Người Mới Mắc Phải</div>
+            <p class="article-card-excerpt">Hầu hết cây chết không vì thiếu nước mà vì tưới sai thời điểm. Bí quyết từ kinh nghiệm thực tế hàng chục năm làm nghề bonsai.</p>
+            <div class="article-card-footer">
+              <span class="article-card-date">Chăm sóc cây</span>
+              <span class="link-arrow" style="font-size:11px;">Đọc tiếp</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="blog-grid-sub">
+        <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="article-card reveal">
+          <div class="article-card-img"><div class="article-card-img-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22V12"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div></div>
+          <div class="article-card-body">
+            <span class="article-card-tag">Dáng Thế</span>
+            <div class="article-card-title">5 Dáng Thế Cổ Điển và Ý Nghĩa Triết Học</div>
+            <p class="article-card-excerpt">Chokkan, Shakan, Kengai, Moyogi, Literati — triết lý đằng sau mỗi dáng.</p>
+          </div>
+        </a>
+        <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="article-card reveal reveal-delay-1">
+          <div class="article-card-img"><div class="article-card-img-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/></svg></div></div>
+          <div class="article-card-body">
+            <span class="article-card-tag">Chuyến Đi Cây</span>
+            <div class="article-card-title">Chuyến Cẩu Cây Vách Đá — Vất Vả Nhưng Rất Vui</div>
+            <p class="article-card-excerpt">Mỗi chuyến đi cây là một câu chuyện. Lần này mình tìm được cái Sanh cổ thụ bám vách đá...</p>
+          </div>
+        </a>
+        <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="article-card reveal reveal-delay-2">
+          <div class="article-card-img"><div class="article-card-img-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41"/></svg></div></div>
+          <div class="article-card-body">
+            <span class="article-card-tag">Phục Hồi Cây</span>
+            <div class="article-card-title">Phục Hồi Cây Bonsai Gần Chết — Có Cứu Được Không?</div>
+            <p class="article-card-excerpt">Cây úa lá, rụng hết, tưởng không còn cứu được. Nhưng Trang đã làm gì và kết quả thật bất ngờ...</p>
+          </div>
+        </a>
+      </div>
+      <div style="text-align:center;margin-top:48px;">
+        <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="btn-ghost">Xem Tất Cả Bài Trên Facebook</a>
+      </div>
+    </div>
+
+    <!-- GALLERY TAB -->
+    <div class="tab-panel" id="tab-gallery" aria-label="Thư viện ảnh bonsai">
+      <p style="margin-bottom:40px;font-family:var(--font-display);font-size:18px;font-style:italic;color:var(--stone);">Bộ sưu tập tác phẩm — ảnh sẽ được cập nhật thường xuyên từ vườn cây Đà Lạt.</p>
+      <div class="gallery-grid four-col">
+        <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg><span>Ảnh cây</span></div></div><div class="gallery-cell-overlay"><span class="gallery-cell-label">Xem cây</span></div></div>
+        <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/></svg></div></div><div class="gallery-cell-overlay"><span class="gallery-cell-label">Xem cây</span></div></div>
+        <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div></div><div class="gallery-cell-overlay"><span class="gallery-cell-label">Xem cây</span></div></div>
+        <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div></div><div class="gallery-cell-overlay"><span class="gallery-cell-label">Xem cây</span></div></div>
+        <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="4"/></svg></div></div><div class="gallery-cell-overlay"><span class="gallery-cell-label">Xem cây</span></div></div>
+        <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22V12"/></svg></div></div><div class="gallery-cell-overlay"><span class="gallery-cell-label">Xem cây</span></div></div>
+        <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/></svg></div></div><div class="gallery-cell-overlay"><span class="gallery-cell-label">Xem cây</span></div></div>
+        <div class="gallery-cell"><div class="gallery-cell-inner"><div class="gallery-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div></div><div class="gallery-cell-overlay"><span class="gallery-cell-label">Xem cây</span></div></div>
+      </div>
+      <div style="text-align:center;margin-top:48px;">
+        <p style="font-size:14px;color:var(--mist);margin-bottom:24px;">Xem thêm ảnh và video làm cây thực tế trên Facebook:</p>
+        <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="btn-primary">Xem Trên Facebook</a>
+      </div>
+    </div>
+
+    <!-- TOP 10 TAB -->
+    <div class="tab-panel" id="tab-top10" aria-label="Top 10 bonsai đẹp nhất">
+      <p style="margin-bottom:40px;font-family:var(--font-display);font-size:18px;font-style:italic;color:var(--stone);">Theo góc nhìn cá nhân của Trang — 10 loài bonsai ấn tượng nhất, mỗi cái vì một lý do khác nhau.</p>
+      <div class="top10-list">
+        <div class="top10-item"><div class="top10-rank">01</div><div class="top10-img"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div><div class="top10-info"><div class="top10-title">Sanh Cổ Thụ Dáng Thác Đổ (Kengai)</div><p class="top10-desc">Bộ rễ khí sinh bám đá, tán rủ xuống như thác — đây là dáng thế mà Trang mơ ước tạo được từ hồi mới học nghề. Khi nhìn thấy cây Sanh kengai đúng chất, tim mình đập nhanh hơn.</p><span class="top10-tag">Sanh · Kengai</span></div></div>
+        <div class="top10-item"><div class="top10-rank">02</div><div class="top10-img"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V4"/><path d="M5 12L12 4l7 8"/><path d="M5 18L12 10l7 8"/></svg></div><div class="top10-info"><div class="top10-title">Thông Bonsai Trăm Năm Dáng Trực</div><p class="top10-desc">Cây Thông cổ thụ thật — không phải cây trẻ tạo thế giả — thân đầy vảy, jin và shari tự nhiên. Mỗi nhánh là hàng chục năm lịch sử. Không có gì trong bonsai thuyết phục hơn thời gian.</p><span class="top10-tag">Thông · Chokkan</span></div></div>
+        <div class="top10-item"><div class="top10-rank">03</div><div class="top10-img"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V12"/><path d="M8 12C5 9 3 5 5 3c2 0 5 2 7 5z"/><path d="M16 12c3-3 5-7 3-9c-2 0-5 2-7 5z"/></svg></div><div class="top10-info"><div class="top10-title">Đỗ Quyên Rừng Mùa Hoa Tím</div><p class="top10-desc">Khi Đỗ Quyên ra hoa — cả thế giới xung quanh dường như biến mất. Tán hoa phủ kín từng cành, bonsai trở thành một đám mây tím rực. Chỉ có mùa xuân Đà Lạt mới đẹp như thế.</p><span class="top10-tag">Đỗ Quyên · Đà Lạt</span></div></div>
+        <div class="top10-item"><div class="top10-rank">04</div><div class="top10-img"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="top10-info"><div class="top10-title">Ngân Hạnh Dáng Tự Nhiên Mùa Thu</div><p class="top10-desc">Lá vàng rực trên nền đen của thân cây — sự đối lập hoàn hảo. Ngân hạnh bonsai mùa thu là một trong những cảnh đẹp hiếm có và khó quên nhất trong nghệ thuật bonsai thế giới.</p><span class="top10-tag">Ngân Hạnh · Mùa Thu</span></div></div>
+        <div class="top10-item"><div class="top10-rank">05</div><div class="top10-img"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><circle cx="12" cy="8" r="5"/><path d="M12 13v9"/></svg></div><div class="top10-info"><div class="top10-title">Linh Sam Kiểu Rừng (Forest / Yose-ue)</div><p class="top10-desc">Nhiều cây Linh sam trồng trong một chậu lớn, mô phỏng khu rừng thu nhỏ. Nhìn vào như đang đứng giữa rừng cây — thiên nhiên được gói gọn trong 60cm chiều ngang.</p><span class="top10-tag">Linh Sam · Yose-ue</span></div></div>
+        <div class="top10-item"><div class="top10-rank">06</div><div class="top10-img"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/></svg></div><div class="top10-info"><div class="top10-title">Sanh Bám Đá (Seki-joju)</div><p class="top10-desc">Rễ cây ôm lấy tảng đá như người leo núi — đây là kỹ thuật mà Trang rất yêu thích. Rễ trần trải dài trên đá, chui xuống đất, cây và đá hòa làm một sau nhiều năm.</p><span class="top10-tag">Sanh · Seki-joju</span></div></div>
+        <div class="top10-item"><div class="top10-rank">07</div><div class="top10-img"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V12"/><path d="M20 7c-2 2-4 3-8 3S6 9 4 7c0-4 3-6 8-6s8 2 8 6z"/></svg></div><div class="top10-info"><div class="top10-title">Hoàng Dương Tán Tròn Kiểu Nhật</div><p class="top10-desc">Những pad tán hình tam giác xếp lớp như mây trên thân cong — đây là phong cách bonsai Nhật thuần chất nhất. Cần nhiều năm tỉ mỉ để đạt được sự hoàn hảo đó.</p><span class="top10-tag">Hoàng Dương · Nhật</span></div></div>
+        <div class="top10-item"><div class="top10-rank">08</div><div class="top10-img"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V4"/><path d="M19 8L12 4 5 8"/></svg></div><div class="top10-info"><div class="top10-title">Tùng Văn Nhân (Literati)</div><p class="top10-desc">Thân mảnh dài, tán thưa như nét bút của văn nhân cổ đại. Dáng thế này từ chối quy tắc thông thường — và chính sự "không hoàn hảo" đó tạo nên vẻ đẹp hoàn hảo nhất.</p><span class="top10-tag">Tùng · Văn Nhân</span></div></div>
+        <div class="top10-item"><div class="top10-rank">09</div><div class="top10-img"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div><div class="top10-info"><div class="top10-title">Mai Chiếu Thủy Già Lắm Bông</div><p class="top10-desc">Cây nhỏ mà ra hoa trắng li ti ken đặc khắp tán — vừa trẻ trung vừa cổ kính. Mình thấy cây mai chiếu thủy 50 tuổi vẫn ra hoa đều đặn như cây vừa trưởng thành.</p><span class="top10-tag">Mai Chiếu Thủy</span></div></div>
+        <div class="top10-item"><div class="top10-rank">10</div><div class="top10-img"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4A862" stroke-width="1"><path d="M12 22V4"/><path d="M5 12L12 4l7 8"/></svg></div><div class="top10-info"><div class="top10-title">Cây Bonsai Do Chính Tay Mình Tạo Ra</div><p class="top10-desc">Không có cây nào đẹp hơn cây do chính mình tạo ra từ đầu. Dù thế chưa hoàn hảo, dù cành còn non — nhưng đó là hành trình của mình trong đó. Đó là điều bonsai thật sự dạy mình.</p><span class="top10-tag">Tất cả loài</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand-logo">Trang Lê <span>BonSai</span></div><p class="footer-tagline">"Nghệ Nhân Bonsai Blog"<br>Làm nghề mỗi ngày — Đà Lạt</p><div class="footer-socials"><a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="footer-social" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="footer-social" aria-label="Zalo"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div></div>
+    <div><div class="footer-col-title">Kiến Thức</div><div class="footer-links-list"><a href="cham-soc.html">Chăm Sóc Cây</a><a href="tao-the.html">Tạo Thế Bonsai</a><a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a><a href="giong-cay.html">Giống Cây</a><a href="bonsai-la-gi.html">Bonsai Là Gì?</a></div></div>
+    <div><div class="footer-col-title">Khám Phá</div><div class="footer-links-list"><a href="cam-hung.html">Blog &amp; Cảm Hứng</a><a href="cam-hung.html#gallery">Thư Viện Ảnh</a><a href="cam-hung.html#top10">Top 10 Bonsai</a><a href="lien-he.html">Mua Cây</a></div></div>
+    <div><div class="footer-col-title">Liên Hệ</div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><a href="https://zalo.me/0326514468">0326 514 468</a></div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><a href="https://facebook.com/mymen.pham.9">mymen.pham.9</a></div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Đà Lạt, Lâm Đồng</span></div></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 Trang Lê BonSai · Đà Lạt</div><div class="footer-legal"><a href="#">Chính sách</a><a href="lien-he.html">Liên hệ</a></div></div>
+</footer>
+<div class="zalo-float"><div class="zalo-tooltip">Nhắn Zalo ngay</div><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="zalo-btn" aria-label="Zalo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div>
+<script>
+const nav=document.getElementById('main-nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+function toggleNav(){document.getElementById('nav-mobile').classList.toggle('open');}
+const io=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.blog-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+// Handle hash navigation
+if(location.hash==='#gallery')showTab('gallery',document.getElementById('gallery-tab'));
+if(location.hash==='#top10')showTab('top10',document.getElementById('top10-tab'));
+</script>
+</body>
+</html>

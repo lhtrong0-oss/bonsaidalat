@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mua Cây & Liên Hệ — Trang Lê BonSai</title>
+<meta name="description" content="Mua cây bonsai nghệ thuật Đà Lạt, tư vấn và đặt hàng theo dáng thế. Liên hệ Trang Lê BonSai qua Zalo hoặc Facebook.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.buy-grid{display:grid;grid-template-columns:1fr 440px;gap:64px;align-items:start;}
+.buy-options{display:flex;flex-direction:column;gap:16px;margin:40px 0;}
+.buy-option{background:var(--forest);padding:32px 36px;border:1px solid var(--border);display:flex;align-items:flex-start;gap:20px;transition:border-color .3s,background .3s;}
+.buy-option:hover{border-color:var(--border-hover);background:#1F3020;}
+.buy-option-icon{color:var(--gold);flex-shrink:0;opacity:.8;margin-top:2px;}
+.buy-option-title{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.buy-option-desc{font-size:13px;color:var(--mist);line-height:1.7;margin-bottom:12px;}
+.buy-option-price{font-family:var(--font-serif);font-size:13px;color:var(--gold);letter-spacing:.08em;}
+
+.contact-form-card{background:var(--forest);border:1px solid var(--border);padding:44px;position:sticky;top:88px;}
+.form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:18px;}
+.form-group label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);}
+.form-group input,.form-group textarea,.form-group select{background:rgba(27,43,28,.6);border:1px solid var(--border);color:var(--cream);font-family:var(--font-body);font-size:14px;font-weight:300;padding:13px 16px;outline:none;transition:border-color .2s;width:100%;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--border-hover);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-group select{cursor:pointer;}
+.form-group select option{background:var(--forest);}
+.btn-submit{width:100%;background:var(--gold);color:var(--ink);border:none;font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:16px;cursor:pointer;transition:background .25s,transform .25s;margin-top:8px;}
+.btn-submit:hover{background:var(--gold-lt);transform:translateY(-2px);}
+
+.contact-methods-big{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;}
+.contact-method-big{background:var(--forest);border:1px solid var(--border);padding:28px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;transition:border-color .3s,transform .3s var(--ease-out);}
+.contact-method-big:hover{border-color:var(--border-hover);transform:translateY(-3px);}
+.cmb-icon{color:var(--gold);width:40px;height:40px;background:rgba(196,168,98,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.cmb-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mist);}
+.cmb-value{font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--white);}
+.cmb-sub{font-size:12px;color:var(--mist);}
+
+.process-steps{display:flex;flex-direction:column;gap:0;margin-top:32px;}
+.ps-item{display:flex;align-items:flex-start;gap:20px;padding:20px 0;border-bottom:1px solid rgba(196,168,98,.07);}
+.ps-item:last-child{border-bottom:none;}
+.ps-num{font-family:var(--font-serif);font-size:11px;color:var(--gold);min-width:28px;opacity:.7;margin-top:2px;font-weight:700;}
+.ps-text-title{font-family:var(--font-serif);font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.ps-text-desc{font-size:13px;color:var(--mist);line-height:1.65;}
+
+@media(max-width:1000px){.buy-grid{grid-template-columns:1fr;}.contact-form-card{position:static;}}
+@media(max-width:600px){.contact-methods-big{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Trang Lê <span>BonSai</span></a>
+  <div class="nav-center">
+    <div class="nav-item"><a href="kien-thuc.html">Kiến Thức <span class="chevron">▾</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="cham-soc.html">Chăm Sóc Cây Bonsai</a></li>
+        <li><a href="tao-the.html">Tạo Thế Bonsai</a></li>
+        <li><a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a></li>
+        <li><a href="bonsai-la-gi.html">Bonsai Là Gì?</a></li>
+      </ul>
+    </div>
+    <div class="nav-item"><a href="giong-cay.html">Giống Cây</a></div>
+    <div class="nav-item"><a href="cam-hung.html">Cảm Hứng</a></div>
+    <div class="nav-item"><a href="lien-he.html" class="active">Mua Cây</a></div>
+  </div>
+  <a href="lien-he.html" class="nav-cta">Liên Hệ Mua Cây</a>
+  <button class="nav-burger" onclick="toggleNav()" aria-label="Menu">☰</button>
+</nav>
+<nav class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Trang Chủ</a>
+  <a href="kien-thuc.html">Kiến Thức Bonsai</a>
+  <a href="cham-soc.html" class="sub">Chăm Sóc Cây</a>
+  <a href="tao-the.html" class="sub">Tạo Thế Bonsai</a>
+  <a href="trong-canh-tac.html" class="sub">Trồng &amp; Canh Tác</a>
+  <a href="bonsai-la-gi.html" class="sub">Bonsai Là Gì?</a>
+  <a href="giong-cay.html">Giống Cây</a>
+  <a href="cam-hung.html">Cảm Hứng &amp; Blog</a>
+  <a href="lien-he.html">Mua Cây / Liên Hệ</a>
+</nav>
+
+<section class="page-hero" aria-label="Mua cây và liên hệ">
+  <div class="page-hero-bg-text" aria-hidden="true">購入</div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Trang Chủ</a><span class="sep">›</span><span>Mua Cây &amp; Liên Hệ</span></div>
+    <div class="section-label">Sở Hữu Tác Phẩm</div>
+    <h1>Mua Cây<br><em>&amp; Liên Hệ</em></h1>
+    <p>Nhắn Zalo hoặc inbox Facebook — Trang phản hồi trong ngày. Mỗi cây đều có câu chuyện riêng, hãy để Trang kể cho bạn nghe.</p>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="container">
+    <div class="buy-grid">
+      <!-- LEFT: Options + Contact methods -->
+      <div>
+        <div class="section-label reveal">Bạn Cần Gì?</div>
+        <h2 class="section-title reveal reveal-delay-1">Chọn dịch vụ<br><em>phù hợp bạn</em></h2>
+        <div class="buy-options">
+          <div class="buy-option reveal">
+            <div class="buy-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 2.5 7.5 9 6z"/><path d="M12 12c0-5 5-8 9-6c0 4-2.5 7.5-9 6z"/></svg></div>
+            <div>
+              <div class="buy-option-title">Mua Cây Thành Phẩm</div>
+              <p class="buy-option-desc">Cây bonsai đã tạo thế hoàn chỉnh — sẵn sàng về nhà mới. Trang gửi ảnh/video thực tế, tư vấn loại phù hợp không gian và ngân sách của bạn.</p>
+              <div class="buy-option-price">Giá từ 500.000đ → vài chục triệu tùy cây</div>
+            </div>
+          </div>
+          <div class="buy-option reveal reveal-delay-1">
+            <div class="buy-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/></svg></div>
+            <div>
+              <div class="buy-option-title">Đặt Hàng Theo Dáng Thế</div>
+              <p class="buy-option-desc">Mô tả không gian, sở thích và ngân sách — Trang sẽ chọn hoặc tạo cây theo yêu cầu. Thời gian: 1–6 tháng tùy độ phức tạp.</p>
+              <div class="buy-option-price">Thỏa thuận theo dự án</div>
+            </div>
+          </div>
+          <div class="buy-option reveal reveal-delay-2">
+            <div class="buy-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div>
+              <div class="buy-option-title">Tư Vấn &amp; Tạo Dáng Cây Của Bạn</div>
+              <p class="buy-option-desc">Có cây nhưng chưa biết làm thế nào? Mang cây đến vườn tại Đà Lạt hoặc gửi ảnh qua Zalo — Trang trực tiếp tư vấn hoặc cắt cốt tạo thế.</p>
+              <div class="buy-option-price">Phí dịch vụ từ 200.000đ</div>
+            </div>
+          </div>
+          <div class="buy-option reveal reveal-delay-3">
+            <div class="buy-option-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg></div>
+            <div>
+              <div class="buy-option-title">Quà Tặng Cao Cấp</div>
+              <p class="buy-option-desc">Bonsai là món quà ý nghĩa nhất cho sếp, đối tác, người thân dịp khai trương, sinh nhật hay tân gia. Trang tư vấn và đóng gói đẹp theo yêu cầu.</p>
+              <div class="buy-option-price">Giá từ 1.000.000đ, theo ngân sách</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROCESS -->
+        <div style="margin-top:56px;" class="reveal">
+          <div class="section-label">Quy Trình</div>
+          <h3 style="font-family:var(--font-serif);font-size:22px;font-weight:700;color:var(--white);margin-bottom:0;">Từ liên hệ đến sở hữu cây</h3>
+          <div class="process-steps">
+            <div class="ps-item"><div class="ps-num">01</div><div><div class="ps-text-title">Nhắn Zalo hoặc Facebook</div><p class="ps-text-desc">Mô tả không gian, sở thích và ngân sách. Gửi ảnh không gian nếu có.</p></div></div>
+            <div class="ps-item"><div class="ps-num">02</div><div><div class="ps-text-title">Trang tư vấn và gửi ảnh cây</div><p class="ps-text-desc">Trang gợi ý những cây phù hợp và gửi ảnh/video thực tế để bạn chọn.</p></div></div>
+            <div class="ps-item"><div class="ps-num">03</div><div><div class="ps-text-title">Chọn cây và xác nhận</div><p class="ps-text-desc">Thỏa thuận giá, phương thức thanh toán và giao hàng.</p></div></div>
+            <div class="ps-item"><div class="ps-num">04</div><div><div class="ps-text-title">Nhận cây kèm hướng dẫn chăm sóc</div><p class="ps-text-desc">Cây được đóng gói an toàn. Trang luôn sẵn sàng hỗ trợ sau mua.</p></div></div>
+          </div>
+        </div>
+
+        <!-- Contact big buttons -->
+        <div style="margin-top:56px;" class="reveal">
+          <div class="section-label">Liên Hệ Trực Tiếp</div>
+          <div class="contact-methods-big">
+            <a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="contact-method-big">
+              <div class="cmb-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+              <div class="cmb-label">Nhắn Zalo</div>
+              <div class="cmb-value">0326 514 468</div>
+              <div class="cmb-sub">Phản hồi trong ngày</div>
+            </a>
+            <a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="contact-method-big">
+              <div class="cmb-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+              <div class="cmb-label">Facebook</div>
+              <div class="cmb-value">Trang Lê BonSai</div>
+              <div class="cmb-sub">Xem vlog và cây bán</div>
+            </a>
+            <a href="tel:0326514468" class="contact-method-big">
+              <div class="cmb-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.16 6.16l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <div class="cmb-label">Gọi Điện</div>
+              <div class="cmb-value">0326 514 468</div>
+              <div class="cmb-sub">7:00 – 21:00 hàng ngày</div>
+            </a>
+            <div class="contact-method-big">
+              <div class="cmb-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div class="cmb-label">Vườn Cây</div>
+              <div class="cmb-value">Đà Lạt</div>
+              <div class="cmb-sub">Lâm Đồng · Đặt lịch trước</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Contact form -->
+      <div>
+        <div class="contact-form-card reveal reveal-delay-2">
+          <div style="font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--white);margin-bottom:6px;">Để lại thông tin</div>
+          <p style="font-size:13px;color:var(--mist);margin-bottom:32px;">Trang sẽ liên hệ tư vấn trong vòng 24 giờ.</p>
+          <div class="form-group">
+            <label for="f-name">Họ Tên *</label>
+            <input type="text" id="f-name" placeholder="Nguyễn Văn A">
+          </div>
+          <div class="form-group">
+            <label for="f-phone">SĐT / Zalo *</label>
+            <input type="tel" id="f-phone" placeholder="0xxx xxx xxx">
+          </div>
+          <div class="form-group">
+            <label for="f-need">Bạn Cần</label>
+            <select id="f-need">
+              <option value="">Chọn mục đích...</option>
+              <option>Mua cây thành phẩm</option>
+              <option>Đặt hàng theo dáng thế</option>
+              <option>Tư vấn cây đang có</option>
+              <option>Quà tặng cao cấp</option>
+              <option>Khác</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-budget">Ngân Sách Dự Kiến</label>
+            <select id="f-budget">
+              <option value="">Chọn khoảng giá...</option>
+              <option>Dưới 1 triệu</option>
+              <option>1 – 3 triệu</option>
+              <option>3 – 10 triệu</option>
+              <option>10 – 30 triệu</option>
+              <option>Trên 30 triệu</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-msg">Ghi Chú</label>
+            <textarea id="f-msg" placeholder="Mô tả không gian đặt cây, loài cây muốn mua, hoặc câu hỏi của bạn..."></textarea>
+          </div>
+          <button type="button" class="btn-submit" onclick="submitForm()">Gửi Thông Tin</button>
+          <p style="font-size:11px;color:var(--mist);text-align:center;margin-top:16px;">Bằng cách gửi, bạn đồng ý được Trang liên hệ tư vấn qua Zalo/điện thoại.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad" style="background:var(--deep);">
+  <div class="container">
+    <div class="section-label reveal">FAQ</div>
+    <h2 class="section-title reveal reveal-delay-1">Câu hỏi<br><em>thường gặp</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;" class="faq-grid">
+      <div class="reveal" style="background:var(--forest);padding:28px;border:1px solid var(--border);">
+        <div style="font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--white);margin-bottom:10px;">Giao hàng có được không?</div>
+        <p style="font-size:13px;color:var(--mist);line-height:1.7;">Được! Giao hàng trong tỉnh Lâm Đồng miễn phí với cây trên 500k. Giao toàn quốc qua xe khách hoặc chuyển phát — Trang đóng gói cẩn thận và có kinh nghiệm giao cây xa.</p>
+      </div>
+      <div class="reveal reveal-delay-1" style="background:var(--forest);padding:28px;border:1px solid var(--border);">
+        <div style="font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--white);margin-bottom:10px;">Có bảo hành cây không?</div>
+        <p style="font-size:13px;color:var(--mist);line-height:1.7;">Trang không "bảo hành" cây như sản phẩm điện tử — nhưng cam kết hỗ trợ chăm sóc trọn đời miễn phí qua Zalo. Cây chết do sai sót trong quá trình giao thì Trang đền bù.</p>
+      </div>
+      <div class="reveal reveal-delay-2" style="background:var(--forest);padding:28px;border:1px solid var(--border);">
+        <div style="font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--white);margin-bottom:10px;">Người mới chơi bonsai có nên mua không?</div>
+        <p style="font-size:13px;color:var(--mist);line-height:1.7;">Hoàn toàn nên! Trang có nhiều cây dễ chăm phù hợp người mới như Sanh, Mai chiếu thủy, Du. Trang sẽ hướng dẫn chăm sóc cụ thể cho từng cây bạn mua.</p>
+      </div>
+      <div class="reveal reveal-delay-3" style="background:var(--forest);padding:28px;border:1px solid var(--border);">
+        <div style="font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--white);margin-bottom:10px;">Có thể đến vườn xem trực tiếp không?</div>
+        <p style="font-size:13px;color:var(--mist);line-height:1.7;">Hoàn toàn được! Đặt lịch qua Zalo trước ít nhất 1 ngày. Vườn tại Đà Lạt — Trang sẽ hướng dẫn địa chỉ cụ thể sau khi bạn liên hệ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand-logo">Trang Lê <span>BonSai</span></div><p class="footer-tagline">"Nghệ Nhân Bonsai Blog"<br>Làm nghề mỗi ngày — Đà Lạt</p><div class="footer-socials"><a href="https://facebook.com/mymen.pham.9" target="_blank" rel="noopener" class="footer-social" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="footer-social" aria-label="Zalo"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div></div>
+    <div><div class="footer-col-title">Kiến Thức</div><div class="footer-links-list"><a href="cham-soc.html">Chăm Sóc Cây</a><a href="tao-the.html">Tạo Thế Bonsai</a><a href="trong-canh-tac.html">Trồng &amp; Canh Tác</a><a href="giong-cay.html">Giống Cây</a><a href="bonsai-la-gi.html">Bonsai Là Gì?</a></div></div>
+    <div><div class="footer-col-title">Khám Phá</div><div class="footer-links-list"><a href="cam-hung.html">Blog &amp; Cảm Hứng</a><a href="cam-hung.html#gallery">Thư Viện Ảnh</a><a href="cam-hung.html#top10">Top 10 Bonsai</a><a href="lien-he.html">Mua Cây</a></div></div>
+    <div><div class="footer-col-title">Liên Hệ</div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><a href="https://zalo.me/0326514468">0326 514 468</a></div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><a href="https://facebook.com/mymen.pham.9">mymen.pham.9</a></div><div class="footer-contact-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Đà Lạt, Lâm Đồng</span></div></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 Trang Lê BonSai · Đà Lạt</div><div class="footer-legal"><a href="#">Chính sách</a><a href="lien-he.html">Liên hệ</a></div></div>
+</footer>
+<div class="zalo-float"><div class="zalo-tooltip">Nhắn Zalo ngay</div><a href="https://zalo.me/0326514468" target="_blank" rel="noopener" class="zalo-btn" aria-label="Zalo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a></div>
+<script>
+const nav=document.getElementById('main-nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+function toggleNav(){document.getElementById('nav-mobile').classList.toggle('open');}
+const io=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function submitForm(){
+  const name=document.getElementById('f-name').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const need=document.getElementById('f-need').value;
+  const budget=document.getElementById('f-budget').value;
+  const msg=document.getElementById('f-msg').value.trim();
+  if(!name||!phone){alert('Vui lòng nhập họ tên và số điện thoại.');return;}
+  const text=encodeURIComponent(`Xin chào Trang! Mình tên ${name} - SĐT: ${phone}${need?'. Cần: '+need:''}${budget?'. Ngân sách: '+budget:''}${msg?'. Ghi chú: '+msg:''}`);
+  window.open(`https://zalo.me/0326514468?text=${text}`,'_blank');
+}
+// FAQ grid responsive
+function fixFaq(){const g=document.querySelector('.faq-grid');if(!g)return;g.style.gridTemplateColumns=window.innerWidth<=640?'1fr':'1fr 1fr';}
+fixFaq();window.addEventListener('resize',fixFaq);
+</script>
+</body>
+</html>
